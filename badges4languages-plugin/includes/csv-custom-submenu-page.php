@@ -40,21 +40,15 @@
                                 }*/
                                 ?>
                             </select>
+                                
+                            <h3><?php _e('Table Preview:','wp_csv_to_db'); ?><input id="repop_table_ajax" name="repop_table_ajax" value="<?php _e('Reload Table Preview','wp_csv_to_db'); ?>" type="button" style="margin-left:20px;" /></h3>  
+                            <div id="table_preview"> </div>
+                            <p><?php _e('Click on the "Reload table preview" to see the fields.','wp_csv_to_db'); ?>
+                            <br><?php _e('Use the outputed fields as reference when verifying the .csv file is formatted properly.','wp_csv_to_db'); ?>
+        
                             </td> 
                         </tr>
                         <tr valign="top"><th scope="row"><?php _e('Levels CSV file for upload:','wp_csv_to_db'); ?></th>
-                            <td>
-                                <?php $repop_file = isset($_POST['csv_file']) ? $_POST['csv_file'] : null; ?>
-                                <?php $repop_csv_cols = isset($_POST['num_cols_csv_file']) ? $_POST['num_cols_csv_file'] : '0'; ?>
-                                <input id="csv_file" name="csv_file" type="text" size="70" value="<?php echo $repop_file; ?>" />
-                                <input id="csv_file_button" type="button" value="Upload" />
-                                <input id="num_cols" name="num_cols" type="hidden" value="" />
-                                <input id="num_cols_csv_file" name="num_cols_csv_file" type="hidden" value="" />
-                                <br><?php _e('File must end with a .csv extension.','wp_csv_to_db'); ?>
-                                <br><?php _e('Number of .csv file Columns:','wp_csv_to_db'); echo ' '; ?><span id="return_csv_col_count"><?php echo $repop_csv_cols; ?></span>
-                            </td>
-                        </tr>
-                        <tr valign="top"><th scope="row"><?php _e('Skills CSV file for upload:','wp_csv_to_db'); ?></th>
                             <td>
                                 <?php $repop_file = isset($_POST['csv_file']) ? $_POST['csv_file'] : null; ?>
                                 <?php $repop_csv_cols = isset($_POST['num_cols_csv_file']) ? $_POST['num_cols_csv_file'] : '0'; ?>
@@ -95,13 +89,6 @@
                    </form>
                    </div>
         
-         <h3><?php _e('Table Preview:','wp_csv_to_db'); ?><input id="repop_table_ajax" name="repop_table_ajax" value="<?php _e('Reload Table Preview','wp_csv_to_db'); ?>" type="button" style="margin-left:20px;" /></h3>
-            
-        <div id="table_preview">
-        </div>
-        
-        <p><?php _e('Click on the "Reload table preview" to see the fields.','wp_csv_to_db'); ?>
-        <br><?php _e('Use the outputed fields as reference when verifying the .csv file is formatted properly.','wp_csv_to_db'); ?>
         
         <!-- Alert invalid .csv file - jquery dialog -->
         <div id="dialog_csv_file" title="<?php _e('Invalid File Extension','wp_csv_to_db'); ?>" style="display:none;">
