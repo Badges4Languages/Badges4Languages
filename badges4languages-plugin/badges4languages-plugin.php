@@ -76,6 +76,99 @@ run_badges4languages_plugin();
 
 
 
+
+/**************************************************************************
+ ************************** CREATION/DECLARATION **************************
+ *************************************************************************/
+
+/**
+ * Executes the 'b4l_create_db_table_teacherLevels' function
+ * during the initialization phase.
+ */
+add_action('init', 'b4l_create_db_table_teacherLevels');
+
+/**
+ * Create/Update the '(prefix)teacherLevels' table
+ */
+function b4l_create_db_table_teacherLevels() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . "teacherLevels"; 
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE $table_name (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        language varchar(15) NOT NULL,
+        T1 text NOT NULL,
+        T2 text NOT NULL,
+        T3 text NOT NULL,
+        T4 text NOT NULL,
+        T5 text NOT NULL,
+        T6 text NOT NULL,
+        UNIQUE KEY id (id)
+  ) $charset_collate;";
+
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+}
+
+/**
+ * Executes the 'b4l_create_db_table_teacherLevels' function
+ * during the initialization phase.
+ */
+add_action('init', 'b4l_create_db_table_studentLevels');
+
+/**
+ * Create/Update the '(prefix)teacherLevels' table
+ */
+function b4l_create_db_table_studentLevels() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . "studentLevels"; 
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE $table_name (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        language varchar(15) NOT NULL,
+        A1 text NOT NULL,
+        A2 text NOT NULL,
+        B1 text NOT NULL,
+        B2 text NOT NULL,
+        C1 text NOT NULL,
+        C2 text NOT NULL,
+        UNIQUE KEY id (id)
+  ) $charset_collate;";
+
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+}
+
+/**
+ * Executes the 'b4l_create_db_table_skills' function
+ * during the initialization phase.
+ */
+add_action('init', 'b4l_create_db_table_skills');
+
+/**
+ * Create/Update the '(prefix)skills' table
+ */
+function b4l_create_db_table_skills() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . "skills"; 
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE $table_name (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        language tinytext NOT NULL,
+        Listening text NOT NULL,
+        Reading text NOT NULL,
+        Speaking text NOT NULL,
+        Writing text NOT NULL,
+        UNIQUE KEY id (id)
+) $charset_collate;";
+
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+}
+
 /**
  * Executes the Custom Function named b4l_create_badges_register 
  * during the initialization phase.
@@ -135,12 +228,112 @@ function b4l_create_badges_register(){
         //flush_rewrite_rules();    A EVITER !!!!!!!!!!!!
 }
 
+/**
+ * Executes b4l_create_my_taxonomies during the initialization phase.
+ */
+add_action( 'init', 'b4l_create_my_taxonomies', 0 );
+
+/**
+ * Creates the Custom Taxonomies (categories) for the 
+ * Custom Post 'badge'.
+ */
+function b4l_create_my_taxonomies() {
+    b4l_create_TeacherLevels_taxonomies();
+    b4l_create_StudentLevels_taxonomies();
+    b4l_create_Skills_taxonomies();
+    b4l_create_Tags_taxonomies();
+}
+
+/**
+ * Creates the Custom Taxonomies 'TeacherLevels' (T1,T2,T3,etc).
+ */
+function b4l_create_TeacherLevels_taxonomies() {
+    register_taxonomy(
+        'badge_teacherlevels',
+        'badge',
+        array(
+            'labels' => array(
+                'name' => 'Teacher Levels',
+                'add_new_item' => 'Add New TeacherLevel',
+                'new_item_name' => "New TeacherLevel"
+            ),
+            'show_ui' => true,
+            'show_tagcloud' => false,
+            'hierarchical' => true
+        )
+    );
+}
+
+/**
+ * Creates the Custom Taxonomies 'StudentLevels' (A1,A2,B1,etc).
+ */
+function b4l_create_StudentLevels_taxonomies() {
+    register_taxonomy(
+        'badge_studentlevels',
+        'badge',
+        array(
+            'labels' => array(
+                'name' => 'Student Levels',
+                'add_new_item' => 'Add New StudentLevel',
+                'new_item_name' => "New StudentLevel"
+            ),
+            'show_ui' => true,
+            'show_tagcloud' => false,
+            'hierarchical' => true
+        )
+    );
+}
+
+/**
+ * Creates the Custom Taxonomies 'Skills' (Listening, Reading, etc).
+ */
+function b4l_create_Skills_taxonomies() {
+    register_taxonomy(
+        'badge_skills',
+        'badge',
+        array(
+            'labels' => array(
+                'name' => 'Skills',
+                'add_new_item' => 'Add New Skill',
+                'new_item_name' => "New Skill"
+            ),
+            'show_ui' => true,
+            'show_tagcloud' => false,
+            'hierarchical' => true
+        )
+    );
+}
+
+/**
+ * Creates the Custom Taxonomies 'Tags'.
+ */
+function b4l_create_Tags_taxonomies() {
+    register_taxonomy(
+        'badge_tags',
+        'badge',
+        array(
+            'labels' => array(
+                'name' => 'Tags',
+                'add_new_item' => 'Add New Tag',
+                'new_item_name' => "New Tag"
+            ),
+            'show_ui' => true,
+            'show_tagcloud' => false,
+            'hierarchical' => true
+        )
+    );
+}
 
 
 
 
 
 
+
+
+
+
+//PEUT ETRE A DEGAGER  !!!!!!!!!!!!!!!!!!!!
 /**
  * Executes b4l_my_admin when the WordPress Admin interface is visited.
  */
@@ -219,11 +412,9 @@ function b4l_display_translation_meta_box( $badge ) {
     <?php
 }
 
-
-
 /**
-add_action( 'save_post', 'add_movie_review_fields', 10, 2 );
-function add_movie_review_fields( $movie_review_id, $movie_review ) {
+add_action( 'save_post', 'b4l_add_movie_review_fields', 10, 2 );
+function b4l_add_movie_review_fields( $movie_review_id, $movie_review ) {
     // Check post type for movie reviews
     if ( $movie_review->post_type == 'movie_reviews' ) {
         // Store data in post meta table if present in post data
@@ -237,5 +428,102 @@ function add_movie_review_fields( $movie_review_id, $movie_review ) {
 }
 
 */
+
+
+//DECLARATION OF THE TEMPLATE
+add_filter( 'template_include', 'b4l_include_template_function', 1 );
+function b4l_include_template_function( $template_path ) {
+    if ( get_post_type() == 'badge' ) {
+        if ( is_single() ) {
+            // checks if the file exists in the theme first,
+            // otherwise serve the file from the plugin
+            if ( $theme_file = locate_template( array ( 'single-badge.php' ) ) ) {
+                $template_path = $theme_file;
+            } else {
+                $template_path = plugin_dir_path( __FILE__ ) . 'templates/single-badge.php';
+            }
+        }
+    }
+    return $template_path;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+add_action('admin-print-styles', 'bsp_admin_styles');
+add_action('admin_print_scripts', 'bsp_admin_scripts');
+add_action( 'wp_ajax_bsp_award_ajax', 'bsp_award_ajax_handle' );
+add_action( 'wp_ajax_nopriv_bsp_award_ajax', 'bsp_award_ajax_handle' );
+function bsp_issuer_api(){
+	//wp_enqueue_script( 'openbadges', 'https://backpack.openbadges.org/issuer.js', array()); //for issuer API //not working if included like that, don't know why
+	/*wp_enqueue_script( 'bsp-awards', plugins_url( 'js/award_badge.js', __FILE__ ), array( 'jquery' ) );*/
+	wp_localize_script( 'bsp-awards', 'BSP_Awards', array(
+                'ajaxurl'       => admin_url( 'admin-ajax.php' ),
+            ) );
+	wp_enqueue_script('custom', plugins_url( 'js/scripts.js', __FILE__ ), array( 'jquery' ));
+}
+
+//function for ajax request
+function bsp_award_ajax_handle(){
+	wp_die();
+}
+
+//enqueueing scripts
+function bsp_admin_scripts(){
+	wp_enqueue_script('media-upload'); //for wp media upload
+	wp_enqueue_script('thickbox'); //for wp media upload
+	wp_enqueue_script('jquery-ui-dialog');  // For admin panel popup alerts
+	
+	wp_register_script( 'wp_csv_to_db', plugins_url( 'js/admin_page.js', __FILE__ ), array('jquery','media-upload','thickbox') );  //including external admin_page javascript file
+	wp_enqueue_script('wp_csv_to_db');
+	wp_localize_script( 'wp_csv_to_db', 'bsp_pass_js_vars', array( 'ajax_image' => plugin_dir_url( __FILE__ ).'images/loading.gif', 'ajaxurl' => admin_url('admin-ajax.php') ) );
+	wp_enqueue_media();
+}
+
+//function for enqueueing styles
+function bsp_admin_styles(){
+	wp_enqueue_style('thickbox');
+}
+
+
+
+//CODE HTML POUR L UPLOAD
+add_action('admin_menu', 'b4l_csv_custom_submenu_page');
+
+function b4l_csv_custom_submenu_page() {
+    add_submenu_page(
+        'edit.php?post_type=badge',
+        'CSV File Upload',
+        'CSV File Upload',
+        'manage_options',
+        'csv-custom-submenu-page',
+        'b4l_csv_custom_submenu_page_callback' );
+}
+ 
+function b4l_csv_custom_submenu_page_callback() {
+    require_once plugin_dir_path( __FILE__ ) . 'includes/csv-custom-submenu-page.php'; 
+}
+
+
+
+
 
 ?>
