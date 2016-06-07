@@ -20,18 +20,25 @@ get_header(); ?>
                 </div>
  
                 <!-- Display Title -->
-                <strong>Badge's title: </strong><?php the_title(); ?><br />
+                <h2><?php the_title(); ?></h2>
  
+                <!-- Display badge review contents -->
+                <div class="entry-content"><?php the_content(); ?></div>
+                
+                <!-- Display a translation -->
+                <div class="entry-content"><?php b4l_single_badge_translation(); ?></div>
+            
                 <!-- TAXOMONIE/CATEGORIE -->                   
-                <strong>Level: </strong>
-                <?php the_terms( $post->ID, 'badge_levels' ,  ' ' ); ?>
+                <strong>Student level: </strong>
+                <?php the_terms( $post->ID, 'badge_studentlevels' ,  ' ' ); ?>
                 <br/>
-                <strong>Skill: </strong>
+                <strong>Teacher level: </strong>
+                <?php the_terms( $post->ID, 'badge_teacherlevels' ,  ' ' ); ?>
+                <br/>
+                <strong>Skill(s): </strong>
                 <?php the_terms( $post->ID, 'badge_skills' ,  ' ' ); ?>
                 <br />
- 
-            <!-- Display badge review contents -->
-            <div class="entry-content"><?php the_content(); ?></div>
+                
         </article>
  
     <?php endwhile; ?>
@@ -39,3 +46,19 @@ get_header(); ?>
 </div>
 <?php wp_reset_query(); ?>
 <?php get_footer(); ?>
+
+
+<?php
+function b4l_single_badge_translation(){
+    global $wpdb;
+    echo $wpdb->get_results( 'SELECT A1 FROM $wpdb->prefix'.b4l_studentLevels.' WHERE language="French"', output_type );
+}
+
+$sql = "SELECT * FROM wp_reminders WHERE reminder LIKE '$today'";
+$results = $wpdb->get_results($sql) or die(mysql_error());
+
+    foreach( $results as $result ) {
+
+        echo $result->name;
+
+    }
