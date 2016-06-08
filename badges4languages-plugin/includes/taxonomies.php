@@ -78,3 +78,8 @@ function b4l_create_Tags_taxonomies() {
         )
     );
 }
+
+
+// More information about the custom post and taxomonies here :
+// http://code.tutsplus.com/tutorials/a-guide-to-wordpress-custom-post-types-creation-display-and-meta-boxes--wp-27645
+// http://code.tutsplus.com/tutorials/a-guide-to-wordpress-custom-post-types-taxonomies-admin-columns-filters-and-archives--wp-27898

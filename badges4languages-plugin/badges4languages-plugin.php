@@ -16,7 +16,7 @@
  * Plugin Name:       Badges4languages-plugin
  * Plugin URI:        http://www.badges4languages.org
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.1.0
+ * Version:           1.0.2
  * Author:            Alexandre Levacher
  * Author URI:        http://www.badges4languages.org
  * License:           GPL-2.0+
@@ -156,7 +156,7 @@ function b4l_create_badges_register(){
 	//Registering the custom post type
 	register_post_type( 'badge' , $args );
         
-        //flush_rewrite_rules();    A EVITER !!!!!!!!!!!!
+        //flush_rewrite_rules();
 }
 
 /**
@@ -194,18 +194,18 @@ require plugin_dir_path( __FILE__ ) . 'included_plugins/wp_csv_to_db/wp_csv_to_d
 
 
 
-
-
-
-
-
 /**************************************************************************
  ****************************** TEMPLATES *********************************
  *************************************************************************/
 
-
+/**
+ * Executes b4l_include_template_function for initializing the Custom Post Template.
+ */
 add_filter( 'template_include', 'b4l_include_template_function', 1 );
 
+/**
+ * HTML/PHP Code called to display some information.
+ */
 function b4l_include_template_function( $template_path ) {
     if ( get_post_type() == 'badge' ) {
         if ( is_single() ) {

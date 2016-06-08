@@ -8,13 +8,11 @@ function b4l_create_db_table_b4l_languages() {
     $charset_collate = $wpdb->get_charset_collate();
 
     $sql = "CREATE TABLE $table_name (
-        langue_id varchar(3) NOT NULL,
+        language_id varchar(3) NOT NULL,
         country_id varchar(2) NOT NULL,
         language_name varchar(70) NOT NULL,
-        PRIMARY KEY  (langue_id),
-        FOREIGN KEY (country_name) REFERENCES ".$wpdb->prefix."b4l_teacherLevels(language),
-        FOREIGN KEY (country_name) REFERENCES ".$wpdb->prefix."b4l_studentLevels(language),
-        FOREIGN KEY (country_name) REFERENCES ".$wpdb->prefix."b4l_skills(language)
+        PRIMARY KEY  (language_id),
+        KEY (language_name)
 ) $charset_collate;";
 
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );

@@ -1,6 +1,6 @@
 Language,A1,A2,B1,B2,C1,C2
-English,EngA1Description,TEST,TEST,TEST,TEST,TEST
-French,FreA1Description,LevelA2Test,LevelB1Test,LevelB2Test,LevelC1Test,LevelC2Test
-German,GerA1Description,TEST,TEST,TEST,TEST,TEST
-Spanish,SpaA1Description,TEST,TEST,TEST,TEST,TEST
-Dutch,DutA1Description,TEST,TEST,TEST,TEST,TEST
+eng,EngA1Description,TEST,TEST,TEST,TEST,TEST
+fra,FreA1Description,LevelA2Test,LevelB1Test,LevelB2Test,LevelC1Test,LevelC2Test
+deu,GerA1Description,TEST,TEST,TEST,TEST,TEST
+spa,SpaA1Description,TEST,TEST,TEST,TEST,TEST
+nld,DutA1Description,TEST,TEST,TEST,TEST,TEST
