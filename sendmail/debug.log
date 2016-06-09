@@ -1,0 +1,1739 @@
+16/06/09 15:46:39 ** --- MESSAGE BEGIN ---
+16/06/09 15:46:39 ** To: alexandre.levacher.al@gmail.com
+16/06/09 15:46:39 ** Subject: the subject
+16/06/09 15:46:39 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 15:46:39 ** From: webmaster@example.com
+16/06/09 15:46:39 ** Reply-To: webmaster@example.com
+16/06/09 15:46:39 ** X-Mailer: PHP/5.5.12
+16/06/09 15:46:39 ** 
+16/06/09 15:46:39 ** hello
+16/06/09 15:46:39 ** --- MESSAGE END ---
+16/06/09 15:46:40 ** Connecting to smtp.gmail.com:465
+16/06/09 15:46:40 ** Connected.
+16/06/09 15:46:40 << 220 smtp.gmail.com ESMTP z14sm5823755wjw.6 - gsmtp<EOL>
+16/06/09 15:46:40 >> EHLO localhost<EOL>
+16/06/09 15:46:40 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 15:46:40 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 15:46:40 >> AUTH LOGIN<EOL>
+16/06/09 15:46:40 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 15:46:40 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 15:46:40 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 15:46:40 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 15:46:41 << 235 2.7.0 Accepted<EOL>
+16/06/09 15:46:41 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 15:46:41 << 250 2.1.0 OK z14sm5823755wjw.6 - gsmtp<EOL>
+16/06/09 15:46:41 >> RCPT TO: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 15:46:41 << 250 2.1.5 OK z14sm5823755wjw.6 - gsmtp<EOL>
+16/06/09 15:46:41 >> DATA<EOL>
+16/06/09 15:46:41 << 354  Go ahead z14sm5823755wjw.6 - gsmtp<EOL>
+16/06/09 15:46:41 >> Date: Thu, 9 Jun 2016 15:46:41 +0200<EOL>
+16/06/09 15:46:41 >> To: alexandre.levacher.al@gmail.com<EOL>
+16/06/09 15:46:41 >> Subject: the subject<EOL>
+16/06/09 15:46:41 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 15:46:41 >> From: webmaster@example.com<EOL>
+16/06/09 15:46:41 >> Reply-To: webmaster@example.com<EOL>
+16/06/09 15:46:41 >> X-Mailer: PHP/5.5.12<EOL>
+16/06/09 15:46:41 >> <EOL>
+16/06/09 15:46:41 >> hello<EOL>
+16/06/09 15:46:41 >> .<EOL>
+16/06/09 15:46:42 << 250 2.0.0 OK 1465479998 z14sm5823755wjw.6 - gsmtp<EOL>
+16/06/09 15:46:42 >> QUIT<EOL>
+16/06/09 15:46:42 << 221 2.0.0 closing connection z14sm5823755wjw.6 - gsmtp<EOL>
+16/06/09 15:46:42 ** Disconnected.
+16/06/09 15:46:42 ** Disconnected.
+16/06/09 15:46:42 ** Disconnected.
+16/06/09 15:47:27 ** --- MESSAGE BEGIN ---
+16/06/09 15:47:27 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 15:47:27 ** Subject: the subject
+16/06/09 15:47:27 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 15:47:27 ** From: webmaster@example.com
+16/06/09 15:47:27 ** Reply-To: webmaster@example.com
+16/06/09 15:47:27 ** X-Mailer: PHP/5.5.12
+16/06/09 15:47:27 ** 
+16/06/09 15:47:27 ** hello
+16/06/09 15:47:27 ** --- MESSAGE END ---
+16/06/09 15:47:28 ** Connecting to smtp.gmail.com:465
+16/06/09 15:47:28 ** Connected.
+16/06/09 15:47:28 << 220 smtp.gmail.com ESMTP o76sm7846235wme.0 - gsmtp<EOL>
+16/06/09 15:47:28 >> EHLO localhost<EOL>
+16/06/09 15:47:28 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 15:47:28 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 15:47:28 >> AUTH LOGIN<EOL>
+16/06/09 15:47:28 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 15:47:28 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 15:47:28 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 15:47:28 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 15:47:29 << 235 2.7.0 Accepted<EOL>
+16/06/09 15:47:29 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 15:47:29 << 250 2.1.0 OK o76sm7846235wme.0 - gsmtp<EOL>
+16/06/09 15:47:29 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 15:47:29 << 250 2.1.5 OK o76sm7846235wme.0 - gsmtp<EOL>
+16/06/09 15:47:29 >> DATA<EOL>
+16/06/09 15:47:29 << 354  Go ahead o76sm7846235wme.0 - gsmtp<EOL>
+16/06/09 15:47:29 >> Date: Thu, 9 Jun 2016 15:47:29 +0200<EOL>
+16/06/09 15:47:29 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 15:47:29 >> Subject: the subject<EOL>
+16/06/09 15:47:29 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 15:47:29 >> From: webmaster@example.com<EOL>
+16/06/09 15:47:29 >> Reply-To: webmaster@example.com<EOL>
+16/06/09 15:47:29 >> X-Mailer: PHP/5.5.12<EOL>
+16/06/09 15:47:29 >> <EOL>
+16/06/09 15:47:29 >> hello<EOL>
+16/06/09 15:47:29 >> .<EOL>
+16/06/09 15:47:30 << 250 2.0.0 OK 1465480047 o76sm7846235wme.0 - gsmtp<EOL>
+16/06/09 15:47:30 >> QUIT<EOL>
+16/06/09 15:47:30 << 221 2.0.0 closing connection o76sm7846235wme.0 - gsmtp<EOL>
+16/06/09 15:47:30 ** Disconnecting from smtp.gmail.com:465
+16/06/09 15:47:30 ** Disconnected.
+16/06/09 15:47:30 ** Disconnected.
+16/06/09 15:57:02 ** --- MESSAGE BEGIN ---
+16/06/09 15:57:02 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 15:57:02 ** Subject: Obtains the level
+16/06/09 15:57:02 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 15:57:02 ** From: mylanguageskills@hotmail.com
+16/06/09 15:57:02 ** Reply-To: mylanguageskills@hotmail.com
+16/06/09 15:57:02 ** X-Mailer: PHP/5.5.12
+16/06/09 15:57:02 ** 
+16/06/09 15:57:02 ** &nbsp;
+16/06/09 15:57:02 ** 
+16/06/09 15:57:02 ** <a href="http://localhost/wordpress/wp-content/uploads/2016/05/default3.jpg"><img class="size-medium wp-image-54 aligncenter" src="http://localhost/wordpress/wp-content/uploads/2016/05/default3-300x117.jpg" alt="default3" width="300" height="117" /></a>
+16/06/09 15:57:02 ** 
+16/06/09 15:57:02 ** <strong>Description</strong>
+16/06/09 15:57:02 ** 
+16/06/09 15:57:02 ** You know how to introduce you.
+16/06/09 15:57:02 ** --- MESSAGE END ---
+16/06/09 15:57:03 ** Connecting to smtp.gmail.com:465
+16/06/09 15:57:03 ** Connected.
+16/06/09 15:57:03 << 220 smtp.gmail.com ESMTP u70sm20773523wmd.4 - gsmtp<EOL>
+16/06/09 15:57:03 >> EHLO localhost<EOL>
+16/06/09 15:57:03 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 15:57:03 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 15:57:03 >> AUTH LOGIN<EOL>
+16/06/09 15:57:03 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 15:57:03 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 15:57:03 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 15:57:03 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 15:57:04 << 235 2.7.0 Accepted<EOL>
+16/06/09 15:57:04 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 15:57:04 << 250 2.1.0 OK u70sm20773523wmd.4 - gsmtp<EOL>
+16/06/09 15:57:04 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 15:57:04 << 250 2.1.5 OK u70sm20773523wmd.4 - gsmtp<EOL>
+16/06/09 15:57:04 >> DATA<EOL>
+16/06/09 15:57:04 << 354  Go ahead u70sm20773523wmd.4 - gsmtp<EOL>
+16/06/09 15:57:04 >> Date: Thu, 9 Jun 2016 15:57:04 +0200<EOL>
+16/06/09 15:57:04 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 15:57:04 >> Subject: Obtains the level<EOL>
+16/06/09 15:57:04 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 15:57:04 >> From: mylanguageskills@hotmail.com<EOL>
+16/06/09 15:57:04 >> Reply-To: mylanguageskills@hotmail.com<EOL>
+16/06/09 15:57:04 >> X-Mailer: PHP/5.5.12<EOL>
+16/06/09 15:57:04 >> <EOL>
+16/06/09 15:57:04 >> &nbsp;<EOL>
+16/06/09 15:57:04 >> <EOL>
+16/06/09 15:57:04 >> <a href="http://localhost/wordpress/wp-content/uploads/2016/05/default3.jpg"><img class="size-medium wp-image-54 aligncenter" src="http://localhost/wordpress/wp-content/uploads/2016/05/default3-300x117.jpg" alt="default3" width="300" height="117" /></a><EOL>
+16/06/09 15:57:04 >> <EOL>
+16/06/09 15:57:04 >> <strong>Description</strong><EOL>
+16/06/09 15:57:04 >> <EOL>
+16/06/09 15:57:04 >> You know how to introduce you.<EOL>
+16/06/09 15:57:04 >> .<EOL>
+16/06/09 15:57:05 << 250 2.0.0 OK 1465480622 u70sm20773523wmd.4 - gsmtp<EOL>
+16/06/09 15:57:05 >> QUIT<EOL>
+16/06/09 15:57:06 << 221 2.0.0 closing connection u70sm20773523wmd.4 - gsmtp<EOL>
+16/06/09 15:57:06 ** Disconnecting from smtp.gmail.com:465
+16/06/09 15:57:06 ** Disconnected.
+16/06/09 15:57:06 ** Disconnected.
+16/06/09 15:58:07 ** --- MESSAGE BEGIN ---
+16/06/09 15:58:07 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 15:58:07 ** Subject: Obtains the level
+16/06/09 15:58:07 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 15:58:07 ** From: mylanguageskills@hotmail.com
+16/06/09 15:58:07 ** Reply-To: mylanguageskills@hotmail.com
+16/06/09 15:58:07 ** X-Mailer: PHP/5.5.12
+16/06/09 15:58:07 ** 
+16/06/09 15:58:07 ** Level A2 for a student : he knows how to bla bla bla....
+16/06/09 15:58:07 ** --- MESSAGE END ---
+16/06/09 15:58:08 ** Connecting to smtp.gmail.com:465
+16/06/09 15:58:08 ** Connected.
+16/06/09 15:58:08 << 220 smtp.gmail.com ESMTP m7sm7830505wma.10 - gsmtp<EOL>
+16/06/09 15:58:08 >> EHLO localhost<EOL>
+16/06/09 15:58:08 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 15:58:08 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 15:58:08 >> AUTH LOGIN<EOL>
+16/06/09 15:58:08 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 15:58:08 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 15:58:08 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 15:58:08 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 15:58:08 << 235 2.7.0 Accepted<EOL>
+16/06/09 15:58:08 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 15:58:09 << 250 2.1.0 OK m7sm7830505wma.10 - gsmtp<EOL>
+16/06/09 15:58:09 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 15:58:09 << 250 2.1.5 OK m7sm7830505wma.10 - gsmtp<EOL>
+16/06/09 15:58:09 >> DATA<EOL>
+16/06/09 15:58:09 << 354  Go ahead m7sm7830505wma.10 - gsmtp<EOL>
+16/06/09 15:58:09 >> Date: Thu, 9 Jun 2016 15:58:09 +0200<EOL>
+16/06/09 15:58:09 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 15:58:09 >> Subject: Obtains the level<EOL>
+16/06/09 15:58:09 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 15:58:09 >> From: mylanguageskills@hotmail.com<EOL>
+16/06/09 15:58:09 >> Reply-To: mylanguageskills@hotmail.com<EOL>
+16/06/09 15:58:09 >> X-Mailer: PHP/5.5.12<EOL>
+16/06/09 15:58:09 >> <EOL>
+16/06/09 15:58:09 >> Level A2 for a student : he knows how to bla bla bla....<EOL>
+16/06/09 15:58:09 >> .<EOL>
+16/06/09 15:58:09 << 250 2.0.0 OK 1465480686 m7sm7830505wma.10 - gsmtp<EOL>
+16/06/09 15:58:09 >> QUIT<EOL>
+16/06/09 15:58:09 << 221 2.0.0 closing connection m7sm7830505wma.10 - gsmtp<EOL>
+16/06/09 15:58:09 ** Disconnected.
+16/06/09 15:58:09 ** Disconnected.
+16/06/09 15:58:09 ** Disconnected.
+16/06/09 15:58:30 ** --- MESSAGE BEGIN ---
+16/06/09 15:58:30 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 15:58:30 ** Subject: Obtains the level
+16/06/09 15:58:30 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 15:58:30 ** From: mylanguageskills@hotmail.com
+16/06/09 15:58:30 ** Reply-To: mylanguageskills@hotmail.com
+16/06/09 15:58:30 ** X-Mailer: PHP/5.5.12
+16/06/09 15:58:30 ** 
+16/06/09 15:58:30 ** Level A2 for a student : he knows how to bla bla bla....
+16/06/09 15:58:30 ** --- MESSAGE END ---
+16/06/09 15:58:31 ** Connecting to smtp.gmail.com:465
+16/06/09 15:58:31 ** Connected.
+16/06/09 15:58:31 << 220 smtp.gmail.com ESMTP c4sm7208887wjb.38 - gsmtp<EOL>
+16/06/09 15:58:31 >> EHLO localhost<EOL>
+16/06/09 15:58:31 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 15:58:31 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 15:58:31 >> AUTH LOGIN<EOL>
+16/06/09 15:58:31 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 15:58:31 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 15:58:31 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 15:58:31 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 15:58:32 << 235 2.7.0 Accepted<EOL>
+16/06/09 15:58:32 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 15:58:32 << 250 2.1.0 OK c4sm7208887wjb.38 - gsmtp<EOL>
+16/06/09 15:58:32 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 15:58:32 << 250 2.1.5 OK c4sm7208887wjb.38 - gsmtp<EOL>
+16/06/09 15:58:32 >> DATA<EOL>
+16/06/09 15:58:32 << 354  Go ahead c4sm7208887wjb.38 - gsmtp<EOL>
+16/06/09 15:58:32 >> Date: Thu, 9 Jun 2016 15:58:32 +0200<EOL>
+16/06/09 15:58:32 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 15:58:32 >> Subject: Obtains the level<EOL>
+16/06/09 15:58:32 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 15:58:32 >> From: mylanguageskills@hotmail.com<EOL>
+16/06/09 15:58:32 >> Reply-To: mylanguageskills@hotmail.com<EOL>
+16/06/09 15:58:32 >> X-Mailer: PHP/5.5.12<EOL>
+16/06/09 15:58:32 >> <EOL>
+16/06/09 15:58:32 >> Level A2 for a student : he knows how to bla bla bla....<EOL>
+16/06/09 15:58:32 >> .<EOL>
+16/06/09 15:58:32 << 250 2.0.0 OK 1465480709 c4sm7208887wjb.38 - gsmtp<EOL>
+16/06/09 15:58:32 >> QUIT<EOL>
+16/06/09 15:58:33 << 221 2.0.0 closing connection c4sm7208887wjb.38 - gsmtp<EOL>
+16/06/09 15:58:33 ** Disconnected.
+16/06/09 15:58:33 ** Disconnected.
+16/06/09 15:58:33 ** Disconnected.
+16/06/09 16:13:15 ** --- MESSAGE BEGIN ---
+16/06/09 16:13:15 ** To: 
+16/06/09 16:13:15 ** Subject: You have just earned a badge
+16/06/09 16:13:15 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 16:13:15 ** From: Badges4languages <>
+16/06/09 16:13:15 ** MIME-Version: 1.0
+16/06/09 16:13:15 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 16:13:15 ** Reply-To: info@badges4languages.org
+16/06/09 16:13:15 ** 
+16/06/09 16:13:15 **  
+16/06/09 16:13:15 ** 				<html>
+16/06/09 16:13:15 ** 					<head>
+16/06/09 16:13:15 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 16:13:15 ** 					</head>
+16/06/09 16:13:15 ** 					<body>
+16/06/09 16:13:15 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 16:13:15 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 16:13:15 ** 					<div align="center">
+16/06/09 16:13:15 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 16:13:15 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 16:13:15 ** 							<h2>   </h2>
+16/06/09 16:13:15 ** 							
+16/06/09 16:13:15 ** 							<a href="http://localhost/wordpress/index.php/badge/a2/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hYl0hnaAiot==">
+16/06/09 16:13:15 ** 							<img src=""></a></br>
+16/06/09 16:13:15 ** 							<p>Description: </p>
+16/06/09 16:13:15 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 16:13:15 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 16:13:15 ** 						</div>
+16/06/09 16:13:15 ** 					</body>
+16/06/09 16:13:15 ** 				</html>
+16/06/09 16:13:15 ** 				
+16/06/09 16:13:15 ** --- MESSAGE END ---
+16/06/09 16:13:15 ** Message is missing recipient's address
+16/06/09 16:13:55 ** --- MESSAGE BEGIN ---
+16/06/09 16:13:55 ** To: 
+16/06/09 16:13:55 ** Subject: You have just earned a badge
+16/06/09 16:13:55 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 16:13:55 ** From: Badges4languages <>
+16/06/09 16:13:55 ** MIME-Version: 1.0
+16/06/09 16:13:55 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 16:13:55 ** Reply-To: info@badges4languages.org
+16/06/09 16:13:55 ** 
+16/06/09 16:13:55 **  
+16/06/09 16:13:55 ** 				<html>
+16/06/09 16:13:55 ** 					<head>
+16/06/09 16:13:55 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 16:13:55 ** 					</head>
+16/06/09 16:13:55 ** 					<body>
+16/06/09 16:13:55 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 16:13:55 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 16:13:55 ** 					<div align="center">
+16/06/09 16:13:55 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 16:13:55 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 16:13:55 ** 							<h2>   </h2>
+16/06/09 16:13:55 ** 							
+16/06/09 16:13:55 ** 							<a href="http://localhost/wordpress/index.php/badge/a2/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hYl0hnaAiot==">
+16/06/09 16:13:55 ** 							<img src=""></a></br>
+16/06/09 16:13:55 ** 							<p>Description: </p>
+16/06/09 16:13:55 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 16:13:55 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 16:13:55 ** 						</div>
+16/06/09 16:13:55 ** 					</body>
+16/06/09 16:13:55 ** 				</html>
+16/06/09 16:13:55 ** 				
+16/06/09 16:13:55 ** --- MESSAGE END ---
+16/06/09 16:13:55 ** Message is missing recipient's address
+16/06/09 16:14:33 ** --- MESSAGE BEGIN ---
+16/06/09 16:14:33 ** To: 
+16/06/09 16:14:33 ** Subject: You have just earned a badge
+16/06/09 16:14:33 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 16:14:33 ** From: Badges4languages <>
+16/06/09 16:14:33 ** MIME-Version: 1.0
+16/06/09 16:14:33 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 16:14:33 ** Reply-To: info@badges4languages.org
+16/06/09 16:14:33 ** 
+16/06/09 16:14:33 **  
+16/06/09 16:14:33 ** 				<html>
+16/06/09 16:14:33 ** 					<head>
+16/06/09 16:14:33 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 16:14:33 ** 					</head>
+16/06/09 16:14:33 ** 					<body>
+16/06/09 16:14:33 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 16:14:33 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 16:14:33 ** 					<div align="center">
+16/06/09 16:14:33 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 16:14:33 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 16:14:33 ** 							<h2>   </h2>
+16/06/09 16:14:33 ** 							
+16/06/09 16:14:33 ** 							<a href="http://localhost/wordpress/index.php/badge/t1/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hYl0hnaAiot==">
+16/06/09 16:14:33 ** 							<img src=""></a></br>
+16/06/09 16:14:33 ** 							<p>Description: </p>
+16/06/09 16:14:33 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 16:14:33 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 16:14:33 ** 						</div>
+16/06/09 16:14:34 ** 					</body>
+16/06/09 16:14:34 ** 				</html>
+16/06/09 16:14:34 ** 				
+16/06/09 16:14:34 ** --- MESSAGE END ---
+16/06/09 16:14:34 ** Message is missing recipient's address
+16/06/09 16:17:31 ** --- MESSAGE BEGIN ---
+16/06/09 16:17:31 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 16:17:31 ** Subject: You have just earned a badge
+16/06/09 16:17:31 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 16:17:31 ** From: Badges4languages <>
+16/06/09 16:17:31 ** MIME-Version: 1.0
+16/06/09 16:17:31 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 16:17:31 ** Reply-To: info@badges4languages.org
+16/06/09 16:17:31 ** 
+16/06/09 16:17:31 **  
+16/06/09 16:17:31 ** 				<html>
+16/06/09 16:17:31 ** 					<head>
+16/06/09 16:17:31 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 16:17:31 ** 					</head>
+16/06/09 16:17:31 ** 					<body>
+16/06/09 16:17:31 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 16:17:31 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 16:17:31 ** 					<div align="center">
+16/06/09 16:17:31 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 16:17:31 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 16:17:31 ** 							<h2>   </h2>
+16/06/09 16:17:31 ** 							
+16/06/09 16:17:31 ** 							<a href="http://localhost/wordpress/index.php/badge/t1/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hYl1hrKWeozSkMKVhrKWcoaO1pzINqzSzov1yLzulLF5mMF5dp29h">
+16/06/09 16:17:31 ** 							<img src=""></a></br>
+16/06/09 16:17:31 ** 							<p>Description: </p>
+16/06/09 16:17:31 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 16:17:31 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 16:17:31 ** 						</div>
+16/06/09 16:17:31 ** 					</body>
+16/06/09 16:17:31 ** 				</html>
+16/06/09 16:17:31 ** 				
+16/06/09 16:17:31 ** --- MESSAGE END ---
+16/06/09 16:17:31 ** Connecting to smtp.gmail.com:465
+16/06/09 16:17:32 ** Connected.
+16/06/09 16:17:32 << 220 smtp.gmail.com ESMTP h8sm7330621wjg.9 - gsmtp<EOL>
+16/06/09 16:17:32 >> EHLO localhost<EOL>
+16/06/09 16:17:32 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 16:17:32 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 16:17:32 >> AUTH LOGIN<EOL>
+16/06/09 16:17:32 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 16:17:32 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 16:17:32 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 16:17:32 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 16:17:32 << 235 2.7.0 Accepted<EOL>
+16/06/09 16:17:32 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 16:17:32 << 250 2.1.0 OK h8sm7330621wjg.9 - gsmtp<EOL>
+16/06/09 16:17:32 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 16:17:32 << 250 2.1.5 OK h8sm7330621wjg.9 - gsmtp<EOL>
+16/06/09 16:17:32 >> DATA<EOL>
+16/06/09 16:17:33 << 354  Go ahead h8sm7330621wjg.9 - gsmtp<EOL>
+16/06/09 16:17:33 >> Date: Thu, 9 Jun 2016 16:17:33 +0200<EOL>
+16/06/09 16:17:33 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 16:17:33 >> Subject: You have just earned a badge<EOL>
+16/06/09 16:17:33 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 16:17:33 >> From: Badges4languages <><EOL>
+16/06/09 16:17:33 >> MIME-Version: 1.0<EOL>
+16/06/09 16:17:33 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 16:17:33 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 16:17:33 >> <EOL>
+16/06/09 16:17:33 >>  <EOL>
+16/06/09 16:17:33 >> 				<html><EOL>
+16/06/09 16:17:33 >> 					<head><EOL>
+16/06/09 16:17:33 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 16:17:33 >> 					</head><EOL>
+16/06/09 16:17:33 >> 					<body><EOL>
+16/06/09 16:17:33 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 16:17:33 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 16:17:33 >> 					<div align="center"><EOL>
+16/06/09 16:17:33 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 16:17:33 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 16:17:33 >> 							<h2>   </h2><EOL>
+16/06/09 16:17:33 >> 							<EOL>
+16/06/09 16:17:33 >> 							<a href="http://localhost/wordpress/index.php/badge/t1/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hYl1hrKWeozSkMKVhrKWcoaO1pzINqzSzov1yLzulLF5mMF5dp29h"><EOL>
+16/06/09 16:17:33 >> 							<img src=""></a></br><EOL>
+16/06/09 16:17:33 >> 							<p>Description: </p><EOL>
+16/06/09 16:17:33 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 16:17:33 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 16:17:33 >> 						</div><EOL>
+16/06/09 16:17:33 >> 					</body><EOL>
+16/06/09 16:17:33 >> 				</html><EOL>
+16/06/09 16:17:33 >> 				<EOL>
+16/06/09 16:17:33 >> .<EOL>
+16/06/09 16:17:33 << 250 2.0.0 OK 1465481850 h8sm7330621wjg.9 - gsmtp<EOL>
+16/06/09 16:17:33 >> QUIT<EOL>
+16/06/09 16:17:33 << 221 2.0.0 closing connection h8sm7330621wjg.9 - gsmtp<EOL>
+16/06/09 16:17:33 ** Disconnecting from smtp.gmail.com:465
+16/06/09 16:17:33 ** Disconnected.
+16/06/09 16:17:33 ** Disconnected.
+16/06/09 16:58:17 ** --- MESSAGE BEGIN ---
+16/06/09 16:58:17 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 16:58:17 ** Subject: You have just earned a badge
+16/06/09 16:58:17 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 16:58:17 ** From: Badges4languages <>
+16/06/09 16:58:17 ** MIME-Version: 1.0
+16/06/09 16:58:17 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 16:58:17 ** Reply-To: info@badges4languages.org
+16/06/09 16:58:17 ** 
+16/06/09 16:58:17 **  
+16/06/09 16:58:17 ** 				<html>
+16/06/09 16:58:17 ** 					<head>
+16/06/09 16:58:17 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 16:58:17 ** 					</head>
+16/06/09 16:58:17 ** 					<body>
+16/06/09 16:58:17 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 16:58:17 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 16:58:17 ** 					<div align="center">
+16/06/09 16:58:17 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 16:58:18 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 16:58:18 ** 							<h2>   </h2>
+16/06/09 16:58:18 ** 							
+16/06/09 16:58:18 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hYl1hrKWeozSkMKVhrKWcoaO1pzINqzSzov1yLzulLF5mMF5dp29h">
+16/06/09 16:58:18 ** 							<img src=""></a></br>
+16/06/09 16:58:18 ** 							<p>Description: </p>
+16/06/09 16:58:18 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 16:58:18 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 16:58:18 ** 						</div>
+16/06/09 16:58:18 ** 					</body>
+16/06/09 16:58:18 ** 				</html>
+16/06/09 16:58:18 ** 				
+16/06/09 16:58:18 ** --- MESSAGE END ---
+16/06/09 16:58:18 ** Connecting to smtp.gmail.com:465
+16/06/09 16:58:19 ** Connected.
+16/06/09 16:58:19 << 220 smtp.gmail.com ESMTP k62sm30772159wmb.7 - gsmtp<EOL>
+16/06/09 16:58:19 >> EHLO localhost<EOL>
+16/06/09 16:58:19 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 16:58:19 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 16:58:19 >> AUTH LOGIN<EOL>
+16/06/09 16:58:19 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 16:58:19 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 16:58:19 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 16:58:19 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 16:58:19 << 235 2.7.0 Accepted<EOL>
+16/06/09 16:58:19 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 16:58:19 << 250 2.1.0 OK k62sm30772159wmb.7 - gsmtp<EOL>
+16/06/09 16:58:19 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 16:58:19 << 250 2.1.5 OK k62sm30772159wmb.7 - gsmtp<EOL>
+16/06/09 16:58:19 >> DATA<EOL>
+16/06/09 16:58:20 << 354  Go ahead k62sm30772159wmb.7 - gsmtp<EOL>
+16/06/09 16:58:20 >> Date: Thu, 9 Jun 2016 16:58:20 +0200<EOL>
+16/06/09 16:58:20 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 16:58:20 >> Subject: You have just earned a badge<EOL>
+16/06/09 16:58:20 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 16:58:20 >> From: Badges4languages <><EOL>
+16/06/09 16:58:20 >> MIME-Version: 1.0<EOL>
+16/06/09 16:58:20 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 16:58:20 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 16:58:20 >> <EOL>
+16/06/09 16:58:20 >>  <EOL>
+16/06/09 16:58:20 >> 				<html><EOL>
+16/06/09 16:58:20 >> 					<head><EOL>
+16/06/09 16:58:20 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 16:58:20 >> 					</head><EOL>
+16/06/09 16:58:20 >> 					<body><EOL>
+16/06/09 16:58:20 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 16:58:20 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 16:58:20 >> 					<div align="center"><EOL>
+16/06/09 16:58:20 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 16:58:20 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 16:58:20 >> 							<h2>   </h2><EOL>
+16/06/09 16:58:20 >> 							<EOL>
+16/06/09 16:58:20 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hYl1hrKWeozSkMKVhrKWcoaO1pzINqzSzov1yLzulLF5mMF5dp29h"><EOL>
+16/06/09 16:58:20 >> 							<img src=""></a></br><EOL>
+16/06/09 16:58:20 >> 							<p>Description: </p><EOL>
+16/06/09 16:58:20 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 16:58:20 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 16:58:20 >> 						</div><EOL>
+16/06/09 16:58:20 >> 					</body><EOL>
+16/06/09 16:58:20 >> 				</html><EOL>
+16/06/09 16:58:20 >> 				<EOL>
+16/06/09 16:58:20 >> .<EOL>
+16/06/09 16:58:21 << 250 2.0.0 OK 1465484298 k62sm30772159wmb.7 - gsmtp<EOL>
+16/06/09 16:58:21 >> QUIT<EOL>
+16/06/09 16:58:21 << 221 2.0.0 closing connection k62sm30772159wmb.7 - gsmtp<EOL>
+16/06/09 16:58:21 ** Disconnecting from smtp.gmail.com:465
+16/06/09 16:58:21 ** Disconnected.
+16/06/09 16:58:21 ** Disconnected.
+16/06/09 16:58:32 ** --- MESSAGE BEGIN ---
+16/06/09 16:58:32 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 16:58:32 ** Subject: You have just earned a badge
+16/06/09 16:58:32 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 16:58:32 ** From: Badges4languages <>
+16/06/09 16:58:32 ** MIME-Version: 1.0
+16/06/09 16:58:32 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 16:58:32 ** Reply-To: info@badges4languages.org
+16/06/09 16:58:32 ** 
+16/06/09 16:58:33 **  
+16/06/09 16:58:33 ** 				<html>
+16/06/09 16:58:33 ** 					<head>
+16/06/09 16:58:33 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 16:58:33 ** 					</head>
+16/06/09 16:58:33 ** 					<body>
+16/06/09 16:58:33 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 16:58:33 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 16:58:33 ** 					<div align="center">
+16/06/09 16:58:33 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 16:58:33 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 16:58:33 ** 							<h2>   </h2>
+16/06/09 16:58:33 ** 							
+16/06/09 16:58:33 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hYl1hrKWeozSkMKVhrKWcoaO1pzINqzSzov1yLzulLF5mMF5dp29h">
+16/06/09 16:58:33 ** 							<img src=""></a></br>
+16/06/09 16:58:33 ** 							<p>Description: </p>
+16/06/09 16:58:33 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 16:58:33 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 16:58:33 ** 						</div>
+16/06/09 16:58:33 ** 					</body>
+16/06/09 16:58:33 ** 				</html>
+16/06/09 16:58:33 ** 				
+16/06/09 16:58:33 ** --- MESSAGE END ---
+16/06/09 16:58:33 ** Connecting to smtp.gmail.com:465
+16/06/09 16:58:34 ** Connected.
+16/06/09 16:58:34 << 220 smtp.gmail.com ESMTP f73sm6392495wmg.1 - gsmtp<EOL>
+16/06/09 16:58:34 >> EHLO localhost<EOL>
+16/06/09 16:58:34 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 16:58:34 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 16:58:34 >> AUTH LOGIN<EOL>
+16/06/09 16:58:34 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 16:58:34 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 16:58:34 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 16:58:34 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 16:58:34 << 235 2.7.0 Accepted<EOL>
+16/06/09 16:58:34 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 16:58:34 << 250 2.1.0 OK f73sm6392495wmg.1 - gsmtp<EOL>
+16/06/09 16:58:34 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 16:58:34 << 250 2.1.5 OK f73sm6392495wmg.1 - gsmtp<EOL>
+16/06/09 16:58:34 >> DATA<EOL>
+16/06/09 16:58:35 << 354  Go ahead f73sm6392495wmg.1 - gsmtp<EOL>
+16/06/09 16:58:35 >> Date: Thu, 9 Jun 2016 16:58:35 +0200<EOL>
+16/06/09 16:58:35 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 16:58:35 >> Subject: You have just earned a badge<EOL>
+16/06/09 16:58:35 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 16:58:35 >> From: Badges4languages <><EOL>
+16/06/09 16:58:35 >> MIME-Version: 1.0<EOL>
+16/06/09 16:58:35 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 16:58:35 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 16:58:35 >> <EOL>
+16/06/09 16:58:35 >>  <EOL>
+16/06/09 16:58:35 >> 				<html><EOL>
+16/06/09 16:58:35 >> 					<head><EOL>
+16/06/09 16:58:35 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 16:58:35 >> 					</head><EOL>
+16/06/09 16:58:35 >> 					<body><EOL>
+16/06/09 16:58:35 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 16:58:35 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 16:58:35 >> 					<div align="center"><EOL>
+16/06/09 16:58:35 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 16:58:35 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 16:58:35 >> 							<h2>   </h2><EOL>
+16/06/09 16:58:35 >> 							<EOL>
+16/06/09 16:58:35 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hYl1hrKWeozSkMKVhrKWcoaO1pzINqzSzov1yLzulLF5mMF5dp29h"><EOL>
+16/06/09 16:58:35 >> 							<img src=""></a></br><EOL>
+16/06/09 16:58:35 >> 							<p>Description: </p><EOL>
+16/06/09 16:58:35 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 16:58:35 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 16:58:35 >> 						</div><EOL>
+16/06/09 16:58:35 >> 					</body><EOL>
+16/06/09 16:58:35 >> 				</html><EOL>
+16/06/09 16:58:35 >> 				<EOL>
+16/06/09 16:58:35 >> .<EOL>
+16/06/09 16:58:35 << 250 2.0.0 OK 1465484312 f73sm6392495wmg.1 - gsmtp<EOL>
+16/06/09 16:58:35 >> QUIT<EOL>
+16/06/09 16:58:35 << 221 2.0.0 closing connection f73sm6392495wmg.1 - gsmtp<EOL>
+16/06/09 16:58:35 ** Disconnected.
+16/06/09 16:58:35 ** Disconnected.
+16/06/09 16:58:35 ** Disconnected.
+16/06/09 16:58:59 ** --- MESSAGE BEGIN ---
+16/06/09 16:58:59 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 16:58:59 ** Subject: You have just earned a badge
+16/06/09 16:58:59 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 16:58:59 ** From: Badges4languages <>
+16/06/09 16:58:59 ** MIME-Version: 1.0
+16/06/09 16:58:59 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 16:58:59 ** Reply-To: info@badges4languages.org
+16/06/09 16:58:59 ** 
+16/06/09 16:58:59 **  
+16/06/09 16:58:59 ** 				<html>
+16/06/09 16:58:59 ** 					<head>
+16/06/09 16:58:59 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 16:58:59 ** 					</head>
+16/06/09 16:58:59 ** 					<body>
+16/06/09 16:58:59 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 16:58:59 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 16:58:59 ** 					<div align="center">
+16/06/09 16:58:59 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 16:58:59 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 16:58:59 ** 							<h2>   </h2>
+16/06/09 16:58:59 ** 							
+16/06/09 16:58:59 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hYl1hrKWeozSkMKVhrKWcoaO1pzINqzSzov1yLzulLF5mMF5dp29h">
+16/06/09 16:58:59 ** 							<img src=""></a></br>
+16/06/09 16:59:00 ** 							<p>Description: </p>
+16/06/09 16:59:00 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 16:59:00 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 16:59:00 ** 						</div>
+16/06/09 16:59:00 ** 					</body>
+16/06/09 16:59:00 ** 				</html>
+16/06/09 16:59:00 ** 				
+16/06/09 16:59:00 ** --- MESSAGE END ---
+16/06/09 16:59:00 ** Connecting to smtp.gmail.com:465
+16/06/09 16:59:01 ** Connected.
+16/06/09 16:59:01 << 220 smtp.gmail.com ESMTP u4sm7521956wjz.4 - gsmtp<EOL>
+16/06/09 16:59:01 >> EHLO localhost<EOL>
+16/06/09 16:59:01 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 16:59:01 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 16:59:01 >> AUTH LOGIN<EOL>
+16/06/09 16:59:01 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 16:59:01 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 16:59:01 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 16:59:01 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 16:59:01 << 235 2.7.0 Accepted<EOL>
+16/06/09 16:59:01 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 16:59:01 << 250 2.1.0 OK u4sm7521956wjz.4 - gsmtp<EOL>
+16/06/09 16:59:01 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 16:59:01 << 250 2.1.5 OK u4sm7521956wjz.4 - gsmtp<EOL>
+16/06/09 16:59:01 >> DATA<EOL>
+16/06/09 16:59:01 << 354  Go ahead u4sm7521956wjz.4 - gsmtp<EOL>
+16/06/09 16:59:01 >> Date: Thu, 9 Jun 2016 16:59:01 +0200<EOL>
+16/06/09 16:59:01 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 16:59:01 >> Subject: You have just earned a badge<EOL>
+16/06/09 16:59:01 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 16:59:01 >> From: Badges4languages <><EOL>
+16/06/09 16:59:01 >> MIME-Version: 1.0<EOL>
+16/06/09 16:59:01 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 16:59:01 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 16:59:01 >> <EOL>
+16/06/09 16:59:01 >>  <EOL>
+16/06/09 16:59:01 >> 				<html><EOL>
+16/06/09 16:59:01 >> 					<head><EOL>
+16/06/09 16:59:01 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 16:59:01 >> 					</head><EOL>
+16/06/09 16:59:01 >> 					<body><EOL>
+16/06/09 16:59:01 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 16:59:01 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 16:59:01 >> 					<div align="center"><EOL>
+16/06/09 16:59:01 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 16:59:01 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 16:59:01 >> 							<h2>   </h2><EOL>
+16/06/09 16:59:01 >> 							<EOL>
+16/06/09 16:59:01 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hYl1hrKWeozSkMKVhrKWcoaO1pzINqzSzov1yLzulLF5mMF5dp29h"><EOL>
+16/06/09 16:59:01 >> 							<img src=""></a></br><EOL>
+16/06/09 16:59:01 >> 							<p>Description: </p><EOL>
+16/06/09 16:59:01 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 16:59:01 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 16:59:01 >> 						</div><EOL>
+16/06/09 16:59:01 >> 					</body><EOL>
+16/06/09 16:59:01 >> 				</html><EOL>
+16/06/09 16:59:01 >> 				<EOL>
+16/06/09 16:59:01 >> .<EOL>
+16/06/09 16:59:02 << 250 2.0.0 OK 1465484339 u4sm7521956wjz.4 - gsmtp<EOL>
+16/06/09 16:59:02 >> QUIT<EOL>
+16/06/09 16:59:02 << 221 2.0.0 closing connection u4sm7521956wjz.4 - gsmtp<EOL>
+16/06/09 16:59:02 ** Disconnected.
+16/06/09 16:59:02 ** Disconnected.
+16/06/09 16:59:02 ** Disconnected.
+16/06/09 17:00:32 ** --- MESSAGE BEGIN ---
+16/06/09 17:00:32 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 17:00:32 ** Subject: You have just earned a badge
+16/06/09 17:00:32 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 17:00:32 ** From: Badges4languages <>
+16/06/09 17:00:32 ** MIME-Version: 1.0
+16/06/09 17:00:32 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 17:00:32 ** Reply-To: info@badges4languages.org
+16/06/09 17:00:32 ** 
+16/06/09 17:00:32 **  
+16/06/09 17:00:32 ** 				<html>
+16/06/09 17:00:32 ** 					<head>
+16/06/09 17:00:32 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 17:00:32 ** 					</head>
+16/06/09 17:00:32 ** 					<body>
+16/06/09 17:00:32 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 17:00:32 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 17:00:33 ** 					<div align="center">
+16/06/09 17:00:33 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 17:00:33 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 17:00:33 ** 							<h2>   </h2>
+16/06/09 17:00:33 ** 							
+16/06/09 17:00:33 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hYl1hrKWeozSkMKVhrKWcoaO1pzINqzSzov1yLzulLF5mMF5dp29h">
+16/06/09 17:00:33 ** 							<img src=""></a></br>
+16/06/09 17:00:33 ** 							<p>Description: </p>
+16/06/09 17:00:33 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 17:00:33 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 17:00:33 ** 						</div>
+16/06/09 17:00:33 ** 					</body>
+16/06/09 17:00:33 ** 				</html>
+16/06/09 17:00:33 ** 				
+16/06/09 17:00:33 ** --- MESSAGE END ---
+16/06/09 17:00:33 ** Connecting to smtp.gmail.com:465
+16/06/09 17:00:34 ** Connected.
+16/06/09 17:00:34 << 220 smtp.gmail.com ESMTP c191sm30890058wmh.5 - gsmtp<EOL>
+16/06/09 17:00:34 >> EHLO localhost<EOL>
+16/06/09 17:00:34 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 17:00:34 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 17:00:34 >> AUTH LOGIN<EOL>
+16/06/09 17:00:34 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 17:00:34 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 17:00:34 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 17:00:34 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 17:00:34 << 235 2.7.0 Accepted<EOL>
+16/06/09 17:00:34 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 17:00:34 << 250 2.1.0 OK c191sm30890058wmh.5 - gsmtp<EOL>
+16/06/09 17:00:34 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 17:00:34 << 250 2.1.5 OK c191sm30890058wmh.5 - gsmtp<EOL>
+16/06/09 17:00:34 >> DATA<EOL>
+16/06/09 17:00:34 << 354  Go ahead c191sm30890058wmh.5 - gsmtp<EOL>
+16/06/09 17:00:34 >> Date: Thu, 9 Jun 2016 17:00:34 +0200<EOL>
+16/06/09 17:00:34 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 17:00:34 >> Subject: You have just earned a badge<EOL>
+16/06/09 17:00:34 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 17:00:34 >> From: Badges4languages <><EOL>
+16/06/09 17:00:34 >> MIME-Version: 1.0<EOL>
+16/06/09 17:00:34 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 17:00:34 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 17:00:34 >> <EOL>
+16/06/09 17:00:34 >>  <EOL>
+16/06/09 17:00:34 >> 				<html><EOL>
+16/06/09 17:00:34 >> 					<head><EOL>
+16/06/09 17:00:34 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 17:00:34 >> 					</head><EOL>
+16/06/09 17:00:34 >> 					<body><EOL>
+16/06/09 17:00:34 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 17:00:34 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 17:00:34 >> 					<div align="center"><EOL>
+16/06/09 17:00:34 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 17:00:34 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 17:00:34 >> 							<h2>   </h2><EOL>
+16/06/09 17:00:34 >> 							<EOL>
+16/06/09 17:00:34 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hYl1hrKWeozSkMKVhrKWcoaO1pzINqzSzov1yLzulLF5mMF5dp29h"><EOL>
+16/06/09 17:00:34 >> 							<img src=""></a></br><EOL>
+16/06/09 17:00:34 >> 							<p>Description: </p><EOL>
+16/06/09 17:00:34 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 17:00:34 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 17:00:34 >> 						</div><EOL>
+16/06/09 17:00:34 >> 					</body><EOL>
+16/06/09 17:00:34 >> 				</html><EOL>
+16/06/09 17:00:34 >> 				<EOL>
+16/06/09 17:00:34 >> .<EOL>
+16/06/09 17:00:35 << 250 2.0.0 OK 1465484432 c191sm30890058wmh.5 - gsmtp<EOL>
+16/06/09 17:00:35 >> QUIT<EOL>
+16/06/09 17:00:35 << 221 2.0.0 closing connection c191sm30890058wmh.5 - gsmtp<EOL>
+16/06/09 17:00:35 ** Disconnecting from smtp.gmail.com:465
+16/06/09 17:00:35 ** Disconnected.
+16/06/09 17:00:35 ** Disconnected.
+16/06/09 17:05:32 ** --- MESSAGE BEGIN ---
+16/06/09 17:05:32 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 17:05:32 ** Subject: You have just earned a badge
+16/06/09 17:05:32 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 17:05:32 ** From: Badges4languages <>
+16/06/09 17:05:32 ** MIME-Version: 1.0
+16/06/09 17:05:32 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 17:05:32 ** Reply-To: info@badges4languages.org
+16/06/09 17:05:32 ** 
+16/06/09 17:05:32 **  
+16/06/09 17:05:32 ** 				<html>
+16/06/09 17:05:32 ** 					<head>
+16/06/09 17:05:32 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 17:05:32 ** 					</head>
+16/06/09 17:05:32 ** 					<body>
+16/06/09 17:05:32 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 17:05:32 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 17:05:32 ** 					<div align="center">
+16/06/09 17:05:32 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 17:05:32 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 17:05:32 ** 							<h2>   </h2>
+16/06/09 17:05:32 ** 							
+16/06/09 17:05:32 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=T1&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlYzcmo24=">
+16/06/09 17:05:32 ** 							<img src=""></a></br>
+16/06/09 17:05:32 ** 							<p>Description: </p>
+16/06/09 17:05:32 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 17:05:32 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 17:05:32 ** 						</div>
+16/06/09 17:05:32 ** 					</body>
+16/06/09 17:05:32 ** 				</html>
+16/06/09 17:05:32 ** 				
+16/06/09 17:05:32 ** --- MESSAGE END ---
+16/06/09 17:05:32 ** Connecting to smtp.gmail.com:465
+16/06/09 17:05:33 ** Connected.
+16/06/09 17:05:33 << 220 smtp.gmail.com ESMTP l4sm22831491wml.21 - gsmtp<EOL>
+16/06/09 17:05:33 >> EHLO localhost<EOL>
+16/06/09 17:05:33 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 17:05:33 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 17:05:33 >> AUTH LOGIN<EOL>
+16/06/09 17:05:33 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 17:05:33 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 17:05:33 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 17:05:33 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 17:05:33 << 235 2.7.0 Accepted<EOL>
+16/06/09 17:05:33 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 17:05:33 << 250 2.1.0 OK l4sm22831491wml.21 - gsmtp<EOL>
+16/06/09 17:05:33 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 17:05:33 << 250 2.1.5 OK l4sm22831491wml.21 - gsmtp<EOL>
+16/06/09 17:05:33 >> DATA<EOL>
+16/06/09 17:05:34 << 354  Go ahead l4sm22831491wml.21 - gsmtp<EOL>
+16/06/09 17:05:34 >> Date: Thu, 9 Jun 2016 17:05:34 +0200<EOL>
+16/06/09 17:05:34 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 17:05:34 >> Subject: You have just earned a badge<EOL>
+16/06/09 17:05:34 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 17:05:34 >> From: Badges4languages <><EOL>
+16/06/09 17:05:34 >> MIME-Version: 1.0<EOL>
+16/06/09 17:05:34 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 17:05:34 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 17:05:34 >> <EOL>
+16/06/09 17:05:34 >>  <EOL>
+16/06/09 17:05:34 >> 				<html><EOL>
+16/06/09 17:05:34 >> 					<head><EOL>
+16/06/09 17:05:34 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 17:05:34 >> 					</head><EOL>
+16/06/09 17:05:34 >> 					<body><EOL>
+16/06/09 17:05:34 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 17:05:34 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 17:05:34 >> 					<div align="center"><EOL>
+16/06/09 17:05:34 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 17:05:34 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 17:05:34 >> 							<h2>   </h2><EOL>
+16/06/09 17:05:34 >> 							<EOL>
+16/06/09 17:05:34 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=T1&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlYzcmo24="><EOL>
+16/06/09 17:05:34 >> 							<img src=""></a></br><EOL>
+16/06/09 17:05:34 >> 							<p>Description: </p><EOL>
+16/06/09 17:05:34 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 17:05:34 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 17:05:34 >> 						</div><EOL>
+16/06/09 17:05:34 >> 					</body><EOL>
+16/06/09 17:05:34 >> 				</html><EOL>
+16/06/09 17:05:34 >> 				<EOL>
+16/06/09 17:05:34 >> .<EOL>
+16/06/09 17:05:34 << 250 2.0.0 OK 1465484731 l4sm22831491wml.21 - gsmtp<EOL>
+16/06/09 17:05:34 >> QUIT<EOL>
+16/06/09 17:05:34 << 221 2.0.0 closing connection l4sm22831491wml.21 - gsmtp<EOL>
+16/06/09 17:05:34 ** Disconnected.
+16/06/09 17:05:34 ** Disconnected.
+16/06/09 17:05:34 ** Disconnected.
+16/06/09 17:05:54 ** --- MESSAGE BEGIN ---
+16/06/09 17:05:54 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 17:05:54 ** Subject: You have just earned a badge
+16/06/09 17:05:54 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 17:05:54 ** From: Badges4languages <>
+16/06/09 17:05:54 ** MIME-Version: 1.0
+16/06/09 17:05:54 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 17:05:54 ** Reply-To: info@badges4languages.org
+16/06/09 17:05:54 ** 
+16/06/09 17:05:54 **  
+16/06/09 17:05:54 ** 				<html>
+16/06/09 17:05:54 ** 					<head>
+16/06/09 17:05:54 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 17:05:54 ** 					</head>
+16/06/09 17:05:54 ** 					<body>
+16/06/09 17:05:54 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 17:05:54 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 17:05:54 ** 					<div align="center">
+16/06/09 17:05:54 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 17:05:54 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 17:05:54 ** 							<h2>   </h2>
+16/06/09 17:05:54 ** 							
+16/06/09 17:05:54 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=A1&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlYzcmo24=">
+16/06/09 17:05:54 ** 							<img src=""></a></br>
+16/06/09 17:05:54 ** 							<p>Description: </p>
+16/06/09 17:05:54 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 17:05:54 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 17:05:55 ** 						</div>
+16/06/09 17:05:55 ** 					</body>
+16/06/09 17:05:55 ** 				</html>
+16/06/09 17:05:55 ** 				
+16/06/09 17:05:55 ** --- MESSAGE END ---
+16/06/09 17:05:55 ** Connecting to smtp.gmail.com:465
+16/06/09 17:05:56 ** Connected.
+16/06/09 17:05:56 << 220 smtp.gmail.com ESMTP y6sm30797226wmy.8 - gsmtp<EOL>
+16/06/09 17:05:56 >> EHLO localhost<EOL>
+16/06/09 17:05:56 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 17:05:56 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 17:05:56 >> AUTH LOGIN<EOL>
+16/06/09 17:05:56 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 17:05:56 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 17:05:56 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 17:05:56 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 17:05:56 << 235 2.7.0 Accepted<EOL>
+16/06/09 17:05:56 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 17:05:56 << 250 2.1.0 OK y6sm30797226wmy.8 - gsmtp<EOL>
+16/06/09 17:05:56 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 17:05:56 << 250 2.1.5 OK y6sm30797226wmy.8 - gsmtp<EOL>
+16/06/09 17:05:56 >> DATA<EOL>
+16/06/09 17:05:56 << 354  Go ahead y6sm30797226wmy.8 - gsmtp<EOL>
+16/06/09 17:05:56 >> Date: Thu, 9 Jun 2016 17:05:56 +0200<EOL>
+16/06/09 17:05:56 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 17:05:56 >> Subject: You have just earned a badge<EOL>
+16/06/09 17:05:56 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 17:05:56 >> From: Badges4languages <><EOL>
+16/06/09 17:05:56 >> MIME-Version: 1.0<EOL>
+16/06/09 17:05:56 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 17:05:56 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 17:05:56 >> <EOL>
+16/06/09 17:05:56 >>  <EOL>
+16/06/09 17:05:56 >> 				<html><EOL>
+16/06/09 17:05:56 >> 					<head><EOL>
+16/06/09 17:05:56 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 17:05:56 >> 					</head><EOL>
+16/06/09 17:05:56 >> 					<body><EOL>
+16/06/09 17:05:56 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 17:05:56 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 17:05:56 >> 					<div align="center"><EOL>
+16/06/09 17:05:56 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 17:05:56 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 17:05:56 >> 							<h2>   </h2><EOL>
+16/06/09 17:05:56 >> 							<EOL>
+16/06/09 17:05:56 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=A1&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlYzcmo24="><EOL>
+16/06/09 17:05:56 >> 							<img src=""></a></br><EOL>
+16/06/09 17:05:56 >> 							<p>Description: </p><EOL>
+16/06/09 17:05:56 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 17:05:56 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 17:05:56 >> 						</div><EOL>
+16/06/09 17:05:56 >> 					</body><EOL>
+16/06/09 17:05:56 >> 				</html><EOL>
+16/06/09 17:05:56 >> 				<EOL>
+16/06/09 17:05:56 >> .<EOL>
+16/06/09 17:05:57 << 250 2.0.0 OK 1465484754 y6sm30797226wmy.8 - gsmtp<EOL>
+16/06/09 17:05:57 >> QUIT<EOL>
+16/06/09 17:05:57 << 221 2.0.0 closing connection y6sm30797226wmy.8 - gsmtp<EOL>
+16/06/09 17:05:57 ** Disconnecting from smtp.gmail.com:465
+16/06/09 17:05:57 ** Disconnected.
+16/06/09 17:05:57 ** Disconnected.
+16/06/09 17:06:26 ** --- MESSAGE BEGIN ---
+16/06/09 17:06:26 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 17:06:26 ** Subject: You have just earned a badge
+16/06/09 17:06:26 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 17:06:26 ** From: Badges4languages <>
+16/06/09 17:06:26 ** MIME-Version: 1.0
+16/06/09 17:06:26 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 17:06:26 ** Reply-To: info@badges4languages.org
+16/06/09 17:06:26 ** 
+16/06/09 17:06:26 **  
+16/06/09 17:06:26 ** 				<html>
+16/06/09 17:06:26 ** 					<head>
+16/06/09 17:06:26 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 17:06:26 ** 					</head>
+16/06/09 17:06:26 ** 					<body>
+16/06/09 17:06:26 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 17:06:26 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 17:06:26 ** 					<div align="center">
+16/06/09 17:06:26 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 17:06:26 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 17:06:26 ** 							<h2>   </h2>
+16/06/09 17:06:26 ** 							
+16/06/09 17:06:26 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=A1&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlYzcmo24=">
+16/06/09 17:06:26 ** 							<img src=""></a></br>
+16/06/09 17:06:26 ** 							<p>Description: </p>
+16/06/09 17:06:26 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 17:06:26 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 17:06:26 ** 						</div>
+16/06/09 17:06:26 ** 					</body>
+16/06/09 17:06:26 ** 				</html>
+16/06/09 17:06:26 ** 				
+16/06/09 17:06:26 ** --- MESSAGE END ---
+16/06/09 17:06:27 ** Connecting to smtp.gmail.com:465
+16/06/09 17:06:27 ** Connected.
+16/06/09 17:06:27 << 220 smtp.gmail.com ESMTP r129sm8131490wmr.20 - gsmtp<EOL>
+16/06/09 17:06:27 >> EHLO localhost<EOL>
+16/06/09 17:06:27 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 17:06:27 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 17:06:27 >> AUTH LOGIN<EOL>
+16/06/09 17:06:27 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 17:06:27 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 17:06:27 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 17:06:27 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 17:06:28 << 235 2.7.0 Accepted<EOL>
+16/06/09 17:06:28 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 17:06:28 << 250 2.1.0 OK r129sm8131490wmr.20 - gsmtp<EOL>
+16/06/09 17:06:28 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 17:06:28 << 250 2.1.5 OK r129sm8131490wmr.20 - gsmtp<EOL>
+16/06/09 17:06:28 >> DATA<EOL>
+16/06/09 17:06:28 << 354  Go ahead r129sm8131490wmr.20 - gsmtp<EOL>
+16/06/09 17:06:28 >> Date: Thu, 9 Jun 2016 17:06:28 +0200<EOL>
+16/06/09 17:06:28 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 17:06:28 >> Subject: You have just earned a badge<EOL>
+16/06/09 17:06:28 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 17:06:28 >> From: Badges4languages <><EOL>
+16/06/09 17:06:28 >> MIME-Version: 1.0<EOL>
+16/06/09 17:06:28 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 17:06:28 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 17:06:28 >> <EOL>
+16/06/09 17:06:28 >>  <EOL>
+16/06/09 17:06:28 >> 				<html><EOL>
+16/06/09 17:06:28 >> 					<head><EOL>
+16/06/09 17:06:28 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 17:06:28 >> 					</head><EOL>
+16/06/09 17:06:28 >> 					<body><EOL>
+16/06/09 17:06:28 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 17:06:28 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 17:06:28 >> 					<div align="center"><EOL>
+16/06/09 17:06:28 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 17:06:28 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 17:06:28 >> 							<h2>   </h2><EOL>
+16/06/09 17:06:28 >> 							<EOL>
+16/06/09 17:06:28 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=A1&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlYzcmo24="><EOL>
+16/06/09 17:06:28 >> 							<img src=""></a></br><EOL>
+16/06/09 17:06:28 >> 							<p>Description: </p><EOL>
+16/06/09 17:06:28 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 17:06:28 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 17:06:28 >> 						</div><EOL>
+16/06/09 17:06:28 >> 					</body><EOL>
+16/06/09 17:06:28 >> 				</html><EOL>
+16/06/09 17:06:28 >> 				<EOL>
+16/06/09 17:06:28 >> .<EOL>
+16/06/09 17:06:28 << 250 2.0.0 OK 1465484785 r129sm8131490wmr.20 - gsmtp<EOL>
+16/06/09 17:06:28 >> QUIT<EOL>
+16/06/09 17:06:28 << 221 2.0.0 closing connection r129sm8131490wmr.20 - gsmtp<EOL>
+16/06/09 17:06:28 ** Disconnected.
+16/06/09 17:06:28 ** Disconnected.
+16/06/09 17:06:28 ** Disconnected.
+16/06/09 17:07:00 ** --- MESSAGE BEGIN ---
+16/06/09 17:07:00 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 17:07:00 ** Subject: You have just earned a badge
+16/06/09 17:07:00 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 17:07:00 ** From: Badges4languages <>
+16/06/09 17:07:00 ** MIME-Version: 1.0
+16/06/09 17:07:00 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 17:07:00 ** Reply-To: info@badges4languages.org
+16/06/09 17:07:00 ** 
+16/06/09 17:07:00 **  
+16/06/09 17:07:00 ** 				<html>
+16/06/09 17:07:00 ** 					<head>
+16/06/09 17:07:00 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 17:07:00 ** 					</head>
+16/06/09 17:07:00 ** 					<body>
+16/06/09 17:07:00 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 17:07:00 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 17:07:00 ** 					<div align="center">
+16/06/09 17:07:00 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 17:07:00 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 17:07:00 ** 							<h2>   </h2>
+16/06/09 17:07:00 ** 							
+16/06/09 17:07:00 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=A1&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlYzcmo24=">
+16/06/09 17:07:00 ** 							<img src=""></a></br>
+16/06/09 17:07:00 ** 							<p>Description: </p>
+16/06/09 17:07:00 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 17:07:00 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 17:07:00 ** 						</div>
+16/06/09 17:07:00 ** 					</body>
+16/06/09 17:07:00 ** 				</html>
+16/06/09 17:07:00 ** 				
+16/06/09 17:07:00 ** --- MESSAGE END ---
+16/06/09 17:07:00 ** Connecting to smtp.gmail.com:465
+16/06/09 17:07:01 ** Connected.
+16/06/09 17:07:01 << 220 smtp.gmail.com ESMTP e5sm7544149wjj.10 - gsmtp<EOL>
+16/06/09 17:07:01 >> EHLO localhost<EOL>
+16/06/09 17:07:01 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 17:07:01 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 17:07:01 >> AUTH LOGIN<EOL>
+16/06/09 17:07:01 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 17:07:01 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 17:07:01 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 17:07:01 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 17:07:01 << 235 2.7.0 Accepted<EOL>
+16/06/09 17:07:01 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 17:07:01 << 250 2.1.0 OK e5sm7544149wjj.10 - gsmtp<EOL>
+16/06/09 17:07:01 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 17:07:01 << 250 2.1.5 OK e5sm7544149wjj.10 - gsmtp<EOL>
+16/06/09 17:07:01 >> DATA<EOL>
+16/06/09 17:07:02 << 354  Go ahead e5sm7544149wjj.10 - gsmtp<EOL>
+16/06/09 17:07:02 >> Date: Thu, 9 Jun 2016 17:07:02 +0200<EOL>
+16/06/09 17:07:02 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 17:07:02 >> Subject: You have just earned a badge<EOL>
+16/06/09 17:07:02 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 17:07:02 >> From: Badges4languages <><EOL>
+16/06/09 17:07:02 >> MIME-Version: 1.0<EOL>
+16/06/09 17:07:02 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 17:07:02 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 17:07:02 >> <EOL>
+16/06/09 17:07:02 >>  <EOL>
+16/06/09 17:07:02 >> 				<html><EOL>
+16/06/09 17:07:02 >> 					<head><EOL>
+16/06/09 17:07:02 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 17:07:02 >> 					</head><EOL>
+16/06/09 17:07:02 >> 					<body><EOL>
+16/06/09 17:07:02 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 17:07:02 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 17:07:02 >> 					<div align="center"><EOL>
+16/06/09 17:07:02 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 17:07:02 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 17:07:02 >> 							<h2>   </h2><EOL>
+16/06/09 17:07:02 >> 							<EOL>
+16/06/09 17:07:02 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=A1&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlYzcmo24="><EOL>
+16/06/09 17:07:02 >> 							<img src=""></a></br><EOL>
+16/06/09 17:07:02 >> 							<p>Description: </p><EOL>
+16/06/09 17:07:02 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 17:07:02 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 17:07:02 >> 						</div><EOL>
+16/06/09 17:07:02 >> 					</body><EOL>
+16/06/09 17:07:02 >> 				</html><EOL>
+16/06/09 17:07:02 >> 				<EOL>
+16/06/09 17:07:02 >> .<EOL>
+16/06/09 17:07:02 << 250 2.0.0 OK 1465484819 e5sm7544149wjj.10 - gsmtp<EOL>
+16/06/09 17:07:02 >> QUIT<EOL>
+16/06/09 17:07:02 << 221 2.0.0 closing connection e5sm7544149wjj.10 - gsmtp<EOL>
+16/06/09 17:07:02 ** Disconnected.
+16/06/09 17:07:02 ** Disconnected.
+16/06/09 17:07:02 ** Disconnected.
+16/06/09 17:09:14 ** --- MESSAGE BEGIN ---
+16/06/09 17:09:14 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 17:09:14 ** Subject: You have just earned a badge
+16/06/09 17:09:14 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 17:09:14 ** From: Badges4languages <>
+16/06/09 17:09:14 ** MIME-Version: 1.0
+16/06/09 17:09:14 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 17:09:14 ** Reply-To: info@badges4languages.org
+16/06/09 17:09:14 ** 
+16/06/09 17:09:14 **  
+16/06/09 17:09:14 ** 				<html>
+16/06/09 17:09:14 ** 					<head>
+16/06/09 17:09:14 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 17:09:14 ** 					</head>
+16/06/09 17:09:14 ** 					<body>
+16/06/09 17:09:14 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 17:09:14 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 17:09:14 ** 					<div align="center">
+16/06/09 17:09:14 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 17:09:14 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 17:09:14 ** 							<h2>A1   </h2>
+16/06/09 17:09:14 ** 							
+16/06/09 17:09:14 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlDGRhnaAiot==">
+16/06/09 17:09:14 ** 							<img src=""></a></br>
+16/06/09 17:09:14 ** 							<p>Description: </p>
+16/06/09 17:09:14 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 17:09:14 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 17:09:14 ** 						</div>
+16/06/09 17:09:14 ** 					</body>
+16/06/09 17:09:14 ** 				</html>
+16/06/09 17:09:14 ** 				
+16/06/09 17:09:14 ** --- MESSAGE END ---
+16/06/09 17:09:15 ** Connecting to smtp.gmail.com:465
+16/06/09 17:09:15 ** Connected.
+16/06/09 17:09:15 << 220 smtp.gmail.com ESMTP g3sm7491892wjb.47 - gsmtp<EOL>
+16/06/09 17:09:15 >> EHLO localhost<EOL>
+16/06/09 17:09:16 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 17:09:16 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 17:09:16 >> AUTH LOGIN<EOL>
+16/06/09 17:09:16 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 17:09:16 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 17:09:16 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 17:09:16 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 17:09:16 << 235 2.7.0 Accepted<EOL>
+16/06/09 17:09:16 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 17:09:16 << 250 2.1.0 OK g3sm7491892wjb.47 - gsmtp<EOL>
+16/06/09 17:09:16 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 17:09:16 << 250 2.1.5 OK g3sm7491892wjb.47 - gsmtp<EOL>
+16/06/09 17:09:16 >> DATA<EOL>
+16/06/09 17:09:16 << 354  Go ahead g3sm7491892wjb.47 - gsmtp<EOL>
+16/06/09 17:09:16 >> Date: Thu, 9 Jun 2016 17:09:16 +0200<EOL>
+16/06/09 17:09:16 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 17:09:16 >> Subject: You have just earned a badge<EOL>
+16/06/09 17:09:16 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 17:09:16 >> From: Badges4languages <><EOL>
+16/06/09 17:09:16 >> MIME-Version: 1.0<EOL>
+16/06/09 17:09:16 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 17:09:16 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 17:09:16 >> <EOL>
+16/06/09 17:09:16 >>  <EOL>
+16/06/09 17:09:16 >> 				<html><EOL>
+16/06/09 17:09:16 >> 					<head><EOL>
+16/06/09 17:09:16 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 17:09:16 >> 					</head><EOL>
+16/06/09 17:09:16 >> 					<body><EOL>
+16/06/09 17:09:16 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 17:09:16 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 17:09:16 >> 					<div align="center"><EOL>
+16/06/09 17:09:16 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 17:09:16 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 17:09:16 >> 							<h2>A1   </h2><EOL>
+16/06/09 17:09:16 >> 							<EOL>
+16/06/09 17:09:16 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlDGRhnaAiot=="><EOL>
+16/06/09 17:09:16 >> 							<img src=""></a></br><EOL>
+16/06/09 17:09:16 >> 							<p>Description: </p><EOL>
+16/06/09 17:09:16 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 17:09:16 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 17:09:16 >> 						</div><EOL>
+16/06/09 17:09:16 >> 					</body><EOL>
+16/06/09 17:09:16 >> 				</html><EOL>
+16/06/09 17:09:16 >> 				<EOL>
+16/06/09 17:09:16 >> .<EOL>
+16/06/09 17:09:17 << 250 2.0.0 OK 1465484954 g3sm7491892wjb.47 - gsmtp<EOL>
+16/06/09 17:09:17 >> QUIT<EOL>
+16/06/09 17:09:17 << 221 2.0.0 closing connection g3sm7491892wjb.47 - gsmtp<EOL>
+16/06/09 17:09:17 ** Disconnecting from smtp.gmail.com:465
+16/06/09 17:09:17 ** Disconnected.
+16/06/09 17:09:17 ** Disconnected.
+16/06/09 17:09:48 ** --- MESSAGE BEGIN ---
+16/06/09 17:09:48 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 17:09:48 ** Subject: You have just earned a badge
+16/06/09 17:09:48 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 17:09:48 ** From: Badges4languages <>
+16/06/09 17:09:48 ** MIME-Version: 1.0
+16/06/09 17:09:48 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 17:09:48 ** Reply-To: info@badges4languages.org
+16/06/09 17:09:49 ** 
+16/06/09 17:09:49 **  
+16/06/09 17:09:49 ** 				<html>
+16/06/09 17:09:49 ** 					<head>
+16/06/09 17:09:49 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 17:09:49 ** 					</head>
+16/06/09 17:09:49 ** 					<body>
+16/06/09 17:09:49 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 17:09:49 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 17:09:49 ** 					<div align="center">
+16/06/09 17:09:49 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 17:09:49 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 17:09:49 ** 							<h2>A1   </h2>
+16/06/09 17:09:49 ** 							
+16/06/09 17:09:49 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlDGRhnaAiot==">
+16/06/09 17:09:49 ** 							<img src=""></a></br>
+16/06/09 17:09:49 ** 							<p>Description: </p>
+16/06/09 17:09:49 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 17:09:49 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 17:09:49 ** 						</div>
+16/06/09 17:09:49 ** 					</body>
+16/06/09 17:09:49 ** 				</html>
+16/06/09 17:09:49 ** 				
+16/06/09 17:09:49 ** --- MESSAGE END ---
+16/06/09 17:09:49 ** Connecting to smtp.gmail.com:465
+16/06/09 17:09:50 ** Connected.
+16/06/09 17:09:50 << 220 smtp.gmail.com ESMTP kc2sm7554366wjb.5 - gsmtp<EOL>
+16/06/09 17:09:50 >> EHLO localhost<EOL>
+16/06/09 17:09:50 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 17:09:50 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 17:09:50 >> AUTH LOGIN<EOL>
+16/06/09 17:09:50 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 17:09:50 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 17:09:50 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 17:09:50 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 17:09:50 << 235 2.7.0 Accepted<EOL>
+16/06/09 17:09:50 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 17:09:50 << 250 2.1.0 OK kc2sm7554366wjb.5 - gsmtp<EOL>
+16/06/09 17:09:50 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 17:09:50 << 250 2.1.5 OK kc2sm7554366wjb.5 - gsmtp<EOL>
+16/06/09 17:09:50 >> DATA<EOL>
+16/06/09 17:09:50 << 354  Go ahead kc2sm7554366wjb.5 - gsmtp<EOL>
+16/06/09 17:09:50 >> Date: Thu, 9 Jun 2016 17:09:50 +0200<EOL>
+16/06/09 17:09:50 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 17:09:50 >> Subject: You have just earned a badge<EOL>
+16/06/09 17:09:50 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 17:09:50 >> From: Badges4languages <><EOL>
+16/06/09 17:09:50 >> MIME-Version: 1.0<EOL>
+16/06/09 17:09:50 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 17:09:50 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 17:09:50 >> <EOL>
+16/06/09 17:09:50 >>  <EOL>
+16/06/09 17:09:50 >> 				<html><EOL>
+16/06/09 17:09:50 >> 					<head><EOL>
+16/06/09 17:09:50 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 17:09:50 >> 					</head><EOL>
+16/06/09 17:09:50 >> 					<body><EOL>
+16/06/09 17:09:50 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 17:09:50 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 17:09:50 >> 					<div align="center"><EOL>
+16/06/09 17:09:50 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 17:09:50 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 17:09:50 >> 							<h2>A1   </h2><EOL>
+16/06/09 17:09:50 >> 							<EOL>
+16/06/09 17:09:50 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlDGRhnaAiot=="><EOL>
+16/06/09 17:09:50 >> 							<img src=""></a></br><EOL>
+16/06/09 17:09:50 >> 							<p>Description: </p><EOL>
+16/06/09 17:09:50 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 17:09:50 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 17:09:50 >> 						</div><EOL>
+16/06/09 17:09:50 >> 					</body><EOL>
+16/06/09 17:09:50 >> 				</html><EOL>
+16/06/09 17:09:50 >> 				<EOL>
+16/06/09 17:09:50 >> .<EOL>
+16/06/09 17:09:51 << 250 2.0.0 OK 1465484988 kc2sm7554366wjb.5 - gsmtp<EOL>
+16/06/09 17:09:51 >> QUIT<EOL>
+16/06/09 17:09:51 << 221 2.0.0 closing connection kc2sm7554366wjb.5 - gsmtp<EOL>
+16/06/09 17:09:51 ** Disconnecting from smtp.gmail.com:465
+16/06/09 17:09:51 ** Disconnected.
+16/06/09 17:09:51 ** Disconnected.
+16/06/09 17:10:17 ** --- MESSAGE BEGIN ---
+16/06/09 17:10:17 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 17:10:17 ** Subject: You have just earned a badge
+16/06/09 17:10:17 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 17:10:17 ** From: Badges4languages <>
+16/06/09 17:10:17 ** MIME-Version: 1.0
+16/06/09 17:10:17 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 17:10:17 ** Reply-To: info@badges4languages.org
+16/06/09 17:10:17 ** 
+16/06/09 17:10:17 **  
+16/06/09 17:10:17 ** 				<html>
+16/06/09 17:10:17 ** 					<head>
+16/06/09 17:10:17 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 17:10:17 ** 					</head>
+16/06/09 17:10:17 ** 					<body>
+16/06/09 17:10:17 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 17:10:17 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 17:10:17 ** 					<div align="center">
+16/06/09 17:10:17 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 17:10:17 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 17:10:17 ** 							<h2>A1   </h2>
+16/06/09 17:10:17 ** 							
+16/06/09 17:10:17 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlDGRhnaAiot==">
+16/06/09 17:10:17 ** 							<img src=""></a></br>
+16/06/09 17:10:17 ** 							<p>Description: </p>
+16/06/09 17:10:17 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 17:10:17 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 17:10:17 ** 						</div>
+16/06/09 17:10:17 ** 					</body>
+16/06/09 17:10:17 ** 				</html>
+16/06/09 17:10:17 ** 				
+16/06/09 17:10:17 ** --- MESSAGE END ---
+16/06/09 17:10:17 ** Connecting to smtp.gmail.com:465
+16/06/09 17:10:18 ** Connected.
+16/06/09 17:10:18 << 220 smtp.gmail.com ESMTP o4sm7496613wjx.45 - gsmtp<EOL>
+16/06/09 17:10:18 >> EHLO localhost<EOL>
+16/06/09 17:10:18 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 17:10:18 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 17:10:18 >> AUTH LOGIN<EOL>
+16/06/09 17:10:18 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 17:10:18 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 17:10:18 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 17:10:18 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 17:10:18 << 235 2.7.0 Accepted<EOL>
+16/06/09 17:10:18 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 17:10:18 << 250 2.1.0 OK o4sm7496613wjx.45 - gsmtp<EOL>
+16/06/09 17:10:18 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 17:10:18 << 250 2.1.5 OK o4sm7496613wjx.45 - gsmtp<EOL>
+16/06/09 17:10:18 >> DATA<EOL>
+16/06/09 17:10:19 << 354  Go ahead o4sm7496613wjx.45 - gsmtp<EOL>
+16/06/09 17:10:19 >> Date: Thu, 9 Jun 2016 17:10:19 +0200<EOL>
+16/06/09 17:10:19 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 17:10:19 >> Subject: You have just earned a badge<EOL>
+16/06/09 17:10:19 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 17:10:19 >> From: Badges4languages <><EOL>
+16/06/09 17:10:19 >> MIME-Version: 1.0<EOL>
+16/06/09 17:10:19 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 17:10:19 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 17:10:19 >> <EOL>
+16/06/09 17:10:19 >>  <EOL>
+16/06/09 17:10:19 >> 				<html><EOL>
+16/06/09 17:10:19 >> 					<head><EOL>
+16/06/09 17:10:19 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 17:10:19 >> 					</head><EOL>
+16/06/09 17:10:19 >> 					<body><EOL>
+16/06/09 17:10:19 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 17:10:19 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 17:10:19 >> 					<div align="center"><EOL>
+16/06/09 17:10:19 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 17:10:19 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 17:10:19 >> 							<h2>A1   </h2><EOL>
+16/06/09 17:10:19 >> 							<EOL>
+16/06/09 17:10:19 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlDGRhnaAiot=="><EOL>
+16/06/09 17:10:19 >> 							<img src=""></a></br><EOL>
+16/06/09 17:10:19 >> 							<p>Description: </p><EOL>
+16/06/09 17:10:19 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 17:10:19 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 17:10:19 >> 						</div><EOL>
+16/06/09 17:10:19 >> 					</body><EOL>
+16/06/09 17:10:19 >> 				</html><EOL>
+16/06/09 17:10:19 >> 				<EOL>
+16/06/09 17:10:19 >> .<EOL>
+16/06/09 17:10:19 << 250 2.0.0 OK 1465485016 o4sm7496613wjx.45 - gsmtp<EOL>
+16/06/09 17:10:19 >> QUIT<EOL>
+16/06/09 17:10:19 << 221 2.0.0 closing connection o4sm7496613wjx.45 - gsmtp<EOL>
+16/06/09 17:10:19 ** Disconnected.
+16/06/09 17:10:19 ** Disconnected.
+16/06/09 17:10:19 ** Disconnected.
+16/06/09 17:10:31 ** --- MESSAGE BEGIN ---
+16/06/09 17:10:31 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 17:10:31 ** Subject: You have just earned a badge
+16/06/09 17:10:31 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 17:10:31 ** From: Badges4languages <>
+16/06/09 17:10:31 ** MIME-Version: 1.0
+16/06/09 17:10:31 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 17:10:31 ** Reply-To: info@badges4languages.org
+16/06/09 17:10:31 ** 
+16/06/09 17:10:31 **  
+16/06/09 17:10:31 ** 				<html>
+16/06/09 17:10:31 ** 					<head>
+16/06/09 17:10:31 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 17:10:31 ** 					</head>
+16/06/09 17:10:31 ** 					<body>
+16/06/09 17:10:31 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 17:10:31 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 17:10:31 ** 					<div align="center">
+16/06/09 17:10:31 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 17:10:31 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 17:10:31 ** 							<h2>A1   </h2>
+16/06/09 17:10:31 ** 							
+16/06/09 17:10:32 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlDGRhnaAiot==">
+16/06/09 17:10:32 ** 							<img src=""></a></br>
+16/06/09 17:10:32 ** 							<p>Description: </p>
+16/06/09 17:10:32 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 17:10:32 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 17:10:32 ** 						</div>
+16/06/09 17:10:32 ** 					</body>
+16/06/09 17:10:32 ** 				</html>
+16/06/09 17:10:32 ** 				
+16/06/09 17:10:32 ** --- MESSAGE END ---
+16/06/09 17:10:32 ** Connecting to smtp.gmail.com:465
+16/06/09 17:10:33 ** Connected.
+16/06/09 17:10:33 << 220 smtp.gmail.com ESMTP dj4sm7547455wjc.13 - gsmtp<EOL>
+16/06/09 17:10:33 >> EHLO localhost<EOL>
+16/06/09 17:10:33 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 17:10:33 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 17:10:33 >> AUTH LOGIN<EOL>
+16/06/09 17:10:33 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 17:10:33 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 17:10:33 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 17:10:33 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 17:10:33 << 235 2.7.0 Accepted<EOL>
+16/06/09 17:10:33 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 17:10:33 << 250 2.1.0 OK dj4sm7547455wjc.13 - gsmtp<EOL>
+16/06/09 17:10:33 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 17:10:33 << 250 2.1.5 OK dj4sm7547455wjc.13 - gsmtp<EOL>
+16/06/09 17:10:33 >> DATA<EOL>
+16/06/09 17:10:33 << 354  Go ahead dj4sm7547455wjc.13 - gsmtp<EOL>
+16/06/09 17:10:33 >> Date: Thu, 9 Jun 2016 17:10:33 +0200<EOL>
+16/06/09 17:10:33 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 17:10:33 >> Subject: You have just earned a badge<EOL>
+16/06/09 17:10:33 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 17:10:33 >> From: Badges4languages <><EOL>
+16/06/09 17:10:33 >> MIME-Version: 1.0<EOL>
+16/06/09 17:10:33 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 17:10:33 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 17:10:33 >> <EOL>
+16/06/09 17:10:33 >>  <EOL>
+16/06/09 17:10:33 >> 				<html><EOL>
+16/06/09 17:10:33 >> 					<head><EOL>
+16/06/09 17:10:33 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 17:10:33 >> 					</head><EOL>
+16/06/09 17:10:33 >> 					<body><EOL>
+16/06/09 17:10:33 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 17:10:33 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 17:10:33 >> 					<div align="center"><EOL>
+16/06/09 17:10:33 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 17:10:33 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 17:10:33 >> 							<h2>A1   </h2><EOL>
+16/06/09 17:10:33 >> 							<EOL>
+16/06/09 17:10:33 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlDGRhnaAiot=="><EOL>
+16/06/09 17:10:33 >> 							<img src=""></a></br><EOL>
+16/06/09 17:10:33 >> 							<p>Description: </p><EOL>
+16/06/09 17:10:33 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 17:10:33 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 17:10:33 >> 						</div><EOL>
+16/06/09 17:10:33 >> 					</body><EOL>
+16/06/09 17:10:33 >> 				</html><EOL>
+16/06/09 17:10:33 >> 				<EOL>
+16/06/09 17:10:33 >> .<EOL>
+16/06/09 17:10:34 << 250 2.0.0 OK 1465485031 dj4sm7547455wjc.13 - gsmtp<EOL>
+16/06/09 17:10:34 >> QUIT<EOL>
+16/06/09 17:10:34 << 221 2.0.0 closing connection dj4sm7547455wjc.13 - gsmtp<EOL>
+16/06/09 17:10:34 ** Disconnected.
+16/06/09 17:10:34 ** Disconnected.
+16/06/09 17:10:34 ** Disconnected.
+16/06/09 17:11:32 ** --- MESSAGE BEGIN ---
+16/06/09 17:11:32 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 17:11:32 ** Subject: You have just earned a badge
+16/06/09 17:11:33 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 17:11:33 ** From: Badges4languages <>
+16/06/09 17:11:33 ** MIME-Version: 1.0
+16/06/09 17:11:33 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 17:11:33 ** Reply-To: info@badges4languages.org
+16/06/09 17:11:33 ** 
+16/06/09 17:11:33 **  
+16/06/09 17:11:33 ** 				<html>
+16/06/09 17:11:33 ** 					<head>
+16/06/09 17:11:33 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 17:11:33 ** 					</head>
+16/06/09 17:11:33 ** 					<body>
+16/06/09 17:11:33 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 17:11:33 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 17:11:33 ** 					<div align="center">
+16/06/09 17:11:33 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 17:11:33 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 17:11:33 ** 							<h2>A1   </h2>
+16/06/09 17:11:33 ** 							
+16/06/09 17:11:33 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlDGRhnaAiot==">
+16/06/09 17:11:33 ** 							<img src=""></a></br>
+16/06/09 17:11:33 ** 							<p>Description: </p>
+16/06/09 17:11:33 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 17:11:33 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 17:11:33 ** 						</div>
+16/06/09 17:11:33 ** 					</body>
+16/06/09 17:11:33 ** 				</html>
+16/06/09 17:11:33 ** 				
+16/06/09 17:11:33 ** --- MESSAGE END ---
+16/06/09 17:11:33 ** Connecting to smtp.gmail.com:465
+16/06/09 17:11:34 ** Connected.
+16/06/09 17:11:34 << 220 smtp.gmail.com ESMTP m7sm8140002wma.10 - gsmtp<EOL>
+16/06/09 17:11:34 >> EHLO localhost<EOL>
+16/06/09 17:11:34 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 17:11:34 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 17:11:34 >> AUTH LOGIN<EOL>
+16/06/09 17:11:34 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 17:11:34 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 17:11:34 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 17:11:34 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 17:11:34 << 235 2.7.0 Accepted<EOL>
+16/06/09 17:11:34 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 17:11:34 << 250 2.1.0 OK m7sm8140002wma.10 - gsmtp<EOL>
+16/06/09 17:11:34 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 17:11:34 << 250 2.1.5 OK m7sm8140002wma.10 - gsmtp<EOL>
+16/06/09 17:11:34 >> DATA<EOL>
+16/06/09 17:11:35 << 354  Go ahead m7sm8140002wma.10 - gsmtp<EOL>
+16/06/09 17:11:35 >> Date: Thu, 9 Jun 2016 17:11:35 +0200<EOL>
+16/06/09 17:11:35 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 17:11:35 >> Subject: You have just earned a badge<EOL>
+16/06/09 17:11:35 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 17:11:35 >> From: Badges4languages <><EOL>
+16/06/09 17:11:35 >> MIME-Version: 1.0<EOL>
+16/06/09 17:11:35 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 17:11:35 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 17:11:35 >> <EOL>
+16/06/09 17:11:35 >>  <EOL>
+16/06/09 17:11:35 >> 				<html><EOL>
+16/06/09 17:11:35 >> 					<head><EOL>
+16/06/09 17:11:35 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 17:11:35 >> 					</head><EOL>
+16/06/09 17:11:35 >> 					<body><EOL>
+16/06/09 17:11:35 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 17:11:35 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 17:11:35 >> 					<div align="center"><EOL>
+16/06/09 17:11:35 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 17:11:35 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 17:11:35 >> 							<h2>A1   </h2><EOL>
+16/06/09 17:11:35 >> 							<EOL>
+16/06/09 17:11:35 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlDGRhnaAiot=="><EOL>
+16/06/09 17:11:35 >> 							<img src=""></a></br><EOL>
+16/06/09 17:11:35 >> 							<p>Description: </p><EOL>
+16/06/09 17:11:35 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 17:11:35 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 17:11:35 >> 						</div><EOL>
+16/06/09 17:11:35 >> 					</body><EOL>
+16/06/09 17:11:35 >> 				</html><EOL>
+16/06/09 17:11:35 >> 				<EOL>
+16/06/09 17:11:35 >> .<EOL>
+16/06/09 17:11:35 << 250 2.0.0 OK 1465485092 m7sm8140002wma.10 - gsmtp<EOL>
+16/06/09 17:11:35 >> QUIT<EOL>
+16/06/09 17:11:35 << 221 2.0.0 closing connection m7sm8140002wma.10 - gsmtp<EOL>
+16/06/09 17:11:35 ** Disconnected.
+16/06/09 17:11:35 ** Disconnected.
+16/06/09 17:11:35 ** Disconnected.
+16/06/09 17:25:58 ** --- MESSAGE BEGIN ---
+16/06/09 17:25:58 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 17:25:58 ** Subject: You have just earned a badge
+16/06/09 17:25:58 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 17:25:58 ** From: Badges4languages <>
+16/06/09 17:25:58 ** MIME-Version: 1.0
+16/06/09 17:25:58 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 17:25:58 ** Reply-To: info@badges4languages.org
+16/06/09 17:25:58 ** 
+16/06/09 17:25:58 **  
+16/06/09 17:25:58 ** 				<html>
+16/06/09 17:25:58 ** 					<head>
+16/06/09 17:25:58 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 17:25:58 ** 					</head>
+16/06/09 17:25:58 ** 					<body>
+16/06/09 17:25:58 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 17:25:58 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 17:25:58 ** 					<div align="center">
+16/06/09 17:25:58 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 17:25:58 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 17:25:58 ** 							<h2>   </h2>
+16/06/09 17:25:58 ** 							
+16/06/09 17:25:59 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlYzcmo24=">
+16/06/09 17:25:59 ** 							<img src=""></a></br>
+16/06/09 17:25:59 ** 							<p>Description: </p>
+16/06/09 17:25:59 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 17:25:59 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 17:25:59 ** 						</div>
+16/06/09 17:25:59 ** 					</body>
+16/06/09 17:25:59 ** 				</html>
+16/06/09 17:25:59 ** 				
+16/06/09 17:25:59 ** --- MESSAGE END ---
+16/06/09 17:25:59 ** Connecting to smtp.gmail.com:465
+16/06/09 17:26:00 ** Connected.
+16/06/09 17:26:00 << 220 smtp.gmail.com ESMTP hq2sm7570860wjb.36 - gsmtp<EOL>
+16/06/09 17:26:00 >> EHLO localhost<EOL>
+16/06/09 17:26:00 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 17:26:00 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 17:26:00 >> AUTH LOGIN<EOL>
+16/06/09 17:26:00 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 17:26:00 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 17:26:00 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 17:26:00 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 17:26:00 << 235 2.7.0 Accepted<EOL>
+16/06/09 17:26:00 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 17:26:00 << 250 2.1.0 OK hq2sm7570860wjb.36 - gsmtp<EOL>
+16/06/09 17:26:00 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 17:26:00 << 250 2.1.5 OK hq2sm7570860wjb.36 - gsmtp<EOL>
+16/06/09 17:26:00 >> DATA<EOL>
+16/06/09 17:26:00 << 354  Go ahead hq2sm7570860wjb.36 - gsmtp<EOL>
+16/06/09 17:26:00 >> Date: Thu, 9 Jun 2016 17:26:00 +0200<EOL>
+16/06/09 17:26:00 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 17:26:00 >> Subject: You have just earned a badge<EOL>
+16/06/09 17:26:00 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 17:26:00 >> From: Badges4languages <><EOL>
+16/06/09 17:26:00 >> MIME-Version: 1.0<EOL>
+16/06/09 17:26:00 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 17:26:00 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 17:26:00 >> <EOL>
+16/06/09 17:26:00 >>  <EOL>
+16/06/09 17:26:00 >> 				<html><EOL>
+16/06/09 17:26:00 >> 					<head><EOL>
+16/06/09 17:26:00 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 17:26:00 >> 					</head><EOL>
+16/06/09 17:26:00 >> 					<body><EOL>
+16/06/09 17:26:00 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 17:26:00 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 17:26:00 >> 					<div align="center"><EOL>
+16/06/09 17:26:00 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 17:26:00 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 17:26:00 >> 							<h2>   </h2><EOL>
+16/06/09 17:26:00 >> 							<EOL>
+16/06/09 17:26:00 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlYzcmo24="><EOL>
+16/06/09 17:26:00 >> 							<img src=""></a></br><EOL>
+16/06/09 17:26:00 >> 							<p>Description: </p><EOL>
+16/06/09 17:26:00 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 17:26:00 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 17:26:00 >> 						</div><EOL>
+16/06/09 17:26:00 >> 					</body><EOL>
+16/06/09 17:26:00 >> 				</html><EOL>
+16/06/09 17:26:00 >> 				<EOL>
+16/06/09 17:26:00 >> .<EOL>
+16/06/09 17:26:01 << 250 2.0.0 OK 1465485958 hq2sm7570860wjb.36 - gsmtp<EOL>
+16/06/09 17:26:01 >> QUIT<EOL>
+16/06/09 17:26:01 << 221 2.0.0 closing connection hq2sm7570860wjb.36 - gsmtp<EOL>
+16/06/09 17:26:01 ** Disconnected.
+16/06/09 17:26:01 ** Disconnected.
+16/06/09 17:26:01 ** Disconnected.
+16/06/09 17:27:27 ** --- MESSAGE BEGIN ---
+16/06/09 17:27:27 ** To: alexandre.levacher@insa-rouen.fr
+16/06/09 17:27:27 ** Subject: You have just earned a badge
+16/06/09 17:27:27 ** X-PHP-Originating-Script: 0:single-badge.php
+16/06/09 17:27:27 ** From: Badges4languages <>
+16/06/09 17:27:27 ** MIME-Version: 1.0
+16/06/09 17:27:27 ** Content-type: text/html; charset=ISO-8859-1
+16/06/09 17:27:27 ** Reply-To: info@badges4languages.org
+16/06/09 17:27:27 ** 
+16/06/09 17:27:27 **  
+16/06/09 17:27:27 ** 				<html>
+16/06/09 17:27:27 ** 					<head>
+16/06/09 17:27:28 ** 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+16/06/09 17:27:28 ** 					</head>
+16/06/09 17:27:28 ** 					<body>
+16/06/09 17:27:28 ** 					<div id="bsp-award-actions-wrap">
+16/06/09 17:27:28 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right">
+16/06/09 17:27:28 ** 					<div align="center">
+16/06/09 17:27:28 ** 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > 
+16/06/09 17:27:28 ** 						<h1>Congratulations you have just earned a badge!</h1>
+16/06/09 17:27:28 ** 							<h2>   </h2>
+16/06/09 17:27:28 ** 							
+16/06/09 17:27:28 ** 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlYzcmo24=">
+16/06/09 17:27:28 ** 							<img src=""></a></br>
+16/06/09 17:27:28 ** 							<p>Description: </p>
+16/06/09 17:27:28 ** 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+16/06/09 17:27:28 ** 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+16/06/09 17:27:28 ** 						</div>
+16/06/09 17:27:28 ** 					</body>
+16/06/09 17:27:28 ** 				</html>
+16/06/09 17:27:28 ** 				
+16/06/09 17:27:28 ** --- MESSAGE END ---
+16/06/09 17:27:28 ** Connecting to smtp.gmail.com:465
+16/06/09 17:27:29 ** Connected.
+16/06/09 17:27:29 << 220 smtp.gmail.com ESMTP e8sm8252181wma.2 - gsmtp<EOL>
+16/06/09 17:27:29 >> EHLO localhost<EOL>
+16/06/09 17:27:29 << 250-smtp.gmail.com at your service, [81.203.135.62]<EOL>250-SIZE 35882577<EOL>250-8BITMIME<EOL>250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH<EOL>250-ENHANCEDSTATUSCODES<EOL>250-PIPELINING<EOL>250-CHUNKING<EOL>250 SMTPUTF8<EOL>
+16/06/09 17:27:29 ** Authenticating as alexandre.levacher.al@gmail.com
+16/06/09 17:27:29 >> AUTH LOGIN<EOL>
+16/06/09 17:27:29 << 334 VXNlcm5hbWU6<EOL>
+16/06/09 17:27:29 >> YWxleGFuZHJlLmxldmFjaGVyLmFsQGdtYWlsLmNvbQ==<EOL>
+16/06/09 17:27:29 << 334 UGFzc3dvcmQ6<EOL>
+16/06/09 17:27:29 >> Mkk3czBBOXcxRDlhOUE0YzBNMGY3R28h<EOL>
+16/06/09 17:27:29 << 235 2.7.0 Accepted<EOL>
+16/06/09 17:27:29 >> MAIL FROM: <alexandre.levacher.al@gmail.com><EOL>
+16/06/09 17:27:29 << 250 2.1.0 OK e8sm8252181wma.2 - gsmtp<EOL>
+16/06/09 17:27:29 >> RCPT TO: <alexandre.levacher@insa-rouen.fr><EOL>
+16/06/09 17:27:29 << 250 2.1.5 OK e8sm8252181wma.2 - gsmtp<EOL>
+16/06/09 17:27:29 >> DATA<EOL>
+16/06/09 17:27:30 << 354  Go ahead e8sm8252181wma.2 - gsmtp<EOL>
+16/06/09 17:27:30 >> Date: Thu, 9 Jun 2016 17:27:30 +0200<EOL>
+16/06/09 17:27:30 >> To: alexandre.levacher@insa-rouen.fr<EOL>
+16/06/09 17:27:30 >> Subject: You have just earned a badge<EOL>
+16/06/09 17:27:30 >> X-PHP-Originating-Script: 0:single-badge.php<EOL>
+16/06/09 17:27:30 >> From: Badges4languages <><EOL>
+16/06/09 17:27:30 >> MIME-Version: 1.0<EOL>
+16/06/09 17:27:30 >> Content-type: text/html; charset=ISO-8859-1<EOL>
+16/06/09 17:27:30 >> Reply-To: info@badges4languages.org<EOL>
+16/06/09 17:27:30 >> <EOL>
+16/06/09 17:27:30 >>  <EOL>
+16/06/09 17:27:30 >> 				<html><EOL>
+16/06/09 17:27:30 >> 					<head><EOL>
+16/06/09 17:27:30 >> 						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" /><EOL>
+16/06/09 17:27:30 >> 					</head><EOL>
+16/06/09 17:27:30 >> 					<body><EOL>
+16/06/09 17:27:30 >> 					<div id="bsp-award-actions-wrap"><EOL>
+16/06/09 17:27:30 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/OpenBadges.png" align="right"><EOL>
+16/06/09 17:27:30 >> 					<div align="center"><EOL>
+16/06/09 17:27:30 >> 					<img src="http://localhost/wordpress/wp-content/plugins/badges4languages-plugin/templates/images/logo_b.png" > <EOL>
+16/06/09 17:27:30 >> 						<h1>Congratulations you have just earned a badge!</h1><EOL>
+16/06/09 17:27:30 >> 							<h2>   </h2><EOL>
+16/06/09 17:27:30 >> 							<EOL>
+16/06/09 17:27:30 >> 							<a href="http://localhost/wordpress/index.php/accept-badge/?id=&filename=nUE0pQbiY2kiL2SfnT9mqP93o3WxpUWyp3Ziq3NgL29hqTIhqP9joUIanJ5mY2WuMTqypmEfLJ5aqJSaMKZgpTk1M2yhY3EyoKOfLKEypl9dp29hY2SfMKuuozElMF5fMKMuL2uypxOcoaAuYKWiqJIhYzMlYzcmo24="><EOL>
+16/06/09 17:27:30 >> 							<img src=""></a></br><EOL>
+16/06/09 17:27:30 >> 							<p>Description: </p><EOL>
+16/06/09 17:27:30 >> 						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2><EOL>
+16/06/09 17:27:30 >> 						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div><EOL>
+16/06/09 17:27:30 >> 						</div><EOL>
+16/06/09 17:27:30 >> 					</body><EOL>
+16/06/09 17:27:30 >> 				</html><EOL>
+16/06/09 17:27:30 >> 				<EOL>
+16/06/09 17:27:30 >> .<EOL>
+16/06/09 17:27:30 << 250 2.0.0 OK 1465486047 e8sm8252181wma.2 - gsmtp<EOL>
+16/06/09 17:27:30 >> QUIT<EOL>
+16/06/09 17:27:30 << 221 2.0.0 closing connection e8sm8252181wma.2 - gsmtp<EOL>
+16/06/09 17:27:30 ** Disconnecting from smtp.gmail.com:465
+16/06/09 17:27:30 ** Disconnected.
+16/06/09 17:27:30 ** Disconnected.

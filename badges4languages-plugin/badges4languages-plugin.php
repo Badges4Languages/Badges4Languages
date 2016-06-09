@@ -132,6 +132,7 @@ function b4l_create_badges_register(){
 		'public' => true,
 		'publicly_queryable' => true,
 		'show_ui' => true,
+                'show_in_nav_menus' => true,
 		'query_var' => true,
 		'menu_icon' => 'dashicons-welcome-learn-more',
 		'rewrite' => true,
