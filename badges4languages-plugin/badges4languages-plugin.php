@@ -95,6 +95,8 @@ add_action('init', 'b4l_create_db_tables', 0);
 function b4l_create_db_tables() {
     require_once plugin_dir_path( __FILE__ ) . 'includes/db_tables.php';
     b4l_create_db_table_b4l_languages();
+    b4l_create_db_table_b4l_students();
+    b4l_create_db_table_b4l_teachers();
     b4l_create_db_table_b4l_teacherLevels();
     b4l_create_db_table_b4l_studentLevels();
     b4l_create_db_table_b4l_skills();
@@ -229,6 +231,55 @@ function b4l_include_template_function( $template_path ) {
 
 
 
+
+
+
+
+
+
+
+
+
+/**
+ * Executes b4l_badges_profile_fields while user's profile is visualised/edited.
+ */
+add_action( 'show_user_profile', 'b4l_badges_profile_fields' );
+add_action( 'edit_user_profile', 'b4l_badges_profile_fields' );
+
+/**
+ * Creates a custom field for badges into user's profile.
+ */
+function b4l_badges_profile_fields( $user ) {
+?>
+  <h3><?php _e("You think you have the level(s) :", "blank"); ?></h3>
+  <table class="form-table">
+    <tr>
+      <th><label for="badge"><?php _e("BADGE"); ?></label></th>
+      <td>
+        <!-- BADGE -->
+        <input type="text" name="badge" id="phone" class="regular-text" 
+            value="<?php echo esc_attr( get_the_author_meta( 'badge', $user->ID ) ); ?>" /><br />
+        <span class="description"><?php _e("Please enter ........."); ?></span>
+    </td>
+    </tr>
+  </table>
+<?php
+}
+
+add_action( 'personal_options_update', 'b4l_save_badges_profile_fields' );
+add_action( 'edit_user_profile_update', 'b4l_save_badges_profile_fields' );
+
+/**
+ * Saves a custom field for badges into user's profile.
+ */
+function b4l_save_badges_profile_fields( $user_id ) {
+  $saved = false;
+  if ( current_user_can( 'edit_user', $user_id ) ) {
+    update_user_meta( $user_id, 'badge', $_POST['badge'] );
+    $saved = true;
+  }
+  return true;
+}
 
 
 

@@ -20,6 +20,58 @@ function b4l_create_db_table_b4l_languages() {
 }
 
 /**
+ * Create/Update the '(prefix)b4l_students' table
+ */
+function b4l_create_db_table_b4l_students() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . "b4l_students"; 
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE $table_name (
+        students_id bigint(20) NOT NULL AUTO_INCREMENT,
+        students_name varchar(70) NOT NULL,
+        students_lastname varchar(70) NOT NULL,
+        students_email varchar(70) NOT NULL,
+        A1 text,
+        A2 text,
+        B1 text,
+        B2 text,
+        C1 text,
+        C2 text,
+        UNIQUE KEY students_id (students_id)
+) $charset_collate;";
+
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+}
+
+/**
+ * Create/Update the '(prefix)b4l_students' table
+ */
+function b4l_create_db_table_b4l_teachers() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . "b4l_teachers"; 
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE $table_name (
+        teachers_id bigint(20) NOT NULL AUTO_INCREMENT,
+        teachers_name varchar(70) NOT NULL,
+        teachers_lastname varchar(70) NOT NULL,
+        teachers_email varchar(70) NOT NULL,
+        T1 text,
+        T2 text,
+        T3 text,
+        T4 text,
+        T5 text,
+        T6 text,
+        UNIQUE KEY teachers_id (teachers_id)
+) $charset_collate;";
+
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+}
+
+/**
  * Create/Update the '(prefix)b4l_teacherLevels' table
  */
 function b4l_create_db_table_b4l_teacherLevels() {
