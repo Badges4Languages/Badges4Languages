@@ -100,6 +100,7 @@ function b4l_create_db_tables() {
     b4l_create_db_table_b4l_teacherLevels();
     b4l_create_db_table_b4l_studentLevels();
     b4l_create_db_table_b4l_skills();
+    b4l_create_db_table_b4l_number_certifications();
 }
 
 /**
@@ -159,7 +160,7 @@ function b4l_create_badges_register(){
 	//Registering the custom post type
 	register_post_type( 'badge' , $args );
         
-        //flush_rewrite_rules();
+        flush_rewrite_rules();
 }
 
 /**
@@ -228,17 +229,9 @@ function b4l_include_template_function( $template_path ) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+/**************************************************************************
+ ****************** ADD BADGES FIELD INTO USER PROFIL *********************
+ *************************************************************************/
 
 /**
  * Executes b4l_badges_profile_fields while user's profile is visualised/edited.
@@ -280,6 +273,15 @@ function b4l_save_badges_profile_fields( $user_id ) {
   }
   return true;
 }
+
+
+
+
+
+
+
+
+
 
 
 

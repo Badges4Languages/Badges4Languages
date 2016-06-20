@@ -4,7 +4,7 @@
   * 
   * Description:       Template file displaying the badge's information (English description, image, title)
   *                    with a translation field.
-  * Version:           1.0.1
+  * Version:           1.1.0
   * Author:            Alexandre Levacher
  */
  
@@ -52,17 +52,17 @@ get_header(); ?>
                                     //Select all the languages of the DB Table '$wpdb->prefix.b4l_languages'
                                     //if it is a student level/badge.
                                     if(get_the_terms( $post->ID, 'badge_studentlevels' )){
-                                        $query = "SELECT l.language_name "
+                                        $queryLevelTeachersOrStudents = "SELECT l.language_name "
                                             . "FROM ".$wpdb->prefix."b4l_languages l, ".$wpdb->prefix."b4l_studentLevels sl "
                                             . "WHERE l.language_id=sl.language";
                                     } 
                                     //The same with a teacher level/badge.
                                     elseif(get_the_terms( $post->ID, 'badge_teacherlevels' )){
-                                        $query = "SELECT l.language_name "
+                                        $queryLevelTeachersOrStudents = "SELECT l.language_name "
                                             . "FROM ".$wpdb->prefix."b4l_languages l, ".$wpdb->prefix."b4l_teacherLevels sl "
                                             . "WHERE l.language_id=sl.language";
                                     }
-                                    $results = $wpdb->get_results($query, ARRAY_A);
+                                    $results = $wpdb->get_results($queryLevelTeachersOrStudents, ARRAY_A);
                                     foreach($results as $result) {
                                 ?>
                                     <option value="<?php echo $result[language_name]; ?>">
@@ -75,323 +75,109 @@ get_header(); ?>
                         </td>
                         <td>
                             <!-- Place where the translation will be displayed -->
-                            <div class="entry-content"><?php b4l_single_badge_translation(); ?></div>
+                            <div class="entry-content"><?php echo b4l_single_badge_translation($_GET['description_translation']); ?></div>
                         </td>
                     </tr>
                 </table>
                 
-                <!-- TAXOMONIE/CATEGORIE -->  
-                
+                <!-- TAXOMONIE/CATEGORIE --> 
                 <?php
                 if(get_the_term_list( $post->ID, 'badge_studentlevels')){
                     echo '<strong>Student level: </strong>';
                     the_terms( $post->ID, 'badge_studentlevels');
+                    $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
+                    $levelName = $studentLevel[0]->name;
                 } elseif(get_the_term_list( $post->ID, 'badge_teacherlevels')){
                     echo '<strong>Teacher level: </strong>';
                     the_terms( $post->ID, 'badge_teacherlevels');
-                }?>
+                    $teacherLevel = get_the_terms($post->ID, 'badge_teacherlevels');
+                    $levelName = $teacherLevel[0]->name;
+                }
+                ?>
                 <br/>
                 <strong>Skill(s): </strong>
                 <?php the_terms( $post->ID, 'badge_skills' ,  ' ' ); ?>
                 <br />
                
                 <!-- Choose the language certification -->
-                
                 <form action="" method="post">
                     <h3>Choose the language that you want a certification :</h3>
                     <select style="width: 100px" id="language_certification" name="language_certification">
-                                <?php
-                                    /*
-                                     *Display all the languages possible stored in the ($wpdb->prefix)b4l_languages table.
-                                     */
-                                    global $wpdb;
-                                    if(get_the_terms( $post->ID, 'badge_studentlevels' )){
-                                        $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages";
-                                    } 
-                                    $results = $wpdb->get_results($query, ARRAY_A);
-                                    foreach($results as $result) {
-                                ?>
-                                    <option value="<?php echo $result[language_name]; ?>">
-                                        <?php echo $result[language_name]; } ?>
-                                    <option value="<?php echo $result[language_name]; ?>">
+                        <?php
+                            //Display all the languages possible stored in the ($wpdb->prefix)b4l_languages table. 
+                            global $wpdb;
+                            if(get_the_terms( $post->ID, 'badge_studentlevels' )){
+                                $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages";
+                            } 
+                            $results = $wpdb->get_results($query, ARRAY_A);
+                            foreach($results as $result) {
+                        ?>
+                            <option value="<?php echo $result[language_name]; ?>">
+                                <?php echo $result[language_name]; } ?>
+                            <option value="<?php echo $result[language_name]; ?>">
                     </select>
-                    <input type="submit" value="Get the certification" name="button_pressed"/>
+                    <input type="submit" value="Get the certification" name="get_certification"/>
+                    <?php 
+                        //Displays number of certifications delivers
+                        $queryNbPeople = "SELECT ".$levelName." FROM ".$wpdb->prefix."b4l_number_certifications WHERE id=1";
+                        $numberOfPeople = $wpdb->get_var($queryNbPeople); 
+                        if($numberOfPeople == null) {
+                            $numberOfPeople = 0;
+                        } 
+                    ?>
+                    <p><?php echo $numberOfPeople ?> persons have the certification <?php echo the_terms( $post->ID, 'badge_studentlevels') ?></p>
                 </form>
                 
                 
-                
 
-                <!-- Send an email to get the certification -->
-                
-                <?php
-                /*
-                if(isset($_POST['button_pressed']))
-                {
-                    $to      = $current_user->user_email; 
-                    $subject = 'Obtains the level';
-                    $message = $post->post_content;
-                    $headers = 'From: mylanguageskills@hotmail.com' . "\r\n" .
-                        'Reply-To: mylanguageskills@hotmail.com' . "\r\n" .
-                        'X-Mailer: PHP/' . phpversion();
-                    //mail($to, $subject, $message, $headers);
-                    echo 'Email Sent.';
+            <!-- Send an email to get the certification -->
+            <?php 
+            global $current_user;
+            get_currentuserinfo();
+
+            if(isset($_POST['get_certification']) && ($_POST['language_certification'] != ""))
+            {
+                /**
+                * Recovers all the useful information for the JSON creation and sending an email
+                */
+                $numberOfPeople = $numberOfPeople+1;
+                if($wpdb->get_row($wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."b4l_number_certifications WHERE ID = 1", "" ))) {
+                    $wpdb->update( $wpdb->prefix . 'b4l_number_certifications',array($levelName => $numberOfPeople),array('id' => '1'));
+                } else {
+                    $wpdb->insert($wpdb->prefix . 'b4l_number_certifications',array($levelName => $numberOfPeople));
                 }
-                 * *
-                 */
-                ?>
-                
-                <?php 
-                global $current_user;
-                get_currentuserinfo();
-                
-                if(isset($_POST['button_pressed']))
-                {
-                    $email_stud=$current_user->user_email;
-                    $badge_name = get_the_title();
+                $email_stud=$current_user->user_email;
+                $badge_name = get_the_title();
+                //If the certification language has a translation, we use that one. If it hasn't, we use the default one (in English).
+                for($i=0;$i<count($results);$i++) {
+                    if($_POST['language_certification']==$results[$i][language_name]){
+                        $badge_desc = b4l_single_badge_translation($_POST['language_certification']);
+                    } 
+                }
+                if($badge_desc == null){
                     $badge_desc = $post->post_content;
-                    $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
-                    $badge_image = $image[0];
-                    $badge_lang = $_POST['language_certification'];
-                    if (get_the_terms($post->ID, 'badge_studentlevels')) {
-                        $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
-                        $badge_lvl = $studentLevel[0]->name;
-                    } elseif (get_the_terms($post->ID, 'badge_teacherlevels')) {
-                        $teacherLevel = get_the_terms($post->ID, 'badge_teacherlevels');
-                        $badge_lvl = $teacherLevel[0]->name;
-                    }
-                    b4l_create_assertion_badge_json($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $badge_lvl);
                 }
-                
-    //function b4l_create_badge_class_json(){
-                
-    function b4l_create_assertion_badge_json($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $badge_lvl){
-        
-        //adding a salt to our hashed email
-        $salt=uniqid(mt_rand(), true);
-        
-        //using sha256 hash metod (open badges api defined)
-        $hash='sha256$' . hash('sha256', $email_stud. $salt);
-        
-        //setting the current date
-        $date=date('Y-m-d');
+                $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+                $badge_image = $image[0];
+                $badge_pagelink = esc_url(get_permalink(get_page_by_title($badge_name)));
+                $badge_lang = $_POST['language_certification'];
+                if (get_the_terms($post->ID, 'badge_studentlevels')) {
+                    $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
+                    $badge_lvl = $studentLevel[0]->name;
+                } elseif (get_the_terms($post->ID, 'badge_teacherlevels')) {
+                    $teacherLevel = get_the_terms($post->ID, 'badge_teacherlevels');
+                    $badge_lvl = $teacherLevel[0]->name;
+                }
 
-	//name of the json file
-        $file_json=$email_stud.'_'.$badge_lvl.'_'.$badge_lang;
-        
-	//getting the dir path of the plugin to use
-	$dir_path=plugin_dir_path( __FILE__ ).'../';
-        
-	//adding the folder json and encoded file name and addind the extenson of json
-	$path_json=$dir_path.'json/'.$file_json.'.json';
-	
-	//handle for opening or creating the file and writing to it (w)
-	$handle=fopen($path_json, 'w') or die ('Can not open file: '.$file_json);
-	if($handle){
-		//Creating of the Badge Assertion (Mozilla Open Badges API)
-		$data=array(
-                    '@context'=>'https://w3id.org/openbadges/v1',
-                    'type'=>'Assertion',
-                    'id'=>plugins_url( 'json/', __FILE__ ).$file_json.'.json',
-                    'uid'=>'b4l'.$badge_lvl.$badge_lvl.'_'.$badge_lang, //A CHANGER CAR L'ID DOIT ETRE UNIQUE !!!!!
-                    'recipient'=>array(
-                      'type'=>'email',
-                      'hashed'=>true,
-                      'salt'=>$salt,
-                      'identity'=>$hash
-                    ),
-                    'image'=>$badge_image,
-                    'evidence'=>'EXERCICES PAGE',
-                    'issued_on'=>$date,
-                    'badge'=>plugins_url( 'json/', __FILE__ ).$badge_lvl.'_'.$badge_lang.'.json',
-                    'verify'=>array(
-                        'type'=>'hosted',
-                        'url'=>plugins_url( 'json/', __FILE__ ).$file_json.'.json'
-                    )
-                );
-        }
-        fwrite($handle, json_encode($data));
-        fclose($handle);
-    }
-      
-                     
-    function bsp_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $badge_lvl){
-    //adding a salt to our hashed email
-    $salt=uniqid(mt_rand(), true);
-    //using sha256 hash metod (open badges api defined)
-    $hash='sha256$' . hash('sha256', $email_stud. $salt);
-    //setting the current date
-    $date=date('Y-m-d');
+                b4l_create_badge_class_json($badge_name, $badge_desc, $badge_image, $badge_pagelink, $badge_lang, $badge_lvl);
+                b4l_create_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $numberOfPeople);
+                b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_pagelink, $badge_lang, $badge_lvl);
+            }
+            
 
-	//getting the settings data
-	$name_issuer=get_option('bsp_issuer_name'); // A VERIFIER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	$org_issuer=get_option('bsp_issuer_org');
-	$email_issuer=get_option('bsp_issuer_email');
-	$url_issuer=get_option('bsp_issuer_url');
-	
-        if (get_the_terms($post->ID, 'badge_studentlevels')) {
-            $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
-            $levelName = $studentLevel[0]->name;
-        } elseif (get_the_terms($post->ID, 'badge_teacherlevels')) {
-            $teacherLevel = get_the_terms($post->ID, 'badge_teacherlevels');
-            $levelName = $teacherLevel[0]->name;
-        }
-	//string for encoding the email student and badge name (used in str_rot13)
-	$str = $email_stud.$badge_name;
-	//encoding the json files
-	//$file_json=str_rot13($badge_id . '-' . preg_replace("/ /", "_", $email_stud)); //POURQUOI ENCODER ???
-        $file_json=$email_stud.$badge_name;
-        
-	//getting the dir path of the plugin to use
-	$dir_path=plugin_dir_path( __FILE__ ).'../';
-	//adding the folder json and encoded file name and addind the extenson of json
-	$path_json=$dir_path.'json/'.$file_json.'.json';
-	
-	//handle for opening or creating the file and writing to it (w)
-	$handle=fopen($path_json, 'w') or die ('Can not open file: '.$file_json);
-	if($handle){
-		//Creating of the Badge Assertion (Mozilla Open Badges API)
-		$data=array(
-                    '@context'=>'https://w3id.org/openbadges/v1',
-                    'type'=>'Assertion',
-                    'id'=>plugins_url( 'json/', __FILE__ ).$file_json.'.json',
-                    'uid'=>'b4la1',
-                    'recipient'=>array(
-                      'type'=>'email',
-                      'hashed'=>true,
-                      'salt'=>$salt,
-                      'identity'=>$hash
-                    ),
-                    'image'=>$badge_image,
-                    'evidence'=>'EXERCICES PAGE',
-                    'issued_on'=>$date,
-                    'badge'=>plugins_url( 'json/', __FILE__ ).$file_json.'.json ADRESSE DU BADGECLASS',
-                    'verify'=>array(
-                        'type'=>'hosted',
-                        'url'=>plugins_url( 'json/', __FILE__ ).$file_json.'.json'
-                    )
-                );
-                echo json_encode($data);
-        }
-      }
       
                 
-                
-   //function for sending the email and json files  
-function sbsp_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $badge_lvl){
-    //adding a salt to our hashed email
-    $salt=uniqid(mt_rand(), true);
-    //using sha256 hash metod (open badges api defined)
-    $hash='sha256$' . hash('sha256', $email_stud. $salt);
-    //setting the current date
-    $date=date('Y-m-d');
-
-	//getting the settings data
-	$name_issuer=get_option('bsp_issuer_name'); // A VERIFIER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	$org_issuer=get_option('bsp_issuer_org');
-	$email_issuer=get_option('bsp_issuer_email');
-	$url_issuer=get_option('bsp_issuer_url');
-	
-        if (get_the_terms($post->ID, 'badge_studentlevels')) {
-            $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
-            $levelName = $studentLevel[0]->name;
-        } elseif (get_the_terms($post->ID, 'badge_teacherlevels')) {
-            $teacherLevel = get_the_terms($post->ID, 'badge_teacherlevels');
-            $levelName = $teacherLevel[0]->name;
-        }
-	//string for encoding the email student and badge name (used in str_rot13)
-	$str = $email_stud.$badge_name;
-	//encoding the json files
-	//$file_json=str_rot13($badge_id . '-' . preg_replace("/ /", "_", $email_stud)); //POURQUOI ENCODER ???
-        $file_json=$email_stud.$badge_name;
-        
-	//getting the dir path of the plugin to use
-	$dir_path=plugin_dir_path( __FILE__ ).'../';
-	//adding the folder json and encoded file name and addind the extenson of json
-	$path_json=$dir_path.'json/'.$file_json.'.json';
-	
-	//handle for opening or creating the file and writing to it (w)
-	$handle=fopen($path_json, 'w') or die ('Can not open file: '.$file_json);
-	if($handle){
-		//Creating of the Badge Assertion (Mozilla Open Badges API)
-		$data=array(
-                    '@context'=>'https://w3id.org/openbadges/v1',
-                    'type'=>'Assertion',
-                    'id'=>plugins_url( 'json/', __FILE__ ).$file_json.'.json',
-                    'uid'=>'b4la1',
-                    'recipient'=>array(
-                      'type'=>'email',
-                      'hashed'=>true,
-                      'salt'=>$salt,
-                      'identity'=>$hash
-                    ),
-                    'image'=>$badge_image,
-                    'evidence'=>'EXERCICES PAGE',
-                    'issued_on'=>$date,
-                    'badge'=>plugins_url( 'json/', __FILE__ ).$file_json.'.json ADRESSE DU BADGECLASS',
-                    'verify'=>array(
-                        'type'=>'hosted',
-                        'url'=>plugins_url( 'json/', __FILE__ ).$file_json.'.json'
-                    )
-                );
-                var_dump(json_encode($data));
-                
-                
-		//encoding the data into json format	
-		if(fwrite($handle, json_encode($data))){
-			fclose($handle);
-			//getting the url of the page by title (our custom created page)
-			$pagelink=esc_url( get_permalink( get_page_by_title( 'Accept Badge' ) ) );
-			
-				//form for sending an email in html 
-				$mail = $email_stud; //setting the to who this email is send
-				$mailFrom = $email_issuer; //setting the from who this email is
-				$subject = "You have just earned a badge"; //entering a subject for email
-				//encoding the url
-				$url = str_rot13(base64_encode(plugins_url('json/', __FILE__).$file_json.'.json'));
-
-				//the actual message, which is displayed in an email
-				$message= ' 
-				<html>
-					<head>
-						<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
-					</head>
-					<body>
-					<div id="bsp-award-actions-wrap">
-					<img src="' . plugins_url( 'images/OpenBadges.png', __FILE__ ) . '" align="right">
-					<div align="center">
-					<img src="' . plugins_url( 'images/logo_b.png', __FILE__ ) . '" > 
-						<h1>Congratulations you have just earned a badge!</h1>
-							<h2>'.$badge_name.' '.$badge_lan.' '.$badge_lvl.' '.$badge_skil.'</h2>
-							
-							<a href="'.$pagelink.'?id='.$badge_id.'&filename='.$url.'">
-							<img src="'.$badge_image.'"></a></br>
-							<p>Description: '.$badge_desc.'</p>
-						<h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
-						<div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
-						</div>
-					</body>
-				</html>
-				';
-				$json_hosted_file=plugins_url('json/', __FILE__ ).$file_json.'.json';
-				
-				//setting headers so it's a MIME mail and a html
-				// Always set content-type when sending HTML email
-				$headers = "From: Badges4languages "."<".$mailFrom. ">"."\n";
-				$headers .= "MIME-Version: 1.0"."\n";
-				$headers .= "Content-type: text/html; charset=ISO-8859-1"."\n";
-				$headers .= "Reply-To: info@badges4languages.org"."\n";
-
-				mail($mail, $subject, $message, $headers); //the call of the mail function with parameters
-                                echo 'Email Sent.';
-                                echo '<br>';
-                                echo 'json file name :'.$file_json.'.json';
-                
-		}//end of if fwrite
-	}//end of if handle	
-}//end of function
-                 
-               
-                
+       
                 
                 
                 
@@ -541,11 +327,10 @@ function b4l_save_awarded_badges(){
  * Foreign Key doesn't work/exist on WordPress for the database,
  * so I use a "non-official method" to find information.
  */
-function b4l_single_badge_translation(){
+function b4l_single_badge_translation($translation_language){
     global $wpdb;
-
     //Gives the language_id depending on the language in the menu chosen by the user
-    $query1 = "SELECT language_id FROM ".$wpdb->prefix."b4l_languages WHERE language_name='".$_GET['description_translation']."'";
+    $query1 = "SELECT language_id FROM ".$wpdb->prefix."b4l_languages WHERE language_name='".$translation_language."'";
     $value = $wpdb->get_var($query1);
     
     //Checks if it is a Student or a Teacher Level
@@ -562,9 +347,162 @@ function b4l_single_badge_translation(){
     }
     
     //Displays the translated description
-    echo $wpdb->get_var($query2);
+    return $wpdb->get_var($query2);
 }
 
 
+/**
+* Creates the BadgeClass. Could be activate before (without the activation of the button get_certification).
+* But activate this function at this moment can actualize the BadgeClass each time someone ask the certification.
+*/            
+function b4l_create_badge_class_json($badge_name, $badge_desc, $badge_image, $badge_pagelink, $badge_lang, $badge_lvl){
+
+    //name of the json file
+    $file_json=$badge_lvl.'_'.$badge_lang;
+
+    //getting the dir path of the plugin to use
+    $dir_path=plugin_dir_path( __FILE__ ).'../';
+
+    //adding the folder json and encoded file name and addind the extenson of json
+    $path_json=$dir_path.'json/badgesclass/'.$file_json.'.json';
+
+    //recuperate the tags's name
+    $tags = get_the_terms($post->ID, 'badge_tags');
+    $tagsNumber = count($tags);
+    $tagsName = '[';
+    for($i=0; $i<$tagsNumber; $i++) {
+    $tagsName = $tagsName.'"'.$tags[$i]->name.'", ';
+    }
+    $tagsName = substr($tagsName, 0, -2); //Delete ", " at the end of the string
+    $tagsName = $tagsName.']';
+
+    //handle for opening or creating the file and writing to it (w)
+    $handle=fopen($path_json, 'w') or die ('Can not open file: '.$file_json);
+    if($handle){
+        //Creating of the Badge Class (Mozilla Open Badges API)
+        $data=array(
+            '@context'=>'https://w3id.org/openbadges/v1',
+            'type'=>'BadgeClass',
+            'id'=>plugins_url( 'json/badgesclass/', __FILE__ ).$file_json.'.json',
+            'name'=>$badge_name.' - '.$badge_lang,
+            'description'=>$badge_desc,
+            'image'=>$badge_image,
+            'criteria'=>$badge_pagelink,
+            'tags'=> $tagsName,
+            'issuer'=>'http://badges4languages.com',
+            'alignment'=>array(
+                array(
+                    'name'=>'Common European Framework of Reference for Languages: Learning, Teaching, Assessment (CEFR)',
+                    'url'=>'http://www.coe.int/t/dg4/linguistic/cadre1_en.asp',
+                    'description'=>'Common European Framework of Reference for Languages: Learning, Teaching, Assessment (CEFR) web site'
+                ),
+                array(
+                    'name'=>'Common European Framework of Reference for Languages: Learning, Teaching, Assessment',
+                    'url'=>'http://www.coe.int/t/dg4/linguistic/source/framework_en.pdf',
+                    'description'=>'Common European Framework of Reference for Languages: Learning, Teaching, Assessment (CEFR) PDF version'
+                )
+            )
+        );
+    }
+    fwrite($handle, json_encode($data));
+    fclose($handle);
+}
+
+/**
+* Creates the Badge Assertion for the user
+*/ 
+function b4l_create_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $numberOfPeople){
+
+    //adding a salt to our hashed email
+    $salt=uniqid(mt_rand(), true);
+
+    //using sha256 hash metod (open badges api defined)
+    $hash='sha256$' . hash('sha256', $email_stud. $salt);
+
+    //setting the current date
+    $date=date('Y-m-d');
+
+    //name of the json file
+    $file_json=$email_stud.'_'.$badge_lvl.'_'.$badge_lang;
+
+    //getting the dir path of the plugin to use
+    $dir_path=plugin_dir_path( __FILE__ ).'../';
+
+    //adding the folder json and encoded file name and addind the extenson of json
+    $path_json=$dir_path.'json/badgesassertion/'.$file_json.'.json';
+
+    //handle for opening or creating the file and writing to it (w)
+    $handle=fopen($path_json, 'w') or die ('Can not open file: '.$file_json);
+    if($handle){
+        //Creating of the Badge Assertion (Mozilla Open Badges API)
+        $data=array(
+            '@context'=>'https://w3id.org/openbadges/v1',
+            'type'=>'Assertion',
+            'id'=>plugins_url( 'json/badgesassertion/', __FILE__ ).$file_json.'.json',
+            'uid'=>'b4l'.'_'.$badge_lvl.'_'.$badge_lang.'_'.$numberOfPeople, //UID must be unique, so it's thanks to $numberOfPeople
+            'recipient'=>array(
+              'type'=>'email',
+              'hashed'=>true,
+              'salt'=>$salt,
+              'identity'=>$hash
+            ),
+            'image'=>$badge_image,
+            'evidence'=>'EXERCICES PAGE',
+            'issued_on'=>$date,
+            'badge'=>plugins_url( 'json/badgesclass/', __FILE__ ).$badge_lvl.'_'.$badge_lang.'.json',
+            'verify'=>array(
+                'type'=>'hosted',
+                'url'=>plugins_url( 'json/badgesassertion/', __FILE__ ).$file_json.'.json'
+            )
+        );
+    }
+    fwrite($handle, json_encode($data));
+    fclose($handle);
+}
+
+/**
+* Sends an email to get the certification.
+*/ 
+function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_pagelink, $badge_lang, $badge_lvl){
+
+    $mailFrom = $email_issuer; //setting the from who this email is
+    $subject = "You have just earned a badge"; //entering a subject for email
+    //encoding the url
+    $url = str_rot13(base64_encode(plugins_url('json/badgesassertion/', __FILE__).$file_json.'.json'));
+
+    //the actual message, which is displayed in an email
+    $message= ' 
+    <html>
+            <head>
+                    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+            </head>
+            <body>
+            <div id="b4l-award-actions-wrap">
+            <div align="center">
+            <img src="' . plugins_url( '../images/OpenBadges.png', __FILE__ ) . '" width="180" > 
+                    <h1>Congratulations you have just earned a badge!</h1>
+                            <h2>'.$badge_name.' - '.$badge_lang.'</h2>
+                            <a href="'.$badge_pagelink.'?filename='.$url.'">
+                                <img src="'.$badge_image.'" width="150" height="150">
+                            </a>
+                            </br>
+                            <p>Description: '.$badge_desc.'</p>
+                    <h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
+                    <div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+                    </div>
+            </body>
+    </html>
+    ';
+
+    //setting headers so it's a MIME mail and a html
+    // Always set content-type when sending HTML email
+    $headers = "From: Badges4languages "."<".$email_stud. ">"."\n";
+    $headers .= "MIME-Version: 1.0"."\n";
+    $headers .= "Content-type: text/html; charset=ISO-8859-1"."\n";
+    $headers .= "Reply-To: info@badges4languages.org"."\n";
+
+    mail('adresse.spam@live.fr', $subject, $message, $headers); //the call of the mail function with parameters
+    echo 'Email Sent.';
+}
 ?>
 

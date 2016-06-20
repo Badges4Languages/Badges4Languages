@@ -152,3 +152,32 @@ function b4l_create_db_table_b4l_skills() {
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta( $sql );
 }
+
+/**
+ * Create/Update the '(prefix)b4l_number_certifications' table
+ */
+function b4l_create_db_table_b4l_number_certifications() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . "b4l_number_certifications"; 
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE $table_name (
+        id bigint(20) NOT NULL AUTO_INCREMENT,
+        A1 text,
+        A2 text,
+        B1 text,
+        B2 text,
+        C1 text,
+        C2 text,
+        T1 text,
+        T2 text,
+        T3 text,
+        T4 text,
+        T5 text,
+        T6 text,
+        UNIQUE KEY id (id)
+) $charset_collate;";
+    
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+}
