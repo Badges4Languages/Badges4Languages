@@ -169,9 +169,10 @@ get_header(); ?>
                     $badge_lvl = $teacherLevel[0]->name;
                 }
 
-                b4l_create_badge_class_json($badge_name, $badge_desc, $badge_image, $badge_pagelink, $badge_lang, $badge_lvl);
-                b4l_create_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $numberOfPeople);
-                b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_pagelink, $badge_lang, $badge_lvl);
+                $file_json = b4l_create_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $numberOfPeople, $badge_name, $badge_desc);
+                //b4l_create_badge_class_json($badge_name, $badge_desc, $badge_image, $badge_pagelink, $badge_lang, $badge_lvl);
+                //b4l_create_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $numberOfPeople);
+                b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_pagelink, $badge_lang, $badge_lvl, $file_json);
             }
             
 
@@ -411,7 +412,7 @@ function b4l_create_badge_class_json($badge_name, $badge_desc, $badge_image, $ba
 /**
 * Creates the Badge Assertion for the user
 */ 
-function b4l_create_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $numberOfPeople){
+function b4l_create_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $numberOfPeople, $badge_name, $badge_desc){
 
     //adding a salt to our hashed email
     $salt=uniqid(mt_rand(), true);
@@ -423,7 +424,7 @@ function b4l_create_assertion_badge_json($email_stud, $badge_image, $badge_lang,
     $date=date('Y-m-d');
 
     //name of the json file
-    $file_json=$email_stud.'_'.$badge_lvl.'_'.$badge_lang;
+    $file_json=str_rot13(preg_replace("/ /", "_", $email_stud)).'_'.$badge_lvl.'_'.$badge_lang;
 
     //getting the dir path of the plugin to use
     $dir_path=plugin_dir_path( __FILE__ ).'../';
@@ -435,6 +436,7 @@ function b4l_create_assertion_badge_json($email_stud, $badge_image, $badge_lang,
     $handle=fopen($path_json, 'w') or die ('Can not open file: '.$file_json);
     if($handle){
         //Creating of the Badge Assertion (Mozilla Open Badges API)
+       /*
         $data=array(
             '@context'=>'https://w3id.org/openbadges/v1',
             'type'=>'Assertion',
@@ -455,21 +457,47 @@ function b4l_create_assertion_badge_json($email_stud, $badge_image, $badge_lang,
                 'url'=>plugins_url( 'json/badgesassertion/', __FILE__ ).$file_json.'.json'
             )
         );
+        * 
+        */
+        $data=array(
+            'recipient'=> $hash,
+            'salt'=>$salt,
+            'badge'=>array(
+                    'name'=>$badge_name.' - '.$badge_lang,
+                    'description'=>$badge_desc,
+                    'image'=>$badge_image,
+                    'criteria'=>'http://about.badges4languages.org/',
+                    'issuer'=>array(
+                            'name'=>'badges4languages',
+                            'origin'=>'http://badges4languages.com',
+                            'email'=>'badges4languages@hotmail.fr',
+                    )
+            ),
+            'verify'=>array(
+                    'type'=>'hosted',
+                    'url'=>WP_PLUGIN_URL.'/badges4languages-plugin/json/badgesassertion/'.$file_json.'.json',
+            ),
+            'issued_on'=>$date
+        );
     }
     fwrite($handle, json_encode($data));
     fclose($handle);
+    return $file_json;
 }
 
 /**
 * Sends an email to get the certification.
 */ 
-function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_pagelink, $badge_lang, $badge_lvl){
+function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_pagelink, $badge_lang, $badge_lvl, $file_json){
 
     $mailFrom = $email_issuer; //setting the from who this email is
     $subject = "You have just earned a badge"; //entering a subject for email
     //encoding the url
-    $url = str_rot13(base64_encode(plugins_url('json/badgesassertion/', __FILE__).$file_json.'.json'));
+    $url = str_rot13(base64_encode(WP_PLUGIN_URL.'/badges4languages-plugin/json/badgesassertion/'.$file_json.'.json'));
+    $pagelink=esc_url( get_permalink( get_page_by_title( 'Accept Badge' ) ) );
 
+    $badge_id = $badge_name.'-'.$badge_lang;
+            
     //the actual message, which is displayed in an email
     $message= ' 
     <html>
@@ -482,7 +510,7 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
             <img src="' . plugins_url( '../images/OpenBadges.png', __FILE__ ) . '" width="180" > 
                     <h1>Congratulations you have just earned a badge!</h1>
                             <h2>'.$badge_name.' - '.$badge_lang.'</h2>
-                            <a href="'.$badge_pagelink.'?filename='.$url.'">
+                            <a href="'.$pagelink.'?id='.$badge_id.'&filename='.$url.'">
                                 <img src="'.$badge_image.'" width="150" height="150">
                             </a>
                             </br>
@@ -496,7 +524,7 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
 
     //setting headers so it's a MIME mail and a html
     // Always set content-type when sending HTML email
-    $headers = "From: Badges4languages "."<".$email_stud. ">"."\n";
+    $headers = "From: Badges4languages "."<info@badges4languages.org>"."\n";
     $headers .= "MIME-Version: 1.0"."\n";
     $headers .= "Content-type: text/html; charset=ISO-8859-1"."\n";
     $headers .= "Reply-To: info@badges4languages.org"."\n";
@@ -504,5 +532,17 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
     mail('adresse.spam@live.fr', $subject, $message, $headers); //the call of the mail function with parameters
     echo 'Email Sent.';
 }
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
 

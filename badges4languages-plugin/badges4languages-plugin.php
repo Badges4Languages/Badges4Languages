@@ -16,7 +16,7 @@
  * Plugin Name:       Badges4languages-plugin
  * Plugin URI:        http://www.badges4languages.org
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.2
+ * Version:           1.1.0
  * Author:            Alexandre Levacher
  * Author URI:        http://www.badges4languages.org
  * License:           GPL-2.0+
@@ -285,5 +285,145 @@ function b4l_save_badges_profile_fields( $user_id ) {
 
 
 
+
+
+
+
+
+add_action( 'admin_init', 'bsp_create_update_table' );
+//function for creating (if it does not exist) or updating (it the table already exists) a table and adding a new page
+function bsp_create_update_table(){
+
+	//adding a new page
+	//checking if the page already exsists if not we create it
+	if (get_page_by_title('Accept badge') == NULL) {
+		//creating post object
+		$bsp_award_page=array(
+		'post_name'=>'accept-badge',
+		'post_title'=>'Accept badge',
+		'post_content'=>'You got a badge!',
+		'post_excerpt'=>'badges',
+		'post_status'=>'publish',
+		'post_type'=>'page',
+		'page_template'=>'badges-accept-template.php',
+		'comment_status'=>'closed'
+		);
+	}
+	//inserting the page
+	$post_id=wp_insert_post($bsp_award_page);
+	
+	//adding the post meta so we can easily find it and delete it (or do other things)
+	add_post_meta($post_id,'bsp_delete_page','delete page', true);
+}//end of function
+
+//adding the hook for adding to the content of the page
+add_filter('the_content','bsp_content_filter');
+//function for adding the content to the page
+function bsp_content_filter($content){
+	//we are checking if we are on the page accept-badge, because we want the content to be displayed only there
+	if ( is_page( 'accept-badge' )){
+	
+	//getting the filename and the id from the url
+	if(isset( $_GET['filename']) && ($_GET['id']) ){
+        $path_json = $_GET['filename'];
+	 
+        //and decoding it (so we get a "normal" file name)
+		$path_json = base64_decode(str_rot13($path_json));
+		$badge_name=$_GET['id'];
+	}
+	?>
+	<!-- including the issuer api script -->
+	<script src="https://backpack.openbadges.org/issuer.js"></script>
+	<script type="text/javascript">
+	<!--- function for issuing the badge -->
+	jQuery(document).ready(function($) {
+	
+	$('.js-required').hide();
+	
+	if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){  //The Issuer API isn't supported on MSIE Bbrowsers
+		$('.acceptclick').hide();
+		$('.browserSupport').show();
+		}else{
+			$('.browserSupport').hide();
+		}
+	
+	$('#badge-error').hide();
+	$('.acceptclick').click(function() {		
+	var assertionUrl = '<?php echo $path_json; ?>';
+       OpenBadges.issue([''+assertionUrl+''], function(errors, successes) { 
+		   
+					if (errors.length > 0 ) {
+						$('#badge-error').show();	
+						$.ajax({
+    					url: '<?php get_post_type_archive_link( 'badge' ); ?>',
+    					type: 'POST',
+    					data: { 
+							action:'award_action'
+							}
+						});
+					}
+					
+					if (successes.length > 0) {
+							$('.acceptclick').hide();
+							$('#badge-error').hide();
+							$.ajax({
+    						url: '<?php get_post_type_archive_link( 'badge' ); ?>',
+    						type: 'POST',
+    						data: { 
+								action:'award_action'
+								}
+							});
+						}	
+					});    
+				});
+			});
+
+
+   </script>
+   
+   <?php
+
+   //the content to be displayed on the template page
+		
+		 $content = <<<EOHTML
+                <div id="bsp-award-actions-wrap">
+                <div id="badgeSuccess">
+                    <p>Congratulations! The "{$badge_name}" badge has been awarded to you.</p>
+                    <p class="acceptclick">Please <a href='#' class='acceptclick'>accept</a> the award.</p>
+                </div>
+                </div>
+                <div class="browserSupport">
+                    <p>Microsoft Internet Explorer is not supported at this time. Please use Firefox or Chrome to retrieve your award.</p>
+                </div>
+                <div id="badge-error">
+                    <p>An error occured while adding this badge to your backpack.</p>
+                </div>
+                </div>
+                {$content}
+EOHTML;
+	
+	//$content .= $content;
+	
+	
+     }//end of is page   
+	return $content;
+}//end of function
+
+//adding a filter to include custom template
+add_filter( 'template_include', 'bsp_accept_badge_template');
+
+//function for setting the custom template
+function bsp_accept_badge_template( $template ) {
+	//checking if the page has the slug of accept-badge
+	if ( is_page( 'accept-badge' )  ) {
+		//creating new template
+		$new_template = locate_template( array( 'badges-accept-template.php' ) );
+		//if the new tempalte is not empty then use the template
+		if ( '' != $new_template ) {
+			return $new_template ;
+		}
+	}
+	return $template;
+}//end of function
 
 ?>
