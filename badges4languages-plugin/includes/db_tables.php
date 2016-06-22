@@ -1,4 +1,11 @@
 <?php
+ /*
+  * Description:        This file contains all the database tables.
+  * Version:            1.0.5
+  * Author:             Alexandre Levacher
+ */
+
+
 /**
  * Create/Update the '(prefix)b4l_languages' table
  */
@@ -175,6 +182,27 @@ function b4l_create_db_table_b4l_number_certifications() {
         T4 text,
         T5 text,
         T6 text,
+        UNIQUE KEY id (id)
+) $charset_collate;";
+    
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+}
+
+/**
+ * Create/Update the '(prefix)b4l_issuer_information' table
+ */
+function b4l_create_db_table_b4l_issuer_information() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . "b4l_issuer_information"; 
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE $table_name (
+        id bigint(20) NOT NULL,
+        issuer_name text,
+        issuer_logo text,
+        issuer_email text,
+        issuer_url text,
         UNIQUE KEY id (id)
 ) $charset_collate;";
     

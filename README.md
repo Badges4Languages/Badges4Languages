@@ -29,3 +29,8 @@ Go to the the multisite "network settings", then to the category "Upload file ty
 
 
 When you import a CSV file, it is possible that you have an error message, but if you have respected the form, the CSV will be imported.
+
+
+-- TO DO LIST --
+* Change 'wp' prefix of 'wp_csv_to_db' file to avoid conflict if you install the plugin
+* Implement a page to give issuer information (because now information is in the code).
