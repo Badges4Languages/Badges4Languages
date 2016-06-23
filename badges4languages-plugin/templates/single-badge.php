@@ -419,7 +419,7 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
     $headers .= "Reply-To: ".$issuer['email'].""."\n";
 
     mail($email_stud, $subject, $message, $headers); //the call of the mail function with parameters
-    echo 'Email Sent.';
+    echo 'Email Sent. If the mail is not in your mail box, verify your spams.';
 }
 
 /*

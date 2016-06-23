@@ -1,47 +1,33 @@
 <?php
-
-// A MODIFIER
-/**
- * Executes b4l_create_accept_badge_page during the initialization phase.
+ /*
+  * Description:        Create a hidden page to display 'Your changes have been saved !'
+  * Version:            1.0.0
+  * Author:             Alexandre Levacher
  */
-add_action( 'admin_init', 'b4l_create_accept_badge_page' );
 
 /**
- * Creates the 'Accept Badge' Page
+ * Adds b4l_badges_issuer_information_submenu_page during to the admin menu.
  */
-function b4l_create_accept_badge_page(){
+add_action('admin_menu', 'b4l_badges_changes_saved_submenu_page');
 
-	//Adds a new page if it doesn't exist.
-	if (get_page_by_title('Accept badge') == NULL) {
-		//creating post object
-		$bsp_award_page=array(
-		'post_name'=>'changes-saved',
-		'post_title'=>'Changes saved',
-		'post_content'=>'Your changes have been saved!',
-		'post_excerpt'=>'badges',
-		'post_status'=>'publish',
-		'post_type'=>'page',
-		'page_template'=>'badges-changes-template.php',
-		'comment_status'=>'closed'
-		);
-	}
-	//Inserts the page
-	$post_id=wp_insert_post($bsp_award_page);
-	
-	//adding the post meta so we can easily find it and delete it (or do other things)
-	//add_post_meta($post_id,'bsp_delete_page','delete page', true);
+/**
+ * Adds 'Your changes have been saved!' page.
+ */
+function b4l_badges_changes_saved_submenu_page() {
+    add_submenu_page(
+        null,
+        'Your changes have been saved!',
+        'Your changes have been saved!',
+        'manage_options',
+        'badges-changes-saved-submenu-page',
+        'b4l_badges_changes_saved_page_callback' 
+    );
+}
+ 
+/**
+ * Creates the page content.
+ */
+function b4l_badges_changes_saved_page_callback() {
+    echo '<h3>Your changes have been saved !</h3>';
 }
 
-
-/**
- * Executes b4l_accept_badge_page_content during the page creation (content).
- */
-add_filter('the_content','b4l_changes_content');
-
-/**
- * This function adds content to 'Accept Badge' page.
- */
-function b4l_changes_content($content){
-    echo 'Your changes have been saved';
-}
-?>

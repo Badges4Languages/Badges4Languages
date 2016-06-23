@@ -191,6 +191,7 @@ function b4l_create_my_taxonomies() {
  * Submenu page for the admin to give information useful for the certification.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/badges_issuer_information.php';
+require plugin_dir_path( __FILE__ ) . 'includes/changes_saved.php';
 
 
 
