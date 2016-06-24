@@ -9,8 +9,8 @@ function b4l_create_TeacherLevels_taxonomies() {
         array(
             'labels' => array(
                 'name' => 'Teacher Levels',
-                'add_new_item' => 'Add New TeacherLevel',
-                'new_item_name' => "New TeacherLevel"
+                'add_new_item' => 'Add New Teacher Level',
+                'new_item_name' => "New Teacher Level"
             ),
             'show_ui' => true,
             'show_tagcloud' => false,
@@ -29,8 +29,8 @@ function b4l_create_StudentLevels_taxonomies() {
         array(
             'labels' => array(
                 'name' => 'Student Levels',
-                'add_new_item' => 'Add New StudentLevel',
-                'new_item_name' => "New StudentLevel"
+                'add_new_item' => 'Add New Student Level',
+                'new_item_name' => "New Student Level"
             ),
             'show_ui' => true,
             'show_tagcloud' => false,
