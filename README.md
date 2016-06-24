@@ -3,6 +3,17 @@
 You could have a right problem when you want to import a CSV file (not allowed to import it) on a multisite Wordpress.
 Go to the the multisite "network settings", then to the category "Upload file types", and add "csv".
 
+Note:
+When you import a CSV file, it is possible that you have an error message, but if you have respected the form, the CSV will be imported.
+
+
+1.1.2
+* Documentation + Cleaning of the code + Minor corrections;
+* More information in the JSON Files;
+* A first release can be deployed.
+
+1.1.1
+* Amelioration of the OpenBadges Certification.
 
 1.1.0
 * Get Mozilla OpenBadges Certification available.
@@ -28,7 +39,7 @@ Go to the the multisite "network settings", then to the category "Upload file ty
 
 
 
-When you import a CSV file, it is possible that you have an error message, but if you have respected the form, the CSV will be imported.
+
 
 
 -- TO DO LIST --
