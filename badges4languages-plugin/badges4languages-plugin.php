@@ -14,7 +14,7 @@
  * Plugin Name:       Badges4languages-plugin
  * Plugin URI:        http://www.badges4languages.org
  * Description:       Gives a student or a teacher certification to someone.
- * Version:           1.1.1
+ * Version:           1.1.2
  * Author:            Alexandre Levacher
  * Author URI:        http://www.badges4languages.org
  * License:           GPL-2.0+
@@ -191,7 +191,6 @@ function b4l_create_my_taxonomies() {
  * Submenu page for the admin to give information useful for the certification.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/badges_issuer_information.php';
-require plugin_dir_path( __FILE__ ) . 'includes/changes_saved.php';
 
 
 
@@ -259,15 +258,17 @@ function b4l_include_template_function( $template_path ) {
  ****************** ADD BADGES FIELD INTO USER PROFIL *********************
  *************************************************************************/
 
+// !!!!!!!!!!!!!!!!!! NOT WORKING FOR THE MOMENT !!!!!!!!!!!!!!!!!!
+
 /**
  * Executes b4l_badges_profile_fields while user's profile is visualised/edited.
- */
+
 add_action( 'show_user_profile', 'b4l_badges_profile_fields' );
 add_action( 'edit_user_profile', 'b4l_badges_profile_fields' );
 
 /**
  * Creates a custom field for badges into user's profile.
- */
+
 function b4l_badges_profile_fields( $user ) {
 ?>
   <h3><?php _e("You think you have the level(s) :", "blank"); ?></h3>
@@ -290,7 +291,7 @@ add_action( 'edit_user_profile_update', 'b4l_save_badges_profile_fields' );
 
 /**
  * Saves a custom field for badges into user's profile.
- */
+ 
 function b4l_save_badges_profile_fields( $user_id ) {
   $saved = false;
   if ( current_user_can( 'edit_user', $user_id ) ) {
@@ -299,7 +300,7 @@ function b4l_save_badges_profile_fields( $user_id ) {
   }
   return true;
 }
-
+*/
 
 
 ?>

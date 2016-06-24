@@ -2,7 +2,7 @@
  /*
   * Description:        Create a submenu padge in the administration menu to
   *                     fill a form with the issuer information (company info).
-  * Version:            1.0.0
+  * Version:            1.0.1
   * Author:             Alexandre Levacher
  */
 
@@ -44,7 +44,8 @@ function b4l_badges_issuer_information_html(){
     ?>
     <div class="wrap"><div id="icon-tools" class="icon32"></div>
         <h2>Badges Issuer Information</h2>
-        <p>You have to give the issuer information before sending badges.</p>
+        <p><b>You have to give the issuer information before sending badges !</b></p>
+        <p><b>If you don't do it, the OpenBadges badge will not be valid !</b></p>
         <p>Issuer information is information about your group/firm.</p>
         <br/>
         <form action="<?php get_page_link(); ?>" method="POST">
@@ -132,6 +133,11 @@ function b4l_badges_issuer_information_save_into_db_table(){
                         )
                     );
         }
+        ?>
+        <script>
+            alert("Your changes have been saved and will be effective when you will change your current page !");
+        </script>
+        <?php
     }
 }
 

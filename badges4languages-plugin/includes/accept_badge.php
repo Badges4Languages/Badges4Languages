@@ -1,4 +1,11 @@
 <?php
+ /*
+  * Description:        Generic page to inform the user that he has just earned
+  *                     a badge. Contains a Mozilla OpenBadges link.
+  * Version:            1.0.1
+  * Author:             Alexandre Levacher
+ */
+
 /**
  * Executes b4l_create_accept_badge_page during the initialization phase.
  */
