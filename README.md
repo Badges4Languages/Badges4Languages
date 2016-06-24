@@ -30,6 +30,13 @@ This is a plugin for Wordpress (tested on 4.3)
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
 
+## Utilisation
+
+1. You have to import you CSV data in the Database with the submenu 'CSV File Upload' into 'Badge School' Menu.
+1. You can create a 'Badge School' Post which corresponds to a badge level (A1, A2, B1, T1, T2,....). The Badge School name must be explicit (A1, A2...) !
+1. 
+
+
 ## Notes
 
 * You could have a right problem when you want to import a CSV file (not allowed to import it) on a multisite Wordpress. Go to the the multisite "network settings", then to the category "Upload file types", and add "csv".
@@ -61,7 +68,8 @@ This is a plugin for Wordpress (tested on 4.3)
 * Amelioration of the OpenBadges Certification.
 
 1.1.0
-* Get Mozilla OpenBadges Certification available.
+* Get Mozilla OpenBadges Certification available;
+* Certification Page implemented.
 
 1.0.5
 * Sending an email to receive the certification (email ok, but certification page not implemented yet).
@@ -81,13 +89,8 @@ This is a plugin for Wordpress (tested on 4.3)
 * Creation of the categories : 'Teacher Levels', 'Student Levels', 'Skills' and 'Tags'.
 
 
+## "To Do" List
 
-
-
-
-
-
--- TO DO LIST --
 * Change 'wp' prefix of 'wp_csv_to_db' file to avoid conflict if you install the plugin
 * Implement a page to give issuer information (because now information is in the code).
 
