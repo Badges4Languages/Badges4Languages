@@ -4,10 +4,25 @@
   * 
   * Description:        Template file displaying the badge's information (Description, language, image, title)
   *                     with a translation field and a 'Get a certification by mail' button.
-  * Version:            1.1.2
+  * Version:            1.1.3
   * Author:             Alexandre Levacher
  */
  
+
+/**
+ * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
+ */
+add_action( 'wp_enqueue_scripts', 'prefix_add_my_stylesheet' );
+
+/**
+ * Enqueue plugin style-file
+ */
+function prefix_add_my_stylesheet() {
+    wp_register_style( 'prefix-style', WP_PLUGIN_URL.'/badges4languages-plugin/css/single_badge_template_style.css' );
+    wp_enqueue_style( 'prefix-style' );
+}
+
+
 /*
  * Creates the page to display the page and to be certificated.
  */
@@ -72,6 +87,7 @@ get_header(); ?>
                                         <?php echo $result[language_name]; } ?>
                                     </option>
                                 </select>
+                                <br/>
                                 <!-- Send your translation request -->
                                 <input type="submit" value="Translate" />
                             </form>
@@ -84,23 +100,27 @@ get_header(); ?>
                 </table>
                 
                 <!-- TAXOMONIES/CATEGORIES --> 
-                <?php
-                    if(get_the_term_list( $post->ID, 'badge_studentlevels')){
-                        echo '<strong>Student level: </strong>';
-                        the_terms( $post->ID, 'badge_studentlevels');
-                        $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
-                        $levelName = $studentLevel[0]->name;
-                    } elseif(get_the_term_list( $post->ID, 'badge_teacherlevels')){
-                        echo '<strong>Teacher level: </strong>';
-                        the_terms( $post->ID, 'badge_teacherlevels');
-                        $teacherLevel = get_the_terms($post->ID, 'badge_teacherlevels');
-                        $levelName = $teacherLevel[0]->name;
-                    }
-                ?>
+                <div id="taxonomies">
+                    <?php
+                        if(get_the_term_list( $post->ID, 'badge_studentlevels')){
+                            echo '<strong>Student level: </strong>';
+                            the_terms( $post->ID, 'badge_studentlevels');
+                            $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
+                            $levelName = $studentLevel[0]->name;
+                            echo '<br/>';
+                            echo '<strong>Skill(s): </strong>';
+                            the_terms( $post->ID, 'badge_skills' ,  ' ' );
+                        } elseif(get_the_term_list( $post->ID, 'badge_teacherlevels')){
+                            echo '<strong>Teacher level: </strong>';
+                            the_terms( $post->ID, 'badge_teacherlevels');
+                            $teacherLevel = get_the_terms($post->ID, 'badge_teacherlevels');
+                            $levelName = $teacherLevel[0]->name;
+                        }
+                    ?>
+                </div>
                 <br/>
-                <strong>Skill(s): </strong>
-                <?php the_terms( $post->ID, 'badge_skills' ,  ' ' ); ?>
-                <br />
+                <br/>
+                <hr/>
                
                 <!-- Choose the language certification -->
                 <form action="" method="post">
@@ -119,6 +139,7 @@ get_header(); ?>
                                 <?php echo $result[language_name]; } ?>
                             <option value="<?php echo $result[language_name]; ?>">
                     </select>
+                    <br/>
                     <!-- Send an email to get the certification -->
                     <input type="submit" value="Get the certification" name="get_certification"/>
                     <?php 
@@ -154,7 +175,7 @@ get_header(); ?>
                     $issuer_url = $results[0]['issuer_url'];
                     
                     //By default the table is empty : it checks if the table is empty to insert a line
-                    //or it is not empty to update a line.
+                    //or it is not empty to update a line for the numberOfPeople
                     if($wpdb->get_row($wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."b4l_number_certifications WHERE ID = 1", "" ))) {
                         $wpdb->update( $wpdb->prefix . 'b4l_number_certifications',array($levelName => $numberOfPeople),array('id' => '1'));
                     } else {
@@ -177,7 +198,6 @@ get_header(); ?>
                     //Use the Wordpress featured image as badge image
                     $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
                     $badge_image = $image[0];
-                    $badge_pagelink = esc_url(get_permalink(get_page_by_title($badge_name)));
                     $badge_lang = $_POST['language_certification'];
                     
                     //Check if it is a Student badge or a Teacher badge and recuperate the value.
@@ -190,7 +210,7 @@ get_header(); ?>
                     }
 
                     //Create the JSON File and send the cerfication by email.
-                    $file_json = b4l_create_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople);
+                    $file_json = b4l_create_self_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople);
                     b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $badge_lvl, $file_json, $issuer_logo, $issuer_email);
                 }
                 
@@ -258,7 +278,7 @@ function b4l_single_badge_translation($translation_language){
  * Creates the Badge Assertion for the user. Contains information about the badge (BadgeClass)
  * and the issuer of the badge (IssuerBadge).
 */ 
-function b4l_create_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople){
+function b4l_create_self_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople){
 
     //adding a salt to our hashed email
     $salt=uniqid(mt_rand(), true);
@@ -277,16 +297,6 @@ function b4l_create_assertion_badge_json($email_stud, $badge_image, $badge_lang,
 
     //adding the folder json and encoded file name and addind the extenson of json
     $path_json=$dir_path.'json/'.$file_json.'.json';
-
-    //recuperate the tags's name
-    $tags = get_the_terms($post->ID, 'badge_tags');
-    $tagsNumber = count($tags);
-    $tagsName = '[';
-    for($i=0; $i<$tagsNumber; $i++) {
-    $tagsName = $tagsName.'"'.$tags[$i]->name.'", ';
-    }
-    $tagsName = substr($tagsName, 0, -2); //Delete ", " at the end of the string
-    $tagsName = $tagsName.']';
     
     //handle for opening or creating the file and writing to it (w)
     $handle=fopen($path_json, 'w') or die ('Can not open file: '.$file_json);
@@ -304,7 +314,6 @@ function b4l_create_assertion_badge_json($email_stud, $badge_image, $badge_lang,
                     'name'=>$badge_name.' - '.$badge_lang.' (Self certification)',
                     'description'=>$badge_desc,
                     'image'=>$badge_image,
-                    'tags'=> $tagsName,
                     'criteria'=>'http://about.badges4languages.org/',
                     'issuer'=>array(
                             'type'=>'Issuer',

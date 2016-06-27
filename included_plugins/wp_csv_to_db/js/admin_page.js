@@ -25,7 +25,7 @@ jQuery(document).ready(function($) {
 		
 		// Setup ajax variable
 		var data = {
-			action: 'wp_csv_to_db_get_csv_cols',
+			action: 'b4l_wp_csv_to_db_get_csv_cols',
 			file_upload_url: file_upload_url
 		};
 		
@@ -85,7 +85,7 @@ jQuery(document).ready(function($) {
 	$('#table_select').change(function() {  // Get column count and load table
 		
 		// Begin ajax loading image
-		$('#table_preview').html('<img src="'+wp_csv_to_db_pass_js_vars.ajax_image+'" />');
+		$('#table_preview').html('<img src="'+b4l_wp_csv_to_db_pass_js_vars.ajax_image+'" />');
 		
 		// Clear 'disable auto_inc' checkbox
 		$('#remove_autoinc_column').prop('checked', false);
@@ -95,13 +95,13 @@ jQuery(document).ready(function($) {
 		
 		// Setup ajax variable
 		var data = {
-			action: 'wp_csv_to_db_get_columns',
+			action: 'b4l_wp_csv_to_db_get_columns',
 			sel_val: sel_val
 			//disable_autoinc: disable_autoinc
 		};
 		
 		// Run ajax request
-		$.post(wp_csv_to_db_pass_js_vars.ajaxurl, data, function(response) {
+		$.post(b4l_wp_csv_to_db_pass_js_vars.ajaxurl, data, function(response) {
 			
 			// Populate Table Preview HTML from response
 			$('#table_preview').html(response.content);
@@ -137,7 +137,7 @@ jQuery(document).ready(function($) {
 	$('#repop_table_ajax, #remove_autoinc_column').click(function() {  // Reload Table
 	
 		// Begin ajax loading image
-		$('#table_preview').html('<img src="'+wp_csv_to_db_pass_js_vars.ajax_image+'" />');
+		$('#table_preview').html('<img src="'+b4l_wp_csv_to_db_pass_js_vars.ajax_image+'" />');
 	
 		// Get value of disable auto-increment column checkbox
 		if($('#remove_autoinc_column').is(':checked')){
@@ -150,13 +150,13 @@ jQuery(document).ready(function($) {
 		
 		// Setup ajax variable
 		var data = {
-			action: 'wp_csv_to_db_get_columns',
+			action: 'b4l_wp_csv_to_db_get_columns',
 			sel_val: sel_val,
 			disable_autoinc: disable_autoinc
 		};
 		
 		// Run ajax request
-		$.post(wp_csv_to_db_pass_js_vars.ajaxurl, data, function(response) {
+		$.post(b4l_wp_csv_to_db_pass_js_vars.ajaxurl, data, function(response) {
 			
 			// Populate Table Preview HTML from response
 			$('#table_preview').html(response.content);
@@ -200,7 +200,7 @@ jQuery(document).ready(function($) {
 			'Delete Table': function() {
 				$('#delete_db_button_hidden').val('true');
 				$(this).dialog('close');
-				$('#wp_csv_to_db_form').submit();
+				$('#b4l_wp_csv_to_db_form').submit();
 			},
 			'Cancel': function() {
 				$(this).dialog("close");

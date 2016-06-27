@@ -148,12 +148,15 @@ function b4l_create_db_table_b4l_skills() {
     $charset_collate = $wpdb->get_charset_collate();
 
     $sql = "CREATE TABLE $table_name (
-        language varchar(70) NOT NULL,
-        Listening text NOT NULL,
-        Reading text NOT NULL,
-        Speaking text NOT NULL,
-        Writing text NOT NULL,
-        PRIMARY KEY  (language)
+        id varchar(70) NOT NULL,
+        language varchar(3) NOT NULL,
+        level varchar(5) NOT NULL,
+        listening text NOT NULL,
+        reading text NOT NULL,
+        spoken_interaction text NOT NULL,
+        spoken_production text NOT NULL,
+        writing text NOT NULL,
+        PRIMARY KEY  (id)
 ) $charset_collate;";
 
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );

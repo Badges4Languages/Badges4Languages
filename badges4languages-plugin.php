@@ -210,6 +210,17 @@ require plugin_dir_path( __FILE__ ) . 'included_plugins/wp_csv_to_db/wp_csv_to_d
 
 
 
+
+/**************************************************************************
+ *************** SEND BADGES TO STUDENTS CUSTOM SUBMENU *******************
+ *************************************************************************/
+
+require plugin_dir_path( __FILE__ ) . 'includes/send_badges_students.php';
+
+
+
+
+
 /**************************************************************************
  ***** 'ACCEPT BADGE' PAGE AFTER RECEIVING THE CERTIFICATION BY MAIL ******
  *************************************************************************/
