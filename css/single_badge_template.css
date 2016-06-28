@@ -1,0 +1,34 @@
+ /*
+  * CSS File for the template single-badge.php
+  *
+  * Version:            1.0.1
+  * Author:             Alexandre Levacher
+ */
+
+div#primary { 
+    margin: 2% 10% 2% 10%; 
+}
+
+h2:first-of-type {
+    text-align: center;
+    color: black;
+    font-size: x-large;
+}
+
+h3:first-of-type {
+    text-align: left;
+    color: black;
+    font-size: large;
+}
+
+div#taxonomies { 
+    text-align: left;
+}
+
+div a { 
+    color: black;
+}
+
+div#send_certification_form { 
+    text-align: left;
+}

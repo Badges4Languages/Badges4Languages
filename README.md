@@ -59,6 +59,9 @@ This is a plugin for Wordpress (tested on 4.3)
 
 ## Changelog
 
+1.2.0
+* Administrator can send an email to students from admin panel. There is no gestion of user roles for the moment.
+
 1.1.2
 * Documentation + Cleaning of the code + Minor corrections;
 * More information in the JSON Files;
