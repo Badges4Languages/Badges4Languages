@@ -14,7 +14,7 @@
  * Plugin Name:       Badges4languages-plugin
  * Plugin URI:        http://www.badges4languages.org
  * Description:       Gives a student or a teacher certification to someone.
- * Version:           1.2.0
+ * Version:           1.2.1
  * Author:            Alexandre Levacher
  * Author URI:        http://www.badges4languages.org
  * License:           GPL-2.0+
@@ -109,7 +109,7 @@ function b4l_create_db_tables() {
 add_action('init', 'b4l_create_badges_register');
 
 /**
- * Creates the Custom Post
+ * Creates the Custom Post 'badge'
  */
 function b4l_create_badges_register(){
  
@@ -168,8 +168,7 @@ function b4l_create_badges_register(){
 add_action( 'init', 'b4l_create_my_taxonomies', 0 );
 
 /**
- * Creates the Custom Taxonomies (categories) for the 
- * Custom Post 'badge'.
+ * Creates the Custom Taxonomies (categories) for the Custom Post 'badge'.
  */
 function b4l_create_my_taxonomies() {
     require_once plugin_dir_path( __FILE__ ) . 'includes/taxonomies.php';
@@ -184,37 +183,27 @@ function b4l_create_my_taxonomies() {
 
 
 /**************************************************************************
- ************** BADGES ISSUER INFORMATION CUSTOM SUBMENU ******************
+ *************** CUSTOM SUBMENUS - ADMINISTRATION PANEL *******************
  *************************************************************************/
 
 /**
+ * BADGES ISSUER INFORMATION CUSTOM SUBMENU
  * Submenu page for the admin to give information useful for the certification.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/badges_issuer_information.php';
 
-
-
-
-
-/**************************************************************************
- ******************* CSV FILE UPLOAD CUSTOM SUBMENU ***********************
- *************************************************************************/
-
 /**
+ * CSV FILE UPLOAD CUSTOM SUBMENU
  * This plugin is used to create the submenu 'CSV File Upload' for the
  * Custom Post 'badge'.
  */
 require plugin_dir_path( __FILE__ ) . 'included_plugins/wp_csv_to_db/wp_csv_to_db.php';
 
-
-
-
-
-
-/**************************************************************************
- *************** SEND BADGES TO STUDENTS CUSTOM SUBMENU *******************
- *************************************************************************/
-
+/**
+ * SEND BADGES TO STUDENTS CUSTOM SUBMENU
+ * A teacher can send certifications by mails to a (group of) student(s) by the
+ * administration panel.
+ */
 require plugin_dir_path( __FILE__ ) . 'includes/send_badges_students.php';
 
 
@@ -226,7 +215,9 @@ require plugin_dir_path( __FILE__ ) . 'includes/send_badges_students.php';
  *************************************************************************/
 
 /**
- * Create a page after receiving a certification by mail.
+ * Create a page after receiving a certification by mail. This page is generic,
+ * that is to say it will be always loaded, only the certification information
+ * will change.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/accept_badge.php';
 
@@ -244,7 +235,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/accept_badge.php';
 add_filter( 'template_include', 'b4l_include_template_function', 1 );
 
 /**
- * HTML/PHP Code called to display some information.
+ * Adding the template for 'Single Badge' page to the list of templates.
  */
 function b4l_include_template_function( $template_path ) {
     if ( get_post_type() == 'badge' ) {

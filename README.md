@@ -39,7 +39,7 @@ This is a plugin for Wordpress (tested on 4.3)
 
 ## Notes
 
-* You could have a right problem when you want to import a CSV file (not allowed to import it) on a multisite Wordpress. Go to the the multisite "network settings", then to the category "Upload file types", and add "csv".
+* You could have a permission problem when you want to import a CSV file (not allowed to import it) on a multisite Wordpress. Go to the multisite "network settings", then to the category "Upload file types", and add "csv" to the list.
 
 * When you import a CSV file, it is possible that you have an error message, but if you have respected the form, the CSV will be imported.
 
@@ -58,6 +58,9 @@ This is a plugin for Wordpress (tested on 4.3)
 
 
 ## Changelog
+
+1.2.1
+* Correction of bugs : Teachers can receive self-certification badges; issuer's site/image must begin by 'http(s)'.
 
 1.2.0
 * Administrator can send an email to students from admin panel. There is no gestion of user roles for the moment.

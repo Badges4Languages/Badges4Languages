@@ -2,7 +2,7 @@
  /*
   * Description:        Create a json file and send a email to get a certification.
   * 
-  * Version:            1.0.0
+  * Version:            1.0.1
   * Author:             Alexandre Levacher
  */
 
@@ -43,7 +43,7 @@ function b4l_single_badge_translation($translation_language){
  * Contains information about the badge (BadgeClass) and the issuer of the 
  * badge (IssuerBadge).
 */ 
-function b4l_create_self_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople){
+function b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $numberOfPeopleOrTeacherUserName){
     
     //adding a salt to our hashed email
     $salt=uniqid(mt_rand(), true);
@@ -63,6 +63,13 @@ function b4l_create_self_certification_assertion_badge_json($email_stud, $badge_
     //adding the folder json and encoded file name and addind the extenson of json
     $path_json=$dir_path.'json/'.$file_json.'.json';
     
+    //Checks if it is a number (self certification) or if a teacher gave the badge
+    if(is_int($numberOfPeopleOrTeacherUserName)) {
+        $uid_number = $numberOfPeopleOrTeacherUserName;
+        $badge_name_info = '(Self certification)';
+    } else {
+        $badge_name_info = '(Teacher : '.$numberOfPeopleOrTeacherUserName.')';
+    }
     //handle for opening or creating the file and writing to it (w)
     $handle=fopen($path_json, 'w') or die ('Can not open file: '.$file_json);
     if($handle){
@@ -72,11 +79,11 @@ function b4l_create_self_certification_assertion_badge_json($email_stud, $badge_
             'salt'=>$salt,
             '@context'=>'https://w3id.org/openbadges/v1',
             'type'=>'Assertion',
-            'uid'=>'b4l'.'_'.$badge_lvl.'_'.$badge_lang.'_'.$numberOfPeople, //UID must be unique, so it's thanks to $numberOfPeople
+            'uid'=>'b4l'.'_'.$badge_lvl.'_'.$badge_lang.'_'.$uid_number, //UID must be unique, so it's thanks to $numberOfPeople
             'badge'=>array(
                     '@context'=>'https://w3id.org/openbadges/v1',
                     'type'=>'BadgeClass',
-                    'name'=>$badge_name.' - '.$badge_lang.' (Self certification)',
+                    'name'=>$badge_name.' - '.$badge_lang.' '.$badge_name_info,
                     'description'=>$badge_desc,
                     'image'=>$badge_image,
                     'criteria'=>'http://about.badges4languages.org/',
@@ -101,68 +108,6 @@ function b4l_create_self_certification_assertion_badge_json($email_stud, $badge_
 
 
 /**
- * Creates the Badge Assertion given by a teacher for the user. 
- * Contains information about the badge (BadgeClass) and the issuer of the 
- * badge (IssuerBadge).
-*/ 
-function b4l_create_assertion_badge_given_by_teacher_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email){
-
-    //adding a salt to our hashed email
-    $salt=uniqid(mt_rand(), true);
-
-    //using sha256 hash metod (open badges api defined)
-    $hash='sha256$' . hash('sha256', $email_stud. $salt);
-
-    //setting the current date
-    $date=date('Y-m-d');
-
-    //name of the json file
-    $file_json=str_rot13(preg_replace("/ /", "_", $email_stud)).'_'.$badge_lvl.'_'.$badge_lang;
-
-    //getting the dir path of the plugin to use
-    $dir_path=plugin_dir_path( __FILE__ ).'../';
-
-    //adding the folder json and encoded file name and addind the extenson of json
-    $path_json=$dir_path.'json/'.$file_json.'.json';
-    
-    //handle for opening or creating the file and writing to it (w)
-    $handle=fopen($path_json, 'w') or die ('Can not open file: '.$file_json);
-    if($handle){
-        //Creating of the Badge Assertion (Mozilla Open Badges API)
-        $data=array(
-            'recipient'=> $hash,
-            'salt'=>$salt,
-            '@context'=>'https://w3id.org/openbadges/v1',
-            'type'=>'Assertion',
-            'uid'=>'b4l'.'_'.$badge_lvl.'_'.$badge_lang.'_'.uniqid('', true), //UID must be unique
-            'badge'=>array(
-                    '@context'=>'https://w3id.org/openbadges/v1',
-                    'type'=>'BadgeClass',
-                    'name'=>$badge_name.' - '.$badge_lang,
-                    'description'=>$badge_desc,
-                    'image'=>$badge_image,
-                    'criteria'=>'http://about.badges4languages.org/',
-                    'issuer'=>array(
-                            'type'=>'Issuer',
-                            'name'=>$issuer_name.' (Teacher : XXX)',
-                            'origin'=>$issuer_url,
-                            'email'=>$issuer_email,
-                    )
-            ),
-            'verify'=>array(
-                    'type'=>'hosted',
-                    'url'=>WP_PLUGIN_URL.'/badges4languages-plugin/json/'.$file_json.'.json',
-            ),
-            'issued_on'=>$date
-        );
-    }
-    fwrite($handle, json_encode($data));
-    fclose($handle);
-    return $file_json;
-}
-
-
-/**
 * Sends an email to the user to get the certification.
 */ 
 function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $file_json, $issuer_logo, $issuer_email){
@@ -179,19 +124,20 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
                     <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
             </head>
             <body>
-            <div id="b4l-award-actions-wrap">
-            <div align="center">
-            <img src="' . $issuer_logo . '" width="180" alt="Company Logo"> 
-                    <h1>Congratulations you have just earned a badge!</h1>
-                            <h2>'.$badge_name.' - '.$badge_lang.'</h2>
-                            <a href="'.$pagelink.'?id='.$badge_id.'&filename='.$url.'">
-                                <img src="'.$badge_image.'" width="150" height="150">
-                            </a>
-                            </br>
-                            <p>Description: '.$badge_desc.'</p>
-                    <h2 class="acceptclick">Click on the badge to add it to your Mozilla Backpack!</h2>
-                    <div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+                <div id="b4l-award-actions-wrap">
+                    <div align="center">
+                    <img src="' . $issuer_logo . '" width="180" alt="Company Logo"> 
+                        <h1>Congratulations you have just earned a badge!</h1>
+                        <h2>'.$badge_name.' - '.$badge_lang.'</h2>
+                        <a href="'.$pagelink.'?id='.$badge_id.'&filename='.$url.'">
+                            <img src="'.$badge_image.'" width="150" height="150">
+                        </a>
+                        </br>
+                        <p>Description: '.$badge_desc.'</p>
+                        <a href="'.$pagelink.'?id='.$badge_id.'&filename='.$url.'" style="background-color:#fe010d;border:1px solid #000000;border-radius:3px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:16px;line-height:44px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;">Get the certification</a>
+                        <div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
                     </div>
+                </div>
             </body>
     </html>
     ';
@@ -200,7 +146,7 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
     // Always set content-type when sending HTML email
     $headers = "From: Badges4languages "."<".$issuer_email.">"."\n";
     $headers .= "MIME-Version: 1.0"."\n";
-    $headers .= "Content-type: text/html; charset=ISO-8859-1"."\n";
+    $headers .= "Content-type: text/html; charset=utf-8"."\n";
     $headers .= "Reply-To: ".$issuer_email.""."\n";
 
     mail($email_stud, $subject, $message, $headers); //the call of the mail function with parameters

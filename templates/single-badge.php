@@ -15,7 +15,7 @@
 add_action( 'wp_enqueue_scripts', 'prefix_add_my_stylesheet' );
 
 /**
- * Enqueue plugin style-file
+ * Enqueue plugin style-file (CSS)
  */
 function prefix_add_my_stylesheet() {
     wp_register_style( 'prefix-style', WP_PLUGIN_URL.'/badges4languages-plugin/css/single_badge_template.css' );
@@ -58,8 +58,11 @@ get_header(); ?>
                 
                 <!-- Display a translation -->
                 <h3>Choose a translation</h3>
+                
+                
                  <table>
                     <tr>
+                        
                         <td width="30%">
                             <form action="">
                                 <!-- Select the language translation into a menu -->
@@ -94,14 +97,17 @@ get_header(); ?>
                                 <input type="submit" value="Translate" />
                             </form>
                         </td>
+                        
                         <td>
                             <!-- Place where the translation will be displayed 
                             <!-- Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/create_json_and_send_email.php' directory.-->
                             <?php require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/create_json_and_send_email.php'; ?>
                             <div class="entry-content"><?php echo b4l_single_badge_translation($_GET['description_translation']); ?></div>
                         </td>
+                        
                     </tr>
                 </table>
+                
                 
                 <!-- TAXOMONIES/CATEGORIES --> 
                 <div id="taxonomies">
@@ -122,19 +128,17 @@ get_header(); ?>
                         }
                     ?>
                 </div>
-                <br/>
-                <br/>
-                <hr/>
+                <br/><br/><hr/>
                
                 <!-- Choose the language certification -->
                 <div id="send_certification_form">
                     <form action="" method="post">
-                        <h3>Choose the language that you want a certification :</h3>
+                        <h4>Choose the language that you want a certification :</h4>
                         <select style="width: 100px" id="language_certification" name="language_certification">
                             <?php
                                 //Display all the languages possible stored in the ($wpdb->prefix)b4l_languages table. 
                                 global $wpdb;
-                                if(get_the_terms( $post->ID, 'badge_studentlevels' )){
+                                if(get_the_terms( $post->ID, 'badge_studentlevels' ) || get_the_terms( $post->ID, 'badge_teacherlevels' )){
                                     $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages";
                                 } 
                                 $results2 = $wpdb->get_results($query, ARRAY_A);
@@ -145,6 +149,7 @@ get_header(); ?>
                                 <option value="<?php echo $result[language_name]; ?>">
                         </select>
                         <br/>
+                        
                         <!-- Send an email to get the certification -->
                         <input type="submit" value="Get the certification" name="get_certification"/>
                         <?php 
@@ -218,7 +223,7 @@ get_header(); ?>
 
                     //Create the JSON File and send the cerfication by email.
                     //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/create_json_and_send_email.php' directory.
-                    $file_json = b4l_create_self_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople);
+                    $file_json = b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople);
                     b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $file_json, $issuer_logo, $issuer_email);
                 }
                 

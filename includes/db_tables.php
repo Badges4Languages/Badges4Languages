@@ -148,7 +148,7 @@ function b4l_create_db_table_b4l_skills() {
     $charset_collate = $wpdb->get_charset_collate();
 
     $sql = "CREATE TABLE $table_name (
-        id varchar(70) NOT NULL,
+        id varchar(10) NOT NULL,
         language varchar(3) NOT NULL,
         level varchar(5) NOT NULL,
         listening text NOT NULL,

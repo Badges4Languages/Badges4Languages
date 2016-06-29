@@ -318,6 +318,7 @@ class b4l_wp_csv_to_db {
             <h2><?php _e('WordPress CSV to Database Options','b4l_wp_csv_to_db'); ?></h2>
             
             <p>This plugin allows you to insert CSV file data into your WordPress database table. You can also export the content of a database using this plugin.</p>            
+            <p>Please read the documentation before using this tool.</p> 
             
             <div id="tabs">
                 
@@ -411,6 +412,7 @@ class b4l_wp_csv_to_db {
                             <td>
                                 <?php $repop_file = isset($_POST['csv_file']) ? $_POST['csv_file'] : null; ?>
                                 <?php $repop_csv_cols = isset($_POST['num_cols_csv_file']) ? $_POST['num_cols_csv_file'] : '0'; ?>
+                                <br><?php _e('If you have a permission problem when you import a CSV file (not allowed to import it) on a multisite Wordpress, go to the multisite "network settings", then to the category "Upload file types" and add "csv" to the list.','b4l_wp_csv_to_db'); ?>
                                 <input id="csv_file" name="csv_file"  type="text" size="70" value="<?php echo $repop_file; ?>" />
                                 <input id="csv_file_button" type="button" value="Upload" />
                                 <input id="num_cols" name="num_cols" type="hidden" value="" />

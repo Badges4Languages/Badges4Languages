@@ -44,11 +44,11 @@ function b4l_create_accept_badge_page(){
 add_filter('the_content','b4l_accept_badge_page_content');
 
 /**
- * This function adds content to 'Accept Badge' page.
+ * This function adds content to 'Accept Badge' page (HTML and jQuery).
  */
 function b4l_accept_badge_page_content($content){
     //Verification of the existence of the page
-    if ( is_page( 'accept-badge' )){
+    if ( is_page( 'accept-badge' ) ){
 
         //Getting the filename and the id from the url
         if(isset( $_GET['filename']) && ($_GET['id']) ){

@@ -55,7 +55,7 @@ function b4l_badges_issuer_information_html(){
             <br/>
             <h3>Issuer Logo Link</h3>
             <input id="issuer_logo" name="issuer_logo"  type="text" size="70" value="<?php b4l_badges_issuer_information_select_from_db_table("issuer_logo") ?>" />
-            <p>Logo link must begin by "http(s)" or "www".</p>
+            <p>Logo link must begin by "http(s)" (and not "www").</p>
             <br/>
             <h3>Issuer Email</h3>
             <input id="issuer_email" name="issuer_email"  type="text" size="70" value="<?php b4l_badges_issuer_information_select_from_db_table("issuer_email") ?>" />
@@ -63,7 +63,7 @@ function b4l_badges_issuer_information_html(){
             <br/>
             <h3>Issuer URL</h3>
             <input id="issuer_url" name="issuer_url"  type="text" size="70" value="<?php b4l_badges_issuer_information_select_from_db_table("issuer_url") ?>"  />
-            <p>URL must begin by "http(s)" or "www".</p>
+            <p>URL must begin by "http(s)" (and not "www").</p>
             <br/>
             <input id="issuer_email_button" name="issuer_email_button" type="submit" class="button-primary" value="Upload" />
         </form>
