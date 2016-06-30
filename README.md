@@ -59,7 +59,7 @@ This is a plugin for Wordpress (tested on 4.3)
 
 ## Changelog
 
-1.2.15
+1.2.2
 * Submenu 'Send badges to students' is accessible for super-admin, admin, editor and author.
 
 1.2.1
