@@ -59,6 +59,9 @@ This is a plugin for Wordpress (tested on 4.3)
 
 ## Changelog
 
+1.2.15
+* Submenu 'Send badges to students' is accessible for super-admin, admin, editor and author.
+
 1.2.1
 * Correction of bugs : Teachers can receive self-certification badges; issuer's site/image must begin by 'http(s)'.
 

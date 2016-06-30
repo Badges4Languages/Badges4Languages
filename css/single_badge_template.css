@@ -21,6 +21,12 @@ h3:first-of-type {
     font-size: large;
 }
 
+h4:first-of-type {
+    text-align: left;
+    color: black;
+    font-size: large;
+}
+
 div#taxonomies { 
     text-align: left;
 }

@@ -14,7 +14,7 @@
  * Plugin Name:       Badges4languages-plugin
  * Plugin URI:        http://www.badges4languages.org
  * Description:       Gives a student or a teacher certification to someone.
- * Version:           1.2.1
+ * Version:           1.2.15
  * Author:            Alexandre Levacher
  * Author URI:        http://www.badges4languages.org
  * License:           GPL-2.0+
@@ -91,7 +91,7 @@ add_action('init', 'b4l_create_db_tables', 0);
  * Creates the Database Tables for the Custom Post 'badge'.
  */
 function b4l_create_db_tables() {
-    require_once plugin_dir_path( __FILE__ ) . 'includes/db_tables.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/initialisation/db_tables.php';
     b4l_create_db_table_b4l_languages();
     b4l_create_db_table_b4l_students();
     b4l_create_db_table_b4l_teachers();
@@ -100,6 +100,7 @@ function b4l_create_db_tables() {
     b4l_create_db_table_b4l_skills();
     b4l_create_db_table_b4l_number_certifications();
     b4l_create_db_table_b4l_issuer_information();
+    b4l_create_db_table_b4l_userBadgesProfil();
 }
 
 /**
@@ -171,11 +172,11 @@ add_action( 'init', 'b4l_create_my_taxonomies', 0 );
  * Creates the Custom Taxonomies (categories) for the Custom Post 'badge'.
  */
 function b4l_create_my_taxonomies() {
-    require_once plugin_dir_path( __FILE__ ) . 'includes/taxonomies.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/initialisation/taxonomies.php';
     b4l_create_TeacherLevels_taxonomies();
     b4l_create_StudentLevels_taxonomies();
     b4l_create_Skills_taxonomies();
-    b4l_create_Tags_taxonomies();
+    b4l_create_Badges_Categories_taxonomies();
 }
 
 
@@ -190,7 +191,7 @@ function b4l_create_my_taxonomies() {
  * BADGES ISSUER INFORMATION CUSTOM SUBMENU
  * Submenu page for the admin to give information useful for the certification.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/badges_issuer_information.php';
+require plugin_dir_path( __FILE__ ) . 'includes/submenu_pages/badges_issuer_information.php';
 
 /**
  * CSV FILE UPLOAD CUSTOM SUBMENU
@@ -204,7 +205,7 @@ require plugin_dir_path( __FILE__ ) . 'included_plugins/wp_csv_to_db/wp_csv_to_d
  * A teacher can send certifications by mails to a (group of) student(s) by the
  * administration panel.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/send_badges_students.php';
+require plugin_dir_path( __FILE__ ) . 'includes/submenu_pages/send_badges_students.php';
 
 
 
@@ -219,7 +220,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/send_badges_students.php';
  * that is to say it will be always loaded, only the certification information
  * will change.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/accept_badge.php';
+require plugin_dir_path( __FILE__ ) . 'includes/site_pages/accept_badge.php';
 
 
 
@@ -260,49 +261,13 @@ function b4l_include_template_function( $template_path ) {
  ****************** ADD BADGES FIELD INTO USER PROFIL *********************
  *************************************************************************/
 
-// !!!!!!!!!!!!!!!!!! NOT WORKING FOR THE MOMENT !!!!!!!!!!!!!!!!!!
-
 /**
- * Executes b4l_badges_profile_fields while user's profile is visualised/edited.
+ * SEND BADGES TO STUDENTS CUSTOM SUBMENU
+ * A teacher can send certifications by mails to a (group of) student(s) by the
+ * administration panel.
+ */
+require plugin_dir_path( __FILE__ ) . 'includes/site_pages/badges_user_profil.php';
 
-add_action( 'show_user_profile', 'b4l_badges_profile_fields' );
-add_action( 'edit_user_profile', 'b4l_badges_profile_fields' );
-
-/**
- * Creates a custom field for badges into user's profile.
-
-function b4l_badges_profile_fields( $user ) {
-?>
-  <h3><?php _e("You think you have the level(s) :", "blank"); ?></h3>
-  <table class="form-table">
-    <tr>
-      <th><label for="badge"><?php _e("BADGE"); ?></label></th>
-      <td>
-        <!-- BADGE -->
-        <input type="text" name="badge" id="phone" class="regular-text" 
-            value="<?php echo esc_attr( get_the_author_meta( 'badge', $user->ID ) ); ?>" /><br />
-        <span class="description"><?php _e("Please enter ........."); ?></span>
-    </td>
-    </tr>
-  </table>
-<?php
-}
-
-add_action( 'personal_options_update', 'b4l_save_badges_profile_fields' );
-add_action( 'edit_user_profile_update', 'b4l_save_badges_profile_fields' );
-
-/**
- * Saves a custom field for badges into user's profile.
- 
-function b4l_save_badges_profile_fields( $user_id ) {
-  $saved = false;
-  if ( current_user_can( 'edit_user', $user_id ) ) {
-    update_user_meta( $user_id, 'badge', $_POST['badge'] );
-    $saved = true;
-  }
-  return true;
-}
-*/
 
 
 ?>

@@ -57,8 +57,7 @@ get_header(); ?>
                 <hr/>
                 
                 <!-- Display a translation -->
-                <h3>Choose a translation</h3>
-                
+                <h4>Choose a translation</h4>
                 
                  <table>
                     <tr>
@@ -94,14 +93,14 @@ get_header(); ?>
                                 </select>
                                 <br/>
                                 <!-- Send your translation request -->
-                                <input type="submit" value="Translate" />
+                                <input type="submit" value="Translate" class="button-small" />
                             </form>
                         </td>
                         
                         <td>
                             <!-- Place where the translation will be displayed 
-                            <!-- Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/create_json_and_send_email.php' directory.-->
-                            <?php require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/create_json_and_send_email.php'; ?>
+                            <!-- Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.-->
+                            <?php require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php'; ?>
                             <div class="entry-content"><?php echo b4l_single_badge_translation($_GET['description_translation']); ?></div>
                         </td>
                         
@@ -133,7 +132,8 @@ get_header(); ?>
                 <!-- Choose the language certification -->
                 <div id="send_certification_form">
                     <form action="" method="post">
-                        <h4>Choose the language that you want a certification :</h4>
+                        <h3>Choose the language that you want a certification</h3>
+                        <p>You can write the name into the scrollbar menu or look for it</p>
                         <select style="width: 100px" id="language_certification" name="language_certification">
                             <?php
                                 //Display all the languages possible stored in the ($wpdb->prefix)b4l_languages table. 
@@ -151,7 +151,7 @@ get_header(); ?>
                         <br/>
                         
                         <!-- Send an email to get the certification -->
-                        <input type="submit" value="Get the certification" name="get_certification"/>
+                        <input type="submit" value="Get the certification" name="get_certification" class="button button-primary"/>
                         <?php 
                             //Displays number of certifications delivers
                             //This number is used to create unique ID for badges !!!
@@ -197,7 +197,7 @@ get_header(); ?>
                     $badge_name = get_the_title(); //Page title must be the name you want to give to the badge.
                     
                     //If the certification language has a translation, we use that one. If it hasn't, we use the default one (in English).
-                    //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/create_json_and_send_email.php' directory.
+                    //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
                     for($i=0;$i<count($results1);$i++) {
                         if($_POST['language_certification']==$results1[$i][language_name]){
                             $badge_desc = b4l_single_badge_translation($_POST['language_certification']);
@@ -222,7 +222,7 @@ get_header(); ?>
                     }
 
                     //Create the JSON File and send the cerfication by email.
-                    //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/create_json_and_send_email.php' directory.
+                    //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
                     $file_json = b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople);
                     b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $file_json, $issuer_logo, $issuer_email);
                 }
