@@ -34,7 +34,6 @@ This is a plugin for Wordpress (tested on 4.3)
 
 1. You have to import you CSV data in the Database with the submenu 'CSV File Upload' into 'Badge School' Menu.
 1. You can create a 'Badge School' Post which corresponds to a badge level (A1, A2, B1, T1, T2,....). The Badge School name must be explicit (A1, A2...) !
-1. 
 
 
 ## Notes
