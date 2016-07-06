@@ -58,43 +58,36 @@ This is a plugin for Wordpress (tested on 4.3)
 
 ## Changelog
 
-1.2.2
+1.0.0
+* CHANGELOG : CORRECTION OF THE VERSIONING
+
+0.2.2
 * Submenu 'Send badges to students' is accessible for super-admin, admin, editor and author.
+* Teachers can receive self-certification badges
+* Issuer's site/image must begin by 'http(s)'.
 
-1.2.1
-* Correction of bugs : Teachers can receive self-certification badges; issuer's site/image must begin by 'http(s)'.
-
-1.2.0
+0.2.0
 * Administrator can send an email to students from admin panel. There is no gestion of user roles for the moment.
-
-1.1.2
-* Documentation + Cleaning of the code + Minor corrections;
 * More information in the JSON Files;
-* A first release can be deployed.
-
-1.1.1
 * Amelioration of the OpenBadges Certification.
 
-1.1.0
+0.1.0
 * Get Mozilla OpenBadges Certification available;
 * Certification Page implemented.
 
-1.0.5
+0.0.5
 * Sending an email to receive the certification (email ok, but certification page not implemented yet).
-
-1.0.2
 * Custom Post with his information can be displayed on the user's ordPress website;
 * 1 Custom Post per page;
 * Translation possible to other language.
 
-1.0.1
-* Creation of the submenu 'CSV File Upload' which allowed a user to import a .csv file into a database table and to export a db table into a .csv file;
-* Documentation and simplification of the code.
-
-1.0.0
+0.0.1
 * Initial version;
 * Creation of the Custom Type 'Badge School';
 * Creation of the categories : 'Teacher Levels', 'Student Levels', 'Skills' and 'Tags'.
+* Creation of the submenu 'CSV File Upload' which allowed a user to import a .csv file into a database table and to export a db table into a .csv file;
+
+
 
 
 ## "To Do" List
