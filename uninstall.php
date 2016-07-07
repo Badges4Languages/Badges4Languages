@@ -32,3 +32,7 @@ $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_skills" );
 $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_number_certifications" );
 $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_issuer_information" );
 $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_userBadgesProfil" );
+
+//Drop all the custom roles and custom capabilities
+require plugin_dir_path( __FILE__ ) . 'includes/initialisation/users_roles_and_capabilities.php';
+b4l_create_roles_and_capabilities();

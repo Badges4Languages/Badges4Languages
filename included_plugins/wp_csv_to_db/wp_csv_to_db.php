@@ -41,7 +41,7 @@ class b4l_wp_csv_to_db {
                     'edit.php?post_type=badge',
                     __('Initialization - Import Data into Database','b4l_wp_csv_to_db'),
                     __('Initialization - Import Data into Database','b4l_wp_csv_to_db'),
-                    'manage_options',
+                    'b4l_import_csv_to_db',
                     'csv-custom-submenu-page', 
                     array( $this, 'b4l_wp_csv_to_db_menu_page' ) 
                     );

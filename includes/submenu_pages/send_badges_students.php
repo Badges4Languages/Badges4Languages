@@ -20,17 +20,33 @@ add_action('admin_menu', 'b4l_send_badges_students_submenu_page');
  * superadmin and admin).
  */
 function b4l_send_badges_students_submenu_page() {
+        
     add_submenu_page(
         'edit.php?post_type=badge',
         'Send Badges To Students',
         'Send Badges To Students',
-        'edit_posts', //capability
+        'b4l_send_badges_to_students', //capability: 'edit_posts' to give automatically the access to author/editor/admin
         'send-badges-students-submenu-page',
         'b4l_send_badges_students_page_callback' 
     );
 }
  
+if ( function_exists( 'members_plugin_init' ) ) {
+	add_filter( 'plugin_name_capability', 'plugin_name_unique_capability' );
+}
 
+function plugin_name_unique_capability( $cap ) {
+	return 'send_certification_by_mail';
+}
+
+if ( function_exists( 'members_get_capabilities' ) ) {
+	add_filter( 'members_get_capabilities', 'plugin_name_extra_caps' );
+}
+
+function plugin_name_extra_caps( $caps ) {
+	$caps[] = 'send_certification_by_mail';
+	return $caps;
+}
 
 /**
  * Displays the content of the submenu page

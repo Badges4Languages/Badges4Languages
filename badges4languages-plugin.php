@@ -148,13 +148,15 @@ function b4l_create_badges_register(){
 		'capability_type' => 'post',
 		//Capabilities just for admin (only admin can see the custom post)
 		'capabilities'=>array(
-			'edit_post'=>'update_core',
+			'edit_post'=>'edit_badge',
 			'read_post'=>'update_core',
-			'delete_post'=>'update_core',
+			'delete_post'=>'delete_badge',
 			'edit_posts'=>'update_core',
 			'edit_others_posts'=>'update_core',
 			'publish_posts'=>'update_core',
-			'read_private_posts'=>'update_core'
+			'read_private_posts'=>'update_core',
+                        'b4l_send_badges_to_students'=>'b4l_send_badges_to_students', //Displays 'send_badges_to_students' page for users who have this capability
+                        'b4l_import_csv_to_db'=>'b4l_import_csv_to_db' //Displays 'import_csv_to_db' page for users who have this capability
 		),
 		
 		'hierarchical' => false,
@@ -187,6 +189,24 @@ function b4l_create_my_taxonomies() {
     b4l_create_StudentLevels_taxonomies();
     b4l_create_Skills_taxonomies();
     b4l_create_Badges_Categories_taxonomies();
+}
+
+/**
+ * Executes b4l_create_roles_and_capabilities during the initialization phase.
+ */
+add_action( 'init', 'b4l_create_roles_and_capabilities', 0 );
+
+/**
+ * Creates the roles 'Teacher', 'University' and 'Students' and give them some capabilities
+ * like submenu visible or not, etc.
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.0.0
+ */
+function b4l_create_roles_and_capabilities() {
+    require_once plugin_dir_path( __FILE__ ) . 'includes/initialisation/users_roles_and_capabilities.php';
+    b4l_add_roles();
+    b4l_add_caps();
 }
 
 
@@ -277,7 +297,7 @@ function b4l_include_template_function( $template_path ) {
  *************************************************************************/
 
 /**
- * NOT AVAILABLE FOR THE MOMENT !!!!
+ * NOT AVAILABLE FOR THE MOMENT
  * 
  * SEND BADGES TO STUDENTS CUSTOM SUBMENU
  * A teacher can send certifications by mails to a (group of) student(s) by the
@@ -285,6 +305,7 @@ function b4l_include_template_function( $template_path ) {
  
 require plugin_dir_path( __FILE__ ) . 'includes/site_pages/badges_user_profil.php';
 */
+
 
 
 ?>

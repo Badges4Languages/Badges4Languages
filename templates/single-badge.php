@@ -155,15 +155,16 @@ get_header(); ?>
                                 if(get_the_terms( $post->ID, 'badge_studentlevels' ) || get_the_terms( $post->ID, 'badge_teacherlevels' )){
                                     $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages ORDER BY 
                                                 (CASE 
-                                                    WHEN language_name = 'English' THEN 1 
-                                                    WHEN language_name = 'Spanish' THEN 2 
-                                                    WHEN language_name = 'French' THEN 3 
-                                                    WHEN language_name = 'Chinese Mandarin' THEN 4
-                                                    WHEN language_name = 'Russian' THEN 5
-                                                    WHEN language_name = 'Portuguese' THEN 6
-                                                    WHEN language_name = 'German' THEN 7
-                                                    WHEN language_name = 'Italian' THEN 8 
-                                                    WHEN language_name = 'Japanese' THEN 9 
+                                                    WHEN language_id = 'eng' THEN 1 
+                                                    WHEN language_id = 'spa' THEN 2 
+                                                    WHEN language_id = 'fra' THEN 3 
+                                                    WHEN language_id = 'cmn' THEN 4
+                                                    WHEN language_id = 'rus' THEN 5
+                                                    WHEN language_id = 'por' THEN 6
+                                                    WHEN language_id = 'deu' THEN 7
+                                                    WHEN language_id = 'ita' THEN 8 
+                                                    WHEN language_id = 'jpn' THEN 9 
+                                                    WHEN language_id = 'arb' THEN 9 
                                                     ELSE language_name 
                                                 END)";
                                 } 

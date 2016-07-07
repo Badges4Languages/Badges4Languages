@@ -34,7 +34,7 @@ function b4l_create_accept_badge_page(){
 		);
 	}
 	//Inserts the page
-	return $post_id=wp_insert_post($b4l_award_page); /////////////// PAS DE RETURN !!!!!!!!!!!!!!!!!!!
+	$post_id=wp_insert_post($b4l_award_page);
 }
 
 
@@ -50,7 +50,7 @@ add_filter('the_content','b4l_accept_badge_page_content');
  * @since 1.0.0
  * @return string $content HTML content of the 'Accept Badge' page
  */
-function b4l_accept_badge_page_content(){ ///////////////////////////////// $content en param
+function b4l_accept_badge_page_content($content){
     //Verification of the existence of the page
     if ( is_page( 'accept-badge' ) ){
 
@@ -158,7 +158,7 @@ function b4l_accept_badge_template( $template ) {
 
 /*
  * NOT AVAILABLE FOR THE MOMENT
- 
+  */
 function b4l_save_badge_user_profil($json){
     global $wpdb;
     
@@ -178,4 +178,3 @@ function b4l_save_badge_user_profil($json){
                     );
     //    }
 }
- */

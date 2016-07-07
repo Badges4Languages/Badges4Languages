@@ -145,7 +145,7 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge_image
  * @return string $file_json Json file path
 */
 function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $file_json, $issuer_logo, $issuer_email){
-    $subject = "You have just earned a badge"; //entering a subject for email
+    $subject = "Badges4languages - You have just earned a badge"; //entering a subject for email
     //encoding the url
     $url = str_rot13(base64_encode(WP_PLUGIN_URL.'/badges4languages-plugin/json/'.$file_json.'.json'));
     $pagelink=esc_url( get_permalink( get_page_by_title( 'Accept Badge' ) ) );
@@ -160,7 +160,10 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
             <body>
                 <div id="b4l-award-actions-wrap">
                     <div align="center">
-                    <img src="' . $issuer_logo . '" width="180" alt="Company Logo"> 
+                        <h1>BADGES4LANGUAGES</h1>
+                        <h2>Learn languages and get official certifications</h2>
+                        <img src="' . $issuer_logo . '" width="180" alt="Company Logo"> 
+                        <hr/>
                         <h1>Congratulations you have just earned a badge!</h1>
                         <h2>'.$badge_name.' - '.$badge_lang.'</h2>
                         <a href="'.$pagelink.'?id='.$badge_id.'&filename='.$url.'">
@@ -168,8 +171,13 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
                         </a>
                         </br>
                         <p>Description: '.$badge_desc.'</p>
-                        <a href="'.$pagelink.'?id='.$badge_id.'&filename='.$url.'" style="background-color:#fe010d;border:1px solid #000000;border-radius:3px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:16px;line-height:44px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;">Get the certification</a>
+                        <a href="'.$pagelink.'?id='.$badge_id.'&filename='.$url.'">'.$pagelink.'?id='.$badge_id.'&filename='.$url.'</a>
+                        <br/>
                         <div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
+                        <hr/>
+                        <p style="font-size:9px; color:grey">Badges4languages is a company of the group mylanguageskill, based in Valencia, Spain.
+                        More information <a href="https://mylanguageskillslegal.wordpress.com/category/english/badges-for-languages-english/">here</a>
+                        </p>
                     </div>
                 </div>
             </body>
@@ -184,5 +192,10 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
 
     mail($email_stud, $subject, $message, $headers); //Sending the emails
     echo 'Email Sent. If the mail is not in your mail box, verify your spams.';
+    ?>
+    <script>
+        alert("Email Sent. If the mail is not in your mail box, verify your spams.");
+    </script>
+    <?php
     echo '<br/>';
 }
