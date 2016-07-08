@@ -1,9 +1,11 @@
 <?php
  /*
-  * Description:        Create a submenu padge in the administration menu to 
-  *                     allow a teacher to send badges to students.
-  * Version:            1.0.1
-  * Author:             Alexandre Levacher
+  * Create a submenu padge in the administration menu to allow a teacher to send badges to students.
+  * 
+  * @author Alexandre Levacher
+  * @package badges4languages-plugin
+  * @subpackage includes/submenu_pages
+  * @since 1.0.0
  */
 
 

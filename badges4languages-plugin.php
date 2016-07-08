@@ -14,7 +14,7 @@
  * Plugin Name:       Badges4languages-plugin
  * Plugin URI:        http://www.badges4languages.org
  * Description:       Gives a student or a teacher certification to someone.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Alexandre LEVACHER
  * Author URI:        http://www.badges4languages.org
  * License:           GPL-2.0+
@@ -148,15 +148,16 @@ function b4l_create_badges_register(){
 		'capability_type' => 'post',
 		//Capabilities just for admin (only admin can see the custom post)
 		'capabilities'=>array(
-			'edit_post'=>'edit_badge',
+			'edit_post'=>'update_core',
 			'read_post'=>'update_core',
-			'delete_post'=>'delete_badge',
-			'edit_posts'=>'update_core',
-			'edit_others_posts'=>'update_core',
-			'publish_posts'=>'update_core',
-			'read_private_posts'=>'update_core',
+			'delete_post'=>'update_core',
+			'edit_posts'=>'b4l_edit_badges',
+			'edit_others_posts'=>'b4l_edit_others_badges',
+			'publish_posts'=>'b4l_publish_badges',
+			'read_private_posts'=>'b4l_read_private_badges',
                         'b4l_send_badges_to_students'=>'b4l_send_badges_to_students', //Displays 'send_badges_to_students' page for users who have this capability
-                        'b4l_import_csv_to_db'=>'b4l_import_csv_to_db' //Displays 'import_csv_to_db' page for users who have this capability
+                        'b4l_import_csv_to_db'=>'b4l_import_csv_to_db', //Displays 'import_csv_to_db' page for users who have this capability
+                        'b4l_badges_issuer_information'=>'b4l_badges_issuer_information' //Displays 'badges_issuer_information' page for users who have this capability
 		),
 		
 		'hierarchical' => false,
@@ -197,11 +198,11 @@ function b4l_create_my_taxonomies() {
 add_action( 'init', 'b4l_create_roles_and_capabilities', 0 );
 
 /**
- * Creates the roles 'Teacher', 'University' and 'Students' and give them some capabilities
- * like submenu visible or not, etc.
+ * Creates the roles 'Teacher', 'Academy' and 'Students' and give them some 
+ * capabilities like submenu visible or not, etc.
  * 
  * @author Alexandre LEVACHER
- * @since 1.0.0
+ * @since 1.0.1
  */
 function b4l_create_roles_and_capabilities() {
     require_once plugin_dir_path( __FILE__ ) . 'includes/initialisation/users_roles_and_capabilities.php';

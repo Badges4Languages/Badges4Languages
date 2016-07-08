@@ -1,8 +1,11 @@
 <?php
  /*
-  * Description:        This file contains all the database tables.
-  * Version:            1.0.6
-  * Author:             Alexandre Levacher
+  * This file contains all the database tables.
+  * 
+  * @author Alexandre Levacher
+  * @package badges4Languages-plugin
+  * @subpackage includes/initialisation
+  * @since 1.0.0
  */
 
 

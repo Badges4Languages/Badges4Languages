@@ -44,6 +44,12 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
+= 1.0.1 =
+* Creation of the user roles "Teacher", "Student" and "Academy";
+* By default, a teacher and an academy can send a certification by email to a student;
+* Only the administrator can create badges (custom post) and custom taxonomies (like "Student level" for example);
+* User's capabilities can be changed thanks to "Members" plugin.
+
 = 1.0 =
 * A student can get a self-certification page on the badge page;
 * An administrator or a teacher (user role : author) can send a badge a badge to one student to award him.

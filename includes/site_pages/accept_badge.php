@@ -1,9 +1,11 @@
 <?php
  /*
-  * Description:        Generic page to inform the user that he has just earned
-  *                     a badge. Contains a Mozilla OpenBadges link.
-  * Version:            1.0.0
-  * Author:             Alexandre Levacher
+  * Generic page to inform the user that he has just earned a badge. Contains a Mozilla OpenBadges link.
+  * 
+  * @author Alexandre Levacher
+  * @package badges4languages-plugin
+  * @subpackage includes/site_pages
+  * @since 1.0.0
  */
 
 /**

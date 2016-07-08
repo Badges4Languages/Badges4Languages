@@ -1,9 +1,11 @@
 <?php
  /*
-  * Description:        Create a json file and send a email to get a certification.
+  * Create a json file and send a email to get a certification.
   * 
-  * Version:            1.0.1
-  * Author:             Alexandre Levacher
+  * @author Alexandre Levacher
+  * @package badges4languages-plugin
+  * @subpackage includes/functions_file
+  * @since 1.0.0
  */
 
 

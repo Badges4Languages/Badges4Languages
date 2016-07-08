@@ -1,9 +1,11 @@
 <?php
  /*
-  * Description:        Create a submenu padge in the administration menu to
-  *                     fill a form with the issuer information (company info).
-  * Version:            1.0.1
-  * Author:             Alexandre Levacher
+  * Create a submenu padge in the administration menu to fill a form with the issuer information (company info).
+  * 
+  * @author Alexandre Levacher
+  * @package badges4languages-plugin
+  * @subpackage includes/submenu_pages
+  * @since 1.0.0
  */
 
 
@@ -23,7 +25,7 @@ function b4l_badges_issuer_information_submenu_page() {
         'edit.php?post_type=badge',
         'Badges Issuer Information',
         'Badges Issuer Information',
-        'manage_options',
+        'b4l_badges_issuer_information',
         'badges-issuer-information-submenu-page',
         'b4l_badges_issuer_information_page_callback' 
     );

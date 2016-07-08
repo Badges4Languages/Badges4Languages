@@ -1,8 +1,10 @@
  /*
   * CSS File for the template single-badge.php
   *
-  * Version:            1.0.0
-  * Author:             Alexandre Levacher
+  * @author Alexandre Levacher
+  * @package badges4languages-plugin
+  * @subpackage css
+  * @since 1.0.0
  */
 
 div#primary { 

@@ -1,11 +1,12 @@
 <?php
  /*
-  * Description:        Display the badges earned by the user on his profil.
-  *                     The badges are separated in 2 categories : self-certification
-  *                     badges and badges given by a teacher.
+  * Display the badges earned by the user on his profil.
+  * The badges are separated in 2 categories : self-certification badges and badges given by a teacher.
   * 
-  * Version:            1.0.0
-  * Author:             Alexandre Levacher
+  * @author Alexandre Levacher
+  * @package badges4languages-plugin
+  * @subpackage includes/site_pages
+  * @since 1.0.0
  */
 
 

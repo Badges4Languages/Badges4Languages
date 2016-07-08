@@ -1,9 +1,11 @@
 <?php
  /*
-  * Description:        This file contains all the custom taxonomies of the
-  *                     custom post 'badge'.
-  * Version:            1.0.0
-  * Author:             Alexandre Levacher
+  * This file contains all the custom taxonomies of the custom post 'badge'.
+  * 
+  * @author Alexandre Levacher
+  * @package badges4Languages-plugin
+  * @subpackage includes/initialisation
+  * @since 1.0.0
  */
 
 /**
