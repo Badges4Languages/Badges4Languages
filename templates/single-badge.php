@@ -4,7 +4,7 @@
   * 
   * Description:        Template file displaying the badge's information (Description, language, image, title)
   *                     with a translation field and a 'Get a certification by mail' button.
-  * Version:            1.0.0
+  * Version:            1.1.0
   * Author:             Alexandre Levacher
  */
  
@@ -143,56 +143,23 @@ get_header(); ?>
                 </div>
                 <br/><hr/>
                
-                <!-- Choose the language certification -->
-                <div id="send_certification_form">
-                    <form action="" method="post">
-                        <h3>Choose the language that you want a certification</h3>
-                        <p>You can write the name into the scrollbar menu or look for it</p>
-                        <select style="width: 100px" id="language_certification" name="language_certification">
-                            <?php
-                                //Display all the languages possible stored in the ($wpdb->prefix)b4l_languages table. 
-                                global $wpdb;
-                                if(get_the_terms( $post->ID, 'badge_studentlevels' ) || get_the_terms( $post->ID, 'badge_teacherlevels' )){
-                                    $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages ORDER BY 
-                                                (CASE 
-                                                    WHEN language_id = 'eng' THEN 1 
-                                                    WHEN language_id = 'spa' THEN 2 
-                                                    WHEN language_id = 'fra' THEN 3 
-                                                    WHEN language_id = 'cmn' THEN 4
-                                                    WHEN language_id = 'rus' THEN 5
-                                                    WHEN language_id = 'por' THEN 6
-                                                    WHEN language_id = 'deu' THEN 7
-                                                    WHEN language_id = 'ita' THEN 8 
-                                                    WHEN language_id = 'jpn' THEN 9 
-                                                    WHEN language_id = 'arb' THEN 9 
-                                                    ELSE language_name 
-                                                END)";
-                                } 
-                                $results2 = $wpdb->get_results($query, ARRAY_A);
-                                foreach($results2 as $result) {
-                            ?>
-                                <option value="<?php echo $result[language_name]; ?>">
-                                    <?php echo $result[language_name]; } ?>
-                                <option value="<?php echo $result[language_name]; ?>">
-                        </select>
-                        <br/>
-                        
-                        <!-- Send an email to get the certification -->
-                        <input type="submit" value="Get the certification" name="get_certification" class="button button-primary"/>
-                        <?php 
-                            //Displays number of certifications delivers
-                            //This number is used to create unique ID for badges !!!
-                            $queryNbPeople = "SELECT ".$levelName." FROM ".$wpdb->prefix."b4l_number_certifications WHERE id=1";
-                            $numberOfPeople = $wpdb->get_var($queryNbPeople); 
-                            if($numberOfPeople == null) {
-                                $numberOfPeople = 0;
-                            } 
-                        ?>
-                        <p><?php echo $numberOfPeople ?> persons have the certification <?php echo the_terms( $post->ID, 'badge_studentlevels') ?></p>
-                    </form>
-                </div>
+                <!-- SEE THE SELF CERTIFICATION FORM AND SEND CERTIFICATION --> 
+                <?php
+                global $current_user;
+                $user_roles = $current_user->roles;
+                $user_role = array_shift($user_roles);
+                //If it is a student badge, everybody can see it
+                if ( get_the_terms($post->ID, 'badge_studentlevels') ) {
+                    b4l_see_and_send_self_certification();
+                } else {
+                    //If it is a teacher badge, only admin, teacher, academy et badges editor (custom roles of the plugin) can see the form
+                    if ( $user_role == 'administrator' || $user_role == 'b4l_academy' || $user_role == 'b4l_teacher' || user_role == 'b4l_badges_editor') {
+                        b4l_see_and_send_self_certification();
+                    }
+                }
+                ?>
                 
-            <?php 
+                <?php 
                 //Gets all the user's information.
                 global $current_user;
                 get_currentuserinfo();
@@ -202,8 +169,6 @@ get_header(); ?>
                 */
                 if(isset($_POST['get_certification']) && ($_POST['language_certification'] != ""))
                 {
-                    $numberOfPeople = $numberOfPeople+1; //Increments the number of people having the badge.
-                    //
                     //Contains all the issuer information
                     $queryInfo = "SELECT * FROM ".$wpdb->prefix."b4l_issuer_information ";
                     $results = $wpdb->get_results($queryInfo, ARRAY_A); 
@@ -212,47 +177,62 @@ get_header(); ?>
                     $issuer_email = $results[0]['issuer_email'];
                     $issuer_url = $results[0]['issuer_url'];
                     
-                    //By default the table is empty : it checks if the table is empty to insert a line or it is not empty to update a line for the numberOfPeople
-                    if($wpdb->get_row($wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."b4l_number_certifications WHERE ID = 1", "" ))) {
-                        $wpdb->update( $wpdb->prefix . 'b4l_number_certifications',array($levelName => $numberOfPeople),array('id' => '1'));
+                    //Checks if issuer information are set and valid. If not, pop-up which alerts the user that is not the case.
+                    if(array_filter($results[0]) == false || strpos($issuer_logo, 'Invalid') !== false || strpos($issuer_email, 'Invalid') !== false || strpos($issuer_url, 'Invalid') !== false) {
+                        ?>
+                        <script>
+                            alert("Can't send the certification : Badges Issuer Information not complete/valid !")
+                        </script>
+                        <?php
                     } else {
-                        $wpdb->insert($wpdb->prefix . 'b4l_number_certifications',array($levelName => $numberOfPeople));
-                    }
-                    
-                    $email_stud=$current_user->user_email; //Email student is user's email.
-                    $badge_name = get_the_title(); //Page title must be the name you want to give to the badge.
-                    
-                    //If the certification language has a translation, we use that one. If it hasn't, we use the default one (in English).
-                    //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
-                    for($i=0;$i<count($results1);$i++) {
-                        if($_POST['language_certification']==$results1[$i][language_name]){
-                            $badge_desc = b4l_single_badge_translation($_POST['language_certification']);
-                        } 
-                    }
-                    if($badge_desc == null){
-                        $badge_desc = $post->post_content;
-                    }
-                    
-                    //Use the Wordpress featured image as badge image
-                    $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
-                    $badge_image = $image[0];
-                    $badge_lang = $_POST['language_certification'];
-                    
-                    //Check if it is a Student badge or a Teacher badge and recuperate the value.
-                    if (get_the_terms($post->ID, 'badge_studentlevels')) {
-                        $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
-                        $badge_lvl = $studentLevel[0]->name;
-                    } elseif (get_the_terms($post->ID, 'badge_teacherlevels')) {
-                        $teacherLevel = get_the_terms($post->ID, 'badge_teacherlevels');
-                        $badge_lvl = $teacherLevel[0]->name;
-                    }
+                        $numberOfPeople = $numberOfPeople+1; //Increments the number of people having the badge.
+                        
+                        //By default the table is empty : it checks if the table is empty to insert a line or it is not empty to update a line for the numberOfPeople
+                        if($wpdb->get_row($wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."b4l_number_certifications WHERE ID = 1", "" ))) {
+                            $wpdb->update( $wpdb->prefix . 'b4l_number_certifications',array($levelName => $numberOfPeople),array('id' => '1'));
+                        } else {
+                            $wpdb->insert($wpdb->prefix . 'b4l_number_certifications',array($levelName => $numberOfPeople));
+                        }
 
-                    //Create the JSON File and send the cerfication by email.
-                    //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
-                    $file_json = b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople);
-                    b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $file_json, $issuer_logo, $issuer_email);
-                
+                        $email_stud=$current_user->user_email; //Email student is user's email.
+                        $badge_name = get_the_title(); //Page title must be the name you want to give to the badge.
+
+                        //If the certification language has a translation, we use that one. If it hasn't, we use the default one (in English).
+                        //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
+                        for($i=0;$i<count($results1);$i++) {
+                            if($_POST['language_certification']==$results1[$i][language_name]){
+                                $badge_desc = b4l_single_badge_translation($_POST['language_certification']);
+                            } 
+                        }
+                        if($badge_desc == null){
+                            $badge_desc = $post->post_content;
+                        }
+
+                        //Use the Wordpress featured image as badge image
+                        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+                        $badge_image = $image[0];
+                        $badge_lang = $_POST['language_certification'];
+
+                        //Check if it is a Student badge or a Teacher badge and recuperate the value.
+                        if (get_the_terms($post->ID, 'badge_studentlevels')) {
+                            $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
+                            $badge_lvl = $studentLevel[0]->name;
+                        } elseif (get_the_terms($post->ID, 'badge_teacherlevels')) {
+                            $teacherLevel = get_the_terms($post->ID, 'badge_teacherlevels');
+                            $badge_lvl = $teacherLevel[0]->name;
+                        }
+
+                        //Create the JSON File and send the cerfication by email.
+                        //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
+                        $file_json = b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople);
+                        b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $file_json, $issuer_logo, $issuer_email);
+                        ?>
+                        <script>
+                            alert("Email Sent. If the mail is not in your mail box, verify your spams.");
+                        </script>
+                        <?php
                     }
+                }
                 
                 /**
                 * Displays previous and next Custom Post Link at the end of the article.
@@ -282,3 +262,69 @@ get_header(); ?>
     document.getElementById('description_translation').value = "<?php echo $_GET['description_translation'];?>";
     document.getElementById('language_certification').value = "<?php echo $_GET['language_certification'];?>";
 </script>
+
+
+
+
+<?php
+/**
+ * Displays the section to get a certification.
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.1.0
+*/
+function b4l_see_and_send_self_certification(){
+    ?>
+    <!-- Choose the language certification -->
+    <div id="send_certification_form">
+        <form action="" method="post">
+            <h3>Choose the language that you want a certification</h3>
+            <p>You can write the name into the scrollbar menu or look for it</p>
+            <select style="width: 100px" id="language_certification" name="language_certification">
+                <?php
+                    //Display all the languages possible stored in the ($wpdb->prefix)b4l_languages table. 
+                    global $wpdb;
+                    if(get_the_terms( $post->ID, 'badge_studentlevels' ) || get_the_terms( $post->ID, 'badge_teacherlevels' )){
+                        $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages ORDER BY 
+                                    (CASE 
+                                        WHEN language_id = 'eng' THEN 1 
+                                        WHEN language_id = 'spa' THEN 2 
+                                        WHEN language_id = 'fra' THEN 3 
+                                        WHEN language_id = 'cmn' THEN 4
+                                        WHEN language_id = 'rus' THEN 5
+                                        WHEN language_id = 'por' THEN 6
+                                        WHEN language_id = 'deu' THEN 7
+                                        WHEN language_id = 'ita' THEN 8 
+                                        WHEN language_id = 'jpn' THEN 9 
+                                        WHEN language_id = 'arb' THEN 9 
+                                        ELSE language_name 
+                                    END)";
+                    } 
+                    $results2 = $wpdb->get_results($query, ARRAY_A);
+                    foreach($results2 as $result) {
+                ?>
+                    <option value="<?php echo $result[language_name]; ?>">
+                        <?php echo $result[language_name]; } ?>
+                    <option value="<?php echo $result[language_name]; ?>">
+            </select>
+            <br/>
+
+            <!-- Send an email to get the certification -->
+
+            <input type="submit" value="Get the certification" name="get_certification" class="button button-primary"/>
+            <?php 
+                //Displays number of certifications delivers
+                //This number is used to create unique ID for badges !!!
+                $queryNbPeople = "SELECT ".$levelName." FROM ".$wpdb->prefix."b4l_number_certifications WHERE id=1";
+                $numberOfPeople = $wpdb->get_var($queryNbPeople); 
+
+                //Table empty at the initialization of the plugin, so if it's null we remplace by 0
+                if($numberOfPeople == null) {
+                    $numberOfPeople = 0;
+                } 
+            ?>
+            <p><?php echo $numberOfPeople ?> persons have the certification <?php echo the_terms( $post->ID, 'badge_studentlevels') ?></p>
+        </form>
+    </div>
+    <?php
+}

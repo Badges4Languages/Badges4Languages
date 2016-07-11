@@ -14,7 +14,7 @@
  * Plugin Name:       Badges4languages-plugin
  * Plugin URI:        http://www.badges4languages.org
  * Description:       Gives a student or a teacher certification to someone.
- * Version:           1.0.1
+ * Version:           1.1.0
  * Author:            Alexandre LEVACHER
  * Author URI:        http://www.badges4languages.org
  * License:           GPL-2.0+
@@ -173,6 +173,253 @@ function b4l_create_badges_register(){
         flush_rewrite_rules();
 }
 
+
+
+
+
+
+/**
+ * Repeatable Custom Fields in a Metabox
+ * Author: Helen Hou-Sandi
+ * https://gist.github.com/helen/1593065
+ *
+ * From a bespoke system, so currently not modular - will fix soon
+ * Note that this particular metadata is saved as one multidimensional array (serialized)
+ */
+ 
+function hhs_get_sample_options() {
+	$options = array (
+		'Option 1' => 'option1',
+		'Option 2' => 'option2',
+		'Option 3' => 'option3',
+		'Option 4' => 'option4',
+	);
+	
+	return $options;
+}
+add_action('admin_init', 'b4l_badge_add_meta_boxes', 1);
+function b4l_badge_add_meta_boxes() {
+	add_meta_box( 
+                'repeatable-fields', 
+                'Repeatable Fields', 
+                'b4l_display_badge_meta_box', 
+                'badge', 
+                'normal', 
+                'default'
+        );
+}
+
+function b4l_display_badge_meta_box() {
+	global $post;
+	$badge = get_post_meta($post->ID, 'badge', true);
+	$options = hhs_get_sample_options();
+	wp_nonce_field( 'b4l_badge_meta_box_nonce', 'b4l_badge_meta_box_nonce' );
+	?>
+	<script type="text/javascript">
+	jQuery(document).ready(function( $ ){
+		$( '#add-row' ).on('click', function() {
+			var row = $( '.empty-row.screen-reader-text' ).clone(true);
+			row.removeClass( 'empty-row screen-reader-text' );
+			row.insertBefore( '#repeatable-fieldset-one tbody>tr:last' );
+			return false;
+		});
+  	
+		$( '.remove-row' ).on('click', function() {
+			$(this).parents('tr').remove();
+			return false;
+		});
+	});
+	</script>
+  
+	<table id="repeatable-fieldset-one" width="100%">
+	<thead>
+		<tr>
+			<th width="32%">Language</th>
+			<th width="50%">URL</th>
+			<th width="8%"></th>
+		</tr>
+	</thead>
+	<tbody>
+            
+	<?php
+	if ( $badge ) :
+	foreach ( $badge as $field ) {
+	?>
+	<tr>
+            <td>
+                <select name="select[]">
+                <?php foreach ( $options as $label => $value ) : ?>
+                <option value="<?php echo $value; ?>"<?php selected( $field['select'], $value ); ?>><?php echo $label; ?></option>
+                <?php endforeach; ?>
+                </select>
+            </td>
+
+            <td>
+                <input type="text" class="widefat" name="url[]" value="<?php if ($field['url'] != '') echo esc_attr( $field['url'] ); else echo 'http://'; ?>" />
+            </td>
+
+            <td><a class="button remove-row" href="#">Remove</a></td>
+	</tr>
+	<?php
+	}
+	else :
+	// show a blank one
+	?>
+	<tr>
+		<td><input type="text" class="widefat" name="name[]" /></td>
+	
+		<td>
+			<select name="select[]">
+			<?php foreach ( $options as $label => $value ) : ?>
+			<option value="<?php echo $value; ?>"><?php echo $label; ?></option>
+			<?php endforeach; ?>
+			</select>
+		</td>
+	
+		<td><input type="text" class="widefat" name="url[]" value="http://" /></td>
+	
+		<td><a class="button remove-row" href="#">Remove</a></td>
+	</tr>
+	<?php endif; ?>
+	
+	<!-- empty hidden one for jQuery -->
+	<tr class="empty-row screen-reader-text">
+		<td><input type="text" class="widefat" name="name[]" /></td>
+	
+		<td>
+			<select name="select[]">
+			<?php foreach ( $options as $label => $value ) : ?>
+			<option value="<?php echo $value; ?>"><?php echo $label; ?></option>
+			<?php endforeach; ?>
+			</select>
+		</td>
+		
+		<td><input type="text" class="widefat" name="url[]" value="http://" /></td>
+		  
+		<td><a class="button remove-row" href="#">Remove</a></td>
+	</tr>
+	</tbody>
+	</table>
+	
+	<p><a id="add-row" class="button" href="#">Add another</a></p>
+	<?php
+}
+
+add_action('save_post', 'b4l_badge_meta_box_save');
+function b4l_badge_meta_box_save($post_id) {
+	if ( ! isset( $_POST['b4l_badge_meta_box_nonce'] ) ||
+	! wp_verify_nonce( $_POST['b4l_badge_meta_box_nonce'], 'b4l_badge_meta_box_nonce' ) )
+		return;
+	
+	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+		return;
+	
+	if (!current_user_can('edit_post', $post_id))
+		return;
+	
+	$old = get_post_meta($post_id, 'badge', true);
+	$new = array();
+	$options = hhs_get_sample_options();
+	
+	$selects = $_POST['select'];
+	$urls = $_POST['url'];
+	
+	$count = count( $selects );
+	
+	for ( $i = 0; $i < $count; $i++ ) {
+		if ( $selects[$i] != '' ) :
+			
+			if ( in_array( $selects[$i], $options ) )
+				$new[$i]['select'] = $selects[$i];
+			else
+				$new[$i]['select'] = '';
+		
+			if ( $urls[$i] == 'http://' )
+				$new[$i]['url'] = '';
+			else
+				$new[$i]['url'] = stripslashes( $urls[$i] ); // and however you want to sanitize
+		endif;
+	}
+	if ( !empty( $new ) && $new != $old )
+		update_post_meta( $post_id, 'badge', $new );
+	elseif ( empty($new) && $old )
+		delete_post_meta( $post_id, 'badge', $old );
+}
+
+
+
+
+
+
+
+
+
+/*
+function display_badge_meta_box( $badge ) {
+    // Retrieve current name of the Director and Movie Rating based on review ID
+    $array = array();
+    $link_for_more_information = esc_html( get_post_meta( $badge->ID, 'link_for_more_information', true ) );
+    ?>
+    <table>
+        <tr>
+            <td style="width: 100%">Link for more information</td>
+            <td>
+            <select style="width: 100px" id="language_certification" name="badge_language_for_more_information">
+                <?php
+                    //Display all the languages possible stored in the ($wpdb->prefix)b4l_languages table. 
+                    global $wpdb;
+                    $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages WHERE
+                                language_id = 'eng' OR
+                                language_id = 'spa' OR
+                                language_id = 'fra' OR
+                                language_id = 'cmn' OR
+                                language_id = 'rus' OR
+                                language_id = 'por' OR
+                                language_id = 'deu' OR
+                                language_id = 'ita' OR
+                                language_id = 'jpn' OR
+                                language_id = 'arb'
+                            ";
+                    $results2 = $wpdb->get_results($query, ARRAY_A);
+                    foreach($results2 as $result) {
+                ?>
+                    <option value="<?php echo $result[language_name]; ?>">
+                        <?php echo $result[language_name]; } ?>
+                    <option value="<?php echo $result[language_name]; ?>">
+            </select>
+            </td>
+            <td><input type="text" size="50" name="badge_link_for_more_information" value="<?php echo $link_for_more_information; ?>" /></td>
+        </tr>
+    </table>
+    <?php
+}
+
+
+add_action( 'save_post', 'add_link_for_more_information', 10, 2 );
+
+function add_link_for_more_information( $badge_id, $badge ) {
+    // Check post type for movie reviews
+    if ( $badge->post_type == 'badge' ) {
+        // Store data in post meta table if present in post data
+        if ( isset( $_POST['badge_language_for_more_information'] ) && isset( $_POST['badge_link_for_more_information'] ) && $_POST['badge_link_for_more_information'] != '' ) {
+            update_post_meta( $badge_id, 'link_for_more_information', $array );
+        }
+    }
+}
+ * *
+ */
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * Executes b4l_create_my_taxonomies during the initialization phase.
  */
@@ -209,6 +456,12 @@ function b4l_create_roles_and_capabilities() {
     b4l_add_roles();
     b4l_add_caps();
 }
+
+/**
+ * The core plugin class that is used to define internationalization,
+ * admin-specific hooks, and public-facing site hooks.
+ */
+require plugin_dir_path( __FILE__ ) . 'includes/shortcodes/send_badges_students_shortcode.php';
 
 
 

@@ -72,44 +72,40 @@ function b4l_send_badges_students_page_callback() {
 
             <!-- Display all the languages into the database -->
             <h2>Choose the language</h2>
-            <select style="width: 100px" id="language_certification" name="language_certification">
-                <?php
-                    //Display all the languages possible stored in the ($wpdb->prefix)b4l_languages table. 
-                    global $wpdb;
-                    $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages";
-                    $resultsLang = $wpdb->get_results($query, ARRAY_A);
-                    foreach($resultsLang as $result) {
-                ?>
-                    <option value="<?php echo $result[language_name]; ?>">
-                        <?php echo $result[language_name]; } ?>
-                    <option value="<?php echo $result[language_name]; ?>">
-            </select>
+            <div>
+                <select style="width: 100px" id="language_certification" name="language_certification">
+                    <?php
+                        //Display all the languages possible stored in the ($wpdb->prefix)b4l_languages table. 
+                        global $wpdb;
+                        $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages";
+                        $resultsLang = $wpdb->get_results($query, ARRAY_A);
+                        foreach($resultsLang as $result) {
+                    ?>
+                        <option value="<?php echo $result[language_name]; ?>">
+                            <?php echo $result[language_name]; } ?>
+                        <option value="<?php echo $result[language_name]; ?>">
+                </select>
+                <br/>
+            </div>
             <br/>
 
             <!-- Send emails to students -->
             <h2>Write the student's email</h2>
-            <input type="text" name="students_emails"><br>
-            <!-- NOT FUNCTIONNABLE : send badge to more than one student
-            <p>Write an email an each line. Don't use dot or something else at the end of the line.</p>
-            <textarea id="students_emails" name="students_emails" rows="8" cols="50"></textarea>
-            -->
-            <br/>
+            <div>
+                <input type="text" name="students_emails"><br>
+                <!-- NOT FUNCTIONNABLE : send badge to more than one student
+                <p>Write an email an each line. Don't use dot or something else at the end of the line.</p>
+                <textarea id="students_emails" name="students_emails" rows="8" cols="50"></textarea>
+                -->
+            </div>
             <br/>
             <input name="send_emails_button" type="submit" class="button-primary" value="Send emails" />
          </form>
 
 
 <?php
-    if($_POST["send_emails_button"]) {
-        
-        //To indicate on the badge who gives the certification
-        global $current_user;
-        get_currentuserinfo();
-        $teacher_user_name = $current_user->user_login;
-
-        //Get all the post's info into an array $post
-        $post = get_post($_POST["level"]);
-        $badge_name = $post->post_title;
+    //Level, email, and language have to be set to send a certification
+    if($_POST["send_emails_button"] && isset($_POST["level"]) && !empty($_POST["language_certification"]) && !empty($_POST["students_emails"])) {
         
         //Contains all the issuer information
         $queryInfo = "SELECT * FROM ".$wpdb->prefix."b4l_issuer_information ";
@@ -121,32 +117,49 @@ function b4l_send_badges_students_page_callback() {
         $issuer_email = $results[0]['issuer_email'];
         $issuer_url = $results[0]['issuer_url'];
         
-        //If the certification language has a translation, we use that one. If it hasn't, we use the default one (in English).
-        //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
-        require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php';
-        for($i=0;$i<count($resultsLang);$i++) {
-            if($_POST['language_certification']==$resultsLang[$i][language_name]){
-                $badge_desc = b4l_single_badge_translation($_POST['language_certification']);
-            } 
+        //Checks if issuer information are set and valid. If not, pop-up which alerts the user that is not the case.
+        if(array_filter($results[0]) == false || strpos($issuer_logo, 'Invalid') !== false || strpos($issuer_email, 'Invalid') !== false || strpos($issuer_url, 'Invalid') !== false) {
+            ?>
+            <script>
+                alert("Can't send the certification : Badges Issuer Information not complete/valid !")
+            </script>
+            <?php
+        } else {
+            //To indicate on the badge who gives the certification
+            global $current_user;
+            get_currentuserinfo();
+            $teacher_user_name = $current_user->user_login;
+
+            //Get all the post's info into an array $post
+            $post = get_post($_POST["level"]);
+            $badge_name = $post->post_title;
+
+            //If the certification language has a translation, we use that one. If it hasn't, we use the default one (in English).
+            //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
+            require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php';
+            for($i=0;$i<count($resultsLang);$i++) {
+                if($_POST['language_certification']==$resultsLang[$i][language_name]){
+                    $badge_desc = b4l_single_badge_translation($_POST['language_certification']);
+                } 
+            }
+            if($badge_desc == null){
+                $badge_desc = $post->post_content;
+            }
+
+            //Check if it is a Student badge or a Teacher badge and recuperate the value.
+            $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
+            $badge_lvl = $studentLevel[0]->name;
+
+            //Use the Wordpress featured image as badge image
+            $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+            $badge_image = $image[0];
+
+            //Get the email from the InputField
+            $email = $_POST['students_emails'];
+            //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
+            $file_json = b4l_create_certification_assertion_badge_json($email, $badge_image, $_POST["language_certification"], $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $teacher_user_name);
+            b4l_send_badge_email($email, $badge_name, $badge_desc, $badge_image, $_POST["language_certification"], $file_json, $issuer_logo, $issuer_email); 
         }
-        if($badge_desc == null){
-            $badge_desc = $post->post_content;
-        }
-        
-        //Check if it is a Student badge or a Teacher badge and recuperate the value.
-        $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
-        $badge_lvl = $studentLevel[0]->name;
-        
-        //Use the Wordpress featured image as badge image
-        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
-        $badge_image = $image[0];
-        
-        //Get the email from the InputField
-        $email = $_POST['students_emails'];
-        //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
-        $file_json = b4l_create_certification_assertion_badge_json($email, $badge_image, $_POST["language_certification"], $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $teacher_user_name);
-        b4l_send_badge_email($email, $badge_name, $badge_desc, $badge_image, $_POST["language_certification"], $file_json, $issuer_logo, $issuer_email); 
-        
         /*
          * Not functionnable : send badges to more than one student
          

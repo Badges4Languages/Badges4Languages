@@ -79,7 +79,12 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge_image
     $file_json=str_rot13(preg_replace("/ /", "_", $email_stud)).'_'.$badge_lvl.'_'.$badge_lang;
 
     //adding the folder json and encoded file name and addind the extenson of json
-    $path_json= WP_PLUGIN_DIR.'/badges4languages-plugin/json/'.$file_json.'.json';
+    $path_json= WP_CONTENT_DIR.'/uploads/badges4languages-plugin/json/'.$file_json.'.json';
+    
+    //creates the folders recursively if they initially don't exist
+    if (!file_exists(WP_CONTENT_DIR.'/uploads/badges4languages-plugin/json/')) {
+        mkdir(WP_CONTENT_DIR.'/uploads/badges4languages-plugin/json/', 0777, true);
+    }
     
     //Checks if it is a number (self certification) or if a teacher gave the badge
     if(is_int($numberOfPeopleOrTeacherUserName)) {
@@ -120,7 +125,7 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge_image
             ),
             'verify'=>array(
                     'type'=>'hosted',
-                    'url'=>WP_PLUGIN_URL.'/badges4languages-plugin/json/'.$file_json.'.json',
+                    'url'=>WP_CONTENT_URL.'/uploads/badges4languages-plugin/json/'.$file_json.'.json',
             ),
             'issued_on'=>$date
         );
@@ -147,9 +152,9 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge_image
  * @return string $file_json Json file path
 */
 function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $file_json, $issuer_logo, $issuer_email){
-    $subject = "Badges4languages - You have just earned a badge"; //entering a subject for email
+    $subject = "Badges4Languages - You have just earned a badge"; //entering a subject for email
     //encoding the url
-    $url = str_rot13(base64_encode(WP_PLUGIN_URL.'/badges4languages-plugin/json/'.$file_json.'.json'));
+    $url = str_rot13(base64_encode(WP_CONTENT_URL.'/uploads/badges4languages-plugin/json/'.$file_json.'.json'));
     $pagelink=esc_url( get_permalink( get_page_by_title( 'Accept Badge' ) ) );
     $badge_id = $badge_name.'-'.$badge_lang; //unique ID for the badge
             
@@ -162,7 +167,7 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
             <body>
                 <div id="b4l-award-actions-wrap">
                     <div align="center">
-                        <h1>BADGES4LANGUAGES</h1>
+                        <h1>BADGES FOR LANGUAGES</h1>
                         <h2>Learn languages and get official certifications</h2>
                         <img src="' . $issuer_logo . '" width="180" alt="Company Logo"> 
                         <hr/>
@@ -177,8 +182,9 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
                         <br/>
                         <div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
                         <hr/>
-                        <p style="font-size:9px; color:grey">Badges4languages is a company of the group mylanguageskill, based in Valencia, Spain.
-                        More information <a href="https://mylanguageskillslegal.wordpress.com/category/english/badges-for-languages-english/">here</a>
+                        <p style="font-size:9px; color:grey">Badges4languages is a company of the group mylanguageskill, based in Valencia, Spain. 
+                        More information <a href="https://mylanguageskills.wordpress.com/">here</a>.
+                        Legal information <a href="https://mylanguageskillslegal.wordpress.com/category/english/badges-for-languages-english/">here</a>.
                         </p>
                     </div>
                 </div>
@@ -187,17 +193,12 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
     ';
 
     //Setting headers so it's a MIME mail and a html
-    $headers = "From: Badges4languages "."<".$issuer_email.">"."\n";
+    $headers = "From: badges4languages "."<".$issuer_email.">"."\n";
     $headers .= "MIME-Version: 1.0"."\n";
     $headers .= "Content-type: text/html; charset=utf-8"."\n";
     $headers .= "Reply-To: ".$issuer_email.""."\n";
 
     mail($email_stud, $subject, $message, $headers); //Sending the emails
-    echo 'Email Sent. If the mail is not in your mail box, verify your spams.';
-    ?>
-    <script>
-        alert("Email Sent. If the mail is not in your mail box, verify your spams.");
-    </script>
-    <?php
+    echo '<b>Email Sent. If the mail is not in your mail box, verify your spams.</b>';
     echo '<br/>';
 }
