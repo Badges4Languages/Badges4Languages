@@ -46,6 +46,16 @@ For more information, please read the user guide.
 
 ## Changelog
 
+1.1.0
+* Creation of the shortcode [send_badges], which allows a teacher to send a badge to a student from a website page/post (without going to the back end);
+* Verify if issuer information are set or not, if not it is impossible to send a certification email;
+* No pop-up message for the admin when he sends a badge to students;
+* Json Files saved in "wp-content/uploads" now;
+* Creation of the user role "Badges Editor" (Wordpress editor + same permission as a "Teacher" or "Academy");
+* Only a member with the user role "Administrator", "Teacher" or "Academy" can see the section "Get the certification" on a Teacher Level Page;
+* Modification of the certification email footer (info about the firm).
+* Custom metabox for the custom post "badge" : a link associated to a language to have more information about a certification level can be added to the custom post.
+
 1.0.1
 * Creation of the user roles "Teacher", "Student" and "Academy";
 * By default, a teacher and an academy can send a certification by email to a student;

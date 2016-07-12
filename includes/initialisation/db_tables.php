@@ -10,6 +10,31 @@
 
 
 /**
+ * Execute the 'b4l_create_db_tables' function
+ * during the initialization phase.
+ */
+add_action('init', 'b4l_create_db_tables', 0);
+
+/**
+ * Create the Database Tables for the Custom Post 'badge'.
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.0.0
+ */
+function b4l_create_db_tables() {
+    b4l_create_db_table_b4l_languages();
+    b4l_create_db_table_b4l_students();
+    b4l_create_db_table_b4l_teachers();
+    b4l_create_db_table_b4l_teacherLevels();
+    b4l_create_db_table_b4l_studentLevels();
+    b4l_create_db_table_b4l_skills();
+    b4l_create_db_table_b4l_number_certifications();
+    b4l_create_db_table_b4l_issuer_information();
+    b4l_create_db_table_b4l_userBadgesProfil();
+}
+
+
+/**
  * Create/Update the '(prefix)b4l_languages' table
  * 
  * @author Alexandre LEVACHER

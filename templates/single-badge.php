@@ -5,7 +5,7 @@
   * Description:        Template file displaying the badge's information (Description, language, image, title)
   *                     with a translation field and a 'Get a certification by mail' button.
   * Version:            1.1.0
-  * Author:             Alexandre Levacher
+  * Author:             Alexandre LEVACHER
  */
  
 
@@ -85,10 +85,7 @@ get_header(); ?>
                 }
                 $results1 = $wpdb->get_results($queryLevelTeachersOrStudents, ARRAY_A);
                 
-                /*
-                 * Checks there is at least one translation or not
-                 * If there is not, the scrollbar menu is not displayed.
-                 */
+                //Checks there is at least one translation or not. If there is not, the scrollbar menu is not displayed.
                 if($results1[0]){
                 ?>
                     <h4>Choose a translation</h4>
@@ -138,6 +135,19 @@ get_header(); ?>
                             the_terms( $post->ID, 'badge_teacherlevels');
                             $teacherLevel = get_the_terms($post->ID, 'badge_teacherlevels');
                             $levelName = $teacherLevel[0]->name;
+                        }
+                    ?>
+                </div>
+                
+                <!-- CUSTOM METABOX --> 
+                <div id="metabox">
+                    <?php
+                        $custom_metabox_links = get_post_meta(get_the_ID(), 'badge_links', true);
+                        if($custom_metabox_links){
+                            echo '<strong>More information: </strong>';
+                            foreach($custom_metabox_links as $link) {
+                                echo '<a href="'.$link[url].'">'.$link[select].'</a> ';
+                            }
                         }
                     ?>
                 </div>

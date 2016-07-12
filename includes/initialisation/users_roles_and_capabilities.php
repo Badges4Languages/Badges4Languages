@@ -10,6 +10,24 @@
 
 
 /**
+ * Execute b4l_create_roles_and_capabilities during the initialization phase.
+ */
+add_action( 'init', 'b4l_create_roles_and_capabilities', 0 );
+
+/**
+ * Create the roles 'Teacher', 'Academy' and 'Students' and give them some 
+ * capabilities like submenu visible or not, etc.
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.0.1
+ */
+function b4l_create_roles_and_capabilities() {
+    b4l_add_roles();
+    b4l_add_caps();
+}
+
+
+/**
  * Creates the roles 'Teacher', 'Academy' and 'Students' and give them some capabilities
  * like submenu visible or not, etc.
  * 
@@ -31,6 +49,8 @@ function b4l_add_roles() {
         'edit_others_posts' => true,
         'edit_pages' => true, 
         'edit_posts' => true, 
+        'edit_private_posts' => true,
+        'edit_published_posts' => true,
         'create_posts' => true, 
         'manage_categories' => true,
         'manage_links' => true,
@@ -101,9 +121,4 @@ function b4l_remove_caps() {
     $wp_roles->remove_cap( 'b4l_academy', 'b4l_send_badges_to_students' );
     
     $wp_roles->remove_cap( 'b4l_teacher', 'b4l_send_badges_to_students' );
-    
-    //A SUPPRIMER
-    $wp_roles->remove_cap( 'b4l_academy', 'b4l_badges_issuer_information' );
-    $wp_roles->remove_cap( 'b4l_university', 'b4l_badges_issuer_information' );
-    $wp_roles->remove_cap( 'b4l_university', 'b4l_send_badges_to_students' );
 }

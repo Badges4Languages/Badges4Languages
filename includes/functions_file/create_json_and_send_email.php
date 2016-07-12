@@ -2,7 +2,7 @@
  /*
   * Create a json file and send a email to get a certification.
   * 
-  * @author Alexandre Levacher
+  * @author Alexandre LEVACHER
   * @package badges4languages-plugin
   * @subpackage includes/functions_file
   * @since 1.0.0

@@ -8,6 +8,26 @@
   * @since 1.0.0
  */
 
+
+/**
+ * Execute b4l_create_my_taxonomies during the initialization phase.
+ */
+add_action( 'init', 'b4l_create_my_taxonomies', 0 );
+
+/**
+ * Create the Custom Taxonomies (categories) for the Custom Post 'badge'.
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.0.0
+ */
+function b4l_create_my_taxonomies() {
+    b4l_create_TeacherLevels_taxonomies();
+    b4l_create_StudentLevels_taxonomies();
+    b4l_create_Skills_taxonomies();
+    b4l_create_Badges_Categories_taxonomies();
+}
+
+
 /**
  * Creates the Custom Taxonomies 'TeacherLevels' (T1,T2,T3,etc).
  * 
@@ -78,7 +98,7 @@ function b4l_create_Skills_taxonomies() {
 }
 
 /**
- * Creates the Custom Taxonomies 'Badges Categories'.
+ * Creates the Custom Taxonomies 'BadgesCategories'.
  * 
  * @author Alexandre LEVACHER
  * @since 1.0.0
