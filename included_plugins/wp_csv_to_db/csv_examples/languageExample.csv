@@ -1,4 +1,16 @@
 LangID,CountryID,Name
+arb,SA,"Arabic, Standard"
+eng,GB,English
+cmn,CN,"Chinese, Mandarin"
+fra,FR,French
+deu,DE,"German, Standard"
+ita,IT,Italian
+jpn,JP,Japanese
+por,PT,Portuguese
+rus,RU,Russian
+spa,ES,Spanish
+vlc,ES,Valencian
+---,--,------------
 aaa,NG,Ghotuo
 aab,NG,Alumu-Tesu
 aac,PG,Ari
@@ -83,7 +95,6 @@ adn,ID,Adang
 ado,PG,Abu
 adq,GH,Adangbe
 adr,ID,Adonara
-ads,GH,Adamorobe Sign Language
 adt,AU,Adnyamathanha
 adu,NG,Aduge
 adw,BR,Amundava
@@ -93,12 +104,10 @@ adz,PG,Adzera
 aea,AU,Areba
 aeb,TN,"Arabic, Tunisian Spoken"
 aec,EG,"Arabic, Sa’idi Spoken"
-aed,AR,Argentine Sign Language
 aee,AF,"Pashai, Northeast"
 aek,NC,Haeke
 ael,CM,Ambele
 aem,VN,Arem
-aen,AM,Armenian Sign Language
 aeq,PK,Aer
 aer,AU,"Arrernte, Eastern"
 aeu,CN,Akeu
@@ -108,7 +117,6 @@ aez,PG,Aeka
 afb,KW,"Arabic, Gulf Spoken"
 afd,PG,Andai
 afe,NG,Utugwang-Irungene-Afrike
-afg,AF,Afghan Sign Language
 afi,PG,Chini
 afk,PG,Nanubae
 afn,NG,Defaka
@@ -338,7 +346,6 @@ aqn,PH,"Alta, Northern"
 aqr,NC,Arhâ
 aqt,PY,Angaité
 aqz,BR,Akuntsu
-arb,SA,"Arabic, Standard"
 ard,AU,Arabana
 are,AU,"Arrarnta, Western"
 arg,ES,Aragonese
@@ -362,8 +369,6 @@ asa,TZ,Asu
 asb,CA,Assiniboine
 asc,ID,"Asmat, Casuarina Coast"
 asd,PG,Asas
-ase,US,American Sign Language
-asf,AU,Australian Sign Language
 asg,NG,Cishingini
 ash,PE,Awishira
 asi,ID,Buruwai
@@ -373,14 +378,11 @@ asl,ID,Asilulu
 asm,IN,Assamese
 asn,BR,Asurini of Xingú
 aso,PG,Dano
-asp,DZ,Algerian Sign Language
-asq,AT,Austrian Sign Language
 asr,IN,Asuri
 ass,CM,Ipulo
 ast,ES,Asturian
 asu,BR,"Asurini, Tocantins"
 asv,CD,Asoa
-asw,AU,Australian Aborigines Sign Language
 asx,PG,Muratayak
 asy,ID,"Asmat, Yaosakor"
 asz,ID,As
@@ -626,9 +628,7 @@ bfe,ID,Betaf
 bff,CF,Bofi
 bfg,ID,"Kayan, Busang"
 bfh,PG,Blafe
-bfi,GB,British Sign Language
 bfj,CM,Bafanji
-bfk,TH,Ban Khor Sign Language
 bfl,CF,Banda-Ndélé
 bfm,CM,Mmen
 bfn,TL,Bunak
@@ -840,7 +840,6 @@ bob,KE,Aweer
 bod,CN,"Tibetan, Central"
 boe,CM,Mundabli
 bof,BF,Bolon
-bog,ML,Bamako Sign Language
 boh,CD,Boma
 boi,US,Barbareño
 boj,PG,Anjam
@@ -895,7 +894,6 @@ bqj,SN,Bandial
 bqk,CF,Banda-Mbrès
 bql,PG,Bilakura
 bqm,CM,Wumboko
-bqn,BG,Bulgarian Sign Language
 bqo,CM,Balo
 bqp,NG,Busa
 bqq,ID,Biritai
@@ -906,7 +904,6 @@ bqu,CD,Boguru
 bqv,NG,Koro Wachi
 bqw,NG,Buru
 bqx,NG,Baangi
-bqy,ID,Bengkala Sign Language
 bqz,CM,Bakaka
 bra,IN,Braj Bhasha
 brb,LA,Lave
@@ -1015,7 +1012,6 @@ bvh,NG,Bure
 bvi,SS,Belanda Viri
 bvj,NG,Baan
 bvk,ID,Bukat
-bvl,BO,Bolivian Sign Language
 bvm,CM,Bamunka
 bvn,PG,Buna
 bvo,TD,Bolgo
@@ -1119,7 +1115,6 @@ bzo,CD,Bozaba
 bzp,ID,Kemberano
 bzq,ID,Buli
 bzr,AU,Biri
-bzs,BR,Brazilian Sign Language
 bzu,ID,Burmeso
 bzv,CM,Naami
 bzw,NG,Basa
@@ -1143,7 +1138,6 @@ cap,BO,Chipaya
 caq,IN,"Nicobarese, Car"
 car,VE,Carib
 cas,BO,Tsimané
-cat,ES,Catalan
 cav,BO,Cavineña
 caw,BO,Callawalla
 cax,BO,Chiquitano
@@ -1190,7 +1184,6 @@ cdm,NP,Chepang
 cdn,IN,Chaudangsi
 cdo,CN,"Chinese, Min Dong"
 cdr,NG,Kamuku
-cds,TD,Chadian Sign Language
 cdy,CN,Chadong
 cdz,IN,Koda
 cea,US,"Chehalis, Lower"
@@ -1288,7 +1281,6 @@ cma,VN,Maa
 cme,BF,Cerma
 cmi,CO,Emberá-Chamí
 cml,ID,Campalagian
-cmn,CN,"Chinese, Mandarin"
 cmo,VN,"Mnong, Central"
 cmr,MM,Mro-Khimi
 cmt,ZA,Camtho
@@ -1364,21 +1356,12 @@ cry,NG,Cori
 crz,US,Cruzeño
 csa,MX,"Chinantec, Chiltepec"
 csb,PL,Kashubian
-csc,ES,Catalan Sign Language
-csd,TH,Chiangmai Sign Language
-cse,CZ,Czech Sign Language
-csf,CU,Cuba Sign Language
-csg,CL,Chilean Sign Language
 csh,MM,"Chin, Asho"
 csi,US,"Miwok, Coast"
 csj,MM,"Chin, Songlai"
 csk,SN,Jola-Kasa
-csl,CN,Chinese Sign Language
 csm,US,"Miwok, Central Sierra"
-csn,CO,Colombian Sign Language
 cso,MX,"Chinantec, Sochiapam"
-csq,HR,Croatia Sign Language
-csr,CR,Costa Rican Sign Language
 css,US,"Ohlone, Southern"
 cst,US,"Ohlone, Northern"
 csv,MM,"Chin, Sumtu"
@@ -1500,7 +1483,6 @@ dep,US,"Delaware, Pidgin"
 deq,CF,Dendi
 der,IN,Deori
 des,BR,Desano
-deu,DE,"German, Standard"
 dev,PG,Domung
 dez,CD,Dengese
 dga,GH,"Dagaare, Southern"
@@ -1624,7 +1606,6 @@ dol,PG,Doso
 don,PG,Toura
 doo,CD,Dongo
 dop,BJ,Lukpa
-doq,DO,Dominican Sign Language
 dor,SB,Dori’o
 dos,BF,Dogosé
 dot,NG,Dass
@@ -1650,10 +1631,8 @@ drt,NL,Drents
 dru,TW,Rukai
 dry,NP,Darai
 dsb,DE,"Sorbian, Lower"
-dse,NL,Sign Language of the Netherlands
 dsh,ET,Daasanach
 dsi,TD,Disa
-dsl,DK,Danish Sign Language
 dsn,ID,Dusner
 dso,IN,Desiya
 dsq,ML,Tadaksahak
@@ -1723,7 +1702,6 @@ ebk,PH,"Bontok, Eastern"
 ebo,CG,Teke-Eboo
 ebr,CI,Ebrié
 ebu,KE,Kiembu
-ecs,EC,Ecuadorian Sign Language
 eee,CN,E
 efa,NG,Efai
 efe,CD,Efe
@@ -1773,7 +1751,6 @@ enb,KE,Markweeta
 enc,VN,En
 end,ID,Ende
 enf,RU,"Enets, Forest"
-eng,GB,English
 enh,RU,"Enets, Tundra"
 enl,PY,Enlhet
 enn,NG,Engenni
@@ -1802,15 +1779,11 @@ esg,IN,"Gondi, Aheri"
 esh,IR,Eshtehardi
 esi,US,"Inupiatun, North Alaskan"
 esk,US,"Inupiatun, Northwest Alaska"
-esl,EG,Egyptian Sign Language
-esn,SV,Salvadoran Sign Language
-eso,EE,Estonian Sign Language
 esq,US,Esselen
 ess,US,"Yupik, Central Siberian"
 esu,US,"Yupik, Central"
 esy,PH,Eskayan
 etb,NG,Etebi
-eth,ET,Ethiopian Sign Language
 etn,VU,Eton
 eto,CM,Eton
 etr,PG,Edolo
@@ -1849,7 +1822,6 @@ fax,ES,Fala
 fay,IR,"Fars, Southwestern"
 faz,IR,"Fars, Northwestern"
 fbl,PH,"Bikol, West Albay"
-fcs,CA,Quebec Sign Language
 fer,SS,Feroge
 ffi,PG,Foia Foia
 ffm,ML,"Fulfulde, Maasina"
@@ -1885,7 +1857,6 @@ for,PG,Fore
 fos,TW,Siraya
 fpe,GQ,Equatorial Guinean Pidgin
 fqs,PG,Fas
-fra,FR,French
 frc,US,"French, Cajun"
 frd,ID,Fordata
 frp,FR,Arpitan
@@ -1894,9 +1865,6 @@ frr,DE,"Frisian, Northern"
 frs,DE,"Saxon, East Frisian Low"
 frt,VU,Fortsenal
 fry,NL,Frisian
-fse,FI,Finnish Sign Language
-fsl,FR,French Sign Language
-fss,FI,Finland-Swedish Sign Language
 fub,CM,"Fulfulde, Adamawa"
 fuc,SN,Pulaar
 fud,WF,"Futuna, East"
@@ -1989,7 +1957,6 @@ gdn,PG,Umanakaina
 gdo,RU,Ghodoberi
 gdq,YE,Mehri
 gdr,PG,Wipi
-gds,NP,Ghandruk Sign Language
 gdt,AU,Kungardutyi
 gdu,NG,Gudu
 gdx,IN,Godwari
@@ -2153,14 +2120,10 @@ grw,PG,Gweda
 grx,PG,Guriaso
 gry,LR,"Grebo, Barclayville"
 grz,PG,Guramalum
-gse,GH,Ghanaian Sign Language
-gsg,DE,German Sign Language
 gsl,SN,Gusilay
-gsm,GT,Guatemalan Sign Language
 gsn,PG,Nema
 gso,CF,"Gbaya, Southwest"
 gsp,PG,Wasembo
-gss,GR,Greek Sign Language
 gsw,CH,"German, Swiss"
 gta,BR,Guató
 gtu,AU,Aghu-Tharnggala
@@ -2182,7 +2145,6 @@ guo,CO,Guayabero
 gup,AU,Gunwinggu
 guq,PY,Aché
 gur,GH,Farefare
-gus,GN,Guinean Sign Language
 gut,CR,Maléku Jaíka
 guu,VE,Yanomamö
 guw,BJ,Gun
@@ -2233,11 +2195,9 @@ gza,SD,Ganza
 gzi,IR,Gazi
 gzn,ID,Gane
 haa,US,Han
-hab,VN,Hanoi Sign Language
 hac,IR,Gurani
 had,ID,Hatam
 hae,ET,"Oromo, Eastern"
-haf,VN,Haiphong Sign Language
 hag,GH,Hanga
 hah,PG,Hahon
 haj,IN,Hajong
@@ -2265,7 +2225,6 @@ hbu,TL,Habun
 hca,IN,Andaman Creole Hindi
 hch,MX,Huichol
 hdn,CA,"Haida, Northern"
-hds,HN,Honduras Sign Language
 hdy,ET,Hadiyya
 hea,CN,"Miao, Northern Qiandong"
 heb,IL,Hebrew
@@ -2299,7 +2258,6 @@ hji,ID,Haji
 hka,TZ,Kahe
 hke,CD,Hunde
 hkk,PG,Hunjara-Kaina Ke
-hks,HK,Hong Kong Sign Language
 hla,PG,Halia
 hlb,IN,Halbi
 hld,VN,Halang Doan
@@ -2350,14 +2308,12 @@ hom,SS,Homa
 hoo,CD,Holoholo
 hop,US,Hopi
 hor,TD,Horo
-hos,VN,Ho Chi Minh City Sign Language
 hot,PG,Hote
 hov,ID,Hovongan
 how,CN,Honi
 hoy,IN,Holiya
 hoz,ET,Hozo
 hpo,MM,Hpon
-hps,US,Hawaii Sign Language
 hra,IN,Hrangkhol
 hrc,PG,Niwer Mil
 hre,VN,Hre
@@ -2372,8 +2328,6 @@ hrw,PG,Warwar Feni
 hrx,BR,Hunsrik
 hrz,IR,Harzani
 hsb,DE,"Sorbian, Upper"
-hsh,HU,Hungarian Sign Language
-hsl,NG,Hausa Sign Language
 hsn,CN,"Chinese, Xiang"
 hss,OM,Harsusi
 hti,ID,Hoti
@@ -2431,7 +2385,6 @@ ibu,ID,Ibu
 iby,NG,Ibani
 ica,BJ,Ede Ica
 ich,NG,Etkywan
-icl,IS,Icelandic Sign Language
 icr,CO,Islander Creole English
 ida,KE,Luidakho-Luisukha-Lutirichi
 idb,IN,Indo-Portuguese
@@ -2476,7 +2429,6 @@ ikl,NG,Ikulu
 iko,NG,Olulumo-Ikom
 ikp,NG,Ikpeshi
 ikr,AU,Ikaranggal
-iks,CA,Inuit Sign Language
 ikt,CA,Inuinnaqtun
 ikv,NG,Iku-Gora-Ankwa
 ikw,NG,Ikwere
@@ -2490,7 +2442,6 @@ ilk,PH,Ilongot
 ilm,MY,Iranun
 ilo,PH,Ilocano
 ilp,PH,Iranun
-ils,IT,International Sign
 ilu,ID,Ili’uun
 ilv,NG,Ilue
 ima,IN,Mala Malasar
@@ -2503,11 +2454,9 @@ ind,ID,Indonesian
 ing,US,Degexit’an
 inh,RU,Ingush
 inj,CO,"Inga, Jungle"
-inl,ID,Indonesian Sign Language
 inn,PH,Isinai
 ino,PG,Inoke-Yate
 inp,PE,Iñapari
-ins,IN,Indian Sign Language
 int,MM,Intha
 inz,US,Ineseño
 ior,ET,Inor
@@ -2529,8 +2478,6 @@ iry,PH,Iraya
 isa,PG,Isabi
 isc,PE,Isconahua
 isd,PH,Isnag
-ise,IT,Italian Sign Language
-isg,IE,Irish Sign Language
 ish,NG,Esan
 isi,NG,Nkem-Nkum
 isk,AF,Ishkashimi
@@ -2538,10 +2485,8 @@ isl,IS,Icelandic
 ism,ID,Masimasi
 isn,TZ,Isanzu
 iso,NG,Isoko
-isr,IL,Israeli Sign Language
 ist,HR,Istriot
 isu,CM,Isu
-ita,IT,Italian
 itb,PH,"Itneg, Binongan"
 itd,ID,"Tidung, Southern"
 ite,BO,Itene
@@ -2603,7 +2548,6 @@ jbr,ID,Jofotek-Bromnya
 jbt,BR,Jabutí
 jbu,CM,Jukun Takum
 jbw,AU,Yawijibaya
-jcs,JM,Jamaican Country Sign Language
 jct,UA,Krimchak
 jda,IN,Jad
 jdg,PK,Jadgali
@@ -2624,7 +2568,6 @@ jge,IL,Judeo-Georgian
 jgk,NG,Gwak
 jgo,CM,Ngomba
 jhi,MY,Jehai
-jhs,NP,Jhankot Sign Language
 jia,CM,Jina
 jib,NG,Jibu
 jic,HN,Tol
@@ -2650,7 +2593,6 @@ jkp,MM,"Karen, Paku"
 jkr,IN,Koro
 jku,NG,Labir
 jle,SD,Ngile
-jls,JM,Jamaican Sign Language
 jma,PG,Dima
 jmb,NG,Zumbun
 jmc,TZ,Machame
@@ -2673,16 +2615,13 @@ job,CD,Joba
 jod,CI,Wojenaka
 jog,PK,Jogi
 jor,BO,Jorá
-jos,JO,Jordanian Sign Language
 jow,ML,Jowulu
-jpn,JP,Japanese
 jpr,IL,Dzhidi
 jqr,PE,Jaqaru
 jra,VN,Jarai
 jrr,NG,Jiru
 jrt,NG,Jorto
 jru,VE,Japreria
-jsl,JP,Japanese Sign Language
 jua,BR,Júma
 jub,NG,Wannu
 jud,CI,Worodougou
@@ -2695,7 +2634,6 @@ jun,IN,Juang
 juo,NG,Jiba
 jup,BR,Hupdë
 jur,BR,Jurúna
-jus,NP,Jumla Sign Language
 juu,NG,Ju
 juw,NG,Wãpha
 juy,IN,Juray
@@ -2859,7 +2797,6 @@ kgd,LA,Kataang
 kge,ID,Komering
 kgf,PG,Kube
 kgg,NP,Kusunda
-kgi,MY,Selangor Sign Language
 kgj,NP,"Kham, Gamale"
 kgk,BR,Kaiwá
 kgl,AU,Kunggari
@@ -3229,7 +3166,6 @@ kvg,PG,Kuni-Boazi
 kvh,ID,Komodo
 kvi,TD,Kwang
 kvj,CM,Psikye
-kvk,KR,Korean Sign Language
 kvl,MM,Kayaw
 kvm,CM,Kendem
 kvn,CO,"Kuna, Border"
@@ -3380,7 +3316,6 @@ lbn,LA,Lamet
 lbo,LA,Laven
 lbq,PG,Wampar
 lbr,NP,Lohorung
-lbs,LY,Libyan Sign Language
 lbt,VN,Lachi
 lbu,PG,Labu
 lbv,PG,Lavatbura-Lamusong
@@ -3527,7 +3462,6 @@ lln,TD,Lele
 llo,LA,Khlor
 llp,VU,"Efate, North"
 llq,ID,Lolak
-lls,LT,Lithuanian Sign Language
 llu,SB,Lau
 llx,FJ,Lauan
 lma,GN,"Limba, East"
@@ -3613,17 +3547,11 @@ lrz,VU,Lemerig
 lsa,IR,Lasgerdi
 lsd,IL,Lishana Deni
 lse,CD,Lusengo
-lsg,FR,Lyons Sign Language
 lsh,IN,Lish
 lsi,MM,Lacid
-lsl,LV,Latvian Sign Language
 lsm,UG,Saamia
-lso,LA,Laos Sign Language
-lsp,PA,Panamanian Sign Language
 lsr,PG,Aruop
 lss,PK,Lasi
-lst,TT,Trinidad and Tobago Sign Language
-lsy,MU,Mauritian Sign Language
 ltg,LV,Latgalian
 lti,ID,Leti
 ltn,BR,Latundê
@@ -3757,7 +3685,6 @@ mdh,PH,Maguindanaon
 mdi,CD,Mamvu
 mdj,CD,Mangbetu
 mdk,CD,Mangbutu
-mdl,MT,Maltese Sign Language
 mdm,CD,Mayogo
 mdn,CF,Mbati
 mdp,CD,Mbala
@@ -3813,7 +3740,6 @@ mfo,NG,Mbe
 mfp,ID,"Malay, Makassar"
 mfq,TG,Moba
 mfr,AU,Marithiel
-mfs,MX,Mexican Sign Language
 mft,PG,Mokerang
 mfu,AO,Mbwela
 mfv,GW,Mandjak
@@ -4110,7 +4036,6 @@ mry,PH,Mandaya
 mrz,ID,Marind
 msb,PH,Masbatenyo
 msc,GN,"Maninka, Sankaran"
-msd,MX,Yucatec Maya Sign Language
 mse,TD,Musey
 msf,ID,Mekwei
 msg,ID,Moraid
@@ -4124,7 +4049,6 @@ msn,VU,Vurës
 mso,ID,Mombum
 msp,BR,Maritsauá
 msq,NC,Caac
-msr,MN,Mongolian Sign Language
 mss,ID,"Masela, West"
 msu,PG,Musom
 msv,CM,Maslam
@@ -4275,7 +4199,6 @@ myy,CO,Macuna
 myz,IR,"Mandaic, Classical"
 mza,MX,"Mixtec, Santa María Zacatepec"
 mzb,DZ,Tumzabt
-mzc,MG,Madagascar Sign Language
 mzd,CM,Malimba
 mze,PG,Morawa
 mzh,AR,Wichí Lhamtés Güisnay
@@ -4295,7 +4218,6 @@ mzu,PG,Inapang
 mzv,CF,Mandja
 mzw,GH,Deg
 mzx,GY,Mawayana
-mzy,MZ,Mozambican Sign Language
 mzz,PG,Maiadomu
 naa,ID,Namla
 nab,BR,"Nambikuára, Southern"
@@ -4337,7 +4259,6 @@ nbo,NG,Nkukoli
 nbp,NG,Nnam
 nbq,ID,Nggem
 nbr,NG,Numana-Nunku-Gbantu-Numbu
-nbs,NA,Namibian Sign Language
 nbt,IN,Na
 nbu,IN,"Naga, Rongmei"
 nbv,CM,Ngamambo
@@ -4359,7 +4280,6 @@ ncn,PG,Nauna
 nco,PG,Sibe
 ncp,CM,Ndaktup
 ncr,CM,Ncane
-ncs,NI,Nicaraguan Sign Language
 nct,IN,"Naga, Chothe"
 ncu,GH,Chumburung
 ncx,MX,"Nahuatl, Central Puebla"
@@ -4652,15 +4572,11 @@ nse,ZM,Nsenga
 nsf,CN,"Nisu, Northwestern"
 nsg,TZ,Ngasa
 nsh,CM,Ngoshie
-nsi,NG,Nigerian Sign Language
 nsk,CA,Naskapi
-nsl,NO,Norwegian Sign Language
 nsm,IN,"Naga, Sumi"
 nsn,PG,Nehan
 nso,ZA,"Sotho, Northern"
-nsp,NP,Nepalese Sign Language
 nsq,US,"Miwok, Northern Sierra"
-nsr,CA,Maritime Sign Language
 nss,PG,Nali
 nst,MM,"Naga, Tase"
 nsu,MX,"Nahuatl, Sierra Negra"
@@ -4761,7 +4677,6 @@ nzb,GA,Njebi
 nzi,GH,Nzema
 nzk,CF,Nzakara
 nzm,IN,"Naga, Zeme"
-nzs,NZ,New Zealand Sign Language
 nzu,CG,Teke-Nzikou
 nzy,TD,Nzakambay
 nzz,ML,"Dogon, Nanga Dama"
@@ -4985,7 +4900,6 @@ pgi,PG,Pagi
 pgk,VU,Rerep
 pgs,NG,Pangseng
 pgu,ID,Pagu
-pgz,PG,Papua New Guinean Sign Language
 pha,CN,Pa-Hng
 phd,IN,Phudagi
 phg,VN,Phuong
@@ -5031,7 +4945,6 @@ pkn,AU,Pakanha
 pko,KE,Pökoot
 pkp,CK,Pukapuka
 pkr,IN,"Kurumba, Attapady"
-pks,PK,Pakistan Sign Language
 pkt,LA,Maleng
 pku,ID,Paku
 pla,PG,Miani
@@ -5112,7 +5025,6 @@ pon,FM,Pohnpeian
 poo,US,"Pomo, Central"
 pop,NC,Pwapwâ
 poq,MX,"Popoluca, Texistepec"
-por,PT,Portuguese
 pos,MX,"Popoluca, Sayula"
 pot,US,Potawatomi
 pov,GW,"Crioulo, Upper Guinea"
@@ -5141,7 +5053,6 @@ prg,PL,Prussian
 prh,PH,Porohanon
 pri,NC,Paicî
 prk,MM,"Wa, Parauk"
-prl,PE,Peruvian Sign Language
 prm,PG,Kibiri
 prn,AF,Prasuni
 prp,IN,Parsi
@@ -5152,21 +5063,13 @@ prt,TH,Prai
 pru,ID,Puragi
 prw,PG,Parawen
 prx,IN,Purik
-prz,CO,Providencia Sign Language
 psa,ID,"Awyu, Asue"
-psc,IR,Persian Sign Language
-psd,US,Plains Indian Sign Language
 pse,ID,"Malay, Central"
-psg,MY,Penang Sign Language
 psh,AF,"Pashai, Southwest"
 psi,AF,"Pashai, Southeast"
-psl,PR,Puerto Rican Sign Language
 psm,BO,Pauserna
 psn,ID,Panasuan
-pso,PL,Polish Sign Language
-psp,PH,Filipino Sign Language
 psq,PG,Pasi
-psr,PT,Portuguese Sign Language
 pss,PG,Kaulong
 pst,PK,"Pashto, Central"
 psw,VU,Port Sandwich
@@ -5215,7 +5118,6 @@ pxm,MX,"Mixe, Quetzaltepec"
 pye,CI,"Krumen, Pye"
 pym,NG,Fyam
 pyn,BR,Poyanáwa
-pys,PY,Paraguayan Sign Language
 pyu,TW,Puyuma
 pyy,MM,Pyen
 pzn,MM,"Naga, Jejara"
@@ -5358,7 +5260,6 @@ rmn,RS,"Romani, Balkan"
 rmo,DE,"Romani, Sinte"
 rmp,PG,Rempi
 rmq,ES,Caló
-rms,RO,Romanian Sign Language
 rmt,EG,Domari
 rmu,SE,"Romani, Tavringer"
 rmw,GB,"Romani, Welsh"
@@ -5391,9 +5292,6 @@ rpt,PG,Rapting
 rri,SB,Ririo
 rro,PG,Waima
 rsb,RS,Romano-Serbian
-rsi,SB,Rennellese Sign Language
-rsl,RU,Russian Sign Language
-rsm,AU,Miriwoong Sign Language
 rtc,MM,"Chin, Rungtu"
 rth,ID,Ratahan
 rtm,FJ,Rotuman
@@ -5410,7 +5308,6 @@ run,BI,Rundi
 ruo,HR,"Romanian, Istro"
 rup,GR,Aromanian
 ruq,GR,"Romanian, Megleno"
-rus,RU,Russian
 rut,RU,Rutul
 ruu,MY,"Lobu, Lanas"
 ruy,NG,Mala
@@ -5499,7 +5396,6 @@ sdg,AF,Savi
 sdh,IR,"Kurdish, Southern"
 sdj,CG,Suundi
 sdk,PG,Sos Kundi
-sdl,SA,Saudi Arabian Sign Language
 sdm,ID,Semandang
 sdn,IT,"Sardinian, Gallurese"
 sdo,MY,"Bidayuh, Bukar-Sadong"
@@ -5534,16 +5430,13 @@ sev,CI,"Sénoufo, Nyarafolo"
 sew,PG,Sewa Bay
 sey,EC,Secoya
 sez,MM,"Chin, Senthang"
-sfb,BE,French Belgian Sign Language
 sfe,PH,"Subanen, Eastern"
 sfm,CN,"Miao, Small Flowery"
-sfs,ZA,South African Sign Language
 sfw,GH,Sehwi
 sgb,PH,"Ayta, Mag-antsi"
 sgc,KE,Kipsigis
 sgd,PH,Surigaonon
 sge,ID,Segai
-sgg,CH,Swiss-German Sign Language
 sgh,TJ,Shughni
 sgi,CM,Suga
 sgj,IN,Surgujia
@@ -5555,7 +5448,6 @@ sgs,LT,Samogitian
 sgt,BT,Brokpake
 sgu,ID,Salas
 sgw,ET,Sebat Bet Gurage
-sgx,SL,Sierra Leone Sign Language
 sgy,AF,Sanglechi
 sgz,PG,Sursurunga
 sha,NG,Shall-Zwall
@@ -5648,7 +5540,6 @@ skz,ID,Sekar
 slc,CO,Sáliba
 sld,BF,Sissala
 sle,IN,Sholaga
-slf,CH,Swiss-Italian Sign Language
 slg,ID,"Murut, Selungai"
 slh,US,"Salish, Southern Puget Sound"
 sli,PL,"Silesian, Lower"
@@ -5660,7 +5551,6 @@ sln,US,Salinan
 slp,ID,Lamaholot
 slq,IR,Salchuq
 slr,CN,Salar
-sls,SG,Singapore Sign Language
 slt,LA,Sila
 slu,ID,Selaru
 slv,SI,Slovene
@@ -5740,7 +5630,6 @@ sow,PG,Sowanda
 sox,CM,Swo
 soy,BJ,Miyobe
 soz,TZ,Temi
-spa,ES,Spanish
 spb,ID,Sepa
 spc,VE,Sapé
 spd,PG,Saep
@@ -5762,11 +5651,9 @@ spv,IN,Sambalpuri
 spy,KE,Sabaot
 sqa,NG,Shama-Sambuga
 sqh,NG,Shau
-sqk,AL,Albanian Sign Language
 sqm,CF,Suma
 sqo,IR,Sorkhei
 sqq,LA,Sou
-sqs,LK,Sri Lankan Sign Language
 sqt,YE,Soqotri
 squ,CA,Squamish
 sra,PG,Saruga
@@ -5807,9 +5694,7 @@ ssl,GH,"Sisaala, Western"
 ssm,MY,Semnam
 ssn,KE,Waata
 sso,PG,Sissano
-ssp,ES,Spanish Sign Language
 ssq,ID,So’a
-ssr,CH,Swiss-French Sign Language
 sss,LA,Sô
 sst,PG,Sinasina
 ssu,PG,Susuami
@@ -5862,7 +5747,6 @@ sva,GE,Svan
 svb,PG,Ulau-Suain
 svc,VC,Vincentian Creole English
 sve,ID,Serili
-svk,SK,Slovakian Sign Language
 svm,IT,Slavomolisano
 svs,SB,Savosavo
 swb,YT,"Comorian, Maore"
@@ -5874,7 +5758,6 @@ swh,TZ,Swahili
 swi,CN,Sui
 swj,GA,Sira
 swk,MW,"Sena, Malawi"
-swl,SE,Swedish Sign Language
 swm,PG,Samosa
 swn,LY,Sawknah
 swo,BR,Shanenawa
@@ -5909,7 +5792,6 @@ syo,KH,Suoy
 sys,TD,Sinyar
 syw,NP,Kagate
 syx,GA,Samay
-syy,IL,Al-Sayyid Bedouin Sign Language
 sza,MY,Semelai
 szb,ID,Ngalum
 szc,MY,Semaq Beri
@@ -6289,26 +6171,21 @@ tsa,CG,Tsaangi
 tsb,ET,Tsamai
 tsc,MZ,Tswa
 tsd,GR,Tsakonian
-tse,TN,Tunisian Sign Language
 tsg,PH,Tausug
 tsh,CM,Tsuvan
 tsi,CA,Tsimshian
 tsj,BT,Tshangla
 tsk,CN,Tseku
 tsl,VN,Ts’ün-Lao
-tsm,TR,Turkish Sign Language
 tsn,BW,Tswana
 tso,ZA,Tsonga
 tsp,BF,"Toussian, Northern"
-tsq,TH,Thai Sign Language
 tsr,VU,Akei
-tss,TW,Taiwan Sign Language
 tst,ML,Tondi Songway Kiini
 tsu,TW,Tsou
 tsv,GA,Tsogo
 tsw,NG,Tsishingini
 tsx,PG,Mubami
-tsy,ML,Tebul Sign Language
 tsz,MX,Purepecha
 ttb,NG,Gaa
 ttc,GT,Tektiteko
@@ -6417,7 +6294,6 @@ tyu,BW,Kua
 tyv,RU,Tuva
 tyx,CG,Teke-Tyee
 tyz,VN,Tày
-tza,TZ,Tanzanian Sign Language
 tzh,MX,Tzeltal
 tzj,GT,Tz’utujil
 tzm,MA,"Tamazight, Central Atlas"
@@ -6445,9 +6321,7 @@ ues,ID,Kioko
 ufi,PG,Ufim
 ugb,AU,Kuku-Ugbanh
 uge,SB,Ughele
-ugn,UG,Ugandan Sign Language
 ugo,TH,Ugong
-ugy,UY,Uruguayan Sign Language
 uha,NG,Uhami
 uhn,ID,Damal
 uig,CN,Uyghur
@@ -6457,11 +6331,9 @@ uji,NG,Tanjijili
 uka,ID,Kaburi
 ukg,PG,Ukuriguma
 ukh,CF,Ukhwejo
-ukl,UA,Ukrainian Sign Language
 ukp,NG,Ukpe-Bayobiri
 ukq,NG,Ukwa
 ukr,UA,Ukrainian
-uks,BR,Kaapor Sign Language
 uku,NG,Ukue
 ukw,NG,Ukwuani-Aboh-Ndoni
 uky,AU,Kuuk-Yak
@@ -6573,7 +6445,6 @@ veo,US,Ventureño
 vep,RU,Veps
 ver,NG,Mom Jango
 vgr,PK,Vaghri
-vgt,BE,Flemish Sign Language
 vic,VI,Virgin Islands Creole English
 vid,TZ,Vidunda
 vie,VN,Vietnamese
@@ -6628,9 +6499,6 @@ vra,VU,Vera’a
 vro,EE,Võro
 vrs,SB,Varisi
 vrt,VU,Banam Bay
-vsi,MD,Moldova Sign Language
-vsl,VE,Venezuelan Sign Language
-vsv,ES,Valencian Sign Language
 vto,ID,Vitou
 vum,GA,Vumbu
 vun,TZ,Vunjo
@@ -6915,7 +6783,6 @@ xkd,ID,"Kayan, Mendalam"
 xke,ID,Kereho
 xkf,BT,Khengkha
 xkg,ML,Kagoro
-xki,KE,Kenyan Sign Language
 xkj,IR,Kajali
 xkk,KH,Kaco’
 xkl,ID,"Kenyah, Mainstream"
@@ -6941,12 +6808,10 @@ xmf,GE,Mingrelian
 xmg,CM,Mengaka
 xmh,AU,Kuku-Muminh
 xmj,CM,Majera
-xml,MY,Malaysian Sign Language
 xmm,ID,"Malay, Manado"
 xmo,BR,Morerebi
 xmp,AU,Kuku-Mu’inh
 xmq,AU,Kuku-Mangk
-xms,MA,Moroccan Sign Language
 xmt,ID,Matbat
 xmu,AU,Kamu
 xmv,MG,"Malagasy, Antankarana"
@@ -7117,13 +6982,11 @@ ygl,PG,Yangum Gel
 ygm,PG,Yagomi
 ygp,CN,Gepo
 ygr,PG,Yagaria
-ygs,AU,Yolngu Sign Language
 ygu,AU,Yugul
 ygw,PG,Yagwoia
 yha,CN,"Buyang, Baha"
 yhd,IL,"Arabic, Judeo-Iraqi"
 yhl,CN,"Phowa, Hlepho"
-yhs,AU,Yan-nhangu Sign Language
 yia,AU,Yinggarda
 yif,CN,Ache
 yig,CN,"Nasu, Wusa"
@@ -7226,7 +7089,6 @@ yrw,PG,Yarawata
 yry,AU,Yarluyandi
 ysd,CN,Samatao
 ysg,CN,Sonaga
-ysl,RS,Yugoslavian Sign Language
 ysn,CN,Sani
 yso,CN,Nisi
 ysp,CN,"Lolopo, Southern"
@@ -7328,7 +7190,6 @@ zhi,NG,Zhire
 zhn,CN,"Zhuang, Nong"
 zhw,CM,Zhoa
 zia,PG,Zia
-zib,ZW,Zimbabwe Sign Language
 zik,PG,Zimakani
 zil,GN,Zialo
 zim,TD,Mesme
@@ -7417,7 +7278,6 @@ zro,EC,Záparo
 zrp,FR,Zarphatic
 zrs,ID,Mairasi
 zsa,PG,Sarasira
-zsl,ZM,Zambian Sign Language
 zsm,MY,"Malay, Standard"
 zsr,MX,"Zapotec, Southern Rincon"
 zsu,PG,Sukurum

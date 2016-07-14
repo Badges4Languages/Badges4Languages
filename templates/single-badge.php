@@ -177,7 +177,7 @@ get_header(); ?>
                 /**
                  * Recovers all the useful information for the JSON creation and sending an email
                 */
-                if(isset($_POST['get_certification']) && ($_POST['language_certification'] != ""))
+                if(isset($_POST['get_certification']) && ($_POST['language_certification'] != "") && ($_POST['language_certification'] != "------------"))
                 {
                     //Contains all the issuer information
                     $queryInfo = "SELECT * FROM ".$wpdb->prefix."b4l_issuer_information ";
@@ -306,7 +306,8 @@ function b4l_see_and_send_self_certification(){
                                         WHEN language_id = 'deu' THEN 7
                                         WHEN language_id = 'ita' THEN 8 
                                         WHEN language_id = 'jpn' THEN 9 
-                                        WHEN language_id = 'arb' THEN 9 
+                                        WHEN language_id = 'arb' THEN 9
+                                        WHEN language_id = '---' THEN 9
                                         ELSE language_name 
                                     END)";
                     } 

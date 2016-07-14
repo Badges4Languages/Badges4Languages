@@ -77,7 +77,21 @@ function b4l_send_badges_students_page_callback() {
                     <?php
                         //Display all the languages possible stored in the ($wpdb->prefix)b4l_languages table. 
                         global $wpdb;
-                        $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages";
+                        $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages ORDER BY 
+                                    (CASE 
+                                        WHEN language_id = 'eng' THEN 1 
+                                        WHEN language_id = 'spa' THEN 2 
+                                        WHEN language_id = 'fra' THEN 3 
+                                        WHEN language_id = 'cmn' THEN 4
+                                        WHEN language_id = 'rus' THEN 5
+                                        WHEN language_id = 'por' THEN 6
+                                        WHEN language_id = 'deu' THEN 7
+                                        WHEN language_id = 'ita' THEN 8 
+                                        WHEN language_id = 'jpn' THEN 9 
+                                        WHEN language_id = 'arb' THEN 9
+                                        WHEN language_id = '---' THEN 9
+                                        ELSE language_name 
+                                    END)";
                         $resultsLang = $wpdb->get_results($query, ARRAY_A);
                         foreach($resultsLang as $result) {
                     ?>
@@ -105,7 +119,7 @@ function b4l_send_badges_students_page_callback() {
 
 <?php
     //Level, email, and language have to be set to send a certification
-    if($_POST["send_emails_button"] && isset($_POST["level"]) && !empty($_POST["language_certification"]) && !empty($_POST["students_emails"])) {
+    if($_POST["send_emails_button"] && isset($_POST["level"]) && !empty($_POST["language_certification"]) && ($_POST["language_certification"] != "------------") && !empty($_POST["students_emails"])) {
         
         //Contains all the issuer information
         $queryInfo = "SELECT * FROM ".$wpdb->prefix."b4l_issuer_information ";
