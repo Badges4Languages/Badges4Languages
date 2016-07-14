@@ -35,18 +35,19 @@
 	
 	This is a User Guide which will explain you how to install and how to use our plugin Badges4Languages-plugin.\\
 	
-	This documentation refers to the version 1.2.2 of the code.
+	This documentation refers to the version 1.1.0 of the code.
 	
 
 
 
 
 
-	\chapter{Installation}
+	\chapter{Installation and configuration}
 
 	\begin{enumerate}
 		\item Clone (or copy) this repository to the \textit{/wp-content/plugins/} directory;
     	\item Activate the plugin through the \textit{Plugins} menu in WordPress.
+    	\item The \textit{Post Name} permalink form has to be set on the website, you can check it on the administration panel in \textit{Settings} > \textit{Permalink Settings} > \textit{Common Settings}.
 	\end{enumerate}
 	
 	
@@ -54,7 +55,37 @@
 	
 	
 	
-
+	\chapter{Presentation}
+	
+		\section{User Roles}
+		
+		There are 4 user roles with this plugin :
+	\begin{enumerate}
+		\item \textit{Teacher} and \textit{Academy}, which allows a user to send badges to students (access to the plugin's submenu "Send Badges To Students");
+		\item \textit{Student}, which gives no access to the plugin's menu in the administration panel;
+    	\item \textit{Badge Editor}, which gives the same permissions as the Wordpress user role \textit{Editor} (that is to say to post, edit and delete posts and pages), combined with \textit{Teacher} or \textit{Academy}'s permissions.
+	\end{enumerate}
+	
+	Automatically, the administrator have all the permissions on his website.\\
+	
+	If you want to create other roles or if you want to change the permissions for each role, there are 2 solutions :
+	\begin{enumerate}
+		\item Modify \textit{users\_roles\_and\_capabilities.php} (need some knowledge in programmation);
+		\item Use a plugin, like \textit{Members} by Justin Tadlock, which lets the administrator manages easily the user roles and user capabilities (=permissions).
+	\end{enumerate}
+	
+		\section{Badge School and Custom Taxonomies}
+		
+	Only a user with the role of administrator, editor, author, or Badge Editor can create a new badge (new custom post) and a new custom taxonomy (equivalent of a custom category).\\
+	
+	The Badge page corresponds to the certification that a user can get with Mozilla OpenBadges, therefore when the administrator/editor/author creates a badge, he has to give a title, a featured image (Badge image), and a category (Teacher/Student Level). \\
+	
+	It is optional, but the writer can file the custom metabox \textit{Badge Information} : he can add a link for one of the most used languages which gives more information about the certification's page.
+	
+	
+	
+	
+	
 	\chapter{Use}
 	
 		\section{Initialization (User Role : Administrator)}
@@ -147,6 +178,17 @@
 
 
 
+
+
+	\newpage
+	
+		\section{Shortcode : "Send Badges To Students" Page}
+		
+		If the administrator doesn't want that the teachers have to go the back end to send certification by email to the students, he can create a new page on his website which will contain exactly the same information as the "Send Badges To Students" plugin submenu.
+		
+		To do so, the administrator creates a new post (and not a new badge/new custom post !) and writes the shortcode [send\_badges] on the text field.
+		
+		
 
 
 
