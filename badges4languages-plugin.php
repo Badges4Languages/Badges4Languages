@@ -14,7 +14,7 @@
  * Plugin Name:       Badges4languages-plugin
  * Plugin URI:        http://www.badges4languages.org
  * Description:       Gives a student or a teacher certification to someone.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Author:            Alexandre LEVACHER
  * Author URI:        http://www.badges4languages.org
  * License:           GPL-2.0+
@@ -181,7 +181,7 @@ function b4l_include_template_function( $template_path ) {
 
 
 /**************************************************************************
- ****************** ADD BADGES FIELD INTO USER PROFIL *********************
+ ****************** ADD BADGES FIELD INTO USER PROFILE ********************
  *************************************************************************/
 
 /**
@@ -191,9 +191,9 @@ function b4l_include_template_function( $template_path ) {
  * A teacher can send certifications by mails to a (group of) student(s) by the
  * administration panel.
 
-require plugin_dir_path( __FILE__ ) . 'includes/site_pages/badges_user_profil.php';
+require plugin_dir_path( __FILE__ ) . 'includes/site_pages/badges_user_profile.php';
 */
-
+require plugin_dir_path( __FILE__ ) . 'includes/site_pages/user_profile.php';
 
 
 ?>

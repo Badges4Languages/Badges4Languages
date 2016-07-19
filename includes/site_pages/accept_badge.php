@@ -27,7 +27,6 @@ function b4l_create_accept_badge_page(){
 		$b4l_award_page=array(
 		'post_name'=>'accept-badge',
 		'post_title'=>'Accept badge',
-		'post_content'=>'You got a badge!',
 		'post_excerpt'=>'badges',
 		'post_status'=>'publish',
 		'post_type'=>'page',
@@ -52,7 +51,7 @@ add_filter('the_content','b4l_accept_badge_page_content');
  * @since 1.0.0
  * @return string $content HTML content of the 'Accept Badge' page
  */
-function b4l_accept_badge_page_content($content){
+function b4l_accept_badge_page_content(){
     //Verification of the existence of the page
     if ( is_page( 'accept-badge' ) ){
 
@@ -108,26 +107,21 @@ function b4l_accept_badge_page_content($content){
             });
        </script>
    
-        <?php
-        //Content of 'Accept Badge' page on the template page
-        $content = <<<EOHTML
-            <div id="bsp-award-actions-wrap">
-                <div id="badgeSuccess">
-                    <p>Congratulations! The "{$badge_name}" badge has been awarded to you.</p>
-                    <p class="acceptclick">Please <a href='#' class='acceptclick'>accept</a> the award.</p>
-                </div>
+        
+        <div id="bsp-award-actions-wrap">
+            <div id="badgeSuccess">
+                <p>Congratulations! The "<?php echo $badge_name; ?>" badge has been awarded to you.</p>
+                <p class="acceptclick">Please <a href='#' class='acceptclick'>accept</a> the award.</p>
             </div>
-            <div class="browserSupport">
-                <p>Microsoft Internet Explorer is not supported at this time. Please use Firefox or Chrome to retrieve your award.</p>
-            </div>
-            <div id="badge-error">
-                <p>An error occured while adding this badge to your backpack.</p>
-            </div>
-            </div>
-            {$content}
-EOHTML;
+        </div>
+        <div class="browserSupport">
+            <p>Microsoft Internet Explorer is not supported at this time. Please use Firefox or Chrome to retrieve your award.</p>
+        </div>
+        <div id="badge-error">
+            <p>An error occured while adding this badge to your backpack.</p>
+        </div>
+    <?php
     }//end of is_page('accept-badge')   
-    return $content;
 }
 
 
@@ -164,8 +158,9 @@ function b4l_accept_badge_template( $template ) {
 function b4l_save_badge_user_profil($json){
     global $wpdb;
     
+    var_dump(json_decode($json));
     $jsonInformation = json_decode($json);
-    //if(!($wpdb->get_row($wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."b4l_userBadgesProfil WHERE id = 1", "" )))) {
+    /*if(!($wpdb->get_row($wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."b4l_userBadgesProfil WHERE id = 1", "" )))) {
             $wpdb->insert(
                         $wpdb->prefix . 'b4l_userBadgesProfil',
                         array(
@@ -179,4 +174,6 @@ function b4l_save_badge_user_profil($json){
                         )
                     );
     //    }
+     * *
+     */
 }

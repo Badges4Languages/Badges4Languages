@@ -94,7 +94,8 @@ get_header(); ?>
                             <td width="30%">
                                 <form action="">
                                     <!-- Select the language translation into a menu -->
-                                    <select style="width: 100px" id="description_translation" name="description_translation">
+                                    <select style="width: 150px" id="description_translation" name="description_translation">
+                                        <option value="null" selected> Select a language </option>
                                     <?php
                                         foreach($results1 as $result) {
                                     ?>
@@ -290,7 +291,8 @@ function b4l_see_and_send_self_certification(){
         <form action="" method="post">
             <h3>Choose the language that you want a certification</h3>
             <p>You can write the name into the scrollbar menu or look for it</p>
-            <select style="width: 100px" id="language_certification" name="language_certification">
+            <select style="width: 150px" id="language_certification" name="language_certification">
+                <option value="" selected> Select a language </option>
                 <?php
                     //Display all the languages possible stored in the ($wpdb->prefix)b4l_languages table. 
                     global $wpdb;

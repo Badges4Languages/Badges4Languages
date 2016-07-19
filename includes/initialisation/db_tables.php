@@ -30,7 +30,8 @@ function b4l_create_db_tables() {
     b4l_create_db_table_b4l_skills();
     b4l_create_db_table_b4l_number_certifications();
     b4l_create_db_table_b4l_issuer_information();
-    b4l_create_db_table_b4l_userBadgesProfil();
+    b4l_create_db_table_b4l_userStudentBadgesProfil();
+    b4l_create_db_table_b4l_userTeacherBadgesProfil();
 }
 
 
@@ -251,25 +252,53 @@ function b4l_create_db_table_b4l_issuer_information() {
 }
 
 /**
- * Create/Update the '(prefix)b4l_userBadgesProfil' table
+ * Create/Update the '(prefix)b4l_userStudentBadgesProfil' table
  * 
  * @author Alexandre LEVACHER
  * @since 1.0.0
  */
-function b4l_create_db_table_b4l_userBadgesProfil() {
+function b4l_create_db_table_b4l_userStudentBadgesProfil() {
     global $wpdb;
-    $table_name = $wpdb->prefix . "b4l_userBadgesProfil"; 
+    $table_name = $wpdb->prefix . "b4l_userStudentBadgesProfil"; 
     $charset_collate = $wpdb->get_charset_collate();
     
-    //id is a combination of user_id + badge_level + badge_language
+    //user_badge_id is a combination of user_id + badge_level + badge_language
     $sql = "CREATE TABLE $table_name (
-        user_badges_id varchar(100) NOT NULL,
+        user_badge_id varchar(100) NOT NULL,
         user_id bigint(20) NOT NULL,
         badge_level text NOT NULL,
         badge_language text NOT NULL,
         badge_date date NOT NULL,
         badge_image text NOT NULL,
         badge_teacher text NOT NULL,
+        badge_comment text NOT NULL
+        PRIMARY KEY  (user_badges_id)
+  ) $charset_collate;";
+
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+}
+
+/**
+ * Create/Update the '(prefix)b4l_userTeacherBadgesProfil' table
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.0.0
+ */
+function b4l_create_db_table_b4l_userTeacherBadgesProfil() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . "b4l_userTeacherBadgesProfil"; 
+    $charset_collate = $wpdb->get_charset_collate();
+    
+    //id is a combination of user_id + badge_level + badge_language
+    $sql = "CREATE TABLE $table_name (
+        user_badge_id varchar(100) NOT NULL,
+        user_id bigint(20) NOT NULL,
+        badge_level text NOT NULL,
+        badge_language text NOT NULL,
+        badge_date date NOT NULL,
+        badge_image text NOT NULL,
+        badge_teacher text NOT NULL
         PRIMARY KEY  (user_badges_id)
   ) $charset_collate;";
 
