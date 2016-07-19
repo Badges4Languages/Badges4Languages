@@ -372,7 +372,7 @@ class b4l_wp_csv_to_db {
                                     value = $( "#table_select option:selected" ).text();
                                     switch(value){
                                         case "Languages" :
-                                            $('#db_table_description').text("Contains the language code (3 letters), the country code (2 letters) and the full language name.");
+                                            $('#db_table_description').text("Contains the language code (3 letters), the country code (2 letters) and the full language name. On the website, the 10 most spoken languages are displayed alphabeticaly, and then all the others.");
                                             $('#csv_example').html('<a href="<?php echo WP_PLUGIN_URL.'/badges4languages-plugin/included_plugins/wp_csv_to_db/csv_examples/languageExample.csv'; ?>">languageExample</a>');                                          
                                             break;
                                         case "Skills" :

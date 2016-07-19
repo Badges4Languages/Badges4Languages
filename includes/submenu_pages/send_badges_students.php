@@ -79,17 +79,17 @@ function b4l_send_badges_students_page_callback() {
                         global $wpdb;
                         $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages ORDER BY 
                                     (CASE 
-                                        WHEN language_id = 'eng' THEN 1 
-                                        WHEN language_id = 'spa' THEN 2 
-                                        WHEN language_id = 'fra' THEN 3 
-                                        WHEN language_id = 'cmn' THEN 4
-                                        WHEN language_id = 'rus' THEN 5
-                                        WHEN language_id = 'por' THEN 6
-                                        WHEN language_id = 'deu' THEN 7
-                                        WHEN language_id = 'ita' THEN 8 
-                                        WHEN language_id = 'jpn' THEN 9 
-                                        WHEN language_id = 'arb' THEN 9
-                                        WHEN language_id = '---' THEN 9
+                                        WHEN language_id = 'arb' THEN 1
+                                        WHEN language_id = 'cmn' THEN 1
+                                        WHEN language_id = 'deu' THEN 1
+                                        WHEN language_id = 'eng' THEN 1
+                                        WHEN language_id = 'fra' THEN 1 
+                                        WHEN language_id = 'ita' THEN 1
+                                        WHEN language_id = 'jpn' THEN 1
+                                        WHEN language_id = 'por' THEN 1
+                                        WHEN language_id = 'rus' THEN 1
+                                        WHEN language_id = 'spa' THEN 1
+                                        WHEN language_id = '---' THEN 2
                                         ELSE language_name 
                                     END)";
                         $resultsLang = $wpdb->get_results($query, ARRAY_A);
