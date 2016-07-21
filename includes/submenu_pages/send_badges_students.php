@@ -89,6 +89,7 @@ function b4l_send_badges_students_page_callback() {
                                         WHEN language_id = 'por' THEN 1
                                         WHEN language_id = 'rus' THEN 1
                                         WHEN language_id = 'spa' THEN 1
+                                        WHEN language_id = 'vlc' THEN 1
                                         WHEN language_id = '---' THEN 2
                                         ELSE language_name 
                                     END)";
