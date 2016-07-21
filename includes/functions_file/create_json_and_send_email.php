@@ -58,13 +58,14 @@ function b4l_single_badge_translation($translation_language){
  * @param string $badge_lvl Badge's level
  * @param string $badge_name Badge's name (corresponds to the page title, or the badge's level+language)
  * @param string $badge_desc Badge's description
+ * @param string $badge_type Type of badge (teacher or student)
  * @param string $issuer_name Issuer's name (name of the firm/group which gives the certification)
  * @param string $issuer_url Issuer's url
  * @param string $issuer_email Issuer's email
  * @param int|string $numberOfPeopleOrTeacherUserName Number of People having this certification (for self-certification badges) or Teacher's name (for badges awarded by a teacher)
  * @return string $file_json Json file path
 */ 
-function b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $numberOfPeopleOrTeacherUserName){
+function b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $numberOfPeopleOrTeacherUserName){
     
     //adding a salt to our hashed email
     $salt=uniqid(mt_rand(), true);
@@ -89,13 +90,15 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge_image
     //Checks if it is a number (self certification) or if a teacher gave the badge
     if(is_int($numberOfPeopleOrTeacherUserName)) {
         $uid_number = $numberOfPeopleOrTeacherUserName;
-        $badge_name_info = '(Self certification)';
+        $badge_name_info = 'Self certification';
+        $teacher = $badge_name_info;
     } else {
         //Could cause problems in the future if we have a lot of certifications sent,
         //the random number (mt_rand() function) can be appeared a second time (probability 
         //increases if there are a lot of members/certifications sent).
         $uid_number = $hash;
-        $badge_name_info = '(Teacher : '.$numberOfPeopleOrTeacherUserName.')';
+        $teacher = $numberOfPeopleOrTeacherUserName;
+        $badge_name_info = 'Teacher : '.$teacher;
     }
     //handle for opening or creating the file and writing to it (w)
     $handle=fopen($path_json, 'w') or die ('Can not open file: '.$file_json);
@@ -110,11 +113,13 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge_image
             'badge'=>array(
                     '@context'=>'https://w3id.org/openbadges/v1',
                     'type'=>'BadgeClass',
-                    'name'=>$badge_name.' - '.$badge_lang.' '.$badge_name_info,
+                    'typeofbadge'=>$badge_type,
+                    'name'=>$badge_name.' - '.$badge_lang.' ('.$badge_name_info.')',
                     'level'=>$badge_lvl, //level and language are not required, it's to have more information and to use them to stock badges on user profil
                     'language'=>$badge_lang,
                     'description'=>$badge_desc,
                     'image'=>$badge_image,
+                    'teacher'=>$teacher,
                     'criteria'=>'https://badges4languages.wordpress.com/',
                     'issuer'=>array(
                             'type'=>'Issuer',

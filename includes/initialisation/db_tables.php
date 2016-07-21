@@ -271,8 +271,8 @@ function b4l_create_db_table_b4l_userStudentBadgesProfil() {
         badge_date date NOT NULL,
         badge_image text NOT NULL,
         badge_teacher text NOT NULL,
-        badge_comment text NOT NULL
-        PRIMARY KEY  (user_badges_id)
+        badge_comment text NOT NULL,
+        PRIMARY KEY  (user_badge_id)
   ) $charset_collate;";
 
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
@@ -298,8 +298,8 @@ function b4l_create_db_table_b4l_userTeacherBadgesProfil() {
         badge_language text NOT NULL,
         badge_date date NOT NULL,
         badge_image text NOT NULL,
-        badge_teacher text NOT NULL
-        PRIMARY KEY  (user_badges_id)
+        badge_teacher text NOT NULL,
+        PRIMARY KEY  (user_badge_id)
   ) $charset_collate;";
 
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );

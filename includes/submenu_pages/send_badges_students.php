@@ -163,6 +163,7 @@ function b4l_send_badges_students_page_callback() {
             //Check if it is a Student badge or a Teacher badge and recuperate the value.
             $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
             $badge_lvl = $studentLevel[0]->name;
+            $badge_type = 'Student';
 
             //Use the Wordpress featured image as badge image
             $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
@@ -171,7 +172,7 @@ function b4l_send_badges_students_page_callback() {
             //Get the email from the InputField
             $email = $_POST['students_emails'];
             //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
-            $file_json = b4l_create_certification_assertion_badge_json($email, $badge_image, $_POST["language_certification"], $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $teacher_user_name);
+            $file_json = b4l_create_certification_assertion_badge_json($email, $badge_image, $_POST["language_certification"], $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $teacher_user_name);
             b4l_send_badge_email($email, $badge_name, $badge_desc, $badge_image, $_POST["language_certification"], $file_json, $issuer_logo, $issuer_email); 
         }
         /*

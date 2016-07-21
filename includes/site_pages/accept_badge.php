@@ -135,8 +135,8 @@ add_filter( 'template_include', 'b4l_accept_badge_template');
  * 
  * @author Alexandre LEVACHER
  * @since 1.0.0
- * @param File $template Template path
- * @return File $template Template path
+ * @param String $template Template path
+ * @return String $template Template path
  */
 function b4l_accept_badge_template( $template ) {
     //checking if the page has the slug of accept-badge
@@ -152,28 +152,54 @@ function b4l_accept_badge_template( $template ) {
 }
 
 
-/*
- * NOT AVAILABLE FOR THE MOMENT
-  */
-function b4l_save_badge_user_profil($json){
-    global $wpdb;
+/**
+ * Save the data from the JSON file which is saved in the Wordpress server to 
+ * display them on the user profile.
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.1.2
+ * @param String $json_path Json path
+ */
+function b4l_save_badge_user_profil($json_path){
+    $json_content = file_get_contents($json_path); //Get the Json content from the Json path
+    $json_obj = json_decode($json_content); //Decide the Json content (get all the information into $json_obj)
     
-    var_dump(json_decode($json));
-    $jsonInformation = json_decode($json);
-    /*if(!($wpdb->get_row($wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."b4l_userBadgesProfil WHERE id = 1", "" )))) {
-            $wpdb->insert(
-                        $wpdb->prefix . 'b4l_userBadgesProfil',
-                        array(
-                            'user_badges_id' => "bbbbbbbb",
-                            'user_id' => 5,
-                            'badge_level' => "a",
-                            'badge_language' => "a",
-                            'badge_date' => "2016-06-30",
-                            'badge_image' => "a",
-                            'badge_teacher' => "a"
-                        )
-                    );
-    //    }
-     * *
-     */
+    //Checks the type of badge to know where to save the data
+    if($json_obj->{'badge'}->{'typeofbadge'} == 'Student') {
+        b4l_insert_data_into_user_role_badges_profil_table($json_obj, 'b4l_userStudentBadgesProfil');
+    } 
+    if($json_obj->{'badge'}->{'typeofbadge'} == 'Teacher') {
+        b4l_insert_data_into_user_role_badges_profil_table($json_obj, 'b4l_userTeacherBadgesProfil');
+    }
+}
+
+
+/**
+ * Adding the template for 'Accept Badge' page to the list of templates.
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.1.2
+ * @param Object $json_obj Json object which contains all the data
+ * @param String $table_name Database table name in which the data will be saved
+ */
+function b4l_insert_data_into_user_role_badges_profil_table($json_obj,$table_name){
+    global $wpdb;
+    global $current_user;
+    get_currentuserinfo();
+    
+    //If this certification is not already on the database table for a user, we save the data
+    if(!($wpdb->get_row($wpdb->prepare( "SELECT * FROM ".$wpdb->prefix.$table_name." WHERE user_badge_id = ".$current_user->ID.'_'.$json_obj->{'badge'}->{'level'}.'_'.$json_obj->{'badge'}->{'language'}, "" )))) {
+        $wpdb->insert(
+            $wpdb->prefix . $table_name,
+            array(
+                'user_badge_id' => $current_user->ID.'_'.$json_obj->{'badge'}->{'level'}.'_'.$json_obj->{'badge'}->{'language'},
+                'user_id' => $current_user->ID,
+                'badge_level' => $json_obj->{'badge'}->{'level'},
+                'badge_language' => $json_obj->{'badge'}->{'language'},
+                'badge_date' => $json_obj->{'issued_on'},
+                'badge_image' => $json_obj->{'badge'}->{'image'},
+                'badge_teacher' => $json_obj->{'badge'}->{'teacher'}
+            )
+        );
+    }
 }

@@ -14,7 +14,7 @@
  * Plugin Name:       Badges4languages-plugin
  * Plugin URI:        http://www.badges4languages.org
  * Description:       Gives a student or a teacher certification to someone.
- * Version:           1.1.1
+ * Version:           1.1.2
  * Author:            Alexandre LEVACHER
  * Author URI:        http://www.badges4languages.org
  * License:           GPL-2.0+

@@ -160,11 +160,11 @@ get_header(); ?>
                 $user_roles = $current_user->roles;
                 $user_role = array_shift($user_roles);
                 //If it is a student badge, everybody can see it
-                if ( get_the_terms($post->ID, 'badge_studentlevels') ) {
+                if ( is_user_logged_in() && get_the_terms($post->ID, 'badge_studentlevels') ) {
                     b4l_see_and_send_self_certification();
                 } else {
                     //If it is a teacher badge, only admin, teacher, academy et badges editor (custom roles of the plugin) can see the form
-                    if ( $user_role == 'administrator' || $user_role == 'b4l_academy' || $user_role == 'b4l_teacher' || user_role == 'b4l_badges_editor') {
+                    if ( is_user_logged_in() && ($user_role == 'administrator' || $user_role == 'b4l_academy' || $user_role == 'b4l_teacher' || user_role == 'b4l_badges_editor')) {
                         b4l_see_and_send_self_certification();
                     }
                 }
@@ -228,14 +228,16 @@ get_header(); ?>
                         if (get_the_terms($post->ID, 'badge_studentlevels')) {
                             $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
                             $badge_lvl = $studentLevel[0]->name;
+                            $badge_type = 'Student';
                         } elseif (get_the_terms($post->ID, 'badge_teacherlevels')) {
                             $teacherLevel = get_the_terms($post->ID, 'badge_teacherlevels');
                             $badge_lvl = $teacherLevel[0]->name;
+                            $badge_type = 'Teacher';
                         }
 
                         //Create the JSON File and send the cerfication by email.
                         //Function b4l_create_certification_assertion_badge_json is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
-                        $file_json = b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople);
+                        $file_json = b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople);
                         b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $file_json, $issuer_logo, $issuer_email);
                         ?>
                         <script>
@@ -309,6 +311,7 @@ function b4l_see_and_send_self_certification(){
                                         WHEN language_id = 'por' THEN 1
                                         WHEN language_id = 'rus' THEN 1
                                         WHEN language_id = 'spa' THEN 1
+                                        WHEN language_id = 'vlc' THEN 1
                                         WHEN language_id = '---' THEN 2
                                         ELSE language_name 
                                     END)";
