@@ -1,0 +1,30 @@
+ /*
+  * CSS File for the template single-badge.php
+  *
+  * @author Alexandre Levacher
+  * @package badges4languages-plugin
+  * @subpackage css
+  * @since 1.0.0
+ */
+
+.badge-div{
+    border-width:1px; 
+    border-style:solid; 
+    border-color:black;
+    margin: 0 0 50px 0;
+}
+
+.badge-text{
+    
+}
+
+.badge-img{
+    float:left;
+    width:100px;
+    height:100px;
+    margin: 5px 10px 5px 10px;
+}
+
+.badge-name{
+    font-size: 250%;
+}

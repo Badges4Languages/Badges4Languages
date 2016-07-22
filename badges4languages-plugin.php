@@ -190,10 +190,10 @@ function b4l_include_template_function( $template_path ) {
  * SEND BADGES TO STUDENTS CUSTOM SUBMENU
  * A teacher can send certifications by mails to a (group of) student(s) by the
  * administration panel.
-
-require plugin_dir_path( __FILE__ ) . 'includes/site_pages/badges_user_profile.php';
 */
-require plugin_dir_path( __FILE__ ) . 'includes/site_pages/user_profile.php';
+require plugin_dir_path( __FILE__ ) . 'includes/site_pages/back_end_user_profile.php';
+
+require plugin_dir_path( __FILE__ ) . 'includes/site_pages/front_end_user_profile.php';
 
 
 ?>

@@ -12,7 +12,7 @@
 /**
  * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
  */
-add_action( 'wp_enqueue_scripts', 'prefix_add_my_stylesheet' );
+add_action( 'wp_enqueue_scripts', 'b4l_stylesheet_single_badge' );
 
 /**
  * Enqueue plugin style-file (add the CSS file)
@@ -20,7 +20,7 @@ add_action( 'wp_enqueue_scripts', 'prefix_add_my_stylesheet' );
  * @author Alexandre LEVACHER
  * @since 1.0.0
  */
-function prefix_add_my_stylesheet() {
+function b4l_stylesheet_single_badge() {
     wp_register_style( 'prefix-style', WP_PLUGIN_URL.'/badges4languages-plugin/css/single_badge_template.css' );
     wp_enqueue_style( 'prefix-style' );
 }
