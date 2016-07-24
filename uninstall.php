@@ -3,7 +3,7 @@
 /**
  * Fired when the plugin is uninstalled.
  *
- * @link       http://www.badges4languages.org
+ * @link       http://www.badges4languages.com
  * @since      1.0.0
  * @author     Alexandre LEVACHER
  *
