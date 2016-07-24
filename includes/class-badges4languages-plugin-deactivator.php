@@ -3,7 +3,7 @@
 /**
  * Fired during plugin deactivation
  *
- * @link       http://www.badges4languages.org
+ * @link       http://www.badges4languages.com
  * @since      1.0.0
  *
  * @package    Badges4languages_Plugin
