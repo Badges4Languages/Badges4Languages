@@ -6,7 +6,7 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       http://www.badges4languages.org
+ * @link       http://www.badges4languages.com
  * @since      1.0.0
  *
  * @package    Badges4languages_Plugin
