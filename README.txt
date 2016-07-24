@@ -1,6 +1,6 @@
 === Badges4Languages Plugin ===
 Contributors: Alexandre Levacher
-Donate link: http://www.badges4languages.org
+Donate link: http://www.badges4languages.com
 Tags: badges4languages, languages, clases, learn, badge, certification
 Requires at least: 3.0.1
 Tested up to: 4.5.3
