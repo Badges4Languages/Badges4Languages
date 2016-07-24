@@ -6,17 +6,17 @@
  * This plugin allows to a user to get a student or teacher certification by
  * himself or to receive it thanks to someone who has given him.
  *
- * @link              http://www.badges4languages.org
+ * @link              http://www.badges4languages.com
  * @since             1.0.0
  * @package           Badges4languages_Plugin
  *
  * @wordpress-plugin
  * Plugin Name:       Badges4languages-plugin
- * Plugin URI:        http://www.badges4languages.org
+ * Plugin URI:        http://www.badges4languages.com
  * Description:       Gives a student or a teacher certification to someone.
  * Version:           1.1.2
  * Author:            Alexandre LEVACHER
- * Author URI:        http://www.badges4languages.org
+ * Author URI:        http://www.badges4languages.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       badges4languages-plugin
