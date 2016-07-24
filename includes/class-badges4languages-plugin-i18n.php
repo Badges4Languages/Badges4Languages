@@ -6,7 +6,7 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       http://www.badges4languages.org
+ * @link       http://www.badges4languages.com
  * @since      1.0.0
  *
  * @package    Badges4languages_Plugin
