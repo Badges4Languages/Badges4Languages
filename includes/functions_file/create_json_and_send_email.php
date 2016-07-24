@@ -188,8 +188,8 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
                         <div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
                         <hr/>
                         <p style="font-size:9px; color:grey">Badges4languages is a company of the group mylanguageskill, based in Valencia, Spain. 
-                        More information <a href="https://mylanguageskills.wordpress.com/">here</a>.
-                        Legal information <a href="https://mylanguageskillslegal.wordpress.com/category/english/badges-for-languages-english/">here</a>.
+                        More information <a href="https://goo.gl/dqeJZo">here</a>.
+                        Legal information <a href="https://goo.gl/SvaM0N">here</a>.
                         </p>
                     </div>
                 </div>
