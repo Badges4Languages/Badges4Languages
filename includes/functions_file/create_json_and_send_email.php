@@ -77,7 +77,7 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge_image
     $date=date('Y-m-d');
 
     //name of the json file
-    $file_json=str_rot13(preg_replace("/ /", "_", $email_stud)).'_'.$badge_lvl.'_'.$badge_lang;
+    $file_json=str_rot13(preg_replace("/ /", "_", $email_stud)).'_'.$badge_lvl.'_'.str_replace(' ','',$badge_lang);
 
     //adding the folder json and encoded file name and addind the extenson of json
     $path_json= WP_CONTENT_DIR.'/uploads/badges4languages-plugin/json/'.$file_json.'.json';
@@ -109,7 +109,7 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge_image
             'salt'=>$salt,
             '@context'=>'https://w3id.org/openbadges/v1',
             'type'=>'Assertion',
-            'uid'=>'b4l'.'_'.$badge_lvl.'_'.$badge_lang.'_'.$uid_number, //UID must be unique, so it's thanks to $numberOfPeople
+            'uid'=>'b4l'.'_'.$badge_lvl.'_'.str_replace(' ','',$badge_lang).'_'.$uid_number, //UID must be unique, so it's thanks to $numberOfPeople
             'badge'=>array(
                     '@context'=>'https://w3id.org/openbadges/v1',
                     'type'=>'BadgeClass',
@@ -188,8 +188,8 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
                         <div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
                         <hr/>
                         <p style="font-size:9px; color:grey">Badges4languages is a company of the group mylanguageskill, based in Valencia, Spain. 
-                        More information <a href="https://goo.gl/dqeJZo">here</a>.
-                        Legal information <a href="https://goo.gl/SvaM0N">here</a>.
+                        More information <a href="https://mylanguageskills.wordpress.com/">here</a>.
+                        Legal information <a href="https://mylanguageskillslegal.wordpress.com/category/english/badges-for-languages-english/">here</a>.
                         </p>
                     </div>
                 </div>

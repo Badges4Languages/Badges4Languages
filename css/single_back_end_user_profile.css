@@ -12,19 +12,25 @@
     border-style:solid; 
     border-color:black;
     margin: 0 0 50px 0;
+    width:75%;
 }
 
 .badge-text{
-    
+    margin: 10px 10px 0 10px;
+}
+
+.badge-comment{
+    float:right;
+    margin: 15px 30px 0 10px;
 }
 
 .badge-img{
     float:left;
     width:100px;
     height:100px;
-    margin: 5px 10px 5px 10px;
+    margin: 5px 20px 5px 10px;
 }
 
 .badge-name{
-    font-size: 250%;
+    font-size:160%;
 }

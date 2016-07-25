@@ -1,5 +1,4 @@
-# Badges4Languages 
-www.Badges4languages.com
+# Badges4Languages
 
 ## Description
 Gives a certification to a teacher or a student.

@@ -42,7 +42,7 @@ function b4l_badges_profile_fields( $user ) {
                         WHERE user_id = ".$current_user->ID." AND badge_teacher = 'Self certification'";
                 $badgesSelfCertifcationsInfo = $wpdb->get_results($query, ARRAY_A);
                 foreach($badgesSelfCertifcationsInfo as $badgeInfo) {
-                    b4l_display_one_badge($badgeInfo['badge_image'], $badgeInfo['badge_level'], $badgeInfo['badge_language'], $badgeInfo['badge_date'] , $badgeInfo['badge_teacher']);
+                    b4l_display_one_badge($badgeInfo);
                 } 
             ?>
         </td>
@@ -54,15 +54,15 @@ function b4l_badges_profile_fields( $user ) {
         ?>
             <th><label for="badge">Given by teacher</label></th>
             <td>
-              <?php
+            <?php
                 global $wpdb;
                 $query = "SELECT * FROM ".$wpdb->prefix."b4l_userStudentBadgesProfil
                         WHERE user_id = ".$current_user->ID." AND badge_teacher <> 'Self certification'";
                 $badgesWithTeacherInfo = $wpdb->get_results($query, ARRAY_A);
                 foreach($badgesWithTeacherInfo as $badgeWithTeacherInfo) {
-                   echo '<div class="badge-div">'.$badgeWithTeacherInfo['badge_level']." - ".$badgeWithTeacherInfo['badge_language']."</div>";
+                    b4l_display_one_badge($badgeWithTeacherInfo);  
                 }
-                ?>
+            ?>
             </td>
         <?php } ?>
     </tr>
@@ -82,7 +82,7 @@ function b4l_badges_profile_fields( $user ) {
                         WHERE user_id = ".$current_user->ID."";
                 $badgesTeacherInfo = $wpdb->get_results($query, ARRAY_A);
                 foreach($badgesTeacherInfo as $badgeTeacherInfo) {
-                    echo '<div class="badge-div">'.$badgeTeacherInfo['badge_level']." - ".$badgeTeacherInfo['badge_language']."</div>";
+                    b4l_display_one_badge($badgeTeacherInfo); 
                 } 
             ?>
         </td>
@@ -95,28 +95,33 @@ function b4l_badges_profile_fields( $user ) {
 
 
 
-function b4l_display_one_badge($badge_image, $badge_level, $badge_language, $badge_date , $badge_teacher) {
+function b4l_display_one_badge($badgeInfo) {
     ?>
-    <div class="badge-div">
-        <img class="badge-img" src=<?php echo '"'.$badge_image.'"' ?> />
+    <div class="badge-div" >
+        <img class="badge-img" src=<?php echo '"'.$badgeInfo['badge_image'].'"' ?> />
+        <div class="badge-comment">
+                <b>Comment :</b> <br/>
+                <textarea class="badge-comments" rows="2" cols="8"><?php echo $badgeInfo['badge_comment']; ?></textarea>
+                <input type="text" name="badge_comment[]" value="<?php echo $badgeInfo['badge_comment']; ?>" class="regular-text"> <br/>
+                <input type="hidden" name="user_badge_id[]" value="<?php echo $badgeInfo['user_badge_id']; ?>" class="regular-text"> <br/>
+                
+        </div>
         <div class="badge-text">
-            <p class="badge-name">
-                <?php echo $badge_level." - ".$badge_language; ?>
-            </p>
+            <div class="badge-name">
+                <?php echo $badgeInfo['badge_level']." - ".$badgeInfo['badge_language']; ?>
+            </div>
             <p>
-                <b>Date :</b> <?php echo $badge_date; ?>
-                <br/>
-                <b>Teacher :</b> <?php echo $badge_teacher; ?>
+                <b>Date :</b> <?php echo $badgeInfo['badge_date']; ?> <br/>
+                <b>Teacher :</b> <?php echo $badgeInfo['badge_teacher']; ?>
             </p>
         </div>
+        <div class="clear"></div> <!--Usefull for the CSS-->
     </div>
     <?php
 }
 
 
-
-
-
+    
 
 add_action( 'personal_options_update', 'b4l_save_badges_profile_fields' );
 add_action( 'edit_user_profile_update', 'b4l_save_badges_profile_fields' );
@@ -125,10 +130,13 @@ add_action( 'edit_user_profile_update', 'b4l_save_badges_profile_fields' );
  * Saves a custom field for badges into user's profile.
  */
 function b4l_save_badges_profile_fields( $user_id ) {
-  $saved = false;
-  if ( current_user_can( 'edit_user', $user_id ) ) {
-    update_user_meta( $user_id, 'badge', $_POST['badge'] );
-    $saved = true;
-  }
-  return true;
+    global $wpdb;
+    
+    if ( !current_user_can( 'edit_user', $user_id ) )
+        return false;
+    
+    foreach ($_POST['badge_comment'] as $k=>$val) {if($val != null) {
+            $wpdb->update( $wpdb->prefix . 'b4l_userStudentBadgesProfil',array('badge_comment' => $val),array('user_badge_id' => $_POST['user_badge_id'][$k]));
+        }
+    }
 }

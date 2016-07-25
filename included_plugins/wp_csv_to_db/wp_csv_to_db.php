@@ -97,14 +97,14 @@ class b4l_wp_csv_to_db {
          * https://gist.github.com/umairidrees/8952054#file-php-save-db-table-as-csv
         */
 	public function CSV_GENERATE($getTable) {
-                $con = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD) or die( "Unable to Connect database");
-                mysql_select_db(DB_NAME,$con) or die( "Unable to select database");
+                $con = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD) or die( "Unable to Connect database");
+                mysqli_select_db(DB_NAME,$con) or die( "Unable to select database");
                 // Table Name that you want to export in csv
                 $FileName = $getTable."_export.csv";
                 $file = fopen($FileName,"w");
 
-                $sql = mysql_query("SELECT * FROM ".$getTable."");
-                $row = mysql_fetch_assoc($sql);
+                $sql = mysqli_query("SELECT * FROM ".$getTable."");
+                $row = mysqli_fetch_assoc($sql);
                 // Save headings alon
                 $HeadingsArray=array();
                 if($row == null) {
@@ -120,7 +120,7 @@ class b4l_wp_csv_to_db {
                     fputcsv($file,$HeadingsArray); 
 
                     // Save all records without headings
-                    while($row = mysql_fetch_assoc($sql)){
+                    while($row = mysqli_fetch_assoc($sql)){
                         $valuesArray=array();
                             foreach($row as $name => $value){
                                 $valuesArray[]=$value;
