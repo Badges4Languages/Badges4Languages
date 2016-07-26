@@ -74,26 +74,10 @@ get_header(); // Loads the header.php template. ?>
                         <?php _e('You must be logged in to edit your profile.', 'profile'); ?>
                     </p><!-- .warning -->
             <?php else : ?>
-                    
-                    <table align="center">
-                        <tr>
-                            <img src="<?php echo get_avatar( the_author_meta( 'ID', $current_user->ID ) ) ?>" />
-                        </tr>
-                        <tr>
-                            <label for="complete-name"><?php _e('Name :', 'profile'); ?></label>
-                            <?php the_author_meta( 'first_name', $current_user->ID ); echo " "; the_author_meta( 'last_name', $current_user->ID );?>
-                        </tr>
-                        <tr>
-                            <label for="email"><?php _e('E-mail :', 'profile'); ?></label>
-                            <?php the_author_meta( 'user_email', $current_user->ID ); ?>
-                        </tr>
-                    </table>
-                    
-                    
-                    
-                    
-                    
-                    
+             <h3>Update Information for &quot;<?php echo $current_user->user_login ?>&quot;</h3></br>
+                <?php if ( $_GET['updated'] == 'true' ) : ?> <div id="message" class="updated"><p>Your profile has been updated.</p></div> <?php endif; ?>
+                <?php if ( count($error) > 0 ) echo '<p class="error">' . implode("<br />", $error) . '</p>'; ?>
+                <form method="post" id="adduser" action="<?php the_permalink(); ?>">
                     <p class="form-username">
                         <label for="first-name"><?php _e('First Name', 'profile'); ?></label>
                         <input class="text-input" name="first-name" type="text" id="first-name" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" />
@@ -166,6 +150,7 @@ get_header(); // Loads the header.php template. ?>
                         <?php wp_nonce_field( 'update-user_'. $current_user->ID ) ?>
                         <input name="action" type="hidden" id="action" value="update-user" />
                     </p><!-- .form-submit -->
+                </form><!-- #adduser -->
             <?php endif; ?>
         </div><!-- .entry-content -->
     </div><!-- .hentry .post -->

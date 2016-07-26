@@ -46,6 +46,11 @@ For more information, please read the user guide.
 
 ## Changelog
 
+1.1.2
+* Information message if you are not registered and you want to get a certification by yourself;
+* Badges on the user profile with CSS;
+* Saving more information on the Json File (in order to display the badges on the profile).
+
 1.1.0
 * Creation of the shortcode [send_badges], which allows a teacher to send a badge to a student from a website page/post (without going to the back end);
 * Verify if issuer information are set or not, if not it is impossible to send a certification email;

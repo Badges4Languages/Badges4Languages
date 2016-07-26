@@ -159,13 +159,23 @@ get_header(); ?>
                 global $current_user;
                 $user_roles = $current_user->roles;
                 $user_role = array_shift($user_roles);
-                //If it is a student badge, everybody can see it
-                if ( is_user_logged_in() && get_the_terms($post->ID, 'badge_studentlevels') ) {
-                    b4l_see_and_send_self_certification();
+                
+                //If the user is not registered, he can't send himself a badge
+                if ( !(is_user_logged_in()) ) { 
+                ?>
+                    <div>
+                        <h3>You have to be registered to send yourself a certification !</h3>
+                    </div>
+                <?php 
                 } else {
-                    //If it is a teacher badge, only admin, teacher, academy et badges editor (custom roles of the plugin) can see the form
-                    if ( is_user_logged_in() && ($user_role == 'administrator' || $user_role == 'b4l_academy' || $user_role == 'b4l_teacher' || user_role == 'b4l_badges_editor')) {
-                        b4l_see_and_send_self_certification();
+                //If it is a student badge, everybody can see it
+                    if ( get_the_terms($post->ID, 'badge_studentlevels') ) {
+                        b4l_see_and_send_self_certification($levelName);
+                    } else {
+                        //If it is a teacher badge, only admin, teacher, academy et badges editor (custom roles of the plugin) can see the form
+                        if ( $user_role == 'administrator' || $user_role == 'b4l_academy' || $user_role == 'b4l_teacher' || user_role == 'b4l_badges_editor') {
+                            b4l_see_and_send_self_certification($levelName);
+                        }
                     }
                 }
                 ?>
@@ -196,13 +206,15 @@ get_header(); ?>
                         </script>
                         <?php
                     } else {
-                        $numberOfPeople = $numberOfPeople+1; //Increments the number of people having the badge.
+                        $queryNbPeople = "SELECT ".$levelName." FROM ".$wpdb->prefix."b4l_number_certifications WHERE id=1";
+                        $number = $wpdb->get_var($queryNbPeople); 
+                        $numberOfPeople = $number+1; //Increments the number of people having the badge.
                         
                         //By default the table is empty : it checks if the table is empty to insert a line or it is not empty to update a line for the numberOfPeople
-                        if($wpdb->get_row($wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."b4l_number_certifications WHERE ID = 1", "" ))) {
+                        if($wpdb->get_row($wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."b4l_number_certifications WHERE id = 1", "" ))) {
                             $wpdb->update( $wpdb->prefix . 'b4l_number_certifications',array($levelName => $numberOfPeople),array('id' => '1'));
                         } else {
-                            $wpdb->insert($wpdb->prefix . 'b4l_number_certifications',array($levelName => $numberOfPeople));
+                            $wpdb->insert( $wpdb->prefix . 'b4l_number_certifications',array($levelName => $numberOfPeople));
                         }
 
                         $email_stud=$current_user->user_email; //Email student is user's email.
@@ -285,8 +297,9 @@ get_header(); ?>
  * 
  * @author Alexandre LEVACHER
  * @since 1.1.0
+ * @param string $levelName Student Level (A1, A2, B1...) or Teacher Level (T1 to T6)
 */
-function b4l_see_and_send_self_certification(){
+function b4l_see_and_send_self_certification($levelName){
     ?>
     <!-- Choose the language certification -->
     <div id="send_certification_form">

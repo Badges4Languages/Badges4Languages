@@ -28,7 +28,6 @@ function b4l_create_user_profile_page(){
 		'post_name'=>'user-profile',
 		'post_title'=>'User Profile',
 		'post_excerpt'=>'',
-                    'post_content'=>'TEST!',
 		'post_status'=>'publish',
 		'post_type'=>'page',
 		'page_template'=>'user-profile.php',

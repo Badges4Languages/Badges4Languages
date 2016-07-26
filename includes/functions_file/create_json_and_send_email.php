@@ -90,7 +90,7 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge_image
     //Checks if it is a number (self certification) or if a teacher gave the badge
     if(is_int($numberOfPeopleOrTeacherUserName)) {
         $uid_number = $numberOfPeopleOrTeacherUserName;
-        $badge_name_info = 'Self certification';
+        $badge_name_info = 'Self-certification';
         $teacher = $badge_name_info;
     } else {
         //Could cause problems in the future if we have a lot of certifications sent,
@@ -187,7 +187,7 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
                         <br/>
                         <div class="browserSupport"><b>Please use Firefox or Google Chrome to retrieve your badge.<b></div>
                         <hr/>
-                        <p style="font-size:9px; color:grey">Badges4languages is a company of the group mylanguageskill, based in Valencia, Spain. 
+                        <p style="font-size:9px; color:grey">Badges for Languages by My Language Skills, based in Valencia, Spain. 
                         More information <a href="https://mylanguageskills.wordpress.com/">here</a>.
                         Legal information <a href="https://mylanguageskillslegal.wordpress.com/category/english/badges-for-languages-english/">here</a>.
                         </p>

@@ -192,7 +192,7 @@ function b4l_insert_data_into_user_role_badges_profil_table($json_obj,$table_nam
         $wpdb->insert(
             $wpdb->prefix . $table_name,
             array(
-                'user_badge_id' => $current_user->ID.'_'.$json_obj->{'badge'}->{'level'}.'_'.$json_obj->{'badge'}->{'language'},
+                'user_badge_id' => $current_user->ID.'_'.$json_obj->{'badge'}->{'level'}.'_'.$json_obj->{'badge'}->{'language'}.'_'.badge_teacher,
                 'user_id' => $current_user->ID,
                 'badge_level' => $json_obj->{'badge'}->{'level'},
                 'badge_language' => $json_obj->{'badge'}->{'language'},

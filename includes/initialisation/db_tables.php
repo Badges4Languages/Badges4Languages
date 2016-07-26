@@ -290,7 +290,7 @@ function b4l_create_db_table_b4l_userTeacherBadgesProfil() {
     $table_name = $wpdb->prefix . "b4l_userTeacherBadgesProfil"; 
     $charset_collate = $wpdb->get_charset_collate();
     
-    //id is a combination of user_id + badge_level + badge_language
+    //id is a combination of user_id + badge_level + badge_language + badge_teacher
     $sql = "CREATE TABLE $table_name (
         user_badge_id varchar(100) NOT NULL,
         user_id bigint(20) NOT NULL,
@@ -299,6 +299,7 @@ function b4l_create_db_table_b4l_userTeacherBadgesProfil() {
         badge_date date NOT NULL,
         badge_image text NOT NULL,
         badge_teacher text NOT NULL,
+        badge_comment text NOT NULL,
         PRIMARY KEY  (user_badge_id)
   ) $charset_collate;";
 
