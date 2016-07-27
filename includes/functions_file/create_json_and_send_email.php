@@ -30,12 +30,12 @@ function b4l_single_badge_translation($translation_language){
     //Checks if it is a Student or a Teacher Level
     //Then Obtains the name (string) of the Custom Taxonomy 'Student/Teacher Level'
     //Finally makes the query with the argument $value and $levelName.
-    if (get_the_terms($post->ID, 'badge_studentlevels')) {
-        $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
+    if (get_the_terms($post->ID, 'badges_students_levels')) {
+        $studentLevel = get_the_terms($post->ID, 'badges_students_levels');
         $levelName = $studentLevel[0]->name;
         $query2 = "SELECT ".$levelName." FROM ".$wpdb->prefix."b4l_studentLevels WHERE language='".$value."'";
-    } elseif (get_the_terms($post->ID, 'badge_teacherlevels')) {
-        $teacherLevel = get_the_terms($post->ID, 'badge_teacherlevels');
+    } elseif (get_the_terms($post->ID, 'badges_teachers_levels')) {
+        $teacherLevel = get_the_terms($post->ID, 'badges_teachers_levels');
         $levelName = $teacherLevel[0]->name;
         $query2 = "SELECT ".$levelName." FROM ".$wpdb->prefix."b4l_teacherLevels WHERE language='".$value."'";
     }

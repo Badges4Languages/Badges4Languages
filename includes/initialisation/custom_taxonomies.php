@@ -36,7 +36,7 @@ function b4l_create_my_taxonomies() {
  */
 function b4l_create_TeacherLevels_taxonomies() {
     register_taxonomy(
-        'badge_teacherlevels',
+        'badges_teachers_levels',
         'badge',
         array(
             'labels' => array(
@@ -59,7 +59,7 @@ function b4l_create_TeacherLevels_taxonomies() {
  */
 function b4l_create_StudentLevels_taxonomies() {
     register_taxonomy(
-        'badge_studentlevels',
+        'badges_students_levels',
         'badge',
         array(
             'labels' => array(
@@ -82,7 +82,7 @@ function b4l_create_StudentLevels_taxonomies() {
  */
 function b4l_create_Skills_taxonomies() {
     register_taxonomy(
-        'badge_skills',
+        'badges_skills',
         'badge',
         array(
             'labels' => array(
@@ -105,7 +105,7 @@ function b4l_create_Skills_taxonomies() {
  */
 function b4l_create_Badges_Categories_taxonomies() {
     register_taxonomy(
-        'badge_badges_categories',
+        'badges_categories',
         'badge',
         array(
             'labels' => array(

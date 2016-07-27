@@ -72,13 +72,13 @@ get_header(); ?>
                 */
                 global $wpdb;
                 //Select all the languages of the DB Table '$wpdb->prefix.b4l_languages' if it is a student level/badge.
-                if(get_the_terms( $post->ID, 'badge_studentlevels' )){
+                if(get_the_terms( $post->ID, 'badges_students_levels' )){
                     $queryLevelTeachersOrStudents = "SELECT l.language_name "
                         . "FROM ".$wpdb->prefix."b4l_languages l, ".$wpdb->prefix."b4l_studentLevels sl "
                         . "WHERE l.language_id=sl.language";
                 } 
                 //The same with a teacher level/badge.
-                elseif(get_the_terms( $post->ID, 'badge_teacherlevels' )){
+                elseif(get_the_terms( $post->ID, 'badges_teachers_levels' )){
                     $queryLevelTeachersOrStudents = "SELECT l.language_name "
                         . "FROM ".$wpdb->prefix."b4l_languages l, ".$wpdb->prefix."b4l_teacherLevels sl "
                         . "WHERE l.language_id=sl.language";
@@ -122,19 +122,19 @@ get_header(); ?>
                 <div id="taxonomies">
                     <?php
                         //Get the StudentLevel and the Skills (if exist)
-                        if(get_the_term_list( $post->ID, 'badge_studentlevels')){
+                        if(get_the_term_list( $post->ID, 'badges_students_levels')){
                             echo '<strong>Student level: </strong>';
-                            the_terms( $post->ID, 'badge_studentlevels');
-                            $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
+                            the_terms( $post->ID, 'badges_students_levels');
+                            $studentLevel = get_the_terms($post->ID, 'badges_students_levels');
                             $levelName = $studentLevel[0]->name;
                             echo '<br/>';
                             echo '<strong>Skill(s): </strong>';
-                            the_terms( $post->ID, 'badge_skills' ,  ' ' );
+                            the_terms( $post->ID, 'badges_skills' ,  ' ' );
                         //Get the TeacherLevel (if exists)
-                        } elseif(get_the_term_list( $post->ID, 'badge_teacherlevels')){
+                        } elseif(get_the_term_list( $post->ID, 'badges_teachers_levels')){
                             echo '<strong>Teacher level: </strong>';
-                            the_terms( $post->ID, 'badge_teacherlevels');
-                            $teacherLevel = get_the_terms($post->ID, 'badge_teacherlevels');
+                            the_terms( $post->ID, 'badges_teachers_levels');
+                            $teacherLevel = get_the_terms($post->ID, 'badges_teachers_levels');
                             $levelName = $teacherLevel[0]->name;
                         }
                     ?>
@@ -169,7 +169,7 @@ get_header(); ?>
                 <?php 
                 } else {
                 //If it is a student badge, everybody can see it
-                    if ( get_the_terms($post->ID, 'badge_studentlevels') ) {
+                    if ( get_the_terms($post->ID, 'badges_students_levels') ) {
                         b4l_see_and_send_self_certification($levelName);
                     } else {
                         //If it is a teacher badge, only admin, teacher, academy et badges editor (custom roles of the plugin) can see the form
@@ -237,12 +237,12 @@ get_header(); ?>
                         $badge_lang = $_POST['language_certification'];
 
                         //Check if it is a Student badge or a Teacher badge and recuperate the value.
-                        if (get_the_terms($post->ID, 'badge_studentlevels')) {
-                            $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
+                        if (get_the_terms($post->ID, 'badges_students_levels')) {
+                            $studentLevel = get_the_terms($post->ID, 'badges_students_levels');
                             $badge_lvl = $studentLevel[0]->name;
                             $badge_type = 'Student';
-                        } elseif (get_the_terms($post->ID, 'badge_teacherlevels')) {
-                            $teacherLevel = get_the_terms($post->ID, 'badge_teacherlevels');
+                        } elseif (get_the_terms($post->ID, 'badges_teachers_levels')) {
+                            $teacherLevel = get_the_terms($post->ID, 'badges_teachers_levels');
                             $badge_lvl = $teacherLevel[0]->name;
                             $badge_type = 'Teacher';
                         }
@@ -311,7 +311,7 @@ function b4l_see_and_send_self_certification($levelName){
                 <?php
                     //Display all the languages possible stored in the ($wpdb->prefix)b4l_languages table. 
                     global $wpdb;
-                    if(get_the_terms( $post->ID, 'badge_studentlevels' ) || get_the_terms( $post->ID, 'badge_teacherlevels' )){
+                    if(get_the_terms( $post->ID, 'badges_students_levels' ) || get_the_terms( $post->ID, 'badges_teachers_levels' )){
                         $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages ORDER BY 
                                     (CASE 
                                         WHEN language_id = 'arb' THEN 1
@@ -352,7 +352,7 @@ function b4l_see_and_send_self_certification($levelName){
                     $numberOfPeople = 0;
                 } 
             ?>
-            <p><?php echo $numberOfPeople ?> persons have the certification <?php echo the_terms( $post->ID, 'badge_studentlevels') ?></p>
+            <p><?php echo $numberOfPeople ?> persons have the certification <?php echo the_terms( $post->ID, 'badges_students_levels') ?></p>
         </form>
     </div>
     <?php

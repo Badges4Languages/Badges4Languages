@@ -162,7 +162,7 @@ function b4l_send_badges_students_page_callback() {
             }
 
             //Check if it is a Student badge or a Teacher badge and recuperate the value.
-            $studentLevel = get_the_terms($post->ID, 'badge_studentlevels');
+            $studentLevel = get_the_terms($post->ID, 'badges_students_levels');
             $badge_lvl = $studentLevel[0]->name;
             $badge_type = 'Student';
 
@@ -203,7 +203,7 @@ function b4l_send_badges_students_page_callback() {
 function b4l_send_badges_students_get_posts() {
     
     //Define the taxonomy used
-    $taxonomy = 'badge_studentlevels';
+    $taxonomy = 'badges_students_levels';
     
     //Get all the taxonomy terms of $taxonomy ('A1', 'A2',... 'C2')
     $taxonomyTerms = get_terms( array( 
