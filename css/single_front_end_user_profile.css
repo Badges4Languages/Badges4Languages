@@ -8,14 +8,10 @@
  */
 
 #profil-div {
-    max-width: 600px;
-    margin: auto;
     border: 3px solid #73AD21;
-    margin: 20px 0 20px 0;
-    text-align: center;
-}
-
-#profil-image {
+    max-width: 600px;
+    margin : 20px auto 20px auto;
+    padding: 0px 20px 0px 20px;
 }
 
 #user-avatar {
@@ -30,9 +26,49 @@
 }
 
 tr:hover {
-    background-color: #f5f5f5
+    background-color: #f5f5f5;
 }
 
 #user-info, tr, th, td{
     border-style: hidden;
+}
+
+.badge-category {
+    text-align: left;
+}
+
+.badge-div{
+    border-width:1px; 
+    border-style:solid; 
+    border-color:black;
+    margin: 0 auto 20px auto;
+    width:80%;
+}
+
+.badge-text{
+    margin: 10px 10px 10px 10px;
+}
+
+.badge-comment{
+    float:left;
+    margin: 20px 20px 0 10px;
+}
+
+.badge-img{
+    float:left;
+    width:80px;
+    height:80px;
+    margin: 5px 20px 5px 10px;
+}
+
+.badge-name{
+    font-size:180%;
+}
+
+.badge-table {
+    margin: 20px 50px 0 10px; 
+}
+
+.badge-img-comment {
+    float:left;
 }

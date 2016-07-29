@@ -14,7 +14,7 @@
  * Plugin Name:       Badges4languages-plugin
  * Plugin URI:        http://www.badges4languages.com
  * Description:       Gives a student or a teacher certification to someone.
- * Version:           1.1.2
+ * Version:           1.1.3
  * Author:            Alexandre LEVACHER
  * Author URI:        http://www.badges4languages.com
  * License:           GPL-2.0+
@@ -125,6 +125,18 @@ require plugin_dir_path( __FILE__ ) . 'included_plugins/wp_csv_to_db/wp_csv_to_d
  */
 require plugin_dir_path( __FILE__ ) . 'includes/submenu_pages/send_badges_students.php';
 
+require plugin_dir_path( __FILE__ ) . 'includes/submenu_pages/options.php';
+
+function wpdocs_my_plugin_menu() {
+    add_options_page( 
+        __( 'My Options', 'textdomain' ),
+        __( 'My Plugin', 'textdomain' ),
+        'manage_options',
+        'my-plugin.php',
+        'my_plugin_page'
+    );
+}
+
 
 
 
@@ -194,6 +206,5 @@ function b4l_include_template_function( $template_path ) {
 require plugin_dir_path( __FILE__ ) . 'includes/site_pages/back_end_user_profile.php';
 
 require plugin_dir_path( __FILE__ ) . 'includes/site_pages/front_end_user_profile.php';
-
 
 ?>

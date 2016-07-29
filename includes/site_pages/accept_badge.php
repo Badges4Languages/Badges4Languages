@@ -30,7 +30,7 @@ function b4l_create_accept_badge_page(){
 		'post_excerpt'=>'badges',
 		'post_status'=>'publish',
 		'post_type'=>'page',
-		'page_template'=>'badges-accept-template.php',
+		'page_template'=>'single_accept_badge.php',
 		'comment_status'=>'closed'
 		);
 	}

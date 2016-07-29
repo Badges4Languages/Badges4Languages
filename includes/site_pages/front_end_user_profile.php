@@ -30,7 +30,7 @@ function b4l_create_user_profile_page(){
 		'post_excerpt'=>'',
 		'post_status'=>'publish',
 		'post_type'=>'page',
-		'page_template'=>'user-profile.php',
+		'page_template'=>'single_front_end_user_profile.php',
 		'comment_status'=>'closed'
 		);
 	}

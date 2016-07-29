@@ -114,6 +114,12 @@ function b4l_send_badges_students_page_callback() {
                 -->
             </div>
             <br/>
+            
+            <h2>Write a comment about the certification</h2>
+            <div>
+                <input type="text" name="student_comment"><br>
+            </div>
+            <br/>
             <input name="send_emails_button" type="submit" class="button-primary" value="Send emails" />
          </form>
 
@@ -172,8 +178,16 @@ function b4l_send_badges_students_page_callback() {
 
             //Get the email from the InputField
             $email = $_POST['students_emails'];
+            
+            //Get the comment from the InputField  and check his value
+            if($_POST['user_comment'] != null){
+                $badge_comment = $_POST['student_comment'];
+            } else {
+                $badge_comment = "";
+            }
+                        
             //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
-            $file_json = b4l_create_certification_assertion_badge_json($email, $badge_image, $_POST["language_certification"], $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $teacher_user_name);
+            $file_json = b4l_create_certification_assertion_badge_json($email, $badge_image, $_POST["language_certification"], $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $teacher_user_name, $badge_comment);
             b4l_send_badge_email($email, $badge_name, $badge_desc, $badge_image, $_POST["language_certification"], $file_json, $issuer_logo, $issuer_email); 
         }
         /*

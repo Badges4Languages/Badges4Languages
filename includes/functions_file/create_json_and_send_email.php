@@ -65,7 +65,7 @@ function b4l_single_badge_translation($translation_language){
  * @param int|string $numberOfPeopleOrTeacherUserName Number of People having this certification (for self-certification badges) or Teacher's name (for badges awarded by a teacher)
  * @return string $file_json Json file path
 */ 
-function b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $numberOfPeopleOrTeacherUserName){
+function b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $numberOfPeopleOrTeacherUserName, $badge_comment){
     
     //adding a salt to our hashed email
     $salt=uniqid(mt_rand(), true);
@@ -120,6 +120,7 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge_image
                     'description'=>$badge_desc,
                     'image'=>$badge_image,
                     'teacher'=>$teacher,
+                    'comment'=>$badge_comment,
                     'criteria'=>'https://badges4languages.wordpress.com/',
                     'issuer'=>array(
                             'type'=>'Issuer',
@@ -174,7 +175,7 @@ function b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_imag
                     <div align="center">
                         <h1>BADGES FOR LANGUAGES</h1>
                         <h2>Learn languages and get official certifications</h2>
-                        <img src="' . $issuer_logo . '" width="180" alt="Company Logo"> 
+                        <img src="' . $issuer_logo . '" width="180" alt="Badges for Languages logo"> 
                         <hr/>
                         <h1>Congratulations you have just earned a badge!</h1>
                         <h2>'.$badge_name.' - '.$badge_lang.'</h2>

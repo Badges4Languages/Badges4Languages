@@ -4,88 +4,62 @@
  *
  * Allow users to update their profiles from Frontend.
  *
- 
  */
 
-// https://gist.github.com/chrisdigital/5525127
 
-/* Get user info. */
-global $current_user, $wp_roles;
-get_currentuserinfo();
+/**
+ * Register with hook 'b4l_jQuery_front_end_user_profile', which can be used 
+ * for front end CSS and jQuery actions.
+ */
+add_action( 'wp_enqueue_scripts', 'b4l_jQuery_front_end_user_profile' );
 
-/* Load the registration file. */
-require_once( ABSPATH . WPINC . '/registration.php' );
-$error = array();    
-/* If profile was saved, update profile. */
-if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POST['action'] == 'update-user' ) {
-
-    /* Update user password. */
-    if ( !empty($_POST['pass1'] ) && !empty( $_POST['pass2'] ) ) {
-        if ( $_POST['pass1'] == $_POST['pass2'] )
-            wp_update_user( array( 'ID' => $current_user->ID, 'user_pass' => esc_attr( $_POST['pass1'] ) ) );
-        else
-            $error[] = __('The passwords you entered do not match.  Your password was not updated.', 'profile');
-    }
-
-    /* Update user information. */
-    if ( !empty( $_POST['url'] ) )
-       wp_update_user( array ('ID' => $current_user->ID, 'user_url' => esc_attr( $_POST['url'] )));
-    if ( !empty( $_POST['email'] ) ){
-        if (!is_email(esc_attr( $_POST['email'] )))
-            $error[] = __('The Email you entered is not valid.  please try again.', 'profile');
-        elseif(email_exists(esc_attr( $_POST['email'] )) != $current_user->id )
-            $error[] = __('This email is already used by another user.  try a different one.', 'profile');
-        else{
-            wp_update_user( array ('ID' => $current_user->ID, 'user_email' => esc_attr( $_POST['email'] )));
-        }
-    }
-
-    if ( !empty( $_POST['first-name'] ) )
-        update_user_meta( $current_user->ID, 'first_name', esc_attr( $_POST['first-name'] ) );
-    if ( !empty( $_POST['last-name'] ) )
-        update_user_meta($current_user->ID, 'last_name', esc_attr( $_POST['last-name'] ) );
-    if ( !empty( $_POST['display_name'] ) )
-        wp_update_user(array('ID' => $current_user->ID, 'display_name' => esc_attr( $_POST['display_name'] )));
-      update_user_meta($current_user->ID, 'display_name' , esc_attr( $_POST['display_name'] ));
-    if ( !empty( $_POST['description'] ) )
-        update_user_meta( $current_user->ID, 'description', esc_attr( $_POST['description'] ) );
-
-    /* Redirect so the page will show updated info.*/
-  /*I am not Author of this Code- i dont know why but it worked for me after changing below line to if ( count($error) == 0 ){ */
-    if ( count($error) == 0 ) {
-        //action hook for plugins and extra fields saving
-        do_action('edit_user_profile_update', $current_user->ID);
-        wp_redirect( get_permalink().'?updated=true' ); exit;
-    }       
+/**
+ * Call and use jQuery and CSS files.
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.1.2
+ */
+function b4l_jQuery_front_end_user_profile() {
+    wp_register_script('my-jquery-script', WP_PLUGIN_URL.'/badges4languages-plugin/js/display_badges.js', array('jquery')); //Recherche de notre fichier jQuery
+    wp_enqueue_script('my-jquery-script'); //Utilisation de notre fichier jQuery pour cette page
+    wp_register_style('my-css', WP_PLUGIN_URL.'/badges4languages-plugin/css/single_front_end_user_profile.css'); //Recherche de notre fichier CSS
+    wp_enqueue_style('my-css'); //Utilisation de notre fichier CSS pour cette page
 }
 
 
-get_header(); // Loads the header.php template. ?>
 
-	<section id="content">
+/* Get user info. */
+global $wp_roles;
 
-		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+//By default if the user writes the URL without parameter, he goes to his own profile page.
+if(!(isset( $_GET['user']))){
+    global $current_user;
+    get_currentuserinfo();
+} else {
+    global $wpdb;
+    $users = $wpdb->get_results("SELECT * FROM $wpdb->users WHERE display_name = '".$_GET['user']."'");
+    $current_user = $users[0];
+}
+
+get_header(); ?>
+
+<section id="content">
+
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
     <div id="post-<?php the_ID(); ?>">
         <div class="entry-content entry">
             <?php the_content(); ?>
-            <?php if ( !is_user_logged_in() ) : ?>
-
-                    <p class="warning">
-                        <?php _e('You must be logged in to edit your profile.', 'profile'); ?>
-                    </p><!-- .warning -->
-            <?php else : ?>
-                <link rel="stylesheet" href="<?php echo WP_PLUGIN_URL.'/badges4languages-plugin/css/single_front_end_user_profile.css'?>" type="text/css">    
-               
+            
                 <div id="profil-div">
                     
                     <div id="profil-image">
-                        <img id="user-avatar" src="<?php echo get_avatar_url( $current_user->ID ) ?>" />
+                        <center><img id="user-avatar" src="<?php echo get_avatar_url( $current_user->ID );?>" /></center>
                     </div>
                     
                     <table id="user-info">
                         <tr>
                             <th><?php _e('Name :', 'profile'); ?></th>
-                            <td><?php the_author_meta( 'display_name', $current_user->ID ); echo " "; the_author_meta( 'last_name', $current_user->ID );?></td>
+                            <td><?php the_author_meta( 'display_name', $current_user->ID ); ?></td>
                         </tr>
                         <tr>
                             <th><?php _e('E-mail :', 'profile'); ?></th>
@@ -101,21 +75,35 @@ get_header(); // Loads the header.php template. ?>
                         </tr>
                     </table>
                     
-                    <h3>Your badges</h3>
-                     <table id="user-info">
-                        <tr>
-                            <th><?php _e('Student "Self-Cerfication" Badges', 'profile') ?></th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th><?php _e('Student Awarded Badges', 'profile') ?></th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th><?php _e('Teacher "Self-Cerfication" Badges', 'profile') ?></th>
-                            <td></td>
-                        </tr>
-                    </table>
+                    
+                    
+                    <h2>Your badges</h2>
+                    
+                    <h3 class="badge-category" id="titre-badge-student-self-certification">
+                        <?php _e('Student "Self-Cerfication" Badges', 'profile');?>
+                        <img id="img-arrow" src="<?php echo WP_PLUGIN_URL . '/badges4languages-plugin/images/icon-arrow-down.png' ?>" alt="img_display_badges" />
+                    </h3>
+                    <div id="badge-student-self-certification">
+                        <?php b4l_search_badges_by_category('b4l_userStudentBadgesProfil', true, $current_user, 'FrontEnd'); ?>
+                    </div>
+                    
+                    
+                    <h3 class="badge-category" id="titre-badge-student-awarded-by-teacher">
+                        <?php _e('Student Awarded Badges', 'profile');?>
+                        <img id="img-arrow" src="<?php echo WP_PLUGIN_URL . '/badges4languages-plugin/images/icon-arrow-down.png' ?>" alt="img_display_badges" />
+                    </h3>
+                    <div id="badge-student-awarded-by-teacher">
+                        <?php b4l_search_badges_by_category('b4l_userStudentBadgesProfil', false, $current_user, 'FrontEnd'); ?>
+                    </div>
+                    
+                    
+                    <h3 class="badge-category" id="titre-badge-teacher-self-certification">
+                        <?php _e('Teacher "Self-Cerfication" Badges', 'profile');?>
+                        <img id="img-arrow" src="<?php echo WP_PLUGIN_URL . '/badges4languages-plugin/images/icon-arrow-down.png' ?>" alt="img_display_badges" />
+                    </h3>
+                    <div id="badge-teacher-self-certification">
+                        <?php b4l_search_badges_by_category('b4l_userTeacherBadgesProfil', true, $current_user, 'FrontEnd'); ?>
+                    </div>
                     
                 </div>
                     
@@ -137,7 +125,7 @@ get_header(); // Loads the header.php template. ?>
             });
                 </script>-->
                 
-            <?php endif; ?>
+                
         </div><!-- .entry-content -->
     </div><!-- .hentry .post -->
     <?php endwhile; ?>
@@ -146,6 +134,6 @@ get_header(); // Loads the header.php template. ?>
         <?php _e('Sorry, no page matched your criteria.', 'profile'); ?>
     </p><!-- .no-data -->
 <?php endif; ?>
+</section><!-- #content -->
 
-	</section><!-- #content -->
-<?php get_footer(); // Loads the footer.php template. ?>
+<?php get_footer();?>

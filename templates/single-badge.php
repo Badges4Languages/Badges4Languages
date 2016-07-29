@@ -10,7 +10,7 @@
  
 
 /**
- * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
+ * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and jQuery
  */
 add_action( 'wp_enqueue_scripts', 'b4l_stylesheet_single_badge' );
 
@@ -246,10 +246,17 @@ get_header(); ?>
                             $badge_lvl = $teacherLevel[0]->name;
                             $badge_type = 'Teacher';
                         }
+                        
+                        //Get the comment from the InputField and check his value
+                        if($_POST['user_comment'] != null){
+                            $badge_comment = $_POST['user_comment'];
+                        } else {
+                            $badge_comment = "";
+                        }
 
                         //Create the JSON File and send the cerfication by email.
                         //Function b4l_create_certification_assertion_badge_json is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
-                        $file_json = b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople);
+                        $file_json = b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople, $badge_comment);
                         b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $file_json, $issuer_logo, $issuer_email);
                         ?>
                         <script>
@@ -305,7 +312,7 @@ function b4l_see_and_send_self_certification($levelName){
     <div id="send_certification_form">
         <form action="" method="post">
             <h3>Choose the language that you want a certification</h3>
-            <p>You can write the name into the scrollbar menu or look for it</p>
+            <label>You can write the name into the scrollbar menu or look for it</label><br/>
             <select style="width: 150px" id="language_certification" name="language_certification">
                 <option value="" selected> Select a language </option>
                 <?php
@@ -336,6 +343,10 @@ function b4l_see_and_send_self_certification($levelName){
                         <?php echo $result[language_name]; } ?>
                     <option value="<?php echo $result[language_name]; ?>">
             </select>
+            <br/>
+            
+            <label>Do you want to add a comment about this certification ? (where you awarded it, etc.)</label><br/>
+            <input type="text" id="user_comment" name="user_comment" />
             <br/>
 
             <!-- Send an email to get the certification -->

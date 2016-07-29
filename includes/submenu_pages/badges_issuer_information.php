@@ -1,6 +1,6 @@
 <?php
  /*
-  * Create a submenu padge in the administration menu to fill a form with the issuer information (company info).
+  * Create a submenu page in the administration menu to fill a form with the issuer information (company info).
   * 
   * @author Alexandre Levacher
   * @package badges4languages-plugin

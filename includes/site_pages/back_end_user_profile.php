@@ -37,31 +37,11 @@ function b4l_badges_profile_fields( ) {
   <table class="form-table">
     <tr>
         <th><label for="badge">Self-certification badges</label></th> <!--STUDENT SELF CERTIFICATION BADGES -->
-        <td>
-        <?php
-        //There is no verification of the user role because all the users are at least 'Student'
-            global $wpdb;
-            $query = "SELECT * FROM ".$wpdb->prefix."b4l_userStudentBadgesProfil WHERE user_id = ".$current_user->ID." AND badge_teacher = 'Self-certification'";
-            $badgesSelfCertifcationsInfo = $wpdb->get_results($query, ARRAY_A);
-            foreach($badgesSelfCertifcationsInfo as $badgeInfo) {
-                b4l_display_one_badge($badgeInfo);
-            } 
-        ?>
-        </td>
+        <td><?php b4l_search_badges_by_category('b4l_userStudentBadgesProfil', true, $current_user, 'BackEnd'); ?></td>
     </tr>
     <tr>
         <th><label for="badge">Given by teacher</label></th> <!--STUDENT AWARDED BADGES -->
-        <td>
-        <?php
-            global $wpdb;
-            $query = "SELECT * FROM ".$wpdb->prefix."b4l_userStudentBadgesProfil WHERE user_id = ".$current_user->ID." AND badge_teacher <> 'Self-certification'";
-            $badgesWithTeacherInfo = $wpdb->get_results($query, ARRAY_A);
-            foreach($badgesWithTeacherInfo as $badgeWithTeacherInfo) {
-                b4l_display_one_badge($badgeWithTeacherInfo);  
-            }
-        ?>
-        </td>
-        
+        <td><?php b4l_search_badges_by_category('b4l_userStudentBadgesProfil', false, $current_user, 'BackEnd'); ?></td>
     </tr>
   </table>
   
@@ -73,19 +53,40 @@ function b4l_badges_profile_fields( ) {
         <table class="form-table">
           <tr>
               <th><label for="badge">Self-certification badges</label></th> <!--TEACHER AWARDED BADGES -->
-              <td>
-                <?php
-                    global $wpdb;
-                    $query = "SELECT * FROM ".$wpdb->prefix."b4l_userTeacherBadgesProfil WHERE user_id = ".$current_user->ID." AND badge_teacher = 'Self-certification'";
-                    $badgesTeacherInfo = $wpdb->get_results($query, ARRAY_A);
-                    foreach($badgesTeacherInfo as $badgeTeacherInfo) {
-                        b4l_display_one_badge($badgeTeacherInfo); 
-                    } 
-                ?>
-              </td>
+              <td> <?php b4l_search_badges_by_category('b4l_userTeacherBadgesProfil', true, $current_user, 'BackEnd'); ?></td>
           </tr>
         </table>
     <?php 
+    }
+}
+
+
+/**
+ * Get all the information about a certification in a specified database
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.1.2
+ * @param String $table Name of the table into the database.
+ * @param Boolean $selfCertificationBoolean True if the badge is a 'Self-certification' badge,
+ * @param Object $current_user Current user
+ * @param String $frontOrBackEnd If it is BackEnd, a textarea is displayed for the comments
+ */
+function b4l_search_badges_by_category($table, $selfCertificationBoolean, $current_user, $frontOrBackEnd) {
+    global $wpdb;
+    
+    //For the SQL query following
+    if($selfCertificationBoolean == true) {
+        $sign = "=";
+    } else {
+        $sign = "<>";
+    }
+    
+    $query = "SELECT * FROM ".$wpdb->prefix.$table." WHERE user_id = ".$current_user->ID." AND badge_teacher ".$sign." 'Self-certification'";
+    $badgesWithTeacherInfo = $wpdb->get_results($query, ARRAY_A);
+    
+    //Get all the badges and display them one by one
+    foreach($badgesWithTeacherInfo as $badgeWithTeacherInfo) {
+        b4l_display_one_badge($badgeWithTeacherInfo, $frontOrBackEnd);  
     }
 }
 
@@ -97,10 +98,30 @@ function b4l_badges_profile_fields( ) {
  * @author Alexandre LEVACHER
  * @since 1.1.2
  * @param Array $badgeInfo Array which contains all the badge information
+ * @param String $frontOrBackEnd If it is BackEnd, a textarea is displayed for the comments
  */
-function b4l_display_one_badge($badgeInfo) {
+function b4l_display_one_badge($badgeInfo, $frontOrBackEnd) {
+    //Adding a parameter in the URL of the page to GET after the teacher user by is user name
+    $pagelink = esc_url( add_query_arg( 'user', $badgeInfo['badge_teacher'], get_permalink( get_page_by_title( 'User Profile' ) ) ) );
+    
+    //Check if it is a Student/Teacher Self-certification Badge or not
+    if($badgeInfo['badge_teacher'] == 'Self-certification') {
+        $teacher = $badgeInfo['badge_teacher']; //Teacher name : 'Self-certification'
+        if ($frontOrBackEnd == 'BackEnd') {
+            $comment = '<textarea name="badge_comment[]" rows="2" >'.$badgeInfo['badge_comment'].'</textarea>'; //You can modify the comment, for example to tell where you earned it. So it is a text area field.
+        } else {
+            $comment = $badgeInfo['badge_comment']; //You can modify the comment, for example to tell where you earned it. So it is a text area field.            
+        }
+    } else {
+        $teacher = '<a href="'.$pagelink.'">'.$badgeInfo['badge_teacher'].'</a>'; //Teacher name : user member with a link to his profile
+        if ($frontOrBackEnd == 'BackEnd') {
+            $comment = '<textarea name="badge_comment[]" readonly="readonly" rows="2" >'.$badgeInfo['badge_comment'].'</textarea>'; //You can't modify the comment of a badge given by a teacher. The comment is written by the teacher. So we only display it.
+        } else {
+            $comment = $badgeInfo['badge_comment']; //You can modify the comment, for example to tell where you earned it. So it is a text area field.            
+        }
+    }
     ?>
-    <div class="badge-div" >
+    <div class="badge-div">
         <img class="badge-img" src=<?php echo '"'.$badgeInfo['badge_image'].'"' ?> />
         <div class="badge-text">
             <div class="badge-name">
@@ -108,19 +129,11 @@ function b4l_display_one_badge($badgeInfo) {
             </div>
             <p>
                 <b>Date :</b> <?php echo $badgeInfo['badge_date']; ?> <br/>
-                <b>Teacher :</b> <?php echo $badgeInfo['badge_teacher']; ?>
+                <b>Teacher :</b> <?php echo $teacher;?>
             </p>
         </div>
-        
         <div class="badge-comment">
-            <b>Comment :</b> <br/>
-            <?php 
-            //You can modify the comment of a 'self-certification' badge, for example to tell where you earned it. So it is a text area field.-->
-            if ($badgeInfo['badge_teacher'] == 'Self-certification') {
-                echo '<textarea name="badge_comment[]" rows="2" >'.$badgeInfo['badge_comment'].'</textarea>';
-            } else { //You can't modify the comment of a badge given by a teacher. The comment is written by the teacher. So we only display it.-->
-                echo '<textarea name="badge_comment[]" readonly="readonly" >'.$badgeInfo['badge_comment'].'</textarea>';
-            } ?>
+            <b>Comment :</b> <br/> <?php echo $comment ?>
             <input type="hidden" name="user_badge_id[]" value="<?php echo $badgeInfo['user_badge_id']; ?>" class="regular-text"> <br/> <!--Keep the badge ID-->
         </div>
         <div class="clear"></div> <!--Useful for the CSS-->

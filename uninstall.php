@@ -21,18 +21,21 @@ delete_option( $option_name );
 // For site options in Multisite
 delete_site_option( $option_name );  
  
-//Drop all the 'badges4languages-plugin' Database Tables
-global $wpdb;
-$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_languages" );
-$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_students" );
-$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_teachers" );
-$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_teacherLevels" );
-$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_studentLevels" );
-$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_skills" );
-$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_number_certifications" );
-$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_issuer_information" );
-$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_userStudentBadgesProfil" );
-$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_userTeacherBadgesProfil" );
+$delDb = get_option('badge_delete_db');	
+//if( $delDb == 'checked="checked"' and get_option('badge_delete_db_confirm') == 'yes') {
+    //Drop all the 'badges4languages-plugin' Database Tables
+    global $wpdb;
+    $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_languages" );
+    $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_students" );
+    $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_teachers" );
+    $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_teacherLevels" );
+    $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_studentLevels" );
+    $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_skills" );
+    $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_number_certifications" );
+    $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_issuer_information" );
+    $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_userStudentBadgesProfil" );
+    $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_userTeacherBadgesProfil" );
+//}
 
 //Drop all the custom roles and custom capabilities
 require plugin_dir_path( __FILE__ ) . 'includes/initialisation/users_roles_and_capabilities.php';

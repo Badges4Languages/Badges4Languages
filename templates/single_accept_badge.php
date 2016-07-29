@@ -122,7 +122,8 @@ function b4l_insert_data_into_user_role_badges_profil_table($json_obj,$table_nam
                 'badge_language' => $json_obj->{'badge'}->{'language'},
                 'badge_date' => $json_obj->{'issued_on'},
                 'badge_image' => $json_obj->{'badge'}->{'image'},
-                'badge_teacher' => $json_obj->{'badge'}->{'teacher'}
+                'badge_teacher' => $json_obj->{'badge'}->{'teacher'},
+                'badge_comment' => $json_obj->{'badge'}->{'comment'}
             )
         );
     }
