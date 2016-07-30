@@ -4,7 +4,6 @@
  *
  * Allow users to update their profiles from Frontend.
  *
- 
  */
 
 // https://gist.github.com/chrisdigital/5525127
