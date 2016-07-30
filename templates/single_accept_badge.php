@@ -75,10 +75,10 @@ get_header(); // Loads the header.php template.
             </div>
         </div>
         <div class="browserSupport">
-            <p>Microsoft Internet Explorer is not supported at this time. Please use Firefox or Chrome to retrieve your award.</p>
+            <p><span style="background-color: #f78181;"><strong>Microsoft Internet Explorer is not supported at this time. Please use Firefox or Chrome to retrieve your award.</strong></span></p>
         </div>
         <div id="badge-error">
-            <p>An error occured while adding this badge to your backpack.</p>
+            <p><span style="background-color: #f78181;"><strong>An error occured while adding this badge to your backpack.</strong></span></p>
         </div>
     
     
