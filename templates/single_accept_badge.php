@@ -60,8 +60,18 @@ get_header(); // Loads the header.php template.
         
         <div id="bsp-award-actions-wrap">
             <div id="badgeSuccess">
-                <p>Congratulations! The "<?php echo $badge_name; ?>" badge has been awarded to you.</p>
-                <p class="acceptclick">Please <a href='#' class='acceptclick'>accept</a> the award.</p>
+                <h2>Congratulations! The "<?php echo $badge_name; ?>" badge has been awarded to you.</h2>
+		        <!-- Just registered users can get the badge -->
+				
+				<?php
+				if ( !is_user_logged_in() )  : // Message for non logged in users.?>
+				    <h2>Remember, just registered users can accept the badge. <a title="Log in" href="http://badges4languages.com/wp-login.php">Log in</a> or <a title="open an account" href="http://badges4languages.com/wp-login.php?action=register">open an account</a>.</h2>
+				<?php endif; ?>
+				
+				<?php if( rcp_is_active() )  : // Active link for winners of a badge.?>
+					<h2 class="acceptclick">Please <a href='#' class='acceptclick'>accept</a> the award.</h2>
+				<?php endif; ?>
+				
             </div>
         </div>
         <div class="browserSupport">
