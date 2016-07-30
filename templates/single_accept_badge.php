@@ -68,7 +68,8 @@ get_header(); // Loads the header.php template.
 				    <h2>Remember, just registered users can accept the badge. <a title="Log in" href="http://badges4languages.com/wp-login.php">Log in</a> or <a title="open an account" href="http://badges4languages.com/wp-login.php?action=register">open an account</a>.</h2>
 				<?php endif; ?>
 				
-				<?php if( rcp_is_active() )  : // Active link for winners of a badge.?>
+				<?php 
+				if ( is_user_logged_in() )  :  // Active link for winners of a badge.?>
 					<h2 class="acceptclick">Please <a href='#' class='acceptclick'>accept</a> the award.</h2>
 				<?php endif; ?>
 				
