@@ -61,8 +61,8 @@ function b4l_badges_issuer_information_html(){
         <p>Issuer information is information about your group/firm.</p>
         <br/>
         <form action="<?php get_page_link(); ?>" method="POST">
-            <h3>Issuer Name</h3>
-            <input id="issuer_name" name="issuer_name"  type="text" size="70" value="<?php b4l_badges_issuer_information_select_from_db_table("issuer_name") ?>" />
+            <h3>Issuer Organization</h3>
+            <input id="issuer_organization" name="issuer_organization"  type="text" size="70" value="<?php b4l_badges_issuer_information_select_from_db_table("issuer_name") ?>" />
             <p>Name of your firm/group/etc...</p>
             <br/>
             <h3>Issuer Logo Link</h3>
@@ -133,7 +133,7 @@ function b4l_badges_issuer_information_save_into_db_table(){
             $wpdb->update(
                         $wpdb->prefix . 'b4l_issuer_information',
                         array(
-                            'issuer_name' => $_POST['issuer_name'],
+                            'issuer_name' => $_POST['issuer_organization'],
                             'issuer_logo' => $logo,
                             'issuer_email' => $email,
                             'issuer_url' => $url
@@ -146,7 +146,7 @@ function b4l_badges_issuer_information_save_into_db_table(){
                         $wpdb->prefix . 'b4l_issuer_information',
                         array(
                             'id' => 1,
-                            'issuer_name' => $_POST['issuer_name'],
+                            'issuer_name' => $_POST['issuer_organization'],
                             'issuer_logo' => $logo,
                             'issuer_email' => $email,
                             'issuer_url' => $url

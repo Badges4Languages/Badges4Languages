@@ -96,6 +96,11 @@ For more information, please read the user guide.
 
 
 
+## TO DO LIST
+
+* Send a badge to more than 1 student;
+* User documentation : Title custom post must the same as Level custom taxonomy !
+
 ## Credits
 
 Uses the [WordPress Plugin Boilerplate](http://wppb.io/).

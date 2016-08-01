@@ -145,11 +145,12 @@ get_header(); ?>
                     <?php
                         $custom_metabox_links = get_post_meta(get_the_ID(), 'badge_links', true);
                         if($custom_metabox_links){
-                            echo '<strong>More information: </strong>';
+                            echo '<strong>Official description: </strong>';
                             foreach($custom_metabox_links as $link) {
-                                echo '<a href="'.$link[url].'">'.$link[select].'</a> ';
+                                $official_description = $official_description.'<a style="color: #f78181;" href="'.$link[url].'">'.$link[select].'</a> / ';
                             }
                         }
+                        echo rtrim($official_description, "/ "); //Delete the last "/ " from the string
                     ?>
                 </div>
                 <br/><hr/>
@@ -254,9 +255,10 @@ get_header(); ?>
                             $badge_comment = "";
                         }
 
+                        $current_link = get_permalink();
                         //Create the JSON File and send the cerfication by email.
                         //Function b4l_create_certification_assertion_badge_json is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
-                        $file_json = b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople, $badge_comment);
+                        $file_json = b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople, $badge_comment, $current_link);
                         b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $file_json, $issuer_logo, $issuer_email);
                         ?>
                         <script>

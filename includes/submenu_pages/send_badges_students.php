@@ -185,9 +185,12 @@ function b4l_send_badges_students_page_callback() {
             } else {
                 $badge_comment = "";
             }
-                        
+                  
+            //Link of the page of the badge
+            $badge_link = get_permalink($_POST["level"]);
+            
             //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
-            $file_json = b4l_create_certification_assertion_badge_json($email, $badge_image, $_POST["language_certification"], $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $teacher_user_name, $badge_comment);
+            $file_json = b4l_create_certification_assertion_badge_json($email, $badge_image, $_POST["language_certification"], $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $teacher_user_name, $badge_comment, $badge_link);
             b4l_send_badge_email($email, $badge_name, $badge_desc, $badge_image, $_POST["language_certification"], $file_json, $issuer_logo, $issuer_email); 
         }
         /*

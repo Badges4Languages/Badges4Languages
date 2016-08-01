@@ -63,10 +63,14 @@ function b4l_single_badge_translation($translation_language){
  * @param string $issuer_url Issuer's url
  * @param string $issuer_email Issuer's email
  * @param int|string $numberOfPeopleOrTeacherUserName Number of People having this certification (for self-certification badges) or Teacher's name (for badges awarded by a teacher)
+ * @param string $badge_link Link of the page of the badge
  * @return string $file_json Json file path
 */ 
-function b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $numberOfPeopleOrTeacherUserName, $badge_comment){
+function b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $numberOfPeopleOrTeacherUserName, $badge_comment, $badge_link){
     
+    global $current_user;
+    get_currentuserinfo(); //Get current user information
+      
     //adding a salt to our hashed email
     $salt=uniqid(mt_rand(), true);
 
@@ -90,16 +94,20 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge_image
     //Checks if it is a number (self certification) or if a teacher gave the badge
     if(is_int($numberOfPeopleOrTeacherUserName)) {
         $uid_number = $numberOfPeopleOrTeacherUserName;
-        $badge_name_info = 'Self-certification';
-        $teacher = $badge_name_info;
+        $pagelinkTeacher = $issuer_url;
+        $teacher = 'Self-certification';
     } else {
         //Could cause problems in the future if we have a lot of certifications sent,
         //the random number (mt_rand() function) can be appeared a second time (probability 
         //increases if there are a lot of members/certifications sent).
         $uid_number = $hash;
         $teacher = $numberOfPeopleOrTeacherUserName;
-        $badge_name_info = 'Teacher : '.$teacher;
+        $pagelinkTeacher =  'http://badges4languages.com/user-profile'; //esc_url( add_query_arg( 'user', $teacher, get_permalink( get_page_by_title( 'User Profile' ) ) ) );
     }
+    
+    //Link of the Student user profile.
+    $pagelinkStudent = esc_url( add_query_arg( 'user', $current_user->display_name, get_permalink( get_page_by_title( 'User Profile' ) ) ) );
+    
     //handle for opening or creating the file and writing to it (w)
     $handle=fopen($path_json, 'w') or die ('Can not open file: '.$file_json);
     if($handle){
@@ -107,6 +115,8 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge_image
         $data=array(
             'recipient'=> $hash,
             'salt'=>$salt,
+            'evidence'=>$pagelinkStudent,
+            'issued_on'=>$date,
             '@context'=>'https://w3id.org/openbadges/v1',
             'type'=>'Assertion',
             'uid'=>'b4l'.'_'.$badge_lvl.'_'.str_replace(' ','',$badge_lang).'_'.$uid_number, //UID must be unique, so it's thanks to $numberOfPeople
@@ -114,26 +124,26 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge_image
                     '@context'=>'https://w3id.org/openbadges/v1',
                     'type'=>'BadgeClass',
                     'typeofbadge'=>$badge_type,
-                    'name'=>$badge_name.' - '.$badge_lang.' ('.$badge_name_info.')',
+                    'name'=>$badge_name.' - '.$badge_lang,
                     'level'=>$badge_lvl, //level and language are not required, it's to have more information and to use them to stock badges on user profil
                     'language'=>$badge_lang,
                     'description'=>$badge_desc,
                     'image'=>$badge_image,
                     'teacher'=>$teacher,
                     'comment'=>$badge_comment,
-                    'criteria'=>'https://badges4languages.wordpress.com/',
+                    'criteria'=>$badge_link,
                     'issuer'=>array(
                             'type'=>'Issuer',
-                            'name'=>$issuer_name,
-                            'origin'=>$issuer_url,
+                            'name'=>$teacher,
+                            'origin'=>$pagelinkTeacher,
                             'email'=>$issuer_email,
+                            'org'=>$issuer_name,
                     )
             ),
             'verify'=>array(
                     'type'=>'hosted',
                     'url'=>WP_CONTENT_URL.'/uploads/badges4languages-plugin/json/'.$file_json.'.json',
-            ),
-            'issued_on'=>$date
+            )
         );
     }
     fwrite($handle, json_encode($data));
