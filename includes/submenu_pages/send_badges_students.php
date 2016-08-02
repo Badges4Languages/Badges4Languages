@@ -52,6 +52,11 @@ function plugin_name_extra_caps( $caps ) {
 
 /**
  * Displays the content of the submenu page
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.0.0
+ * @global WordpressObject $wpdb Wordpress Database
+ * @global WordpressObject $current_user Information about the current user
  */
 function b4l_send_badges_students_page_callback() {
 ?>
@@ -130,16 +135,16 @@ function b4l_send_badges_students_page_callback() {
         
         //Contains all the issuer information
         $queryInfo = "SELECT * FROM ".$wpdb->prefix."b4l_issuer_information ";
-        $results = $wpdb->get_results($queryInfo, ARRAY_A); 
+        $issuerInformation = $wpdb->get_results($queryInfo, ARRAY_A); 
         
         //Issuer (firm, company, etc.) information
-        $issuer_name = $results[0]['issuer_name'];
-        $issuer_logo = $results[0]['issuer_logo'];
-        $issuer_email = $results[0]['issuer_email'];
-        $issuer_url = $results[0]['issuer_url'];
+        $issuer_name = $issuerInformation[0]['issuer_name'];
+        $issuer_logo = $issuerInformation[0]['issuer_logo'];
+        $issuer_email = $issuerInformation[0]['issuer_email'];
+        $issuer_url = $issuerInformation[0]['issuer_url'];
         
         //Checks if issuer information are set and valid. If not, pop-up which alerts the user that is not the case.
-        if(array_filter($results[0]) == false || strpos($issuer_logo, 'Invalid') !== false || strpos($issuer_email, 'Invalid') !== false || strpos($issuer_url, 'Invalid') !== false) {
+        if(array_filter($issuerInformation[0]) == false || strpos($issuer_logo, 'Invalid') !== false || strpos($issuer_email, 'Invalid') !== false || strpos($issuer_url, 'Invalid') !== false) {
             ?>
             <script>
                 alert("Can't send the certification : Badges Issuer Information not complete/valid !")
@@ -149,11 +154,16 @@ function b4l_send_badges_students_page_callback() {
             //To indicate on the badge who gives the certification
             global $current_user;
             get_currentuserinfo();
+            
+            //'Badge' class
+            require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/classes/badge.php';
+
+            //Current user name, that is to say name of the teacher
             $teacher_user_name = $current_user->user_login;
 
             //Get all the post's info into an array $post
             $post = get_post($_POST["level"]);
-            $badge_name = $post->post_title;
+            $title = $post->post_title;
 
             //If the certification language has a translation, we use that one. If it hasn't, we use the default one (in English).
             //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
@@ -170,28 +180,30 @@ function b4l_send_badges_students_page_callback() {
             //Check if it is a Student badge or a Teacher badge and recuperate the value.
             $studentLevel = get_the_terms($post->ID, 'badges_students_levels');
             $badge_lvl = $studentLevel[0]->name;
-            $badge_type = 'Student';
 
             //Use the Wordpress featured image as badge image
             $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
-            $badge_image = $image[0];
 
-            //Get the email from the InputField
-            $email = $_POST['students_emails'];
-            
             //Get the comment from the InputField  and check his value
             if($_POST['user_comment'] != null){
                 $badge_comment = $_POST['student_comment'];
             } else {
                 $badge_comment = "";
             }
-                  
-            //Link of the page of the badge
-            $badge_link = get_permalink($_POST["level"]);
             
+            //Use the skills of the badge as tags
+            $skills = get_the_terms( $_POST["level"], 'badges_skills'); //Get all the skills (Wordpress taxonomy)
+            $skillsList= array();
+            foreach($skills as $skill) {
+                array_push($skillsList, $badge_tags.$skill->name); //Put all the 'skills' name (String) into an array
+            }
+            
+            //Creation of a new 'Badge' object to store all the information
+            $badge = new Badge($title, $badge_desc, $image[0], $_POST['language_certification'], $badge_lvl, 'Student', $badge_comment, $skillsList, get_permalink($_POST["level"]));
+
             //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
-            $file_json = b4l_create_certification_assertion_badge_json($email, $badge_image, $_POST["language_certification"], $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $teacher_user_name, $badge_comment, $badge_link);
-            b4l_send_badge_email($email, $badge_name, $badge_desc, $badge_image, $_POST["language_certification"], $file_json, $issuer_logo, $issuer_email); 
+            $file_json = b4l_create_certification_assertion_badge_json($_POST['students_emails'], $badge, $issuerInformation[0], $teacher_user_name);
+            b4l_send_badge_email($_POST['students_emails'], $badge, $file_json, $issuerInformation[0]); 
         }
         /*
          * Not functionnable : send badges to more than one student
@@ -216,6 +228,8 @@ function b4l_send_badges_students_page_callback() {
 /**
  * Get all the custom posts 'badge' which belongs to the custom taxonomy (category)
  * 'badge_studentlevels', that is to say posts into category 'A1', 'A2',...., 'C2'.
+ * 
+ * @return post Custom Post which has the taxonomy 'Student Level'
  */
 function b4l_send_badges_students_get_posts() {
     

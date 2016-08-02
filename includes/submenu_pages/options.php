@@ -2,6 +2,8 @@
  /*
   * Create a submenu page in the administration menu for the settings
   * 
+  * Inspired from Watu plugin
+  * 
   * @author Alexandre Levacher
   * @package badges4languages-plugin
   * @subpackage includes/submenu_pages
@@ -34,59 +36,50 @@ function b4l_settings_submenu_page() {
 
 function b4l_settings_page_callback() {
     ?>
-<div class="wrap">
+    <div class="wrap">
 
-	<h2><?php _e("Badges4Languages Plugin Settings", 'badge'); ?></h2>
+        <h2><?php _e("Badges4Languages Plugin Settings", 'badge'); ?></h2>
 
-	<div class="postbox-container" style="width:73%;margin-right:2%;">	
-	
-	<form name="post" action="" method="post" id="post">
-	<div>
-		<div class="postarea">
-			
-                    <div class="postbox">
-                            <h3 class="hndle">&nbsp;<span><?php _e('Database Option', 'badge') ?></span></h3>
-                            <div class="inside" style="padding:8px">
-                            <?php 
-                                    $check = get_option('badge_delete_db');
-                            ?>
-                            <label>&nbsp;<input type='checkbox' value="1" name='delete_db' <?php if($delete_db) echo 'checked'?> onclick="this.checked ? jQuery('#deleteDBConfirm').show() : jQuery('#deleteDBConfirm').hide();" />&nbsp;<?php _e('Delete stored Watu data when deinstalling the plugin.', 'badge')?> </label>
+        <div class="postbox-container" style="width:73%;margin-right:2%;">	
 
-                                    <span id="deleteDBConfirm" style="display: <?php echo empty($delete_db) ? 'none' : 'inline';?>">
-                                            <?php _e('Please confirm by typing "yes" in the box:', 'badge')?> <input type="text" name="delete_db_confirm" value="<?php echo get_option('badge_delete_db_confirm')?>">		
-                                    </span>
+            <form name="post" action="" method="post" id="post">
+                <div>
+                        <div class="postarea">
+
+                            <div class="postbox">
+                                    <h3 class="hndle">&nbsp;<span><?php _e('Database Option', 'badge') ?></span></h3>
+                                    <div class="inside" style="padding:8px">
+                                        <?php 
+                                                $check = get_option('badge_delete_db');
+                                        ?>
+                                        <label>&nbsp;<input type='radio' value="0" name='delete_db' <?php if($check == 0) echo 'checked'?> />&nbsp;<?php _e('Keep stored Badges4Languages data when deinstalling the plugin.', 'badge')?> </label> <br/>
+                                        <label>&nbsp;<input type='radio' value="1" name='delete_db' <?php if($check == 1) echo 'checked'?> />&nbsp;<?php _e('Delete stored Badges4Languages data when deinstalling the plugin.', 'badge')?> </label>
+                                    </div>
                             </div>
-                    </div>
 
-                    <p class="submit">
-                    <input type="hidden" id="user-id" name="user_ID" value="<?php echo (int) $user_ID ?>" />
-                    <span id="autosave"></span>
-                    <input type="submit" name="submit" value="<?php _e('Save Options', 'badge') ?>"  class="button-primary" />
-                    </p>
-	
+                            <p class="submit">
+                                <input type="hidden" id="user-id" name="user_ID" value="<?php echo (int) $user_ID ?>" />
+                                <span id="autosave"></span>
+                                <input type="submit" name="submit" value="<?php _e('Save Options', 'badge') ?>"  class="button-primary" />
+                            </p>
+
+                        </div>
                 </div>
+                <?php wp_nonce_field('badge_options'); ?>
+            </form>
+
         </div>
-        <?php wp_nonce_field('badge_options'); ?>
-	</form>
-	
-	</div>
-</div>	
-<?php
-}
-
-
-
-
-global $wpdb;
-if(!empty($_REQUEST['submit']) and check_admin_referer('badge_options')) {
-	$delete_db = empty($_POST['delete_db']) ? 0 : 1;
-	$delete_db_confirm = (empty($_POST['delete_db_confirm']) or $_POST['delete_db_confirm']!= 'yes') ? '' : 'yes';
         
-	update_option( "badge_delete_db", $delete_db );
-	update_option('badge_delete_db_confirm', $delete_db_confirm);
-       
-	print '<div id="message" class="updated fade"><p>' . __('Options updated', 'badge') . '</p></div>';	
+    </div>
+
+    <?php
+    global $wpdb;
+    if(!empty($_REQUEST['submit']) and check_admin_referer('badge_options')) {
+            $delete_db = empty($_POST['delete_db']) ? 0 : 1;
+            update_option( "badge_delete_db", $delete_db );
+            print '<div id="message" class="updated fade"><p>' . __('Options updated, they will be effective at the next actualization.', 'badge') . '</p></div>';	
+    }
+    $delete_db = get_option('badge_delete_db');
 }
 
-$delete_db = get_option('badge_delete_db');
 ?>

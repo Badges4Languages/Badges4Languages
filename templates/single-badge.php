@@ -35,6 +35,9 @@ function b4l_stylesheet_single_badge() {
 //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
 require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php';
 
+//'Badge' class
+require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/classes/badge.php';
+
 //Header Page
 get_header(); ?>
 <div id="primary">
@@ -192,15 +195,15 @@ get_header(); ?>
                 if(isset($_POST['get_certification']) && ($_POST['language_certification'] != "") && ($_POST['language_certification'] != "------------"))
                 {
                     //Contains all the issuer information
-                    $queryInfo = "SELECT * FROM ".$wpdb->prefix."b4l_issuer_information ";
-                    $results = $wpdb->get_results($queryInfo, ARRAY_A); 
-                    $issuer_name = $results[0]['issuer_name'];
-                    $issuer_logo = $results[0]['issuer_logo'];
-                    $issuer_email = $results[0]['issuer_email'];
-                    $issuer_url = $results[0]['issuer_url'];
+                    $queryInformation = "SELECT * FROM ".$wpdb->prefix."b4l_issuer_information ";
+                    $issuerInformation = $wpdb->get_results($queryInformation, ARRAY_A); 
+                    $issuer_name = $issuerInformation[0]['issuer_name'];
+                    $issuer_logo = $issuerInformation[0]['issuer_logo'];
+                    $issuer_email = $issuerInformation[0]['issuer_email'];
+                    $issuer_url = $issuerInformation[0]['issuer_url'];
                     
                     //Checks if issuer information are set and valid. If not, pop-up which alerts the user that is not the case.
-                    if(array_filter($results[0]) == false || strpos($issuer_logo, 'Invalid') !== false || strpos($issuer_email, 'Invalid') !== false || strpos($issuer_url, 'Invalid') !== false) {
+                    if(array_filter($issuerInformation[0]) == false || strpos($issuer_logo, 'Invalid') !== false || strpos($issuer_email, 'Invalid') !== false || strpos($issuer_url, 'Invalid') !== false) {
                         ?>
                         <script>
                             alert("Can't send the certification : Badges Issuer Information not complete/valid !")
@@ -219,32 +222,29 @@ get_header(); ?>
                         }
 
                         $email_stud=$current_user->user_email; //Email student is user's email.
-                        $badge_name = get_the_title(); //Page title must be the name you want to give to the badge.
-
+                        
                         //If the certification language has a translation, we use that one. If it hasn't, we use the default one (in English).
                         //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
                         for($i=0;$i<count($results1);$i++) {
                             if($_POST['language_certification']==$results1[$i][language_name]){
-                                $badge_desc = b4l_single_badge_translation($_POST['language_certification']);
+                                $badge_description = b4l_single_badge_translation($_POST['language_certification']);
                             } 
                         }
                         if($badge_desc == null){
-                            $badge_desc = $post->post_content;
+                            $badge_description = $post->post_content;
                         }
 
                         //Use the Wordpress featured image as badge image
                         $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
-                        $badge_image = $image[0];
-                        $badge_lang = $_POST['language_certification'];
 
                         //Check if it is a Student badge or a Teacher badge and recuperate the value.
                         if (get_the_terms($post->ID, 'badges_students_levels')) {
                             $studentLevel = get_the_terms($post->ID, 'badges_students_levels');
-                            $badge_lvl = $studentLevel[0]->name;
+                            $badge_level = $studentLevel[0]->name;
                             $badge_type = 'Student';
                         } elseif (get_the_terms($post->ID, 'badges_teachers_levels')) {
                             $teacherLevel = get_the_terms($post->ID, 'badges_teachers_levels');
-                            $badge_lvl = $teacherLevel[0]->name;
+                            $badge_level = $teacherLevel[0]->name;
                             $badge_type = 'Teacher';
                         }
                         
@@ -254,12 +254,26 @@ get_header(); ?>
                         } else {
                             $badge_comment = "";
                         }
-
-                        $current_link = get_permalink();
+                        
+                        //Check if there are Skills or not to create tags
+                        if(get_the_terms( $post->ID, 'badges_skills' )) {
+                            $skills = get_the_terms( $post->ID, 'badges_skills'); //Get all the skills (Wordpress taxonomy)
+                            $skillsList= array();
+                            foreach($skills as $skill) {
+                                array_push($skillsList, $badge_tags.$skill->name); //Put all the 'skills' name (String) into an array
+                            }
+                            $badge_skills = $skillsList;
+                        } else {
+                            $badge_skills = 'badgeTeacher';
+                        }
+                        
+                        //Creation of a new 'Badge' object to store all the information
+                        $badge = new Badge(get_the_title(), $badge_description, $image[0], $_POST['language_certification'], $badge_level, $badge_type, $badge_comment, $badge_skills, get_permalink());
+                                        
                         //Create the JSON File and send the cerfication by email.
                         //Function b4l_create_certification_assertion_badge_json is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
-                        $file_json = b4l_create_certification_assertion_badge_json($email_stud, $badge_image, $badge_lang, $badge_lvl, $badge_name, $badge_desc, $badge_type, $issuer_name, $issuer_url, $issuer_email, $numberOfPeople, $badge_comment, $current_link);
-                        b4l_send_badge_email($email_stud, $badge_name, $badge_desc, $badge_image, $badge_lang, $file_json, $issuer_logo, $issuer_email);
+                        $file_json = b4l_create_certification_assertion_badge_json($email_stud, $badge, $issuerInformation[0], $numberOfPeople);
+                        b4l_send_badge_email($email_stud, $badge, $file_json, $issuerInformation[0]);
                         ?>
                         <script>
                             alert("Email Sent. If the mail is not in your mail box, verify your spams.");
@@ -307,6 +321,7 @@ get_header(); ?>
  * @author Alexandre LEVACHER
  * @since 1.1.0
  * @param string $levelName Student Level (A1, A2, B1...) or Teacher Level (T1 to T6)
+ * @global WordpressObject $wpdb Wordpress Database
 */
 function b4l_see_and_send_self_certification($levelName){
     ?>
@@ -338,12 +353,12 @@ function b4l_see_and_send_self_certification($levelName){
                                         ELSE language_name 
                                     END)";
                     } 
-                    $results2 = $wpdb->get_results($query, ARRAY_A);
-                    foreach($results2 as $result) {
+                    $languages = $wpdb->get_results($query, ARRAY_A);
+                    foreach($languages as $language) {
                 ?>
-                    <option value="<?php echo $result[language_name]; ?>">
-                        <?php echo $result[language_name]; } ?>
-                    <option value="<?php echo $result[language_name]; ?>">
+                    <option value="<?php echo $language[language_name]; ?>">
+                        <?php echo $language[language_name]; } ?>
+                    <option value="<?php echo $language[language_name]; ?>">
             </select>
             <br/>
             

@@ -125,17 +125,12 @@ require plugin_dir_path( __FILE__ ) . 'included_plugins/wp_csv_to_db/wp_csv_to_d
  */
 require plugin_dir_path( __FILE__ ) . 'includes/submenu_pages/send_badges_students.php';
 
+/**
+ * BADGES SETTINGS
+ * Plugin settings. The user can choose if he wants to erase or not the database when he
+ * deletes the plugin.
+ */
 require plugin_dir_path( __FILE__ ) . 'includes/submenu_pages/options.php';
-
-function wpdocs_my_plugin_menu() {
-    add_options_page( 
-        __( 'My Options', 'textdomain' ),
-        __( 'My Plugin', 'textdomain' ),
-        'manage_options',
-        'my-plugin.php',
-        'my_plugin_page'
-    );
-}
 
 
 
