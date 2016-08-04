@@ -40,3 +40,7 @@ div a {
 div#send_certification_form { 
     text-align: left;
 }
+
+.navigation { 
+    margin: 20% 0% 20% 0%; 
+}

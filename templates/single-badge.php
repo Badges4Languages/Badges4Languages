@@ -132,7 +132,11 @@ get_header(); ?>
                             $levelName = $studentLevel[0]->name;
                             echo '<br/>';
                             echo '<strong>Skill(s): </strong>';
-                            the_terms( $post->ID, 'badges_skills' ,  ' ' );
+                            if(get_the_term_list( $post->ID, 'badges_skills')){
+                                the_terms( $post->ID, 'badges_skills' ,  ' ' );
+                            } else {
+                                echo 'All<br/>';
+                            }
                         //Get the TeacherLevel (if exists)
                         } elseif(get_the_term_list( $post->ID, 'badges_teachers_levels')){
                             echo '<strong>Teacher level: </strong>';
@@ -150,7 +154,7 @@ get_header(); ?>
                         if($custom_metabox_links){
                             echo '<strong>Official description: </strong>';
                             foreach($custom_metabox_links as $link) {
-                                $official_description = $official_description.'<a style="color: #f78181;" href="'.$link[url].'">'.$link[select].'</a> / ';
+                                $official_description = $official_description.'<a style="color: #f78181;" href="'.$link[url].'" target="_blank">'.$link[select].'</a> / ';
                             }
                         }
                         echo rtrim($official_description, "/ "); //Delete the last "/ " from the string
@@ -288,9 +292,9 @@ get_header(); ?>
                 * Possible that it is not working on every themes.
                 */
                 if( is_singular('badge') ) { ?>
-                    <div class="post-nav">
-                    <div class="alignleft prev-next-post-nav"><?php previous_post_link( '&laquo; %link' ) ?></div>
-                    <div class="alignright prev-next-post-nav"><?php next_post_link( '%link &raquo;' ) ?></div>
+                    <div id="post-nav">
+                        <div class="alignleft prev-next-post-nav"><?php previous_post_link( '&laquo; %link' ) ?></div>
+                        <div class="alignright prev-next-post-nav"><?php next_post_link( '%link &raquo;' ) ?></div>
                     </div>
                 <?php } ?>
 
@@ -363,7 +367,7 @@ function b4l_see_and_send_self_certification($levelName){
             <br/>
             
             <label>Do you want to add a comment about this certification ? (where you awarded it, etc.)</label><br/>
-            <input type="text" id="user_comment" name="user_comment" />
+            <input type="text" id="user_comment" name="user_comment" maxlength="320"/>
             <br/>
 
             <!-- Send an email to get the certification -->

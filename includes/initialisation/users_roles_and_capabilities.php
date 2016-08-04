@@ -33,6 +33,7 @@ function b4l_create_roles_and_capabilities() {
  * 
  * @author Alexandre LEVACHER
  * @since 1.0.1
+ * @global WordpressObject $wp_roles Wordpress roles
  */
 function b4l_add_roles() {
     global $wp_roles;
@@ -41,17 +42,17 @@ function b4l_add_roles() {
     if ( ! isset( $wp_roles ) )
         $wp_roles = new WP_Roles();
     $editor = $wp_roles->get_role('editor');
-    $wp_roles->add_role('b4l_badges_editor', __( 'Badges Editor', 'badge' ), $editor->capabilities);
+    $wp_roles->add_role('b4l_badges_editor', 'Badges Editor', $editor->capabilities);
     
-    add_role('b4l_academy', __( 'Academy', 'badge' ), array(
+    add_role('b4l_academy', 'Academy', array(
         'read' => true,
     ));
     
-    add_role('b4l_teacher', __( 'Teacher', 'badge' ), array(
+    add_role('b4l_teacher', 'Teacher', array(
         'read' => true,
     ));
 
-    add_role('b4l_student', __( 'Student', 'badge' ), array(
+    add_role('b4l_student', 'Student', array(
         'read' => true
     ));
 }
@@ -62,11 +63,15 @@ function b4l_add_roles() {
  * 
  * @author Alexandre LEVACHER
  * @since 1.0.1
+ * @global WordpressObject $wp_roles Wordpress roles
  */
 function b4l_add_caps() {
     
     global $wp_roles;
-            
+     
+    /*******************************************************************
+     ********************** 'BADGE' CUSTOM POST ************************
+     *******************************************************************/
     $wp_roles->add_cap( 'administrator', 'edit_badge' );
     $wp_roles->add_cap( 'administrator', 'read_badge' );
     $wp_roles->add_cap( 'administrator', 'delete_badge' );
@@ -81,6 +86,7 @@ function b4l_add_caps() {
     $wp_roles->add_cap( 'administrator', 'publish_badges' );
     $wp_roles->add_cap( 'administrator', 'read_private_badges' );
     $wp_roles->add_cap( 'administrator', 'b4l_import_csv_to_db' );
+    $wp_roles->add_cap( 'administrator', 'b4l_send_badges_to_one_student' );
     $wp_roles->add_cap( 'administrator', 'b4l_send_badges_to_students' );
     $wp_roles->add_cap( 'administrator', 'b4l_badges_issuer_information' );
     
@@ -98,16 +104,57 @@ function b4l_add_caps() {
     $wp_roles->add_cap( 'b4l_badges_editor', 'publish_badges' );
     $wp_roles->add_cap( 'b4l_badges_editor', 'read_private_badges' );
     $wp_roles->add_cap( 'b4l_badges_editor', 'b4l_import_csv_to_db' );
+    $wp_roles->add_cap( 'b4l_badges_editor', 'b4l_send_badges_to_one_student' );
     $wp_roles->add_cap( 'b4l_badges_editor', 'b4l_send_badges_to_students' );
     $wp_roles->add_cap( 'b4l_badges_editor', 'b4l_badges_issuer_information' );
     
+    $wp_roles->add_cap( 'b4l_academy', 'b4l_send_badges_to_one_student' );
     $wp_roles->add_cap( 'b4l_academy', 'b4l_send_badges_to_students' );
     $wp_roles->add_cap( 'b4l_academy', 'read_badge' );
     
+    $wp_roles->add_cap( 'b4l_teacher', 'b4l_send_badges_to_one_student' );
     $wp_roles->add_cap( 'b4l_teacher', 'b4l_send_badges_to_students' );
     $wp_roles->add_cap( 'b4l_teacher', 'read_badge' );
     
     $wp_roles->add_cap( 'b4l_student', 'read_badge' );
+    
+    
+    /*******************************************************************
+     ********************** 'CLASS' CUSTOM POST ************************
+     *******************************************************************/
+    $wp_roles->add_cap( 'administrator', 'edit_class' );
+    $wp_roles->add_cap( 'administrator', 'read_class' );
+    $wp_roles->add_cap( 'administrator', 'delete_class' );
+    $wp_roles->add_cap( 'administrator', 'delete_classes' );
+    $wp_roles->add_cap( 'administrator', 'delete_others_classes' );
+    $wp_roles->add_cap( 'administrator', 'delete_private_classes' );
+    $wp_roles->add_cap( 'administrator', 'delete_published_classes' );
+    $wp_roles->add_cap( 'administrator', 'edit_classes' );
+    $wp_roles->add_cap( 'administrator', 'edit_others_classes' );
+    $wp_roles->add_cap( 'administrator', 'edit_private_classes' );
+    $wp_roles->add_cap( 'administrator', 'edit_published_classes' );
+    $wp_roles->add_cap( 'administrator', 'publish_classes' );
+    $wp_roles->add_cap( 'administrator', 'read_private_classes' );
+    
+    $wp_roles->add_cap( 'b4l_classes_editor', 'edit_class' );
+    $wp_roles->add_cap( 'b4l_classes_editor', 'read_class' );
+    $wp_roles->add_cap( 'b4l_classes_editor', 'delete_class' );
+    $wp_roles->add_cap( 'b4l_classes_editor', 'delete_classes' );
+    $wp_roles->add_cap( 'b4l_classes_editor', 'delete_others_classes' );
+    $wp_roles->add_cap( 'b4l_classes_editor', 'delete_private_classes' );
+    $wp_roles->add_cap( 'b4l_classes_editor', 'delete_published_classes' );
+    $wp_roles->add_cap( 'b4l_classes_editor', 'edit_classes' );
+    $wp_roles->add_cap( 'b4l_classes_editor', 'edit_others_classes' );
+    $wp_roles->add_cap( 'b4l_classes_editor', 'edit_private_classes' );
+    $wp_roles->add_cap( 'b4l_classes_editor', 'edit_published_classes' );
+    $wp_roles->add_cap( 'b4l_classes_editor', 'publish_classes' );
+    $wp_roles->add_cap( 'b4l_classes_editor', 'read_private_classes' );
+    
+    $wp_roles->add_cap( 'b4l_academy', 'read_class' );
+    
+    $wp_roles->add_cap( 'b4l_teacher', 'read_class' );
+    
+    $wp_roles->add_cap( 'b4l_student', 'read_class' );
 }
 
 
@@ -116,11 +163,15 @@ function b4l_add_caps() {
  * 
  * @author Alexandre LEVACHER
  * @since 1.0.1
+ * @global WordpressObject $wp_roles Wordpress roles
  */
 function b4l_remove_caps() {
     
     global $wp_roles;
     
+    /*******************************************************************
+     ********************** 'BADGE' CUSTOM POST ************************
+     *******************************************************************/
     $wp_roles->remove_cap( 'administrator', 'edit_badge' );
     $wp_roles->remove_cap( 'administrator', 'read_badge' );
     $wp_roles->remove_cap( 'administrator', 'delete_badge' );
@@ -135,6 +186,7 @@ function b4l_remove_caps() {
     $wp_roles->remove_cap( 'administrator', 'publish_badges' );
     $wp_roles->remove_cap( 'administrator', 'read_private_badges' );
     $wp_roles->remove_cap( 'administrator', 'b4l_import_csv_to_db' );
+    $wp_roles->remove_cap( 'administrator', 'b4l_send_badges_to_one_student' );
     $wp_roles->remove_cap( 'administrator', 'b4l_send_badges_to_students' );
     $wp_roles->remove_cap( 'administrator', 'b4l_badges_issuer_information' );
     
@@ -152,14 +204,55 @@ function b4l_remove_caps() {
     $wp_roles->remove_cap( 'b4l_badges_editor', 'publish_badges' );
     $wp_roles->remove_cap( 'b4l_badges_editor', 'read_private_badges' );
     $wp_roles->remove_cap( 'b4l_badges_editor', 'b4l_import_csv_to_db' );
+    $wp_roles->remove_cap( 'b4l_badges_editor', 'b4l_send_badges_to_one_student' );
     $wp_roles->remove_cap( 'b4l_badges_editor', 'b4l_send_badges_to_students' );
     $wp_roles->remove_cap( 'b4l_badges_editor', 'b4l_badges_issuer_information' );
    
+    $wp_roles->remove_cap( 'b4l_academy', 'b4l_send_badges_to_one_student' );
     $wp_roles->remove_cap( 'b4l_academy', 'b4l_send_badges_to_students' );
     $wp_roles->remove_cap( 'b4l_academy', 'read_badge' );
     
+    $wp_roles->remove_cap( 'b4l_teacher', 'b4l_send_badges_to_one_student' );
     $wp_roles->remove_cap( 'b4l_teacher', 'b4l_send_badges_to_students' );
     $wp_roles->remove_cap( 'b4l_teacher', 'read_badge' );
     
     $wp_roles->remove_cap( 'b4l_student', 'read_badge' );
+    
+    
+    /*******************************************************************
+     ********************** 'CLASS' CUSTOM POST ************************
+     *******************************************************************/
+    $wp_roles->remove_cap( 'administrator', 'edit_class' );
+    $wp_roles->remove_cap( 'administrator', 'read_class' );
+    $wp_roles->remove_cap( 'administrator', 'delete_class' );
+    $wp_roles->remove_cap( 'administrator', 'delete_classes' );
+    $wp_roles->remove_cap( 'administrator', 'delete_others_classes' );
+    $wp_roles->remove_cap( 'administrator', 'delete_private_classes' );
+    $wp_roles->remove_cap( 'administrator', 'delete_published_classes' );
+    $wp_roles->remove_cap( 'administrator', 'edit_classes' );
+    $wp_roles->remove_cap( 'administrator', 'edit_others_classes' );
+    $wp_roles->remove_cap( 'administrator', 'edit_private_classes' );
+    $wp_roles->remove_cap( 'administrator', 'edit_published_classes' );
+    $wp_roles->remove_cap( 'administrator', 'publish_classes' );
+    $wp_roles->remove_cap( 'administrator', 'read_private_classes' );
+    
+    $wp_roles->remove_cap( 'b4l_classes_editor', 'edit_class' );
+    $wp_roles->remove_cap( 'b4l_classes_editor', 'read_class' );
+    $wp_roles->remove_cap( 'b4l_classes_editor', 'delete_class' );
+    $wp_roles->remove_cap( 'b4l_classes_editor', 'delete_classes' );
+    $wp_roles->remove_cap( 'b4l_classes_editor', 'delete_others_classes' );
+    $wp_roles->remove_cap( 'b4l_classes_editor', 'delete_private_classes' );
+    $wp_roles->remove_cap( 'b4l_classes_editor', 'delete_published_classes' );
+    $wp_roles->remove_cap( 'b4l_classes_editor', 'edit_classes' );
+    $wp_roles->remove_cap( 'b4l_classes_editor', 'edit_others_classes' );
+    $wp_roles->remove_cap( 'b4l_classes_editor', 'edit_private_classes' );
+    $wp_roles->remove_cap( 'b4l_classes_editor', 'edit_published_classes' );
+    $wp_roles->remove_cap( 'b4l_classes_editor', 'publish_classes' );
+    $wp_roles->remove_cap( 'b4l_classes_editor', 'read_private_classes' );
+    
+    $wp_roles->remove_cap( 'b4l_academy', 'read_class' );
+    
+    $wp_roles->remove_cap( 'b4l_teacher', 'read_class' );
+    
+    $wp_roles->remove_cap( 'b4l_student', 'read_class' );
 }

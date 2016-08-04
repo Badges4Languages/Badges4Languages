@@ -1,6 +1,6 @@
 <?php
  /*
-  * Create a submenu padge in the administration menu to allow a teacher to send badges to students.
+  * Create a submenu padge in the administration menu to allow a teacher to send badges to 1 student.
   * 
   * @author Alexandre Levacher
   * @package badges4languages-plugin
@@ -10,9 +10,9 @@
 
 
 /**
- * Adds b4l_send_badges_students_submenu_page to the admin menu.
+ * Adds b4l_send_badges_one_student_submenu_page to the admin menu.
  */
-add_action('admin_menu', 'b4l_send_badges_students_submenu_page');
+add_action('admin_menu', 'b4l_send_badges_one_student_submenu_page');
  
 /**
  * Creates the submenu page.
@@ -21,34 +21,18 @@ add_action('admin_menu', 'b4l_send_badges_students_submenu_page');
  * If you change to change the permissions, use manage_options as capability (for
  * superadmin and admin).
  */
-function b4l_send_badges_students_submenu_page() {
+function b4l_send_badges_one_student_submenu_page() {
         
     add_submenu_page(
         'edit.php?post_type=badge',
-        'Send Badges To Students',
-        'Send Badges To Students',
-        'b4l_send_badges_to_students', //capability: 'edit_posts' to give automatically the access to author/editor/admin
-        'send-badges-students-submenu-page',
-        'b4l_send_badges_students_page_callback' 
+        'Send Badges To One Student',
+        'Send Badges To One Student',
+        'b4l_send_badges_to_one_student', //capability: 'edit_posts' to give automatically the access to author/editor/admin
+        'send-badges-one-student-submenu-page',
+        'b4l_send_badges_one_student_page_callback' 
     );
 }
  
-if ( function_exists( 'members_plugin_init' ) ) {
-	add_filter( 'plugin_name_capability', 'plugin_name_unique_capability' );
-}
-
-function plugin_name_unique_capability( $cap ) {
-	return 'b4l_send_badges_to_students';
-}
-
-if ( function_exists( 'members_get_capabilities' ) ) {
-	add_filter( 'members_get_capabilities', 'plugin_name_extra_caps' );
-}
-
-function plugin_name_extra_caps( $caps ) {
-	$caps[] = 'b4l_send_badges_to_students';
-	return $caps;
-}
 
 /**
  * Displays the content of the submenu page
@@ -58,7 +42,7 @@ function plugin_name_extra_caps( $caps ) {
  * @global WordpressObject $wpdb Wordpress Database
  * @global WordpressObject $current_user Information about the current user
  */
-function b4l_send_badges_students_page_callback() {
+function b4l_send_badges_one_student_page_callback() {
 ?>
     <div>
         <form method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
@@ -66,7 +50,7 @@ function b4l_send_badges_students_page_callback() {
             <h2>Choose the level</h2>
             <div>
             <?php 
-                $mypost = b4l_send_badges_students_get_posts();
+                $mypost = b4l_send_badges_students_get_posts1();
                 $loop = new WP_Query( $mypost );
                 while ( $loop->have_posts() ) : $loop->the_post();
             ?>
@@ -112,11 +96,7 @@ function b4l_send_badges_students_page_callback() {
             <!-- Send emails to students -->
             <h2>Write the student's email</h2>
             <div>
-                <!--<input type="text" name="students_emails"><br>
-                <!-- NOT FUNCTIONNABLE : send badge to more than one student-->
-                <p>Write an email an each line. Don't use dot or something else at the end of the line.</p>
-                <textarea id="students_emails" name="students_emails" rows="8" cols="50"></textarea>
-                
+                <input type="text" name="students_emails"><br>
             </div>
             <br/>
             
@@ -185,7 +165,7 @@ function b4l_send_badges_students_page_callback() {
             $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
 
             //Get the comment from the InputField  and check his value
-            if($_POST['user_comment'] != null){
+            if($_POST['student_comment'] != null){
                 $badge_comment = $_POST['student_comment'];
             } else {
                 $badge_comment = "";
@@ -201,18 +181,9 @@ function b4l_send_badges_students_page_callback() {
             //Creation of a new 'Badge' object to store all the information
             $badge = new Badge($title, $badge_desc, $image[0], $_POST['language_certification'], $badge_lvl, 'Student', $badge_comment, $skillsList, get_permalink($_POST["level"]));
 
-            //Get the emails from the textarea which are separated by a line break (\n)
-            $emails = trim($_POST['students_emails']);
-            $emailsArray = explode("\n", $emails);
-            $emailsArray = array_filter($emailsArray, 'trim');
-
-            foreach($emailsArray as $email){
-                $nombreEmails = $nombreEmails + 1;
-                //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
-                $file_json = b4l_create_certification_assertion_badge_json($email, $badge, $issuerInformation[0], $teacher_user_name);
-                b4l_send_badge_email($email, $badge, $file_json, $issuerInformation[0]); 
-            }
-            echo 'Number of emails : '.$nombreEmails;
+            //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
+            $file_json = b4l_create_certification_assertion_badge_json($_POST['students_emails'], $badge, $issuerInformation[0], $teacher_user_name);
+            b4l_send_badge_email($_POST['students_emails'], $badge, $file_json, $issuerInformation[0]); 
         }
     }?>
     </div>
@@ -226,7 +197,7 @@ function b4l_send_badges_students_page_callback() {
  * 
  * @return post Custom Post which has the taxonomy 'Student Level'
  */
-function b4l_send_badges_students_get_posts() {
+function b4l_send_badges_students_get_posts1() {
     
     //Define the taxonomy used
     $taxonomy = 'badges_students_levels';

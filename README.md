@@ -101,7 +101,7 @@ For more information, please read the user guide.
 * Send a badge to more than 1 student;
 * Option menu : allow a user, when he deletes the plugin, to choose if he keeps or not the database tables;
 * Create a PHP Object for the badge, which will simplify the signature of the function of creation of the JSON file (currently it's functionnable, but with a php object it will be clearer);
-* User documentation : Title custom post must the same as Level custom taxonomy !
+* User documentation : Title custom post must the same as Level custom taxonomy ; User doesn't have to create a page called "Accept Bagde" unless this page has been deleted (the site has to have always 1 page called like that, not more, not less). The same for "User Profile" page.
 
 ## Credits
 

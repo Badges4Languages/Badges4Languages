@@ -81,22 +81,27 @@ run_badges4languages_plugin();
  ************************** CREATION/DECLARATION **************************
  *************************************************************************/
 
-// Create Database Tables for the Custom Post 'badge'.
+// Create Database Tables for the plugin.
 require plugin_dir_path( __FILE__ ) . 'includes/initialisation/db_tables.php';
 
-// Create the custom post 'badge'.
-require plugin_dir_path( __FILE__ ) . 'includes/initialisation/custom_post.php';
+// Create the custom post 'badge' and 'class'.
+require plugin_dir_path( __FILE__ ) . 'includes/initialisation/custom_post_badge.php';
+require plugin_dir_path( __FILE__ ) . 'includes/initialisation/custom_post_class.php';
 
-// Create custom taxonomies (categories) 'TeacherLevels', 'StudentLevels', 'Skills' and 'BadgesCategories'.
+// Create custom taxonomies (categories) 'TeacherLevels', 'StudentLevels', 'Skills' and 'BadgesCategories' for 'badge'.
 require plugin_dir_path( __FILE__ ) . 'includes/initialisation/custom_taxonomies.php';
 
-// Create custom metabox for the custom post 'badge' which displays a link associated to a language.
-require plugin_dir_path( __FILE__ ) . 'includes/initialisation/custom_metabox.php';
+// Create custom metaboxes for the custom posts 'badge' and 'class'.
+require plugin_dir_path( __FILE__ ) . 'includes/initialisation/custom_metabox_badge.php';
+require plugin_dir_path( __FILE__ ) . 'includes/initialisation/custom_metabox_class.php';
 
 // Create custom roles and capabilities 'Teacher', 'Academy', 'Student' and 'Badge Editor'.
 require plugin_dir_path( __FILE__ ) . 'includes/initialisation/users_roles_and_capabilities.php';
 
-// Create a shortcode to display the 'Send a badge to student' form for a teacher in a page/post.
+// Create a shortcode to display the 'Send badges to 1 student' form for a teacher in a page/post.
+require plugin_dir_path( __FILE__ ) . 'includes/shortcodes/send_badges_one_student_shortcode.php';
+
+// Create a shortcode to display the 'Send badges to students' form for a teacher in a page/post.
 require plugin_dir_path( __FILE__ ) . 'includes/shortcodes/send_badges_students_shortcode.php';
 
 
@@ -120,8 +125,14 @@ require plugin_dir_path( __FILE__ ) . 'includes/submenu_pages/badges_issuer_info
 require plugin_dir_path( __FILE__ ) . 'included_plugins/wp_csv_to_db/wp_csv_to_db.php';
 
 /**
+ * SEND BADGES TO 1 STUDENT CUSTOM SUBMENU
+ * A teacher can send certifications by mails to 1 student by the administration panel.
+ */
+require plugin_dir_path( __FILE__ ) . 'includes/submenu_pages/send_badges_one_student.php';
+
+/**
  * SEND BADGES TO STUDENTS CUSTOM SUBMENU
- * A teacher can send certifications by mails to a (group of) student(s) by the administration panel.
+ * A teacher can send certifications by mails to a group of students by the administration panel.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/submenu_pages/send_badges_students.php';
 
@@ -137,15 +148,22 @@ require plugin_dir_path( __FILE__ ) . 'includes/submenu_pages/options.php';
 
 
 /**************************************************************************
- ***** 'ACCEPT BADGE' PAGE AFTER RECEIVING THE CERTIFICATION BY MAIL ******
+ ************************* FRONT END PAGES ********************************
  *************************************************************************/
 
 /**
+ * ACCEPT BADGE
  * Create a page after receiving a certification by mail. This page is generic,
  * that is to say it will be always loaded, only the certification information
  * will change.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/site_pages/accept_badge.php';
+
+/**
+ * FRONT END USER PROFILE
+ * Front end user profile with field for the badges
+*/
+require plugin_dir_path( __FILE__ ) . 'includes/site_pages/front_end_user_profile.php';
 
 
 
@@ -158,7 +176,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/site_pages/accept_badge.php';
 /**
  * Execute b4l_include_template_function for initializing the Custom Post Template.
  */
-add_filter( 'template_include', 'b4l_include_template_function', 1 );
+add_filter( 'template_include', 'b4l_include_badge_template', 1 );
 
 /**
  * Adding the template for 'Single Badge' page to the list of templates.
@@ -168,7 +186,7 @@ add_filter( 'template_include', 'b4l_include_template_function', 1 );
  * @param File $template_path Template path
  * @return File $template_path Template path
  */
-function b4l_include_template_function( $template_path ) {
+function b4l_include_badge_template( $template_path ) {
     if ( get_post_type() == 'badge' ) {
         if ( is_single() ) {
             // checks if the file exists in the theme first,
@@ -192,14 +210,9 @@ function b4l_include_template_function( $template_path ) {
  *************************************************************************/
 
 /**
- * NOT AVAILABLE FOR THE MOMENT
- * 
- * SEND BADGES TO STUDENTS CUSTOM SUBMENU
- * A teacher can send certifications by mails to a (group of) student(s) by the
- * administration panel.
+ * BACK END USER PROFILE
+ * Back end user profile with field for the badges
 */
 require plugin_dir_path( __FILE__ ) . 'includes/site_pages/back_end_user_profile.php';
-
-require plugin_dir_path( __FILE__ ) . 'includes/site_pages/front_end_user_profile.php';
 
 ?>

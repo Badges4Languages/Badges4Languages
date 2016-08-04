@@ -90,6 +90,7 @@ function b4l_badges_issuer_information_html(){
  * @author Alexandre LEVACHER
  * @since 1.0.0
  * @param string $idElement HTML id element
+ * @global WordpressObject $wpdb Wordpress Database
  */
 function b4l_badges_issuer_information_select_from_db_table($idElement){
     global $wpdb;
@@ -105,6 +106,7 @@ function b4l_badges_issuer_information_select_from_db_table($idElement){
  * 
  * @author Alexandre LEVACHER
  * @since 1.0.0
+ * @global WordpressObject $wpdb Wordpress Database
  */
 function b4l_badges_issuer_information_save_into_db_table(){
     global $wpdb;

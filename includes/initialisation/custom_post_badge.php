@@ -57,10 +57,10 @@ function b4l_create_badges_register(){
                         'b4l_send_badges_to_students'=>'b4l_send_badges_to_students', //Displays 'send_badges_to_students' page for users who have this capability
                         'b4l_import_csv_to_db'=>'b4l_import_csv_to_db', //Displays 'import_csv_to_db' page for users who have this capability
                         'b4l_badges_issuer_information'=>'b4l_badges_issuer_information' //Displays 'badges_issuer_information' page for users who have this capability
-		),
+                    ),
 		
 		'hierarchical' => false,
-		'menu_position' => 15,
+		'menu_position' => 21,
 		'supports' => array('title','editor','thumbnail','page-attributes'),
 		'has_archive'=>true
 	  ); 

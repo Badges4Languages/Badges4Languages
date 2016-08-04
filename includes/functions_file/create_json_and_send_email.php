@@ -18,7 +18,7 @@
  * @author Alexandre LEVACHER
  * @since 1.0.0
  * @param String $translation_language Language which have a translation into the Database
- * @global WordpressObject $current_user Information about the current user
+ * @global WordpressObject $wpdb Wordpress Database
  * @return String $wpdb->get_var($query2) Translated Description
  */
 function b4l_single_badge_translation($translation_language){
@@ -75,7 +75,7 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge, $iss
     $date=date('Y-m-d');
 
     //name of the json file
-    $file_json=str_rot13(preg_replace("/ /", "_", $email_stud)).'_'.$badge_lvl.'_'.str_replace(' ','',$badge->get_language());
+    $file_json=str_rot13(preg_replace("/ /", "_", $email_stud)).'_'.$badge->get_level().'_'.str_replace(' ','',$badge->get_language());
 
     //adding the folder json and encoded file name and addind the extenson of json
     $path_json= WP_CONTENT_DIR.'/uploads/badges4languages-plugin/json/'.$file_json.'.json';
