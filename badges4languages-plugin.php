@@ -104,6 +104,9 @@ require plugin_dir_path( __FILE__ ) . 'includes/shortcodes/send_badges_one_stude
 // Create a shortcode to display the 'Send badges to students' form for a teacher in a page/post.
 require plugin_dir_path( __FILE__ ) . 'includes/shortcodes/send_badges_students_shortcode.php';
 
+// Create 2 custom fields for the comments: title and ratings.
+require plugin_dir_path( __FILE__ ) . 'included_plugins/extendcomment/extendcomment.php';
+
 
 
 

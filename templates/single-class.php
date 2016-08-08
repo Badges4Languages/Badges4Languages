@@ -56,7 +56,7 @@ get_header(); ?>
                 
                 <!-- CUSTOM METABOX --> 
                 <div id="metabox">
-                    <strong>Teacher: </strong> <?php $author=$post->post_author; the_author_meta( 'user_nicename', $author ); ?> <br/>
+                    <strong>Teacher: </strong> <?php the_author_meta( 'display_name', $post->post_author ); ?> <br/>
                     <strong>Language: </strong> <?php echo get_post_meta(get_the_ID(), 'class_language', true); ?> <br/>
                     <strong>Level: </strong> <?php echo get_post_meta(get_the_ID(), 'class_level', true); ?> <br/>
                     <strong>Starting Date: </strong> <?php echo get_post_meta(get_the_ID(), 'class_starting_date', true); ?> <br/>

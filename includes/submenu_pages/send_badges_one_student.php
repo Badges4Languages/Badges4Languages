@@ -43,6 +43,8 @@ function b4l_send_badges_one_student_submenu_page() {
  * @global WordpressObject $current_user Information about the current user
  */
 function b4l_send_badges_one_student_page_callback() {
+    global $current_user;
+    get_currentuserinfo();
 ?>
     <div>
         <form method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
@@ -62,7 +64,7 @@ function b4l_send_badges_one_student_page_callback() {
             <!-- Display all the languages into the database -->
             <h2>Choose the language</h2>
             <div>
-                <select style="width: 100px" id="language_certification" name="language_certification">
+                <select style="width: 200px" id="language_certification" name="language_certification">
                     <?php
                         //Display all the languages possible stored in the ($wpdb->prefix)b4l_languages table. 
                         global $wpdb;
@@ -87,7 +89,7 @@ function b4l_send_badges_one_student_page_callback() {
                     ?>
                         <option value="<?php echo $result[language_name]; ?>">
                             <?php echo $result[language_name]; } ?>
-                        <option value="<?php echo $result[language_name]; ?>">
+                        </option>
                 </select>
                 <br/>
             </div>
@@ -105,20 +107,38 @@ function b4l_send_badges_one_student_page_callback() {
                 <input type="text" name="student_comment"><br>
             </div>
             <br/>
+            
+            <h2>Select your class associated to this certification</h2>
+            <div>
+               <select style="width: 200px" id="teacher_class" name="teacher_class">
+                    <?php
+                        $mypost = array( 'post_type' => 'class' );
+                        $loop = new WP_Query( $mypost );
+                        while ( $loop->have_posts() ) : $loop->the_post();
+                            if(get_the_author_meta( 'display_name' ) == $current_user->display_name) {
+                                echo '<option value="'.get_the_title().'">'.get_the_title().'</option>';
+                            }
+                        endwhile;
+                    ?>
+                </select>
+            </div>
+            <br/>
+            
             <input name="send_emails_button" type="submit" class="button-primary" value="Send emails" />
+            
          </form>
 
 
 <?php
     //Level, email, and language have to be set to send a certification
-    if($_POST["send_emails_button"] && isset($_POST["level"]) && !empty($_POST["language_certification"]) && ($_POST["language_certification"] != "------------") && !empty($_POST["students_emails"])) {
+    if($_POST["send_emails_button"] && isset($_POST["level"]) && !empty($_POST["language_certification"]) && ($_POST["language_certification"] != "------------") && !empty($_POST["students_emails"]) && isset($_POST["teacher_class"])) {
         
         //Contains all the issuer information
         $queryInfo = "SELECT * FROM ".$wpdb->prefix."b4l_issuer_information ";
         $issuerInformation = $wpdb->get_results($queryInfo, ARRAY_A); 
         
         //Issuer (firm, company, etc.) information
-        $issuer_name = $issuerInformation[0]['issuer_name'];
+        //$issuer_name = $issuerInformation[0]['issuer_name'];
         $issuer_logo = $issuerInformation[0]['issuer_logo'];
         $issuer_email = $issuerInformation[0]['issuer_email'];
         $issuer_url = $issuerInformation[0]['issuer_url'];
@@ -131,10 +151,6 @@ function b4l_send_badges_one_student_page_callback() {
             </script>
             <?php
         } else {
-            //To indicate on the badge who gives the certification
-            global $current_user;
-            get_currentuserinfo();
-            
             //'Badge' class
             require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/classes/badge.php';
 

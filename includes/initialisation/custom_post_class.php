@@ -61,7 +61,7 @@ function b4l_create_classes_register(){
 		
 		'hierarchical' => false,
 		'menu_position' => 22,
-		'supports' => array('title','editor','thumbnail','comments', 'comments', 'author', 'page-attributes'),
+		'supports' => array('title','editor','thumbnail','comments', 'author', 'page-attributes'),
 		'has_archive'=>true
 	  ); 
 	

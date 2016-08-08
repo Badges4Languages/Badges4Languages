@@ -35,11 +35,17 @@ global $wp_roles;
 if(!(isset( $_GET['user']))){
     global $current_user;
     get_currentuserinfo();
+    $user_roles = $current_user->roles;
+    $user_role = array_shift($user_roles);
 } else {
     global $wpdb;
     $users = $wpdb->get_results("SELECT * FROM $wpdb->users WHERE display_name = '".$_GET['user']."'");
     $current_user = $users[0];
+    $user_info = get_userdata($current_user->ID);
+    $user_roles = $user_info->roles;
+    $user_role = array_shift($user_roles);
 }
+
 
 get_header(); ?>
 
@@ -75,36 +81,34 @@ get_header(); ?>
                         </tr>
                     </table>
                     
+                    <ul class="tab">
+                        <li><a href="#" class="tablinks" onclick="openCategory(event, 'badge-student-self-certification')">Student "Self-Cerfication" Badges</a></li>
+                        <li><a href="#" class="tablinks" onclick="openCategory(event, 'badge-student-awarded-by-teacher')">Student Awarded Badges</a></li>
+                        <?php
+                        //Display the section if the user can have (access to) Teacher Badges
+                        if ($user_role == 'administrator' || $user_role == 'b4l_academy' || $user_role == 'b4l_teacher' || $user_role == 'b4l_badges_editor') {
+                        ?>
+                            <li><a href="#" class="tablinks" onclick="openCategory(event, 'badge-teacher-self-certification')">Teacher "Self-Cerfication" Badges'</a></li>
+                            <li><a href="#" class="tablinks" onclick="openCategory(event, 'teacher-classes')">My classes</a></li>
+                        <?php }?>
+                    </ul>
                     
-                    
-                    <h2>Your badges</h2>
-                    
-                    <h3 class="badge-category" id="titre-badge-student-self-certification">
-                        <?php _e('Student "Self-Cerfication" Badges', 'profile');?>
-                        <img id="img-arrow" src="<?php echo WP_PLUGIN_URL . '/badges4languages-plugin/images/icon-arrow-down.png' ?>" alt="img_display_badges" />
-                    </h3>
-                    <div id="badge-student-self-certification">
+                    <div id="badge-student-self-certification" class="tabcontent">
                         <?php b4l_search_badges_by_category('b4l_userStudentBadgesProfil', true, $current_user, 'FrontEnd'); ?>
                     </div>
                     
-                    
-                    <h3 class="badge-category" id="titre-badge-student-awarded-by-teacher">
-                        <?php _e('Student Awarded Badges', 'profile');?>
-                        <img id="img-arrow" src="<?php echo WP_PLUGIN_URL . '/badges4languages-plugin/images/icon-arrow-down.png' ?>" alt="img_display_badges" />
-                    </h3>
-                    <div id="badge-student-awarded-by-teacher">
+                    <div id="badge-student-awarded-by-teacher" class="tabcontent">
                         <?php b4l_search_badges_by_category('b4l_userStudentBadgesProfil', false, $current_user, 'FrontEnd'); ?>
                     </div>
                     
-                    
-                    <h3 class="badge-category" id="titre-badge-teacher-self-certification">
-                        <?php _e('Teacher "Self-Cerfication" Badges', 'profile');?>
-                        <img id="img-arrow" src="<?php echo WP_PLUGIN_URL . '/badges4languages-plugin/images/icon-arrow-down.png' ?>" alt="img_display_badges" />
-                    </h3>
-                    <div id="badge-teacher-self-certification">
+                    <div id="badge-teacher-self-certification" class="tabcontent">
                         <?php b4l_search_badges_by_category('b4l_userTeacherBadgesProfil', true, $current_user, 'FrontEnd'); ?>
                     </div>
                     
+                    <div id="teacher-classes" class="tabcontent">
+                        <?php b4l_search_and_display_classes($current_user->display_name); ?>
+                    </div>
+                   
                 </div>
                 
         </div><!-- .entry-content -->
@@ -118,3 +122,38 @@ get_header(); ?>
 </section><!-- #content -->
 
 <?php get_footer();?>
+
+
+<!-- Source : http://www.w3schools.com/howto/howto_js_tabs.asp -->
+<!-- FOR THE MOMENT THE USER PROFILE FRONT END PAGE IS NOT OFFICIAL, IT CAN CHANGE.
+BEFORE AN OTHER JAVASCRIPT CODE WAS USED (cf beginning of this file, '/badges4languages-plugin/js/display_badges.js')
+SO WHEN THE FINAL VERSION WILL BE ELECTED, THIS CODE BELOW WILL BE REMOVED : IF THIS CODE IS ELECTED
+IT WILL BE INTO '/badges4languages-plugin/js/display_badges.js', ELSE IT WILL BE DELETED.
+
+THIS VERSION (WITH THIS CODE BELOW) CREATES TABS TO DISPLAY BADGES AND CLASSES. (1 TAB FOR 1 TYPE OF BADGE)
+IF YOU WANT THE FORMER VERSION (ALL IN ONE PAGE, YOU HAVE TO CLICK ON THE TYPE OF BADGE'S TITLE TO SHOW/HIDE
+THE BADGES), PLEASE CHECK THE CODE BEFORE VERSION 1.1.3 08/08/2016 ON GITHUB.
+
+DON'T FORGET TO MAKE THIS CHANGE FOR MORE CLARITIES AND RESPECTING WORDPRESS PLUGIN STRUCTURE ! -->
+<script>
+    function openCategory(evt, htmlDivID) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(htmlDivID).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>

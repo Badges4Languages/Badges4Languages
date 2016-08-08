@@ -47,13 +47,21 @@ function b4l_badges_profile_fields( ) {
   
 <?php
     //Display the section if the user can have (access to) Teacher Badges
-    if ($user_role == 'administrator' || $user_role == 'b4l_academy' || $user_role == 'b4l_teacher' || user_role == 'b4l_badges_editor') {
+    if ($user_role == 'administrator' || $user_role == 'b4l_academy' || $user_role == 'b4l_teacher' || $user_role == 'b4l_badges_editor') {
 ?>
         <h3>Your Teacher badges</h3>
         <table class="form-table">
           <tr>
               <th><label for="badge">Self-certification badges</label></th> <!--TEACHER AWARDED BADGES -->
               <td> <?php b4l_search_badges_by_category('b4l_userTeacherBadgesProfil', true, $current_user, 'BackEnd'); ?></td>
+          </tr>
+        </table>
+        
+        <h3>Your classes</h3>
+        <table class="form-table">
+          <tr>
+              <th><label for="badge">Classes</label></th> <!--TEACHER AWARDED BADGES -->
+              <td> <?php b4l_search_and_display_classes($current_user->display_name); ?></td>
           </tr>
         </table>
     <?php 
@@ -141,7 +149,43 @@ function b4l_display_one_badge($badgeInfo, $frontOrBackEnd) {
     <?php
 }
 
-    
+  
+/**
+ * Display classes's teacher.
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.1.3
+ * @param String $teacher_name Teacher display name in Wordpress
+ */
+function b4l_search_and_display_classes($teacher_name) {
+    $mypost = array( 'post_type' => 'class' );
+    $loop = new WP_Query( $mypost );
+    while ( $loop->have_posts() ) : $loop->the_post();
+        if(get_the_author_meta( 'display_name' ) == $teacher_name) {
+        ?>
+            <div class="badge-div">
+                <div style="float: right; margin: 10px">
+                    <?php the_post_thumbnail( array( 100, 100 ) ); ?>
+                </div>
+                <div class="badge-text">
+                    <div class="badge-name">
+                        <?php the_title(); ?>
+                    </div>
+                    <p>
+                        <b>Teacher :</b> <?php the_author_meta( 'display_name', $loop->post_author ); ?> <br/>
+                        <strong>Language: </strong> <?php echo get_post_meta(get_the_ID(), 'class_language', true); ?> <br/>
+                        <strong>Level: </strong> <?php echo get_post_meta(get_the_ID(), 'class_level', true); ?> <br/>
+                        <b>Starting date :</b> <?php echo get_post_meta(get_the_ID(), 'class_starting_date', true); ?> <br/>
+                        <b>Ending date :</b> <?php echo get_post_meta(get_the_ID(), 'class_ending_date', true); ?> <br/>
+                    </p>
+                </div>
+                <div class="clear"></div> <!--Useful for the CSS-->
+            </div>
+        <?php }
+    endwhile;
+}
+
+
 /**
  * Save and update the user profile's information
  */

@@ -150,8 +150,32 @@ function b4l_add_caps() {
     $wp_roles->add_cap( 'b4l_classes_editor', 'publish_classes' );
     $wp_roles->add_cap( 'b4l_classes_editor', 'read_private_classes' );
     
+    $wp_roles->add_cap( 'b4l_academy', 'edit_class' );
+    $wp_roles->add_cap( 'b4l_academy', 'read_class' );
+    $wp_roles->add_cap( 'b4l_academy', 'delete_class' );
+    $wp_roles->add_cap( 'b4l_academy', 'delete_classes' );
+    $wp_roles->add_cap( 'b4l_academy', 'delete_private_classes' );
+    $wp_roles->add_cap( 'b4l_academy', 'delete_published_classes' );
+    $wp_roles->add_cap( 'b4l_academy', 'edit_classes' );
+    $wp_roles->add_cap( 'b4l_academy', 'edit_private_classes' );
+    $wp_roles->add_cap( 'b4l_academy', 'edit_published_classes' );
+    $wp_roles->add_cap( 'b4l_academy', 'publish_classes' );
+    $wp_roles->add_cap( 'b4l_academy', 'read_private_classes' );
+    $wp_roles->add_cap( 'b4l_academy', 'upload_files' );
     $wp_roles->add_cap( 'b4l_academy', 'read_class' );
     
+    $wp_roles->add_cap( 'b4l_teacher', 'edit_class' );
+    $wp_roles->add_cap( 'b4l_teacher', 'read_class' );
+    $wp_roles->add_cap( 'b4l_teacher', 'delete_class' );
+    $wp_roles->add_cap( 'b4l_teacher', 'delete_classes' );
+    $wp_roles->add_cap( 'b4l_teacher', 'delete_private_classes' );
+    $wp_roles->add_cap( 'b4l_teacher', 'delete_published_classes' );
+    $wp_roles->add_cap( 'b4l_teacher', 'edit_classes' );
+    $wp_roles->add_cap( 'b4l_teacher', 'edit_private_classes' );
+    $wp_roles->add_cap( 'b4l_teacher', 'edit_published_classes' );
+    $wp_roles->add_cap( 'b4l_teacher', 'publish_classes' );
+    $wp_roles->add_cap( 'b4l_teacher', 'read_private_classes' );
+    $wp_roles->add_cap( 'b4l_teacher', 'upload_files' );
     $wp_roles->add_cap( 'b4l_teacher', 'read_class' );
     
     $wp_roles->add_cap( 'b4l_student', 'read_class' );
@@ -250,8 +274,32 @@ function b4l_remove_caps() {
     $wp_roles->remove_cap( 'b4l_classes_editor', 'publish_classes' );
     $wp_roles->remove_cap( 'b4l_classes_editor', 'read_private_classes' );
     
+    $wp_roles->remove_cap( 'b4l_academy', 'edit_class' );
+    $wp_roles->remove_cap( 'b4l_academy', 'read_class' );
+    $wp_roles->remove_cap( 'b4l_academy', 'delete_class' );
+    $wp_roles->remove_cap( 'b4l_academy', 'delete_classes' );
+    $wp_roles->remove_cap( 'b4l_academy', 'delete_private_classes' );
+    $wp_roles->remove_cap( 'b4l_academy', 'delete_published_classes' );
+    $wp_roles->remove_cap( 'b4l_academy', 'edit_classes' );
+    $wp_roles->remove_cap( 'b4l_academy', 'edit_private_classes' );
+    $wp_roles->remove_cap( 'b4l_academy', 'edit_published_classes' );
+    $wp_roles->remove_cap( 'b4l_academy', 'publish_classes' );
+    $wp_roles->remove_cap( 'b4l_academy', 'read_private_classes' );
+    $wp_roles->remove_cap( 'b4l_academy', 'upload_files' );
     $wp_roles->remove_cap( 'b4l_academy', 'read_class' );
     
+    $wp_roles->remove_cap( 'b4l_teacher', 'edit_class' );
+    $wp_roles->remove_cap( 'b4l_teacher', 'read_class' );
+    $wp_roles->remove_cap( 'b4l_teacher', 'delete_class' );
+    $wp_roles->remove_cap( 'b4l_teacher', 'delete_classes' );
+    $wp_roles->remove_cap( 'b4l_teacher', 'delete_private_classes' );
+    $wp_roles->remove_cap( 'b4l_teacher', 'delete_published_classes' );
+    $wp_roles->remove_cap( 'b4l_teacher', 'edit_classes' );
+    $wp_roles->remove_cap( 'b4l_teacher', 'edit_private_classes' );
+    $wp_roles->remove_cap( 'b4l_teacher', 'edit_published_classes' );
+    $wp_roles->remove_cap( 'b4l_teacher', 'publish_classes' );
+    $wp_roles->remove_cap( 'b4l_teacher', 'read_private_classes' );
+    $wp_roles->remove_cap( 'b4l_teacher', 'upload_files' );
     $wp_roles->remove_cap( 'b4l_teacher', 'read_class' );
     
     $wp_roles->remove_cap( 'b4l_student', 'read_class' );

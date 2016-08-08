@@ -14,6 +14,10 @@ Then, a teacher can confirm the student level by giving him a certification too.
 Import/Export data from CSV to Database.
 [Official link](https://wordpress.org/plugins/wp-csv-to-database/)
 
+### Plugin used : Comments Ratings
+Convert comments into reviews for your visitors. 
+[Official link](https://wordpress.org/plugins/comments-ratings/)
+
 
 ## Requirements
 This is a plugin for Wordpress (tested on 4.5.3)
@@ -102,6 +106,7 @@ For more information, please read the user guide.
 * Option menu : allow a user, when he deletes the plugin, to choose if he keeps or not the database tables;
 * Create a PHP Object for the badge, which will simplify the signature of the function of creation of the JSON file (currently it's functionnable, but with a php object it will be clearer);
 * User documentation : Title custom post must the same as Level custom taxonomy ; User doesn't have to create a page called "Accept Bagde" unless this page has been deleted (the site has to have always 1 page called like that, not more, not less). The same for "User Profile" page.
+* Front End User Profile : the version is not official, there are 2 Javascript codes to test. When one of this version will be officially elected, please put it in the right file and delete the other (see commented sections in "single-front_end_user_profile.php")
 
 ## Credits
 
