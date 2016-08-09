@@ -11,6 +11,24 @@
 
 
 /**
+ * Register with hook 'b4l_css_back_end_user_profile', which can be used 
+ * for CSS in back end.
+ */
+add_action( 'wp_enqueue_scripts', 'b4l_css_back_end_user_profile' );
+
+/**
+ * Call and use CSS file.
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.1.3
+ */
+function b4l_css_back_end_user_profile() {
+    wp_register_style('my-css', WP_PLUGIN_URL.'/badges4languages-plugin/css/single_back_end_user_profile.css'); //Search the CSS File
+    wp_enqueue_style('my-css'); //Use the CSS File
+}
+
+
+/**
  * Executes b4l_badges_profile_fields while user's profile is visualised/edited.
 */
 add_action( 'show_user_profile', 'b4l_badges_profile_fields' );
@@ -31,9 +49,10 @@ function b4l_badges_profile_fields( ) {
     get_currentuserinfo();
     $user_roles = $current_user->roles;
     $user_role = array_shift($user_roles);
+    //Contain functions to display badges/classes
+    require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/display_badges_and_classes_user_profile.php';
 ?>
-<link rel="stylesheet" href="<?php echo WP_PLUGIN_URL.'/badges4languages-plugin/css/single_back_end_user_profile.css'?>" type="text/css">
-  <h3>Your Student badges</h3>
+<h3>Your Student badges</h3>
   <table class="form-table">
     <tr>
         <th><label for="badge">Self-certification badges</label></th> <!--STUDENT SELF CERTIFICATION BADGES -->
@@ -66,123 +85,6 @@ function b4l_badges_profile_fields( ) {
         </table>
     <?php 
     }
-}
-
-
-/**
- * Get all the information about a certification in a specified database
- * 
- * @author Alexandre LEVACHER
- * @since 1.1.2
- * @param String $table Name of the table into the database.
- * @param Boolean $selfCertificationBoolean True if the badge is a 'Self-certification' badge,
- * @param Object $current_user Current user
- * @param String $frontOrBackEnd If it is BackEnd, a textarea is displayed for the comments
- */
-function b4l_search_badges_by_category($table, $selfCertificationBoolean, $current_user, $frontOrBackEnd) {
-    global $wpdb;
-    
-    //For the SQL query following
-    if($selfCertificationBoolean == true) {
-        $sign = "=";
-    } else {
-        $sign = "<>";
-    }
-    
-    $query = "SELECT * FROM ".$wpdb->prefix.$table." WHERE user_id = ".$current_user->ID." AND badge_teacher ".$sign." 'Self-certification'";
-    $badgesWithTeacherInfo = $wpdb->get_results($query, ARRAY_A);
-    
-    //Get all the badges and display them one by one
-    foreach($badgesWithTeacherInfo as $badgeWithTeacherInfo) {
-        b4l_display_one_badge($badgeWithTeacherInfo, $frontOrBackEnd);  
-    }
-}
-
-
-/**
- * Display a badge : name, image, awarded date, teacher, and a comment field.
- * The user can't modify these information except the comment field.
- * 
- * @author Alexandre LEVACHER
- * @since 1.1.2
- * @param Array $badgeInfo Array which contains all the badge information
- * @param String $frontOrBackEnd If it is BackEnd, a textarea is displayed for the comments
- */
-function b4l_display_one_badge($badgeInfo, $frontOrBackEnd) {
-    //Adding a parameter in the URL of the page to GET after the teacher user by is user name
-    $pagelink = esc_url( add_query_arg( 'user', $badgeInfo['badge_teacher'], get_permalink( get_page_by_title( 'User Profile' ) ) ) );
-    
-    //Check if it is a Student/Teacher Self-certification Badge or not
-    if($badgeInfo['badge_teacher'] == 'Self-certification') {
-        $teacher = $badgeInfo['badge_teacher']; //Teacher name : 'Self-certification'
-        if ($frontOrBackEnd == 'BackEnd') {
-            $comment = '<textarea name="badge_comment[]" rows="2" >'.$badgeInfo['badge_comment'].'</textarea>'; //You can modify the comment, for example to tell where you earned it. So it is a text area field.
-        } else {
-            $comment = $badgeInfo['badge_comment']; //You can modify the comment, for example to tell where you earned it. So it is a text area field.            
-        }
-    } else {
-        $teacher = '<a href="'.$pagelink.'">'.$badgeInfo['badge_teacher'].'</a>'; //Teacher name : user member with a link to his profile
-        if ($frontOrBackEnd == 'BackEnd') {
-            $comment = '<textarea name="badge_comment[]" readonly="readonly" rows="2" >'.$badgeInfo['badge_comment'].'</textarea>'; //You can't modify the comment of a badge given by a teacher. The comment is written by the teacher. So we only display it.
-        } else {
-            $comment = $badgeInfo['badge_comment']; //You can modify the comment, for example to tell where you earned it. So it is a text area field.            
-        }
-    }
-    ?>
-    <div class="badge-div">
-        <img class="badge-img" src=<?php echo '"'.$badgeInfo['badge_image'].'"' ?> />
-        <div class="badge-text">
-            <div class="badge-name">
-                <?php echo $badgeInfo['badge_level']." - ".$badgeInfo['badge_language']; ?>
-            </div>
-            <p>
-                <b>Date :</b> <?php echo $badgeInfo['badge_date']; ?> <br/>
-                <b>Teacher :</b> <?php echo $teacher;?>
-            </p>
-        </div>
-        <div class="badge-comment">
-            <b>Comment :</b> <br/> <?php echo $comment ?>
-            <input type="hidden" name="user_badge_id[]" value="<?php echo $badgeInfo['user_badge_id']; ?>" class="regular-text"> <br/> <!--Keep the badge ID-->
-        </div>
-        <div class="clear"></div> <!--Useful for the CSS-->
-    </div>
-    <?php
-}
-
-  
-/**
- * Display classes's teacher.
- * 
- * @author Alexandre LEVACHER
- * @since 1.1.3
- * @param String $teacher_name Teacher display name in Wordpress
- */
-function b4l_search_and_display_classes($teacher_name) {
-    $mypost = array( 'post_type' => 'class' );
-    $loop = new WP_Query( $mypost );
-    while ( $loop->have_posts() ) : $loop->the_post();
-        if(get_the_author_meta( 'display_name' ) == $teacher_name) {
-        ?>
-            <div class="badge-div">
-                <div style="float: right; margin: 10px">
-                    <?php the_post_thumbnail( array( 100, 100 ) ); ?>
-                </div>
-                <div class="badge-text">
-                    <div class="badge-name">
-                        <?php the_title(); ?>
-                    </div>
-                    <p>
-                        <b>Teacher :</b> <?php the_author_meta( 'display_name', $loop->post_author ); ?> <br/>
-                        <strong>Language: </strong> <?php echo get_post_meta(get_the_ID(), 'class_language', true); ?> <br/>
-                        <strong>Level: </strong> <?php echo get_post_meta(get_the_ID(), 'class_level', true); ?> <br/>
-                        <b>Starting date :</b> <?php echo get_post_meta(get_the_ID(), 'class_starting_date', true); ?> <br/>
-                        <b>Ending date :</b> <?php echo get_post_meta(get_the_ID(), 'class_ending_date', true); ?> <br/>
-                    </p>
-                </div>
-                <div class="clear"></div> <!--Useful for the CSS-->
-            </div>
-        <?php }
-    endwhile;
 }
 
 

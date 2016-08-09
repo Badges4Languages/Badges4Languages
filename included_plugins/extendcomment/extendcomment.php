@@ -12,7 +12,7 @@ add_action( 'comment_form_logged_in_after', 'additional_fields' );
 add_action( 'comment_form_after_fields', 'additional_fields' );
 
 function additional_fields () {
-    if(get_post_type() == 'class') {//////////////////////////////////////////////////////////////////////////////////////////////
+    if(get_post_type() == 'class') {
 	echo '<p class="comment-form-title">'.
 	'<label for="title">' . __( 'Comment Title' ) . '</label>'.
 	'<input id="title" name="title" type="text" size="30"  tabindex="5" /></p>';
@@ -25,7 +25,7 @@ function additional_fields () {
             echo '<span class="commentrating"><input type="radio" name="rating" id="rating" value="'. $i .'"/>'. $i .'</span>';
 
 	echo'</span></p>';
-    }/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }
 }
 
 // Save the comment meta data along with comment
@@ -115,8 +115,8 @@ function modify_comment( $text ){
 	} 
 
 	if( $commentrating = get_comment_meta( get_comment_ID(), 'rating', true ) ) {
-		$commentrating = '<p class="comment-rating"><img src="'. $plugin_url_path .
-		'/ExtendComment/images/'. $commentrating . 'star.gif"/><br/>Rating: <strong>'. $commentrating .' / 5</strong></p>';
+		$commentrating = '<p class="comment-rating"><img src="'. WP_PLUGIN_URL.'/badges4languages-plugin/included_plugins/'
+                        . 'extendcomment/images/'. $commentrating . 'star.gif"/><br/>Rating: <strong>'. $commentrating .' / 5</strong></p>';
 		$text = $text . $commentrating;
 		return $text;		
 	} else {

@@ -70,6 +70,12 @@ class Badge {
     */
     private $badge_link;
     
+    /**
+    * Link of the class's page
+    * @var String
+    */
+    private $class_link;
+    
     
     
     
@@ -79,12 +85,12 @@ class Badge {
     ******************************************************/
     
     /**
-    * Get the link of the badge's image
+    * Constructeur of the Badge class
     * 
     * @author Alexandre LEVACHER
     * @since 1.1.3
     */ 
-    function __construct($name, $description, $image, $language, $level, $type, $comment, $skills, $link) {
+    function __construct($name, $description, $image, $language, $level, $type, $comment, $skills, $badge_link, $class_link) {
         $this->set_name($name);
         $this->set_description($description);
         $this->set_image($image);
@@ -93,7 +99,8 @@ class Badge {
         $this->set_type($type);
         $this->set_comment($comment);
         $this->set_skills($skills);
-        $this->set_link($link);
+        $this->set_badge_link($badge_link);
+        $this->set_class_link($class_link);
     }
     
     
@@ -190,8 +197,18 @@ class Badge {
     * @author Alexandre LEVACHER
     * @since 1.1.3
     */ 
-    function set_link($link) {
-        $this->badge_link = $link;
+    function set_badge_link($badge_link) {
+        $this->badge_link = $badge_link;
+    }
+    
+    /**
+    * Set the link of the class's page
+    * 
+    * @author Alexandre LEVACHER
+    * @since 1.1.3
+    */ 
+    function set_class_link($class_link) {
+        $this->class_link = $class_link;
     }
     
     /**
@@ -289,8 +306,19 @@ class Badge {
     * @since 1.1.3
     * @return Array $badge_link Link of the badge's page
     */
-    function get_link() {
+    function get_badge_link() {
         return $this->badge_link;
+    }
+    
+    /**
+    * Get the link of the class's page
+    * 
+    * @author Alexandre LEVACHER
+    * @since 1.1.3
+    * @return Array $class_link Link of the class's page
+    */
+    function get_class_link() {
+        return $this->class_link;
     }
 
 }

@@ -116,7 +116,7 @@ function b4l_send_badges_one_student_page_callback() {
                         $loop = new WP_Query( $mypost );
                         while ( $loop->have_posts() ) : $loop->the_post();
                             if(get_the_author_meta( 'display_name' ) == $current_user->display_name) {
-                                echo '<option value="'.get_the_title().'">'.get_the_title().'</option>';
+                                echo '<option value="'.get_the_ID().'">'.get_the_title().' ('.get_post_meta( get_the_ID(), 'class_language', true ).' - '.get_post_meta( get_the_ID(), 'class_level', true ).')</option>';
                             }
                         endwhile;
                     ?>
@@ -194,9 +194,26 @@ function b4l_send_badges_one_student_page_callback() {
                 array_push($skillsList, $badge_tags.$skill->name); //Put all the 'skills' name (String) into an array
             }
             
+            //Get URL of the class. Will be used on "Accept-badge" page, to give a link to student to rate the class.
+            $class_link=esc_url( get_permalink( $_POST["teacher_class"] ) );
+            
             //Creation of a new 'Badge' object to store all the information
-            $badge = new Badge($title, $badge_desc, $image[0], $_POST['language_certification'], $badge_lvl, 'Student', $badge_comment, $skillsList, get_permalink($_POST["level"]));
+            $badge = new Badge($title, $badge_desc, $image[0], $_POST['language_certification'], $badge_lvl, 'Student', $badge_comment, $skillsList, get_permalink($_POST["level"], $class_link));
 
+            //Associate the student (with his email) to a teacher's class. Thanks to this association
+            //the student could give a rating to this class.
+            if(!($wpdb->get_row($wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."b4l_classes_students WHERE student_email= ".$_POST["students_emails"]." AND id_class = ".$_POST["teacher_class"]."", "" )))) {
+                $lastid = $wpdb->get_var("SELECT id FROM ".$wpdb->prefix."b4l_classes_students ORDER BY ID DESC LIMIT 0 , 1" );
+                $wpdb->insert(
+                            $wpdb->prefix . 'b4l_classes_students',
+                            array(
+                                'id' => $lastid + 1,
+                                'id_class' => $_POST["teacher_class"],
+                                'student_email' => $_POST["students_emails"]
+                            )
+                        );
+            }
+            
             //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
             $file_json = b4l_create_certification_assertion_badge_json($_POST['students_emails'], $badge, $issuerInformation[0], $teacher_user_name);
             b4l_send_badge_email($_POST['students_emails'], $badge, $file_json, $issuerInformation[0]); 

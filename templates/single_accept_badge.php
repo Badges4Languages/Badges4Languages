@@ -10,7 +10,9 @@ get_header(); // Loads the header.php template.
             $path_json = $_GET['filename']; //Gets the encoded Json Path
             $path_json = base64_decode(str_rot13($path_json)); //Decodes the path
             $badge_name=$_GET['id'];
-            b4l_save_badge_user_profil($path_json);
+            $json_content = file_get_contents($json_path); //Get the Json content from the Json path
+            $json_obj = json_decode($json_content); //Decode the Json content (get all the information into $json_obj)
+            b4l_save_badge_user_profil($json_obj);
         }
         ?>
         <!-- Issuer API script (OpenBadges backpack) -->
@@ -63,15 +65,15 @@ get_header(); // Loads the header.php template.
                 <h2>Congratulations! The "<?php echo $badge_name; ?>" badge has been awarded to you.</h2>
 		        <!-- Just registered users can get the badge -->
 				
-				<?php
-				if ( !is_user_logged_in() )  : // Message for non logged in users.?>
-				    <h2>Remember, just registered users can accept the badge. <a title="Log in" href="http://badges4languages.com/wp-login.php">Log in</a> or <a title="open an account" href="http://badges4languages.com/wp-login.php?action=register">open an account</a>.</h2>
-				<?php endif; ?>
-				
-				<?php 
-				if ( is_user_logged_in() )  :  // Active link for winners of a badge.?>
-					<h2 class="acceptclick">Please <a href='#' class='acceptclick'>accept</a> the award.</h2>
-				<?php endif; ?>
+                    <?php
+                    if ( !is_user_logged_in() )  : // Message for non logged in users.?>
+                        <h2>Remember, just registered users can accept the badge. <a title="Log in" style="color: #f78181;" href="<?php echo wp_login_url(); ?>">Log in</a> or <a title="Register" style="color: #f78181;" href="<?php echo wp_registration_url(); ?>">open an account</a>.</h2>
+                    <?php endif; ?>
+
+                    <?php 
+                    if ( is_user_logged_in() )  :  // Active link for winners of a badge.?>
+                            <h2 class="acceptclick">Please <a href='#' class='acceptclick'>accept</a> the award.</h2>
+                    <?php endif; ?>
 				
             </div>
         </div>
@@ -81,13 +83,21 @@ get_header(); // Loads the header.php template.
         <div id="badge-error">
             <p><span style="background-color: #f78181;"><strong>An error occured while adding this badge to your backpack.</strong></span></p>
         </div>
+        <?php
+        if($json_obj->{'badge'}->{'classlink'} != null) {
+            ?>
+            <div id="class-link">
+                 <p><?php echo $json_obj->{'badge'}->{'classlink'}; ?></p>
+            </div>
+            <?php
+        }
+        
     
-    
-    <?php get_footer(); // Loads the footer.php template. ?>
-       <?php
-    
-    
-    /**
+get_footer(); // Loads the footer.php template.
+       
+       
+
+/**
  * Save the data from the JSON file which is saved in the Wordpress server to 
  * display them on the user profile.
  * 
@@ -95,10 +105,7 @@ get_header(); // Loads the header.php template.
  * @since 1.1.2
  * @param String $json_path Json path
  */
-function b4l_save_badge_user_profil($json_path){
-    $json_content = file_get_contents($json_path); //Get the Json content from the Json path
-    $json_obj = json_decode($json_content); //Decide the Json content (get all the information into $json_obj)
-    
+function b4l_save_badge_user_profil($json_obj){
     //Checks the type of badge to know where to save the data
     if($json_obj->{'badge'}->{'typeofbadge'} == 'Student') {
         b4l_insert_data_into_user_role_badges_profil_table($json_obj, 'b4l_userStudentBadgesProfil');

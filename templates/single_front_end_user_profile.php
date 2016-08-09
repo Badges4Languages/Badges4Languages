@@ -46,6 +46,8 @@ if(!(isset( $_GET['user']))){
     $user_role = array_shift($user_roles);
 }
 
+//Contain functions to display badges/classes
+require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/display_badges_and_classes_user_profile.php';
 
 get_header(); ?>
 

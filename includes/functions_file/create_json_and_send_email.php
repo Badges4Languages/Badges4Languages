@@ -127,7 +127,8 @@ function b4l_create_certification_assertion_badge_json($email_stud, $badge, $iss
                     'image'=>$badge->get_image(),
                     'teacher'=>$teacher,
                     'comment'=>$badge->get_comment(),
-                    'criteria'=>$badge->get_link(),
+                    'criteria'=>$badge->get_badge_link(),
+                    'classlink'=>$badge->get_class_link(),
                     'alignment' =>array(
                         'name'=>'CEFR - Common European Framework of Reference for Languages',
                         'url'=>'http://www.coe.int/t/dg4/linguistic/Cadre1_en.asp',

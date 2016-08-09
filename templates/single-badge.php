@@ -172,7 +172,7 @@ get_header(); ?>
                 if ( !(is_user_logged_in()) ) { 
                 ?>
                     <div>
-                        <h3>You have to be registered to send yourself a certification !</h3>
+                        <h3>You have to be <a style="color: #f78181;" href="<?php echo wp_login_url(); ?>" title="Login" target="_blank">registered</a> to send yourself a certification !</h3>
                     </div>
                 <?php 
                 } else {

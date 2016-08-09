@@ -35,6 +35,7 @@ if($delDb == 1) {
     $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_issuer_information" );
     $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_userStudentBadgesProfil" );
     $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_userTeacherBadgesProfil" );
+    $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}b4l_classes_students" );
 }
 
 //Drop all the custom roles and custom capabilities

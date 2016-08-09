@@ -32,6 +32,7 @@ function b4l_create_db_tables() {
     b4l_create_db_table_b4l_issuer_information();
     b4l_create_db_table_b4l_userStudentBadgesProfil();
     b4l_create_db_table_b4l_userTeacherBadgesProfil();
+    b4l_create_db_table_b4l_classes_students();
 }
 
 
@@ -301,6 +302,28 @@ function b4l_create_db_table_b4l_userTeacherBadgesProfil() {
         badge_teacher text NOT NULL,
         badge_comment text NOT NULL,
         PRIMARY KEY  (user_badge_id)
+  ) $charset_collate;";
+
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+}
+
+/**
+ * Create/Update the '(prefix)b4l_classes_students' table
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.1.3
+ */
+function b4l_create_db_table_b4l_classes_students() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . "b4l_classes_students"; 
+    $charset_collate = $wpdb->get_charset_collate();
+    
+    $sql = "CREATE TABLE $table_name (
+        id bigint(20) NOT NULL AUTO_INCREMENT,
+        id_class bigint(20) NOT NULL,
+        student_email text NOT NULL,
+        UNIQUE KEY id (id)
   ) $charset_collate;";
 
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );

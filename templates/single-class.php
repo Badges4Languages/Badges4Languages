@@ -33,7 +33,13 @@ function b4l_stylesheet_single_badge() {
  */
 
 //Header Page
-get_header(); ?>
+get_header(); 
+global $wpdb;
+global $current_user;
+get_currentuserinfo();
+//Contain functions to display badges/classes
+require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/display_badges_and_classes_user_profile.php';
+?>
 <div id="primary">
     <div id="content" role="main">
     
@@ -56,6 +62,7 @@ get_header(); ?>
                 
                 <!-- CUSTOM METABOX --> 
                 <div id="metabox">
+                    <strong>Rating: </strong> <?php echo b4l_rating_average(get_the_ID()); ?> <br/>
                     <strong>Teacher: </strong> <?php the_author_meta( 'display_name', $post->post_author ); ?> <br/>
                     <strong>Language: </strong> <?php echo get_post_meta(get_the_ID(), 'class_language', true); ?> <br/>
                     <strong>Level: </strong> <?php echo get_post_meta(get_the_ID(), 'class_level', true); ?> <br/>
@@ -63,9 +70,33 @@ get_header(); ?>
                     <strong>Ending Date: </strong> <?php echo get_post_meta(get_the_ID(), 'class_ending_date', true); ?> <br/>
                 </div>
                 <br/>
-            <!-- Display comments and the comments' form -->    
-            <?php $withcomments = "1"; comments_template(); ?>
                 
+            <!-- Display comments and the comments' form -->  
+            <?php 
+            
+            //Check if the user follows this class (null if not)
+            $follower = $wpdb->get_results($wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."b4l_classes_students WHERE student_email= '".$current_user->user_email."' AND id_class = '".get_the_ID()."'", "" )); 
+            //Check if the user has already posted a comment (null if not)
+            $user_comment = get_comments(array('user_id' => $current_user->ID, 'post_id'=>get_the_ID())); 
+            
+            //If the student doesn't follow this class or has already posted a rating, he can only see the comments....
+            if(!($follower) || $user_comment) {
+                echo '<p>Comments:</p>';
+                $comments = get_comments(array('post_id' => get_the_ID()));
+                foreach ( $comments as $comment ) {
+                    echo '<div><b>Title</b> : '. get_comment_meta( $comment->comment_ID, 'title', true ) .'<br/>';
+                    echo '<b>Author</b> : '. $comment->comment_author .'<br/>';
+                    echo '<b>Ratings</b> : ' . get_comment_meta( $comment->comment_ID, 'rating', true ) .'/5<br/>';
+                    echo '<b>Message</b> : ' . $comment->comment_content .'<br/></div><br/>';
+                }
+            //....Else he has access to comments + comment form to give a rating
+            } else {
+                $withcomments = "1";
+                comments_template();
+                
+                
+            } 
+            ?>
         </article>
     <?php //endwhile; ?>
     </div>
@@ -75,4 +106,3 @@ get_header(); ?>
 
 <!--Footer Page-->
 <?php get_footer(); ?>
-

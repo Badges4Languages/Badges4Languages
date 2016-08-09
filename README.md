@@ -43,6 +43,7 @@ For more information, please read the user guide.
 * You could have a permission problem when you want to import a CSV file (not allowed to import it) on a multisite Wordpress. Go to the multisite "network settings", then to the category "Upload file types", and add "csv" to the list.
 * When you import a CSV file, it is possible that you have an error message, but if you have respected the form, the CSV will be imported.
 * All of these errors are reported into the user guide, please read it before starting using our plugin.
+* Badges Information are saved in 2 places (Json File and Database) for my security.
 
 
 
