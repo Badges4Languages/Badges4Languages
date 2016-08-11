@@ -31,11 +31,21 @@ This is a plugin for Wordpress (tested on 4.5.3)
 
 ## Utilisation
 
+### Create a badge
 1. First, you have to import you CSV data in the Database with the submenu 'Initialization - Import Data Into Database' into 'Badge School' Menu;
 1. Next, you have to give the issuer's information thanks to the submenu 'Badge Issuer Information';
 1. You can create a 'Badge School' Post which corresponds to a badge level (A1, A2, B1, T1, T2,....). The Badge School name must be explicit (A1, A2...) !
 1. You can finally get a badge (self-certification badge or badge given by a teacher) or send it if you are a teacher.
 For more information, please read the user guide.
+
+Warning :
+The title of 'Badge' custom post has to be the same as 'Level'. And 1 'Badge' custom post can only be associated with 1 'Level' custom taxonomy.
+User doesn't have to create a page called "Accept Bagde" unless this page has been deleted (the site has to have always 1 page called like that, not more, not less). The same for "User Profile" page.
+
+### Create a class
+
+### Shortcodes
+
 
 
 ## Notes
@@ -102,12 +112,10 @@ For more information, please read the user guide.
 
 
 ## TO DO LIST
-
-* Send a badge to more than 1 student;
-* Option menu : allow a user, when he deletes the plugin, to choose if he keeps or not the database tables;
-* Create a PHP Object for the badge, which will simplify the signature of the function of creation of the JSON file (currently it's functionnable, but with a php object it will be clearer);
-* User documentation : Title custom post must the same as Level custom taxonomy ; User doesn't have to create a page called "Accept Bagde" unless this page has been deleted (the site has to have always 1 page called like that, not more, not less). The same for "User Profile" page.
+* User documentation : Title custom post must the same as Level custom taxonomy ; User doesn't have to create a page called "Accept Bagde" unless this page has been deleted (the site has to have always 1 page called like that, not more, not less). The same for "User Profile" page. And one custom post 'badge' by category.
 * Front End User Profile : the version is not official, there are 2 Javascript codes to test. When one of this version will be officially elected, please put it in the right file and delete the other (see commented sections in "single-front_end_user_profile.php")
+* Change the default class for each teacher because there is a loss of memory. It is functionnable but not the best way to do it. See comment on 'b4l_general_class_for_teacher' function in custom_post_class.php (Warning : if you change it, you have to change code in send_badges_(one_)student(s)).
+* send_badges_students.php is a copy with few modifications of send_badges_one_student.php, because we didn't know at the beginning which one to keep. However, if both of them are used, it will be better to combine the 2 files in one to avoid repetition/copy.
 
 ## Credits
 

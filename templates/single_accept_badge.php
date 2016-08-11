@@ -10,7 +10,7 @@ get_header(); // Loads the header.php template.
             $path_json = $_GET['filename']; //Gets the encoded Json Path
             $path_json = base64_decode(str_rot13($path_json)); //Decodes the path
             $badge_name=$_GET['id'];
-            $json_content = file_get_contents($json_path); //Get the Json content from the Json path
+            $json_content = file_get_contents($path_json); //Get the Json content from the Json path
             $json_obj = json_decode($json_content); //Decode the Json content (get all the information into $json_obj)
             b4l_save_badge_user_profil($json_obj);
         }
@@ -69,10 +69,17 @@ get_header(); // Loads the header.php template.
                     if ( !is_user_logged_in() )  : // Message for non logged in users.?>
                         <h2>Remember, just registered users can accept the badge. <a title="Log in" style="color: #f78181;" href="<?php echo wp_login_url(); ?>">Log in</a> or <a title="Register" style="color: #f78181;" href="<?php echo wp_registration_url(); ?>">open an account</a>.</h2>
                     <?php endif; ?>
-
+                        
                     <?php 
                     if ( is_user_logged_in() )  :  // Active link for winners of a badge.?>
-                            <h2 class="acceptclick">Please <a href='#' class='acceptclick'>accept</a> the award.</h2>
+                        <h2 class="acceptclick">Please <a href='#' class='acceptclick'>accept</a> the award.</h2>
+                    <?php endif; ?>
+                            
+                    <?php
+                    if(is_user_logged_in() && $json_obj->{'badge'}->{'classlink'} != 'nolink') : 
+                        $link = $json_obj->{'badge'}->{'classlink'}; 
+                    ?>
+                        <h2>Don't forget to give a rating to the class <a style="color: #f78181;" href='<?php echo $link ?>'>HERE</a>.</h2>
                     <?php endif; ?>
 				
             </div>
@@ -83,17 +90,8 @@ get_header(); // Loads the header.php template.
         <div id="badge-error">
             <p><span style="background-color: #f78181;"><strong>An error occured while adding this badge to your backpack.</strong></span></p>
         </div>
-        <?php
-        if($json_obj->{'badge'}->{'classlink'} != null) {
-            ?>
-            <div id="class-link">
-                 <p><?php echo $json_obj->{'badge'}->{'classlink'}; ?></p>
-            </div>
-            <?php
-        }
         
-    
-get_footer(); // Loads the footer.php template.
+<?php get_footer(); // Loads the footer.php template.
        
        
 
@@ -117,7 +115,7 @@ function b4l_save_badge_user_profil($json_obj){
 
 
 /**
- * Adding the template for 'Accept Badge' page to the list of templates.
+ * Save the data from the JSON into the database
  * 
  * @author Alexandre LEVACHER
  * @since 1.1.2

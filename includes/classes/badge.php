@@ -100,7 +100,10 @@ class Badge {
         $this->set_comment($comment);
         $this->set_skills($skills);
         $this->set_badge_link($badge_link);
-        $this->set_class_link($class_link);
+        if ($class_link != null)
+            $this->set_class_link($class_link);
+        else
+            $this->set_class_link('nolink');
     }
     
     

@@ -59,6 +59,7 @@ function plugin_name_extra_caps( $caps ) {
  * @global WordpressObject $current_user Information about the current user
  */
 function b4l_send_badges_students_page_callback() {
+    global $wpdb;
     global $current_user;
     get_currentuserinfo();
 ?>
@@ -68,12 +69,15 @@ function b4l_send_badges_students_page_callback() {
             <h2>Choose the level</h2>
             <div>
             <?php 
-                $mypost = b4l_send_badges_students_get_posts();
-                $loop = new WP_Query( $mypost );
-                while ( $loop->have_posts() ) : $loop->the_post();
+                $badge_post = b4l_send_badges_students_get_posts();
+                $badge_loop = new WP_Query( $badge_post );
+                while ( $badge_loop->have_posts() ) : $badge_loop->the_post();
             ?>
                 <input type="radio" name="level" value="<?php echo the_ID(); ?>"><?php echo the_title(); ?><br/>
-                <?php endwhile; ?>
+                <?php 
+                endwhile; 
+                wp_reset_postdata(); //Restore the $post variable to the current post (before the loop, post_type was 'badge', now it is 'post').
+                ?>
             </div>
             <br/>
 
@@ -83,7 +87,6 @@ function b4l_send_badges_students_page_callback() {
                 <select style="width: 200px" id="language_certification" name="language_certification">
                     <?php
                         //Display all the languages possible stored in the ($wpdb->prefix)b4l_languages table. 
-                        global $wpdb;
                         $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages ORDER BY 
                                     (CASE 
                                         WHEN language_id = 'arb' THEN 1
@@ -129,16 +132,34 @@ function b4l_send_badges_students_page_callback() {
             <br/>
             
             <h2>Select your class associated to this certification</h2>
+            <p>If you don't want to use the default class (first one of the list) and you don't have a specific class associated to the certification you are sending, please create a class before awarding students.</p>
             <div>
                <select style="width: 200px" id="teacher_class" name="teacher_class">
                     <?php
-                        $mypost = array( 'post_type' => 'class' );
-                        $loop = new WP_Query( $mypost );
-                        while ( $loop->have_posts() ) : $loop->the_post();
-                            if(get_the_author_meta( 'display_name' ) == $current_user->display_name) {
-                                echo '<option value="'.get_the_ID().'">'.get_the_title().' ('.get_post_meta( get_the_ID(), 'class_language', true ).' - '.get_post_meta( get_the_ID(), 'class_level', true ).')</option>';
+                        //Select the first custom post 'class' for a teacher
+                        $queryFirstClass = "SELECT * FROM ".$wpdb->prefix."posts WHERE post_type='class' AND post_author=".$current_user->ID." AND post_name LIKE '%generalclass%'";
+                        $firstClass = $wpdb->get_results($queryFirstClass, ARRAY_A);
+                        //If there is a custom post 'default class', display it at the beginning (we use a "if" condition because if the plugin is installed avec the registration of a user, 
+                        //this user will not have a 'default class'. See description of 'b4l_general_class_for_teacher' function in custom_post_class.php).
+                        if($firstClass)
+                            echo '<option value="'.$firstClass[0][ID].' selected">'. $firstClass[0][post_title].'</option>';    
+                        
+                        //Display all the classes created by the teacher
+                        $class_post = array( 'post_type' => 'class' );
+                        $class_loop = new WP_Query( $class_post );
+                        while ( $class_loop->have_posts() ) : $class_loop->the_post();
+                            if((get_the_author_meta( 'display_name' ) == $current_user->display_name) && (get_the_ID()!= $firstClass[0][ID])) {
+                                if(get_post_meta( get_the_ID(), 'class_language', true ) && get_post_meta( get_the_ID(), 'class_level', true )) {
+                                    echo '<option value="'.get_the_ID().'">'.get_the_title().' ('.get_post_meta( get_the_ID(), 'class_language', true ).' - '.get_post_meta( get_the_ID(), 'class_level', true ).')</option>';
+                                } else {
+                                    if(get_post_meta( get_the_ID(), 'class_language', true ) || get_post_meta( get_the_ID(), 'class_level', true ))
+                                        echo '<option value="'.get_the_ID().'">'.get_the_title().' ('.get_post_meta( get_the_ID(), 'class_language', true ).get_post_meta( get_the_ID(), 'class_level', true ).')</option>';
+                                    else
+                                        echo '<option value="'.get_the_ID().'">'.get_the_title().'</option>';
+                                }
                             }
                         endwhile;
+                        wp_reset_postdata();//Restore the $post variable to the current post (before the loop, post_type was 'class', now it is 'post').
                     ?>
                 </select>
             </div>
@@ -217,7 +238,7 @@ function b4l_send_badges_students_page_callback() {
             $class_link=esc_url( get_permalink( $_POST["teacher_class"] ) );
             
             //Creation of a new 'Badge' object to store all the information
-            $badge = new Badge($title, $badge_desc, $image[0], $_POST['language_certification'], $badge_lvl, 'Student', $badge_comment, $skillsList, get_permalink($_POST["level"], $class_link));
+            $badge = new Badge($title, $badge_desc, $image[0], $_POST['language_certification'], $badge_lvl, 'Student', $badge_comment, $skillsList, get_permalink($_POST["level"]), $class_link);
 
             //Get the emails from the textarea which are separated by a line break (\n)
             $emails = trim($_POST['students_emails']);
@@ -226,6 +247,8 @@ function b4l_send_badges_students_page_callback() {
 
             foreach($emailsArray as $email){
                 $nombreEmails = $nombreEmails + 1;
+                $email = trim($email); //To delete invisible characters (like space) after the email
+                
                 //Function b4l_single_badge_translation is in WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/create_json_and_send_email.php' directory.
                 $file_json = b4l_create_certification_assertion_badge_json($email, $badge, $issuerInformation[0], $teacher_user_name);
                 b4l_send_badge_email($email, $badge, $file_json, $issuerInformation[0]); 

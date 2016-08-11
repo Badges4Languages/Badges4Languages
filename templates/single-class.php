@@ -62,12 +62,26 @@ require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/display_
                 
                 <!-- CUSTOM METABOX --> 
                 <div id="metabox">
+                    
                     <strong>Rating: </strong> <?php echo b4l_rating_average(get_the_ID()); ?> <br/>
                     <strong>Teacher: </strong> <?php the_author_meta( 'display_name', $post->post_author ); ?> <br/>
-                    <strong>Language: </strong> <?php echo get_post_meta(get_the_ID(), 'class_language', true); ?> <br/>
-                    <strong>Level: </strong> <?php echo get_post_meta(get_the_ID(), 'class_level', true); ?> <br/>
-                    <strong>Starting Date: </strong> <?php echo get_post_meta(get_the_ID(), 'class_starting_date', true); ?> <br/>
-                    <strong>Ending Date: </strong> <?php echo get_post_meta(get_the_ID(), 'class_ending_date', true); ?> <br/>
+                    
+                    <?php if ( get_post_meta(get_the_ID(), 'class_language', true) ) : ?>
+                        <strong>Language: </strong> <?php echo get_post_meta(get_the_ID(), 'class_language', true); ?> <br/>
+                    <?php endif; ?>
+                        
+                    <?php if ( get_post_meta(get_the_ID(), 'class_level', true) ) : ?>
+                        <strong>Level: </strong> <?php echo get_post_meta(get_the_ID(), 'class_level', true); ?> <br/>
+                    <?php endif; ?>
+
+                    <?php if ( get_post_meta(get_the_ID(), 'class_starting_date', true) ) : ?>
+                        <strong>Starting Date: </strong> <?php echo get_post_meta(get_the_ID(), 'class_starting_date', true); ?> <br/>
+                    <?php endif; ?>
+
+                    <?php if ( get_post_meta(get_the_ID(), 'class_ending_date', true) ) : ?>
+                        <strong>Ending Date: </strong> <?php echo get_post_meta(get_the_ID(), 'class_ending_date', true); ?> <br/>
+                    <?php endif; ?>
+                        
                 </div>
                 <br/>
                 

@@ -42,17 +42,17 @@ function b4l_add_roles() {
     if ( ! isset( $wp_roles ) )
         $wp_roles = new WP_Roles();
     $editor = $wp_roles->get_role('editor');
-    $wp_roles->add_role('b4l_badges_editor', 'Badges Editor', $editor->capabilities);
+    $wp_roles->add_role('b4l_badges_editor', 'B4L Editor', $editor->capabilities);
     
-    add_role('b4l_academy', 'Academy', array(
+    add_role('b4l_academy', 'B4L Academy', array(
         'read' => true,
     ));
     
-    add_role('b4l_teacher', 'Teacher', array(
+    add_role('b4l_teacher', 'B4L Teacher', array(
         'read' => true,
     ));
 
-    add_role('b4l_student', 'Student', array(
+    add_role('b4l_student', 'B4L Student', array(
         'read' => true
     ));
 }

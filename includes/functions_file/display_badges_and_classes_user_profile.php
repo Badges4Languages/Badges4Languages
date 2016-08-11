@@ -96,8 +96,10 @@ function b4l_display_one_badge($badgeInfo, $frontOrBackEnd) {
  * @author Alexandre LEVACHER
  * @since 1.1.3
  * @param String $teacher_name Teacher display name in Wordpress
+ * @global WordpressObject $wpdb Wordpress Database
  */
 function b4l_search_and_display_classes($teacher_name) {
+    global $wpdb;
     $mypost = array( 'post_type' => 'class' );
     $loop = new WP_Query( $mypost );
     while ( $loop->have_posts() ) : $loop->the_post();
@@ -109,21 +111,41 @@ function b4l_search_and_display_classes($teacher_name) {
                 </div>
                 <div class="badge-text">
                     <div class="badge-name">
-                        <?php the_title(); ?>
+                        <a href="<?php echo get_post_permalink(get_the_ID()); ?>" style="color: #f78181;"><?php the_title(); ?></a>
                     </div>
                     <p>
+                        
                         <strong>Rating: </strong> <?php echo b4l_rating_average(get_the_ID()); ?> <br/>
-                        <strong>Teacher: </strong> <?php the_author_meta( 'display_name', $loop->post_author ); ?> <br/>
-                        <strong>Language: </strong> <?php echo get_post_meta(get_the_ID(), 'class_language', true); ?> <br/>
-                        <strong>Level: </strong> <?php echo get_post_meta(get_the_ID(), 'class_level', true); ?> <br/>
-                        <strong>Starting Date: </strong> <?php echo get_post_meta(get_the_ID(), 'class_starting_date', true); ?> <br/>
-                        <strong>Ending Date: </strong> <?php echo get_post_meta(get_the_ID(), 'class_ending_date', true); ?> <br/>
+                        
+                        <?php if ( get_post_meta(get_the_ID(), 'class_language', true) ) : ?>
+                            <strong>Language: </strong> <?php echo get_post_meta(get_the_ID(), 'class_language', true); ?> <br/>
+                        <?php endif; ?>
+                            
+                        <!-- Get the link of the custom post 'badge' in function of the level -->
+                        <?php if ( get_post_meta(get_the_ID(), 'class_level', true) ) : 
+                            $idBadge = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM ".$wpdb->prefix."posts WHERE post_title = '".get_post_meta(get_the_ID(), 'class_level', true)."' AND post_type= 'badge'"));
+                        ?>
+                            <strong>Level: </strong>
+                            <a href="<?php echo get_post_permalink($idBadge); ?>" style="color: #f78181;">
+                                <?php echo get_post_meta(get_the_ID(), 'class_level', true); ?>
+                            </a> <br/>
+                        <?php endif; ?>
+                            
+                        <?php if ( get_post_meta(get_the_ID(), 'class_starting_date', true) ) : ?>
+                            <strong>Starting Date: </strong> <?php echo get_post_meta(get_the_ID(), 'class_starting_date', true); ?> <br/>
+                        <?php endif; ?>
+                            
+                        <?php if ( get_post_meta(get_the_ID(), 'class_ending_date', true) ) : ?>
+                            <strong>Ending Date: </strong> <?php echo get_post_meta(get_the_ID(), 'class_ending_date', true); ?> <br/>
+                        <?php endif; ?>
+                            
                     </p>
                 </div>
                 <div class="clear"></div> <!--Useful for the CSS-->
             </div>
         <?php }
     endwhile;
+    wp_reset_postdata(); //Restore the $post variable to the current post (before the loop, post_type was 'class', now it is 'post').
 }
 
 

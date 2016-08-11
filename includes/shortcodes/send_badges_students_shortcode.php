@@ -17,12 +17,12 @@ function b4l_send_badges_students_shortcode(){
     global $current_user;
     get_currentuserinfo(); 
     
-    //if ( user_can( $current_user, "administrator" ) || user_can( $current_user, "editor" ) || user_can( $current_user, "author" ) || user_can( $current_user, "b4l_badges_editor" ) || user_can( $current_user, "b4l_academy" ) || user_can( $current_user, "b4l_teacher" ) ){ 
+    if ( user_can( $current_user, "administrator" ) || user_can( $current_user, "b4l_badges_editor" ) || user_can( $current_user, "b4l_academy" ) || user_can( $current_user, "b4l_teacher" ) ){ 
         require_once WP_PLUGIN_DIR . '/badges4languages-plugin/includes/submenu_pages/send_badges_students.php';
         b4l_send_badges_students_page_callback();
-    /*} else {
-        echo "You don't have the permissions to see the content of this page !";
-    }*/
+    } else {
+        echo "<p>You don't have the permissions to see the content of this page !</p>";
+    }
 }
 
 /**

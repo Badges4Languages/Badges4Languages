@@ -10,23 +10,6 @@
  */
 
 
-/**
- * Register with hook 'b4l_css_back_end_user_profile', which can be used 
- * for CSS in back end.
- */
-add_action( 'wp_enqueue_scripts', 'b4l_css_back_end_user_profile' );
-
-/**
- * Call and use CSS file.
- * 
- * @author Alexandre LEVACHER
- * @since 1.1.3
- */
-function b4l_css_back_end_user_profile() {
-    wp_register_style('my-css', WP_PLUGIN_URL.'/badges4languages-plugin/css/single_back_end_user_profile.css'); //Search the CSS File
-    wp_enqueue_style('my-css'); //Use the CSS File
-}
-
 
 /**
  * Executes b4l_badges_profile_fields while user's profile is visualised/edited.
@@ -45,13 +28,25 @@ add_action( 'edit_user_profile', 'b4l_badges_profile_fields' );
  * 
 */
 function b4l_badges_profile_fields( ) {
-    global $current_user;
-    get_currentuserinfo();
-    $user_roles = $current_user->roles;
-    $user_role = array_shift($user_roles);
+    if(!(isset( $_GET['user_id']))){
+        global $current_user;
+        get_currentuserinfo();
+        $user_roles = $current_user->roles;
+        $user_role = array_shift($user_roles);
+    } else {
+        //If there is a parameter, it checks the name in the dabase and displays the info
+        global $wpdb;
+        $users = $wpdb->get_results("SELECT * FROM $wpdb->users WHERE display_name = '".$_GET['user']."'");
+        $current_user = $users[0];
+        $user_info = get_userdata($current_user->ID);
+        $user_roles = $user_info->roles;
+        $user_role = array_shift($user_roles);
+    }
+    
     //Contain functions to display badges/classes
     require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/display_badges_and_classes_user_profile.php';
 ?>
+<link rel="stylesheet" type="text/css" href="<?php echo WP_PLUGIN_URL.'/badges4languages-plugin/css/single_back_end_user_profile.css'; ?>">
 <h3>Your Student badges</h3>
   <table class="form-table">
     <tr>

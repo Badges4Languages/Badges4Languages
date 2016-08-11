@@ -100,11 +100,7 @@ function b4l_display_class_meta_box($post) {
                                         END)";
                             $languages = $wpdb->get_results($query, ARRAY_A);
                             foreach($languages as $language) {
-                                if($language[language_name] == $class_language) {
-                                    echo '<option value="'.$language[language_name].'" selected>'.$language[language_name].'</option>';
-                                } else {
-                                    echo '<option value="'.$language[language_name].'">'.$language[language_name].'</option>';
-                                }
+                                echo '<option value="'.$language[language_name].'" '.($class_language == $language[language_name] ? 'selected="selected"' : '' ).'>'.$language[language_name].'</option>';
                             }?>
                     </select>
                 </td>
@@ -113,10 +109,11 @@ function b4l_display_class_meta_box($post) {
                 <th>Level</th>
                 <td>
                     <select style="width:250px" name="class_level" id="class_level">
+                        <option value="" selected> Select a level </option>
                         <?php
                         $options = array( 'A1', 'A2', 'B1', 'B2', 'C1', 'C2');
                         for( $i=0; $i<count($options); $i++ ) {
-                          echo '<option '.($class_level == $options[$i] ? 'selected="selected"' : '' ).'>'.$options[$i].'</option>';
+                          echo '<option value="'.$options[$i].'" '.($class_level == $options[$i] ? 'selected="selected"' : '' ).'>'.$options[$i].'</option>';
                         }
                         ?>
                 </select>

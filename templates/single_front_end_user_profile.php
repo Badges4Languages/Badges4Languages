@@ -22,8 +22,6 @@ add_action( 'wp_enqueue_scripts', 'b4l_jQuery_front_end_user_profile' );
 function b4l_jQuery_front_end_user_profile() {
     //wp_register_script('my-jquery-script', WP_PLUGIN_URL.'/badges4languages-plugin/js/display_badges.js', array('jquery')); //Recherche de notre fichier jQuery
     //wp_enqueue_script('my-jquery-script'); //Utilisation de notre fichier jQuery pour cette page
-    wp_register_style('my-css', WP_PLUGIN_URL.'/badges4languages-plugin/css/single_front_end_user_profile.css'); //Recherche de notre fichier CSS
-    wp_enqueue_style('my-css'); //Utilisation de notre fichier CSS pour cette page
 }
 
 
@@ -38,6 +36,7 @@ if(!(isset( $_GET['user']))){
     $user_roles = $current_user->roles;
     $user_role = array_shift($user_roles);
 } else {
+    //If there is a parameter, it checks the name in the dabase and displays the info
     global $wpdb;
     $users = $wpdb->get_results("SELECT * FROM $wpdb->users WHERE display_name = '".$_GET['user']."'");
     $current_user = $users[0];
@@ -51,12 +50,13 @@ require WP_PLUGIN_DIR.'/badges4languages-plugin/includes/functions_file/display_
 
 get_header(); ?>
 
+<link rel="stylesheet" type="text/css" href="<?php echo WP_PLUGIN_URL.'/badges4languages-plugin/css/single_front_end_user_profile.css'; ?>">
 <section id="content">
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
     <div id="post-<?php the_ID(); ?>">
         <div class="entry-content entry">
-            <?php the_content(); ?>
+            
             
                 <div id="profil-div">
                     
@@ -69,10 +69,10 @@ get_header(); ?>
                             <th><?php _e('Name :', 'profile'); ?></th>
                             <td><?php the_author_meta( 'display_name', $current_user->ID ); ?></td>
                         </tr>
-                        <tr>
-                            <th><?php _e('E-mail :', 'profile'); ?></th>
-                            <td><?php the_author_meta( 'user_email', $current_user->ID ); ?></td>
-                        </tr>
+                       <!-- <tr>
+                            <th><?php // _e('E-mail :', 'profile'); ?></th>
+                            <td><?php // the_author_meta( 'user_email', $current_user->ID ); ?></td>
+                        </tr> -->
                         <tr>
                             <th><?php _e('Website', 'profile'); ?></th>
                             <td><?php the_author_meta( 'user_url', $current_user->ID ); ?></td>
@@ -81,17 +81,22 @@ get_header(); ?>
                             <th><?php _e('Biographical Information', 'profile') ?></th>
                             <td><?php the_author_meta( 'description', $current_user->ID ); ?></td>
                         </tr>
+                        
+                        <tr>
+                            <th><?php _e('Share this profile', 'profile') ?></th>
+                            <td><?php the_content(); //Show social buttons with Social Buttons of Social Media Feather plugin?></td>
+                        </tr>
                     </table>
                     
                     <ul class="tab">
-                        <li><a href="#" class="tablinks" onclick="openCategory(event, 'badge-student-self-certification')">Student "Self-Cerfication" Badges</a></li>
-                        <li><a href="#" class="tablinks" onclick="openCategory(event, 'badge-student-awarded-by-teacher')">Student Awarded Badges</a></li>
+                        <li><a href="#studentSelfCertification" class="tablinks" onclick="openCategory(event, 'badge-student-self-certification')">Student "Self-Cerfication" Badges</a></li>
+                        <li><a href="#studentAwarded" class="tablinks" onclick="openCategory(event, 'badge-student-awarded-by-teacher')">Student Awarded Badges</a></li>
                         <?php
                         //Display the section if the user can have (access to) Teacher Badges
                         if ($user_role == 'administrator' || $user_role == 'b4l_academy' || $user_role == 'b4l_teacher' || $user_role == 'b4l_badges_editor') {
                         ?>
-                            <li><a href="#" class="tablinks" onclick="openCategory(event, 'badge-teacher-self-certification')">Teacher "Self-Cerfication" Badges'</a></li>
-                            <li><a href="#" class="tablinks" onclick="openCategory(event, 'teacher-classes')">My classes</a></li>
+                            <li><a href="#teacherSelfCertification" class="tablinks" onclick="openCategory(event, 'badge-teacher-self-certification')">Teacher "Self-Cerfication" Badges'</a></li>
+                            <li><a href="#classes" class="tablinks" onclick="openCategory(event, 'teacher-classes')">My classes</a></li>
                         <?php }?>
                     </ul>
                     

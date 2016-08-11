@@ -74,7 +74,9 @@ function b4l_create_classes_register(){
 
 
 
-
+/**
+ * Include the template
+ */
 add_filter( 'template_include', 'b4l_include_class_template', 1 );
 
 /**
@@ -98,4 +100,52 @@ function b4l_include_class_template( $template_path ) {
         }
     }
     return $template_path;
+}
+
+
+
+/**
+ * Execute b4l_general_class_for_teacher during the user registration phase.
+ */
+add_action('user_register','b4l_general_class_for_teacher');
+
+/**
+ * Create a new custom post 'class' when a user register.
+ * 
+ * This class is the 'default class' for a user who will be teacher. If he wants
+ * to send a certification to (a) student(s), he is not obliged to create a class
+ * to associate the badge to a course: he can select this 'general class' in which
+ * he can add all the certification. Therefore, the students will give a rating in
+ * this class.
+ * 
+ * This method is functionnable but it is not the best way to do it. We make it
+ * because of a lack of time and for simplicity. However every user will have a
+ * 'class' (every user registered after the activation of the plugin), even the
+ * user who will never be teacher. Therefore there is an important loss of memory.
+ * And an user registered before the activation of the plugin will not have a
+ * 'default class'.
+ * 
+ * In the future, it will be better to change this function to be more efficient.
+ * 
+ * @author Alexandre LEVACHER
+ * @since 1.1.3
+ * @param Bigint $user_id User ID
+ */
+function b4l_general_class_for_teacher($user_id){
+        $user_info = get_userdata($user_id);
+        $general_class = array(
+            'post_title' => $user_info->display_name."'s general class",
+            'post_type' => 'class',
+            'post_content' => 'General class of '.$user_info->display_name,
+            'post_status' => 'publish',
+            'post_author' => $user_id,
+            'post_date' => date("Y-m-d H:i:s"),
+            'post_date_gmt' => gmdate("Y-m-d H:i:s"),
+            'comment_status' => 'open',
+            'ping_status' => 'closed',
+            'post_name' => 'user'.$user_id.'GeneralClass',
+        );
+
+        // Insert the post into the database
+        wp_insert_post( $general_class );
 }
