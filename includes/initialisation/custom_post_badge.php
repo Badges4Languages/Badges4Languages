@@ -36,7 +36,7 @@ function b4l_create_badges_register(){
 		'show_ui' => true,
                 'show_in_nav_menus' => true,
 		'query_var' => true,
-		'menu_icon' => 'dashicons-welcome-learn-more',
+		'menu_icon' => 'dashicons-awards',
 		'rewrite' => true,
                 'map_meta_cap' => true,
 		'capability_type' => array('badge', 'badges'),

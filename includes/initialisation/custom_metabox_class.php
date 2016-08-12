@@ -79,7 +79,7 @@ function b4l_display_class_meta_box($post) {
                 <th>Language</th>
                 <td>
                     <select style="width: 250px" name="class_language" id="class_language">
-                        <option value="" selected> Select a language </option>
+                        <option value="" selected> Select a language if you want to assign one to this class</option>
                         <?php
                             global $wpdb;
                             $query = "SELECT language_name FROM ".$wpdb->prefix."b4l_languages ORDER BY 
@@ -109,7 +109,7 @@ function b4l_display_class_meta_box($post) {
                 <th>Level</th>
                 <td>
                     <select style="width:250px" name="class_level" id="class_level">
-                        <option value="" selected> Select a level </option>
+                        <option value="" selected> Select a level if you want to assign one to this class</option>
                         <?php
                         $options = array( 'A1', 'A2', 'B1', 'B2', 'C1', 'C2');
                         for( $i=0; $i<count($options); $i++ ) {

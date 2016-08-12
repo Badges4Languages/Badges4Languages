@@ -171,17 +171,31 @@ get_header(); ?>
                     if ( !(is_user_logged_in()) ) { 
                     ?>
                         <div>
-                            <h3>You have to be <a style="color: #f78181;" href="<?php echo wp_login_url(); ?>" title="Login" target="_blank">registered</a> to send yourself a certification !</h3>
+                            <h2>Open a <a style="color: #f78181;" href="<?php echo wp_login_url(); ?>" title="Login" target="_blank">free account</a> and choose one role to get certificated.</h2>
                         </div>
                     <?php 
                     } else {
                     //If it is a student badge, everybody can see it
                         if ( get_the_terms($post->ID, 'badges_students_levels') ) {
-                            b4l_see_and_send_self_certification($levelName);
+                             if ( $user_role == 'administrator' || $user_role == 'b4l_student' || $user_role == 'b4l_academy' || $user_role == 'b4l_teacher' || user_role == 'b4l_badges_editor') {
+                                b4l_see_and_send_self_certification($levelName);
+                            } else { 
+                                ?>
+                                <div>
+                                    <h2>You have to choose a role to have access to that section.</h2>
+                                </div>
+                            <?php
+                            }
                         } else {
                             //If it is a teacher badge, only admin, teacher, academy et badges editor (custom roles of the plugin) can see the form
                             if ( $user_role == 'administrator' || $user_role == 'b4l_academy' || $user_role == 'b4l_teacher' || user_role == 'b4l_badges_editor') {
                                 b4l_see_and_send_self_certification($levelName);
+                            } else { 
+                                ?>
+                                <div>
+                                    <h2>You have to be a teacher or an academy to have access to that section.</h2>
+                                </div>
+                            <?php
                             }
                         }
                     }

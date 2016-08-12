@@ -45,6 +45,9 @@ User doesn't have to create a page called "Accept Bagde" unless this page has be
 ### Create a class
 
 ### Shortcodes
+* [send_badges]
+* [send_badges_one_student]
+* [create_class] (not totally functionable)
 
 
 
@@ -116,6 +119,8 @@ User doesn't have to create a page called "Accept Bagde" unless this page has be
 * Front End User Profile : the version is not official, there are 2 Javascript codes to test. When one of this version will be officially elected, please put it in the right file and delete the other (see commented sections in "single-front_end_user_profile.php")
 * Change the default class for each teacher because there is a loss of memory. It is functionnable but not the best way to do it. See comment on 'b4l_general_class_for_teacher' function in custom_post_class.php (Warning : if you change it, you have to change code in send_badges_(one_)student(s)).
 * send_badges_students.php is a copy with few modifications of send_badges_one_student.php, because we didn't know at the beginning which one to keep. However, if both of them are used, it will be better to combine the 2 files in one to avoid repetition/copy.
+* Create a class in frontend (with shortcode [create_class]) is not totally functionnable. 3 problems : after the creation the user is not redirected on his new custom post class; some style from the content don't work (like text in center/right, color for text, etc...); no featured image fied.
+* Make description for each shortcode in this file at section "Shortcode".
 
 ## Credits
 

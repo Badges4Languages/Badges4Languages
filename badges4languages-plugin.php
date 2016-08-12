@@ -105,7 +105,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/shortcodes/send_badges_one_stude
 require plugin_dir_path( __FILE__ ) . 'includes/shortcodes/send_badges_students_shortcode.php';
 
 // Create a shortcode to display the 'class' custom post form to allow the creation in frontend.
-require plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class_form_shortcode.php';
+require plugin_dir_path( __FILE__ ) . 'includes/shortcodes/create_class_form_shortcode.php';
 
 // Create 2 custom fields for the comments: title and ratings.
 require plugin_dir_path( __FILE__ ) . 'included_plugins/extendcomment/extendcomment.php';
