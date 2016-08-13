@@ -47,7 +47,8 @@ User doesn't have to create a page called "Accept Bagde" unless this page has be
 ### Shortcodes
 * [send_badges]
 * [send_badges_one_student]
-* [create_class] (not totally functionable)
+* [create_class] 
+(not totally functionable)
 
 
 
