@@ -182,7 +182,7 @@ get_header(); ?>
                             } else { 
                                 ?>
                                 <div>
-                                    <h2>You have to choose a role to have access to that section.</h2>
+                                    <h2>You have to <a style="color: #f78181;" href="<?php echo get_page_link(424); ?>" title="Login" target="_blank">choose a role</a> to have access to that section.</h2>
                                 </div>
                             <?php
                             }
@@ -192,8 +192,9 @@ get_header(); ?>
                                 b4l_see_and_send_self_certification($levelName);
                             } else { 
                                 ?>
+								<!--Change the id of the links for a new page get_page_link(id)-->
                                 <div>
-                                    <h2>You have to be a teacher or an academy to have access to that section.</h2>
+                                    <h2>You have to be a <a style="color: #f78181;" href="<?php echo get_page_link(420); ?>" title="Login" target="_blank">Teacher</a> or an <a style="color: #f78181;" href="<?php echo get_page_link(421); ?>" title="Login" target="_blank">Academy</a> to have access to that section.</h2> If you are not sure which is the role you need, you can <a style="color: #f78181;" href="<?php echo get_page_link(424); ?>" title="Login" target="_blank">compare our rooles</a> and find the best for you. Remember, you may be ask for acreditation for thar roles.
                                 </div>
                             <?php
                             }
