@@ -171,7 +171,7 @@ get_header(); ?>
                     if ( !(is_user_logged_in()) ) { 
                     ?>
                         <div>
-                            <h2>Open a <a style="color: #f78181;" href="<?php echo wp_login_url(); ?>" title="Login" target="_blank">free account</a> and choose one role to get certificated.</h2>
+                            <h2>Open a <a style="color: #f78181;" href="<?php echo wp_registration_url(); ?>" title="Login" target="_blank">free account</a> or <a style="color: #f78181;" href="<?php echo wp_login_url(); ?>" title="Login" target="_blank">Log in</a> and choose one role to get certificated.</h2>
                         </div>
                     <?php 
                     } else {
